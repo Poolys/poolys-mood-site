@@ -5,9 +5,12 @@ function enterMood() {
   hero.classList.add("fade-out");
 
   // CARICAMENTO POOLY AI (CORRETTO)
-  fetch("Pooly-AI/public/index.html")
-    .then(res => res.text())
-    .then(html => {
+  fetch("PoolyAI/public/index.html")
+    .then(res => { 
+      if (!res.ok)throw new Error("Errore " + res.status);
+      return res.text();
+    })
+     .then(html => {
       const container = document.getElementById("pooly-ai-container");
       if (!container) return;
 
