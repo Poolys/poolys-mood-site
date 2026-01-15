@@ -256,6 +256,11 @@ body.locked {
   bottom: 20px;
   right: 20px;
   z-index: 9999;
+  /*isolamento*/
+  isolation: isolate;
+  /*sicurezza layout*/
+  max-width: 360px;
+  font-family: inherit;
 }
 /* ========================= */
 /* RESPONSIVE FIX LEGGERI */
