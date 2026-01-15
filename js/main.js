@@ -4,6 +4,7 @@ function enterMood() {
 
   hero.classList.add("fade-out");
 
+
   // CARICAMENTO POOLY AI (CORRETTO)
   fetch("PoolyAI/public/index.html")
     .then(res => { 
