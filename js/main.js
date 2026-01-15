@@ -6,7 +6,7 @@ function enterMood() {
 
 
   // CARICAMENTO POOLY AI (CORRETTO)
-  fetch("PoolyAI/public/index.html")
+  fetch("Pooly-AI/public/index.html")
     .then(res => { 
       if (!res.ok)throw new Error("Errore " + res.status);
       return res.text();
@@ -25,7 +25,7 @@ function enterMood() {
 
       // ORA carichiamo chat.js DOPO l'HTML
       const script = document.createElement("script");
-      script.src = "PoolyAI/public/chat.js";
+      script.src = "Pooly-AI/public/chat.js";
       document.body.appendChild(script);
     })
     .catch(err => console.error("Errore PoolyAI:", err));
