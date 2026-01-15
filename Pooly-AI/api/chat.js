@@ -16,9 +16,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
+  
   try {
     const { history } = req.body;
-     if (!history || !Array.isArray(history) || history.length === 0) {
+    if (!history || !Array.isArray(history) || history.length === 0) {
       return res.status(400).json({ reply: "Conversazione vuota." });
     }
 
@@ -40,7 +41,7 @@ Sii chiaro, educato, professionale.
 Non fare preventivi.
 Non inventare informazioni.
     `.trim();
-
+    
     const reply = await askAI(systemPrompt);
     res.status(200).json({ reply });
 
