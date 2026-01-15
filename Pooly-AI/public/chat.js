@@ -3,6 +3,10 @@ const chat = document.getElementById("poolyChat");
 const chatBody = document.getElementById("chatBody");
 const input = document.getElementById("msg");
 const sendBtn = document.getElementById("sendBtn");
+if (!pallino || !chat) {
+  console.warn("PoolyAI non ancora nel DOM");
+  return;
+}
 
 let chatHistory = JSON.parse(localStorage.getItem("poolyChatHistory")) || [];
 
@@ -69,7 +73,7 @@ async function sendMessage() {
   renderHistory();
   input.value = "";
 
-  const res = await fetch("Pooly/api/chat", {
+  const res = await fetch("/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ history: chatHistory })
@@ -85,7 +89,7 @@ async function sendMessage() {
 // Salvataggio finale
 window.addEventListener("beforeunload", () => {
   if (chatHistory.length > 0) {
-    navigator.sendBeacon("Pooly-AI/api/saveAndClear", JSON.stringify({ history: chatHistory }));
+    navigator.sendBeacon("/api/saveAndClear", JSON.stringify({ history: chatHistory }));
     localStorage.removeItem("poolyChatHistory");
   }
 });

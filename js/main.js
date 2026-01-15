@@ -1,42 +1,50 @@
 function enterMood() {
-  const hero = document.querySelector('#hero');
-  const main = document.querySelector('#main-content');
+  const hero = document.querySelector("#hero");
+  const main = document.querySelector("#main-content");
 
-  hero.classList.add('fade-out');
+  hero.classList.add("fade-out");
 
-  // CARICAMENTO POOLY AI (ISOLATO)
-fetch("Pooly-AI/public/index.html")
-  .then(res => (res.text()))
-  .then(html => {
-    const container = document.getElementById("pooly-ai-container");
-     container.innerHTML = html;});
+  // CARICAMENTO POOLY AI (CORRETTO)
+  fetch("Pooly-AI/public/index.html")
+    .then(res => res.text())
+    .then(html => {
+      const container = document.getElementById("pooly-ai-container");
+      if (!container) return;
 
-    const wrapper = document.createElement("div");
-    wrapper.className = "pooly-ai-sandbox";
-    wrapper.innerHTML = html;
+      container.innerHTML = "";
 
-    container.appendChild(wrapper);
-  // FINE CARICAMENTO POOLY AI//
+      const wrapper = document.createElement("div");
+      wrapper.className = "pooly-ai-sandbox";
+      wrapper.innerHTML = html;
+
+      container.appendChild(wrapper);
+
+      // ORA carichiamo chat.js DOPO l'HTML
+      const script = document.createElement("script");
+      script.src = "Pooly-AI/public/chat.js";
+      document.body.appendChild(script);
+    })
+    .catch(err => console.error("Errore PoolyAI:", err));
 
   setTimeout(() => {
-    main.style.opacity = '1';
-    main.style.pointerEvents = 'auto';
-    document.body.classList.remove('locked');
-    main.scrollIntoView({ behavior: 'smooth' });
-  }, 200);
+    main.style.opacity = "1";
+    main.style.pointerEvents = "auto";
+    document.body.classList.remove("locked");
+    main.scrollIntoView({ behavior: "smooth" });
+  }, 1200);
 }
 
 function goToCatalogo() {
-  document.body.classList.add('exit-page');
+  document.body.classList.add("exit-page");
   setTimeout(() => {
-    window.location.href = 'catalogo.html';
+    window.location.href = "catalogo.html";
   }, 800);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const tasteImage = document.querySelector('.taste-section-image');
+document.addEventListener("DOMContentLoaded", () => {
+  const tasteImage = document.querySelector(".taste-section-image");
   if (tasteImage) {
-    tasteImage.style.cursor = 'pointer';
-    tasteImage.addEventListener('click', goToCatalogo);
+    tasteImage.style.cursor = "pointer";
+    tasteImage.addEventListener("click", goToCatalogo);
   }
 });
