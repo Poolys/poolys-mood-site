@@ -69,7 +69,7 @@ async function sendMessage() {
   renderHistory();
   input.value = "";
 
-  const res = await fetch("Pooly-AI/api/chat", {
+  const res = await fetch("/Pooly-AI/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ history: chatHistory })
