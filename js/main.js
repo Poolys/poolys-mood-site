@@ -6,38 +6,17 @@ function enterMood() {
 
   // CARICAMENTO POOLY AI (ISOLATO)
 fetch("Pooly-AI/public/index.html")
-  .then(res => {
-    console.log("Status fetch:", res.status);
-    if (!res.ok) {
-      throw new Error(`Errore server: ${res.status} ${res.statusText}`);
-    }
-    return res.text();
-  })
+  .then(res => (res.text()))
   .then(html => {
     const container = document.getElementById("pooly-ai-container");
-    if (!container) {
-      console.error("Container non trovato!");
-      return;
-    }
+     container.innerHTML = html;});
 
     const wrapper = document.createElement("div");
     wrapper.className = "pooly-ai-sandbox";
     wrapper.innerHTML = html;
 
     container.appendChild(wrapper);
-
-    // 🔥 ORA carichiamo lo script dell’AI (QUESTO MANCAVA)
-    const script = document.createElement("script");
-    script.src = "Pooly-AI/public/chat.js";
-    script.defer = true;
-    document.body.appendChild(script);
-
-    console.log("PoolyAI inserito e script caricato!");
-  })
-  .catch(err => {
-    console.error("Errore totale fetch/inserimento:", err);
-  });
-
+  // FINE CARICAMENTO POOLY AI//
 
   setTimeout(() => {
     main.style.opacity = '1';
