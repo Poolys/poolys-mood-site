@@ -3,10 +3,6 @@ const chat = document.getElementById("poolyChat");
 const chatBody = document.getElementById("chatBody");
 const input = document.getElementById("msg");
 const sendBtn = document.getElementById("sendBtn");
-if (!pallino || !chat) {
-  console.warn("PoolyAI non ancora nel DOM");
-  return;
-}
 
 let chatHistory = JSON.parse(localStorage.getItem("poolyChatHistory")) || [];
 
