@@ -24,7 +24,7 @@ function enterMood() {
 
       // ORA carichiamo chat.js DOPO l'HTML
       const script = document.createElement("script");
-      script.src = "Pooly-AI/public/chat.js";
+      script.src = "PoolyAI/public/chat.js";
       document.body.appendChild(script);
     })
     .catch(err => console.error("Errore PoolyAI:", err));
