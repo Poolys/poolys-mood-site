@@ -1,8 +1,8 @@
-import { askAI } from "../ai/openaiClient.js";
+import { askAI } from "../Pooly-AI/ai/openaiClient.js";
 import fs from "fs";
 import path from "path";
 
-const fixedMemoryPath = path.join(process.cwd(), "ai", "fixedMemory.json");
+const fixedMemoryPath = path.join(process.cwd(), "Pooly-AI", "ai", "fixedMemory.json");
 
 let fixedMemory = {};
 try {
@@ -46,7 +46,7 @@ Non inventare informazioni.
     res.status(200).json({ reply });
 
   } catch (error) {
-    console.error("Errore /api/chat:", error);
+    console.error("Errore Pooly-AI/api/chat:", error);
     res.status(500).json({ reply: "Errore temporaneo, riprova più tardi." });
   }
 }
