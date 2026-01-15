@@ -12,21 +12,21 @@ function renderHistory() {
 }
 
 // Apri chat
-pallino.addEventListener("click", e => {
+pallino.addEventListener("click", (e) => {
   e.stopPropagation();
   pallino.classList.add("closed");
-
+  
   setTimeout(() => {
     chat.classList.add("open");
     renderHistory();
 
-
+    // Mostra messaggio di benvenuto SOLO alla prima apertura
     if (chatHistory.length === 0) {
-      const p = document.createElement("p");
-      p.className = "aiMessage";
-      p.innerHTML = "Benvenuto! Sono PoolyAI, il tuo assistente per espositori e allestimenti Pooly’s Mood. Come posso aiutarti?";
+      const p = document.createElement('p');
+      p.className = 'aiMessage';
+      p.innerHTML = "Benvenuto! Sono PoolyAI, il assistente per consigli e dettagli sui nostri espositori. Come posso aiutarti? ";
       chatBody.appendChild(p);
-      
+      chatBody.scrollTop = chatBody.scrollHeight;
     }
   }, 400);
 });
