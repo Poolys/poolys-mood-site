@@ -84,3 +84,32 @@ window.addEventListener('beforeunload', () => {
     localStorage.removeItem('poolyChatHistory');
   }
 });
+// ===== INTRO DESKTOP ELEGANTE (una sola volta) =====
+function showPoolyIntro() {
+  // solo desktop
+  if (window.innerWidth < 1024) return;
+
+  // già visto
+  if (localStorage.getItem("poolyIntroSeen")) return;
+
+  const intro = document.createElement("div");
+  intro.id = "poolyIntro";
+  intro.innerText = "Posso aiutarti a scegliere l’espositore giusto.";
+
+  document.body.appendChild(intro);
+
+  // fade-in
+  setTimeout(() => intro.classList.add("show"), 100);
+
+  // dopo 5 secondi sparisce
+  setTimeout(() => {
+    intro.classList.remove("show");
+    setTimeout(() => {
+      intro.remove();
+      localStorage.setItem("poolyIntroSeen", "true");
+    }, 400);
+  }, 5000);
+}
+
+// avvio dopo caricamento pagina
+window.addEventListener("load", showPoolyIntro);

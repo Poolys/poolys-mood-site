@@ -18,7 +18,7 @@ export default async function handler(req, res) {
 
   try {
     const { history } = req.body;
-    if (!history || !Array.isArray(history) || history.length === 0) {
+     if (!history || !Array.isArray(history) || history.length === 0) {
       return res.status(400).json({ reply: "Conversazione vuota." });
     }
 
@@ -44,7 +44,7 @@ Non inventare informazioni.
     const reply = await askAI(systemPrompt);
     res.status(200).json({ reply });
 
-    } catch (error) {
+  } catch (error) {
     console.error("Errore /api/chat:", error);
     res.status(500).json({ reply: "Errore temporaneo, riprova più tardi." });
   }
