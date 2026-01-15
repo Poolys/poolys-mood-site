@@ -40,7 +40,7 @@ function enterMood() {
     main.style.pointerEvents = 'auto';
     document.body.classList.remove('locked');
     main.scrollIntoView({ behavior: 'smooth' });
-  }, 1200);
+  }, 200);
 }
 
 function goToCatalogo() {
