@@ -65,7 +65,7 @@ async function sendMessage() {
   renderHistory();
   input.value = "";
 
-  const res = await fetch("/api/chat", {
+  const res = await fetch("Pooly/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ history: chatHistory })
@@ -81,7 +81,7 @@ async function sendMessage() {
 // Salvataggio finale
 window.addEventListener("beforeunload", () => {
   if (chatHistory.length > 0) {
-    navigator.sendBeacon("/api/saveAndClear", JSON.stringify({ history: chatHistory }));
+    navigator.sendBeacon("Pooly-AI/api/saveAndClear", JSON.stringify({ history: chatHistory }));
     localStorage.removeItem("poolyChatHistory");
   }
 });
