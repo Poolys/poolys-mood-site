@@ -1,3 +1,9 @@
+const pallino = document.getElementById("poolyPallino");
+const chat = document.getElementById("poolyChat");
+const chatBody = document.getElementById("chatBody");
+const input = document.getElementById("msg");
+const sendBtn = document.getElementById("sendBtn");
+
 let chatHistory = JSON.parse(localStorage.getItem("poolyChatHistory")) || [];
 
 function renderHistory() {
@@ -34,8 +40,7 @@ pallino.addEventListener("click", (e) => {
 // Chiudi cliccando fuori
 document.addEventListener("click", e => {
   if (!chat.classList.contains("open")) return;
-
-  if (!chat.contains(e.target) && !pallino.contains(e.target)) {
+ if (!chat.contains(e.target) && !pallino.contains(e.target)) {
     chat.classList.remove("open");
     pallino.classList.remove("closed");
   }
@@ -43,6 +48,7 @@ document.addEventListener("click", e => {
 
 // Invio messaggi
 sendBtn.addEventListener("click", sendMessage);
+
 input.addEventListener("keydown", e => {
   if (e.key === "Enter") {
     e.preventDefault();
@@ -55,9 +61,7 @@ async function sendMessage() {
   if (!message) return;
 
   chatHistory.push({ role: "user", content: message });
-
   
-  // Limite memoria (protezione)
   if (chatHistory.length > 20) {
     chatHistory = chatHistory.slice(-20);
   }
