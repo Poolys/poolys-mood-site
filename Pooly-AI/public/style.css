@@ -58,7 +58,7 @@ font-weight: bold;
 #poolyChat.open {
   opacity: 1;
   transform: translateY(0);
-  pointer-events: all;
+  pointer-events: auto;
 }
 
 /* Header con bandiera – sempre basso e compatto */

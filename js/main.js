@@ -5,35 +5,39 @@ function enterMood() {
   hero.classList.add('fade-out');
 
   // CARICAMENTO POOLY AI (ISOLATO)
- fetch("Pooly-AI/public/index.html") // ← metti il path ESATTO che funziona ora
+fetch("Pooly-AI/public/index.html")
   .then(res => {
-    console.log("Status fetch:", res.status); // dovrebbe essere 200
+    console.log("Status fetch:", res.status);
     if (!res.ok) {
       throw new Error(`Errore server: ${res.status} ${res.statusText}`);
     }
     return res.text();
   })
   .then(html => {
-    console.log("Contenuto caricato (prime 200 char):", html.substring(0, 200)); // debug: vedi se è davvero il tuo index.html
-
     const container = document.getElementById("pooly-ai-container");
     if (!container) {
       console.error("Container non trovato!");
       return;
     }
 
-    // Metodo più sicuro: crea un div wrapper invece di template literal
     const wrapper = document.createElement("div");
     wrapper.className = "pooly-ai-sandbox";
-    wrapper.innerHTML = html; // ← metti SOLO l'html qui, senza <div> extra se non serve
+    wrapper.innerHTML = html;
 
-    container.appendChild(wrapper); // append invece di innerHTML = per evitare sovrascritture
+    container.appendChild(wrapper);
 
-    console.log("PoolyAI inserito correttamente!");
+    // 🔥 ORA carichiamo lo script dell’AI (QUESTO MANCAVA)
+    const script = document.createElement("script");
+    script.src = "Pooly-AI/public/chat.js";
+    script.defer = true;
+    document.body.appendChild(script);
+
+    console.log("PoolyAI inserito e script caricato!");
   })
   .catch(err => {
     console.error("Errore totale fetch/inserimento:", err);
   });
+
 
   setTimeout(() => {
     main.style.opacity = '1';
