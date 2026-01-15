@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Pooly’s Mood</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="locked"> <!-- tieni locked se usi per no-scroll iniziale -->
+<div id="PoolyPallino"></div>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-canvas">
+      <div class="hero-image">
+        <img src="assets/img/hero/donna-vino.jpg" alt="Gaudium Vino">
+      </div>
+      <div class="hero-content">
+        <h1>Pooly’s Mood</h1>
+        <p class="manifesto">Gaudium Vino</p>
+        <button onclick="enterMood()">La invito nel Pooly’s Mood</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN – inizia nascosto -->
+  <main id="main-content" style="opacity:0; pointer-events:none;">
+
+    <section class="taste taste-intro">
+      <img src="assets/img/mood/langhe.jpg" alt="langhe">
+    </section>
+
+    <section class="taste taste-matter">
+      <img src="assets/img/mood/uva.jpg" alt="uva">
+    </section>
+
+    <section class="taste taste-models">
+      <img src="assets/img/mood/areddi.jpg" alt="gaudium">
+      <h2>Ogni struttura nasce per un luogo.</h2>
+      <p></p>
+    </section>
+
+    <section class="taste taste-invite" id="invite-section">
+      <div class="taste-section-image"> <!-- wrapper per rendere cliccabile l'immagine -->
+        <img src="assets/img/mood/logo.jpg" alt="logo">
+      </div>
+      <h2 class="enter-link" onclick="goToCatalogo()">Entrate nel nostro catalogo.</h2>
+    </section>
+
+    <!-- Le sezioni block le puoi lasciare qui o spostarle in catalogo se preferisci -->
+
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

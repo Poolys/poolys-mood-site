@@ -1,0 +1,307 @@
+/* RESET MINIMO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  transition: opacity 0.8s ease;
+}
+
+body.fade-out {
+  opacity: 0;
+}
+/* VARIABILI MOOD */
+:root {
+  --avorio: #df3737;
+  --nero: #1c1c1c;
+
+ --font-main: "Cormorant Garamond", serif;
+--font-clean: "Inter", system-ui, -apple-system, sans-serif;}
+
+.hero-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10vh 12vw;
+  background: #3b0505;
+}
+.hero-canvas {
+  position: center;
+  width: 100%;
+  max-width: 1300px;
+  height: 120vh;
+  aspect-ratio: var(--aspect-hero);
+  margin: 0 auto;
+  background: #3b0505;
+  border: 1px solid rgba(0,0,0,0.15);
+
+  box-shadow:
+    0 12px 40px rgba(0,0,0,0.12),
+    inset 0 0 0 6px rgba(0,0,0,0.03);
+
+  display:  grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+
+
+.hero {
+  position: relative;
+  max-width: 1100px;
+  width: 100%;
+  min-height: 70vh;
+
+  background: #3b0505;
+  border: 4px solid rgba(0,0,0,0.15);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08),
+    inset 0 0 0 6px rgba(0,0,0,0.03);
+
+  display: float;
+  grid-template-columns: 3fr 2fr;
+  overflow: hidden;
+}
+/* BASE */
+body {
+  background: #6b5050;
+  color: var(--nero);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* TESTI */
+h1 {
+  font-size: 55px;
+  letter-spacing: 0.06em;
+}
+
+h2 {
+  font-size: 36px;
+  letter-spacing: 0.08em;
+}
+
+p {
+  max-width: 640px;
+  font-family: var(--font-clean);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+p {
+  max-width: 640px;
+  font-family: var(--font-clean);
+  font-size: 16px;
+}
+
+/* LINK / BOTTONI */
+a, button {
+  font-family: var(--font-clean);
+  background: none;
+  border: none;
+  color: var(--nero);
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  min-height: 150vh;
+  display: flex;
+  align-items: center;
+ justify-content: flex-end;
+  padding: 0 20vw;
+  position: relative;
+  z-index: 10;
+  opacity: 1 !important;
+  transition: transform 1s ease, opacity 1s ease;
+}
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateX(-6%);
+}
+
+.hero-content {
+  padding: 8vh 6vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.hero-content h1 {
+  font-size: clamp(32px, 4vw, 48px);
+}
+
+.manifesto {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.hero-content button {
+  padding: 14px 24px;
+  background: var(--nero);
+  color: #ffffff;
+}
+
+/* DEGUSTAZIONE – CHIUSA DI DEFAULT */
+.taste {
+  min-height: 100vh;
+  padding: 20vh 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+
+  opacity: 1;
+  transform: translateY(40px);
+
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+/* DEGUSTAZIONE – APERTA */
+.taste.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* SEZIONI */
+.taste-intro {
+  background: #635858;
+}
+
+.taste-matter {
+  background: #635858;
+}
+
+.taste-models {
+  background: #635858;
+}
+
+.taste-invite {
+  background: #635858;
+  font-family: var(--font-clean);
+  font-size: 26px;
+  text-align: center;
+}
+.enter-link {
+  cursor: pointer;
+  letter-spacing: 0.12em;
+  transition: opacity, transform 0.4s ease;
+}
+
+.enter-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 1px;
+  background: var(--nero);
+  transition: width 0.4s ease;
+}
+
+.enter-link:hover {
+  opacity: 0.6;
+  transform: translateY(2px);
+}
+/* HERO TRANSIZIONE */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  transition: opacity 1.5s ease, transform 1.5s ease;
+
+}
+/* Per il fade del hero */
+.hero.fade-out {
+  opacity: 0;
+  transform: scale(0.2);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+  pointer-events: none;
+  }
+body.exit-hero {
+  opacity: 0;
+  transform: scale(0.2);
+  transition: all 0.3s ease;
+}
+
+/* Per il main che appare */
+#main-content {
+  transition: opacity 1.5s ease;
+}
+
+/* Opzionale: fade-out pagina intera prima di cambiare */
+body.exit-page {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+/* Per bloccare scroll iniziale (se vuoi) */
+body.locked {
+  overflow: hidden;
+  height: 100vh;
+}
+/* ============================= */
+/* ISOLAMENTO COMPLETO POOLY AI */
+/* ============================= */
+
+.pooly-ai-sandbox {
+  all: initial;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+/* ========================= */
+/* RESPONSIVE FIX LEGGERI */
+/* ========================= */
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 0 10vw;
+    min-height: 120vh;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+}
+
+/* SMARTPHONE */
+@media (max-width: 768px) {
+  .hero {
+    padding: 0 6vw;
+    min-height: 100vh;
+  }
+
+  .hero-canvas {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .hero-image img {
+    transform: none;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .taste {
+    padding: 14vh 6vw;
+  }
+}
