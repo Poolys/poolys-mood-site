@@ -1,0 +1,15 @@
+{
+  "name": "poolys-ai",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "nodemailer": "^7.0.12",
+    "openai": "^4.67.3",
+    "update": "^0.7.4"
+  }
+}
