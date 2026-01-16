@@ -1,13 +1,19 @@
 {
   "version": 2,
-  "buildCommand": "cd Pooly-AI && npm install",
-  "framework": "express",
-  "functions": {
-    "api/chat.js": {
-      "runtime": "nodejs20.x"
-    },
-    "api/saveAndClear.js": {
-      "runtime": "nodejs20.x"
+  "builds": [
+    {
+      "src": "Pooly-AI/server.js",
+      "use": "@vercel/node"
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "Pooly-AI/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ]
 }
