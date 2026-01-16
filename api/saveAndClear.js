@@ -1,4 +1,4 @@
-import { sendEmail } from "./utils/sendEmail.js";
+import { sendEmail } from "../utils/sendEmail.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
