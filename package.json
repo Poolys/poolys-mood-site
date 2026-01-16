@@ -1,0 +1,15 @@
+{
+  "name": "poolys-mood-site",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node Pooly-AI/server.js",
+    "start": "node Pooly-AI/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "nodemailer": "^7.0.12",
+    "openai": "^4.104.0"
+  }
+}

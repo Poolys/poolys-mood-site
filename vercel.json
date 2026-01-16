@@ -1,25 +1,13 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "Pooly-AI/server.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "Pooly-AI/server.js"
+  "buildCommand": "cd Pooly-AI && npm install",
+  "framework": "express",
+  "functions": {
+    "api/chat.js": {
+      "runtime": "nodejs20.x"
     },
-    {
-      "src": "/(.*)",
-      "dest": "/"
+    "api/saveAndClear.js": {
+      "runtime": "nodejs20.x"
     }
-  ],
-  "env": {
-    "OPENAI_API_KEY": "@openai_api_key",
-    "EMAIL_USER": "@email_user",
-    "EMAIL_PASS": "@email_pass",
-    "MY_EMAIL": "@my_email"
   }
 }
