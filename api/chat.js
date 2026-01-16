@@ -4,6 +4,7 @@ import path from "path";
 
 const fixedMemoryPath = path.join(process.cwd(), "Pooly-AI", "ai", "fixedMemory.json");
 
+
 let fixedMemory = {};
 try {
   fixedMemory = JSON.parse(fs.readFileSync(fixedMemoryPath, "utf8"));
