@@ -3,7 +3,3 @@ node_modules/
 .env.local
 .vercel
 .DS_Store
-Pooly-AI/.env
-Pooly-AI/node_modules/
-*.log
-.git/
