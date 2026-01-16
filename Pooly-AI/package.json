@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
-    "start": "vercel dev"
+    "dev": "node server.js",
+    "start": "node server.js"
   },
   "dependencies": {
     "dotenv": "^16.6.1",
     "express": "^4.22.1",
     "nodemailer": "^7.0.12",
-    "openai": "^4.104.0",
-    "update": "^0.7.4"
+    "openai": "^4.104.0"
   }
 }
