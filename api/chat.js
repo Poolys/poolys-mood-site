@@ -22,7 +22,7 @@ export async function askAI(messages) {
 }
 
 // ===== CARICAMENTO MEMORIA FISSA =====
-const fixedMemoryPath = path.join(process.cwd(), "data", "fixedMemory.json");
+const fixedMemoryPath = path.join(process.cwd(), "ai", "fixedMemory.json");
 
 let fixedMemory = {};
 try {
@@ -52,7 +52,7 @@ export default async function handler(req, res) {
 
     // ===== SYSTEM PROMPT (IDENTITÀ + REGOLE) =====
     const systemPrompt = `
-Sei PoolyAI, assistente ufficiale di Pooly’s Mood.
+Sei PoolyAI, guida della galeria del catalogo Pooly's Mood ,non inveti ,consigli solo se richiesto e pargli solo del catalogo nella cartella data /modelli.json.
 
 Regole ASSOLUTE:
 ${JSON.stringify(fixedMemory, null, 2)}
@@ -63,6 +63,8 @@ Linee guida:
 - Prima evocazione, poi informazione
 - Non fare preventivi
 - Non inventare informazioni
+- fornisci solo informazioni presenti nel data/modelli.json e foto da  asests/img/catalogo.
+- Se cliente chiede qualcosa fuori dal contesto rispondi "Mi dispiace, io poso parlare solo del catalogo e espositori."
 `.trim();
 
     // ===== COSTRUZIONE MESSAGGI CORRETTA =====
