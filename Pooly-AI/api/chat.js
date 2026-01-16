@@ -1,8 +1,9 @@
-import { askAI } from "../Pooly-AI/ai/openaiClient.js";
+import { askAI } from "../ai/openaiClient.js";
 import fs from "fs";
 import path from "path";
 
 const fixedMemoryPath = path.join(process.cwd(), "Pooly-AI", "ai", "fixedMemory.json");
+
 
 let fixedMemory = {};
 try {

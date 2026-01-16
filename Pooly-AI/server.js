@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import chatHandler from '../api/chat.js';
-import saveAndClearHandler from '../api/saveAndClear.js';
+import chatHandler from './api/chat.js';
+import saveAndClearHandler from './api/saveAndClear.js';
 
 dotenv.config();
 
