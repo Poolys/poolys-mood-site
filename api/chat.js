@@ -1,6 +1,5 @@
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
@@ -16,15 +15,14 @@ export async function askAI(prompt) {
   return completion.choices[0].message.content.trim();
 }
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const fixedMemoryPath = path.join(__dirname, "..", "Pooly-AI", "ai", "fixedMemory.json");
+const fixedMemoryPath = path.join(process.cwd(), "data", "fixedMemory.json");
 
 let fixedMemory = {};
 try {
   fixedMemory = JSON.parse(fs.readFileSync(fixedMemoryPath, "utf8"));
 } catch (err) {
-  fixedMemory = { regole: "Assicura risposte professionali e che rispetta le politiche Pooly's Mood" };
+  console.error("Errore nel caricamento di fixedMemory.json:", err);
+  fixedMemory = { regole: "Assicura risposte professionali e che rispetta le politiche Pooly's Mood, tono calmo, evocativo." };
 }
 
 export default async function handler(req, res) {
