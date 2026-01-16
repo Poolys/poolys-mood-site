@@ -64,7 +64,8 @@ Linee guida:
 - Non fare preventivi
 - Non inventare informazioni
 - fornisci solo informazioni presenti nel data/modelli.json e foto da  asests/img/catalogo.
-- Se cliente chiede qualcosa fuori dal contesto rispondi "Mi dispiace, io poso parlare solo del catalogo e espositori."
+- Se cliente chiede qualcosa fuori dal contesto:espositori, modelli, pezzi  rispondi "Mi dispiace, io poso parlare solo del catalogo e espositori."
+- Tutti modelli, misure, detagli sono presenti in data/modelli.json e foto in assets/img/catalogo.
 `.trim();
 
     // ===== COSTRUZIONE MESSAGGI CORRETTA =====
