@@ -13,12 +13,11 @@ body.fade-out {
 }
 /* VARIABILI MOOD */
 :root {
-  --avorio: #3b0505;
-  --nero: #3b0505;
+  --avorio: #f8eb37;
+  --nero:  #f8eb37;
 
  --font-main: "Cormorant Garamond", serif;
---font-clean: "Inter", system-ui, -apple-system, sans-serif;}
-
+--font-clean: "Inter", system-ui, -apple-system, sans-serif}
 .hero-frame {
   display: flex;
   justify-content: center;
@@ -171,19 +170,19 @@ a, button {
 
 /* SEZIONI */
 .taste-intro {
-  background: #635858;
+  background: #140404;
 }
 
 .taste-matter {
-  background: #635858;
+  background: #140404;
 }
 
 .taste-models {
-  background: #635858;
+  background: #140404;
 }
 
 .taste-invite {
-  background: #635858;
+  background: #140404;
   font-family: var(--font-clean);
   font-size: 26px;
   text-align: center;
@@ -191,7 +190,7 @@ a, button {
 .enter-link {
   cursor: pointer;
   letter-spacing: 0.12em;
-  transition: opacity, transform 0.4s ease;
+  transition: opacity, transform 0.8s ease;
 }
 
 .enter-link::after {
@@ -227,7 +226,7 @@ a, button {
 body.exit-hero {
   opacity: 0;
   transform: scale(0.2);
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 
 /* Per il main che appare */

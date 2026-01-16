@@ -125,3 +125,67 @@ html, body {
   background: var(--oro);
   color: var(--nero);
 }
+/* ============================= */
+/* ISOLAMENTO COMPLETO POOLY AI */
+/* ============================= */
+
+.pooly-ai-sandbox {
+  all: initial;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  /*isolamento*/
+  isolation: isolate;
+  /*sicurezza layout*/
+  max-width: 360px;
+  font-family: inherit;
+}
+/* ========================= */
+/* RESPONSIVE FIX LEGGERI */
+/* ========================= */
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 0 10vw;
+    min-height: 120vh;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+}
+
+/* SMARTPHONE */
+@media (max-width: 768px) {
+  .hero {
+    padding: 0 6vw;
+    min-height: 100vh;
+  }
+
+  .hero-canvas {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .hero-image img {
+    transform: none;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .taste {
+    padding: 14vh 6vw;
+  }
+}

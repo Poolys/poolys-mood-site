@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
-  background: #f0f0f000;
+  background: #3b0505;
 
 }
 
@@ -15,7 +15,7 @@ body {
   height: 60px;
   border-radius: 50%;
   background: #9c0404d2;
-  color: #1a1816;
+  color: #f8eb37;
   display: flex;
   align-items: center;
   justify-content: center;
