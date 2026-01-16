@@ -24,7 +24,7 @@ let fixedMemory = {};
 try {
   fixedMemory = JSON.parse(fs.readFileSync(fixedMemoryPath, "utf8"));
 } catch (err) {
-  fixedMemory = { regole: "Assicura risposte professionali e rispetta le politiche Pooly's Mood" };
+  fixedMemory = { regole: "Assicura risposte professionali e che rispetta le politiche Pooly's Mood" };
 }
 
 export default async function handler(req, res) {
