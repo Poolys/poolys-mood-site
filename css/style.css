@@ -34,7 +34,7 @@ body.fade-out {
   aspect-ratio: var(--aspect-hero);
   margin: 0 auto;
   background: #3b0505;
-  border: 1px solid rgba(0,0,0,0.15);
+  border: 1px solid #3b0505;
 
   box-shadow:
     0 12px 40px rgba(0,0,0,0.12),
