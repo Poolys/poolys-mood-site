@@ -20,13 +20,37 @@ document.getElementById('unlockButton').addEventListener('click', function() {
     unlockPage(); // Sblocca la pagina
 });
 
-// Esempio di funzione unlockPage (adatta al tuo codice)
+// La tua funzione unlock (assicurati che nasconda TUTTO ciò che copre)
 function unlockPage() {
-    document.body.style.overflow = 'auto'; // Sblocca scroll
-    // Qui nascondi il pulsante o la splash screen, se lo fai
-    document.getElementById('unlockButton').style.display = 'none';
-    // Oppure mostra il main: document.getElementById('mainContent').style.display = 'block';
+    document.body.style.overflow = 'auto';
+    document.documentElement.style.overflow = 'auto';
+
+    // NASCONDI splash/overlay/pulsante (questo è spesso il colpevole!)
+    const splash = document.getElementById('splash') || document.querySelector('.splash, .intro, .loader, .overlay');
+    if (splash) {
+        splash.style.display = 'none';
+        splash.remove(); // O .remove() se vuoi eliminarlo dal DOM
+    }
+
+    const unlockBtn = document.getElementById('unlockButton');
+    if (unlockBtn) unlockBtn.style.display = 'none';
+
+    // Se il main è nascosto all'inizio
+    const mainContent = document.getElementById('main') || document.querySelector('main, .main-content');
+    if (mainContent) {
+        mainContent.style.display = 'block'; // o 'flex', 'grid' come era
+        mainContent.style.visibility = 'visible';
+    }
+
+    // Forza reflow (a volte risolve glitch visivi)
+    document.body.offsetHeight;
 }
 
+// Se hai una funzione lockPage, assicurati che mostri splash
+function lockPage() {
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    // Mostra splash se necessario
+}
 
 sections.forEach(section => observer.observe(section));
