@@ -1,3 +1,4 @@
+console.log("API KEY=", process.env.OPENAI_API_KEY);
 import { askAI } from "../ai/openaiClient.js";
 import fs from "fs";
 import path from "path";
