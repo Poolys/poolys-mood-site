@@ -81,9 +81,7 @@ Linee guida:
 - se cliente chiede foto  dai adressa delle assets/img/catalogo/nomefile.jpg
 - Se cliente chiede un consiglio, rispondi con un solo consiglio basato sui modelli presenti nel catalogo
 - Non inventare informazioni
-- fornisci solo informazioni presenti nel data/modelli.json e foto da  asests/img/catalogo.
-- Se cliente chiede qualcosa fuori dal contesto:espositori, modelli, pezzi  rispondi "Mi dispiace, io poso parlare solo del catalogo e espositori."
-- Tutti modelli, misure, detagli sono presenti in data/modelli.json e foto in assets/img/catalogo.
+- fornisci solo informazioni presenti nel data/modelli.json e foto da  asests/img/catalogo.utti modelli, misure, detagli sono presenti in data/modelli.json e foto in assets/img/catalogo.
 `.trim();
 
     // ===== COSTRUZIONE MESSAGGI CORRETTA =====
