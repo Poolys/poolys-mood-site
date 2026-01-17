@@ -69,12 +69,14 @@ async function sendMessage() {
   renderHistory();
   input.value = "";
 
-  const res = await fetch("/api/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ history: chatHistory })
-  });
-
+  const res = await fetch('/api/chat', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    history: chatHistory,
+    context: window.poolyContext || null
+  })
+});
   const data = await res.json();
   chatHistory.push({ role: "ai", content: data.reply });
   renderHistory();

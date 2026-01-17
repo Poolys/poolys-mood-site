@@ -22,3 +22,23 @@ fetch("data/modelli.json")
       catalogo.appendChild(section);
     });
   });
+window.poolyContext = {
+  page: "catalogo",
+  model: null
+};
+
+const manifesti = document.querySelectorAll('[data-model]');
+
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        window.poolyContext.model = entry.target.dataset.model;
+        console.log("📌 Modello attivo:", window.poolyContext.model);
+      }
+    });
+  },
+  { threshold: 0.6 }
+);
+
+manifesti.forEach(m => observer.observe(m));

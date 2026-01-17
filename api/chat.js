@@ -42,13 +42,26 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { history } = req.body;
+    const { history, context } = req.body;
+
 
     if (!history || !Array.isArray(history) || history.length === 0) {
       return res.status(400).json({ reply: "Conversazione vuota." });
     }
 
     const lastMessage = history[history.length - 1].content;
+    let modelContext = "";
+
+if (context?.page === "catalogo" && context?.model) {
+  modelContext = `
+L’utente sta osservando il modello:
+"${context.model}"
+
+Rispondi come una guida museale.
+Descrivi solo questo modello.
+Collega forma, uso e atmosfera.
+`;
+}
 
     // ===== SYSTEM PROMPT (IDENTITÀ + REGOLE) =====
     const systemPrompt = `
@@ -56,6 +69,8 @@ Sei PoolyAI, guida della galeria del catalogo Pooly's Mood ,non inveti ,consigli
 
 Regole ASSOLUTE:
 ${JSON.stringify(fixedMemory, null, 2)}
+
+${modelContext}
 
 Linee guida:
 - Rispondi SOLO in italiano
