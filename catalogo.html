@@ -14,7 +14,20 @@
 <body class="catalogo">
   
 <main class="catalogo-wrapper">
-  <div id="pooly-ai-container"></div>
+ <!-- POOLY AI -->
+<div id="pooly-ai-container">
+  <div id="poolyPallino">PoolyAI</div>
+
+  <div id="poolyChat">
+    <div id="chatHeader">PoolyAI</div>
+    <div id="chatBody"></div>
+    <div id="chatInputWrapper">
+      <input id="msg" type="text" placeholder="Scrivi qui..." autocomplete="off">
+      <button id="sendBtn">Invia</button>
+    </div>
+  </div>
+</div>
+
 
   <!-- ===================== -->
 <!-- MODELLO 1 : P GAUDIUM -->
@@ -368,11 +381,9 @@
     Richiedi informazioni
   </button>
 </section>
-
-
-
 </main>
 
+ <script src="/chat.js"></script>
 <script src="js/catalogo.js"></script>
 </body>
 </html>

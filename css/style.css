@@ -249,22 +249,6 @@ body.locked {
   overflow: hidden;
   height: 100vh;
 }
-/* ============================= */
-/* ISOLAMENTO COMPLETO POOLY AI */
-/* ============================= */
-
-.pooly-ai-sandbox {
-  all: initial;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-  /*isolamento*/
-  isolation: isolate;
-  /*sicurezza layout*/
-  max-width: 360px;
-  font-family: inherit;
-}
 /* ========================= */
 /* RESPONSIVE FIX LEGGERI */
 /* ========================= */
