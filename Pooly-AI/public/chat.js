@@ -99,12 +99,12 @@ function showPoolyIntro() {
 
   const intro = document.createElement("div");
   intro.id = "poolyIntro";
-  intro.innerText = "Posso aiutarti a scegliere l’espositore giusto.";
+  intro.innerText = "Posso aiutarti ?.";
   
   document.body.appendChild(intro);
 
   // fade-in
-  setTimeout(() => intro.classList.add("show"), 5000);
+  setTimeout(() => intro.classList.add("show"), 15000);
 
   // dopo 5 secondi sparisce
   setTimeout(() => {
