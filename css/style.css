@@ -76,19 +76,20 @@ body {
 
 /* TESTI */
 h1 {
-  font-size: 55px;
+  font-size: 70px;
   letter-spacing: 0.06em;
+  font-family: "Cormorant Garamond", serif;
 }
 
 h2 {
-  font-size: 36px;
+  font-size: 55px;
   letter-spacing: 0.08em;
 }
 
 p {
   max-width: 640px;
   font-family: var(--font-clean);
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.7;
 }
 
