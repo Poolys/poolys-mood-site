@@ -27,18 +27,39 @@ window.poolyContext = {
   model: null
 };
 
-const manifesti = document.querySelectorAll('[data-model]');
 
-const observer = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        window.poolyContext.model = entry.target.dataset.model;
-        console.log("📌 Modello attivo:", window.poolyContext.model);
-      }
-    });
-  },
-  { threshold: 0.6 }
-);
+const observer = new window.poolyContext = {
+  page: "catalogo",
+  model: null
+};
 
+const manifesti = [...document.querySelectorAll('.block.manifesto[data-model]')];
+
+function updateActiveModel() {
+  let closest = null;
+  let minDistance = Infinity;
+  const viewportCenter = window.innerHeight / 2;
+
+  manifesti.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const elCenter = rect.top + rect.height / 2;
+    const distance = Math.abs(viewportCenter - elCenter);
+
+    if (distance < minDistance) {
+      minDistance = distance;
+      closest = el;
+    }
+  });
+
+  if (closest) {
+    const model = closest.dataset.model;
+    if (window.poolyContext.model !== model) {
+      window.poolyContext.model = model;
+      console.log("🎯 Modello attivo:", model);
+    }
+  }
+}
+
+window.addEventListener('scroll', updateActiveModel);
+window.addEventListener('load', updateActiveModel);
 manifesti.forEach(m => observer.observe(m));
