@@ -147,7 +147,7 @@ font-weight: bold;
   right: 20px;
 
   width: 360px;
-  height: 520px;
+  height: fit-content;
 
   display: flex;
   flex-direction: column;

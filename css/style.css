@@ -17,7 +17,7 @@ body.fade-out {
 /* VARIABILI MOOD */
 :root {
   --avorio: #f8eb37;
-  --nero:  #080802;
+  --nero:  #0b0a1d;
 
  --font-main: "Cormorant Garamond", serif;
 --font-clean: "Inter", system-ui, -apple-system, sans-serif}
@@ -74,7 +74,7 @@ body {
 
 /* TESTI */
 h1 {
-  font-size: 70px;
+  font-size: 75px;
   letter-spacing: 0.06em;
   font-family: "Cormorant Garamond", serif;
 }
