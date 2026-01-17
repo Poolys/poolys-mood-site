@@ -65,7 +65,6 @@ font-weight: bold;
 /* Header con bandiera – sempre basso e compatto */
 #chatHeader {
   background: linear-gradient(90deg, #138808, #ffffff, #d30000);
-  padding: 8px 12px;
   text-align: center;
   font-size: 12px;
   font-weight: 500;
@@ -198,7 +197,6 @@ font-weight: bold;
 
   #chatHeader {
     font-size: 10px;
-    padding: 12px;
   }
 }
 
