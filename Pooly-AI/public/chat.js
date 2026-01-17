@@ -104,7 +104,7 @@ function showPoolyIntro() {
   document.body.appendChild(intro);
 
   // fade-in
-  setTimeout(() => intro.classList.add("show"), 15000);
+  setTimeout(() => intro.classList.add("show"), 10000);
 
   // dopo 5 secondi sparisce
   setTimeout(() => {
@@ -113,7 +113,7 @@ function showPoolyIntro() {
       intro.remove();
       localStorage.setItem("poolyIntroSeen", "true");
     }, 400);
-  }, 10000);
+  }, 15000);
 }
 
 // avvio dopo caricamento pagina
