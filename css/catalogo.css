@@ -79,7 +79,6 @@ html, body {
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 10vh 10vw;
   text-align: center;
@@ -87,7 +86,6 @@ html, body {
 }
 
 .block.image {
-  aspect-ratio: var(--aspect-catalogo);
   height: auto; /* Si adatta se non full-viewport */
   width: 100%;
   max-width: 900px;
