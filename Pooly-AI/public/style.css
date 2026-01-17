@@ -147,33 +147,47 @@ font-weight: bold;
   right: 20px;
 
   width: 360px;
-  height: fit-content;
+  height: 520px;
 
   display: flex;
   flex-direction: column;
   z-index: 9999;
+
+  /* Aggiunte utili */
+  box-sizing: border-box; /* ← molto importante */
+  padding: 0; /* se hai padding indesiderato */
 }
 
-/* wrapper interno dell'AI */
+/* Wrapper interni */
 #pooly-ai-container .chat-wrapper,
 #pooly-ai-container .chat-container {
   flex: 1;
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%; /* ← quasi sempre risolve */
+  min-width: 0; /* ← importante con flex + overflow */
+  box-sizing: border-box;
 }
 
-/* messaggi */
+/* Area messaggi – la parte critica */
 #pooly-ai-container .chat-messages {
-  flex: 1;
+  flex: 1 1 auto; /* meglio di solo flex: 1 */
   overflow-y: auto;
+  width: 100%; /* esplicito */
+  min-width: 0;
+  box-sizing: border-box;
+
+  /* Se hai padding qui è normale che sembri più stretto */
+  /* padding: 12px; */ /* ← se lo usi, considera padding sul wrapper esterno */
 }
 
-/* input */
+/* Input in basso */
 #pooly-ai-container .chat-input {
   flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
-
 
 /* === SMARTPHONE (default mobile-first) === */
 @media (max-width: 767px) {
