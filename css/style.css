@@ -305,7 +305,3 @@ body.locked {
 #poolyChat {
   display: none;
 }
-
-#poolyChat.open {
-  display: block;
-}
