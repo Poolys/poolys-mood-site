@@ -100,13 +100,13 @@ font-weight: bold;
 
 #chatBody p.userMessage {
   align-self: flex-end;
-  background: #e0e0e0;
+  background: #350606;
   border-bottom-right-radius: 4px;
 }
 
 #chatBody p.aiMessage {
   align-self: flex-start;
-  background: #fdf5e6;
+  background: #3d091b;
   border-bottom-left-radius: 4px;
 }
 /* Input */
