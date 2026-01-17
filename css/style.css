@@ -17,7 +17,7 @@ body.fade-out {
 /* VARIABILI MOOD */
 :root {
   --avorio: #f8eb37;
-  --nero:  #0b0a1d;
+  --nero:  #8035bd;
 
  --font-main: "Cormorant Garamond", serif;
 --font-clean: "Inter", system-ui, -apple-system, sans-serif}
@@ -145,7 +145,7 @@ a, button {
 .hero-content button {
   padding: 14px 24px;
   background: var(--nero);
-  color: #6d3d3d;
+  color: #000000;
 }
 
 /* DEGUSTAZIONE – CHIUSA DI DEFAULT */

@@ -143,14 +143,13 @@ font-weight: bold;
 
 #pooly-ai-container {
   position: fixed;
-  bottom: 20px;
+  bottom: 5px;
   right: 20px;
 
   width: 360px;
   height: 520px;
 
   display: flex;
-  flex-direction: column;
   z-index: 9999;
 
   /* Aggiunte utili */
