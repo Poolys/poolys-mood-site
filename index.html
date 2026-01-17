@@ -11,7 +11,18 @@
 </head>
  
 <body class="locked"> <!-- tieni locked se usi per no-scroll iniziale -->
- <div id="pooly-ai-container"></div>
+ <div id="pooly-ai-container">
+  <div id="poolyPallino">PoolyAI</div>
+
+  <div id="poolyChat">
+    <div id="chatHeader">PoolyAI</div>
+    <div id="chatBody"></div>
+    <div id="chatInputWrapper">
+      <input id="msg" type="text" placeholder="Scrivi qui..." autocomplete="off">
+      <button id="sendBtn">Invia</button>
+    </div>
+  </div>
+</div>
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-canvas">
@@ -56,6 +67,7 @@
   </main>
 
   <script src="js/main.js"></script>
-  <script src="js/scroll.js"></script>
+  <script src="api/chat.js"></script>
+  
 </body>
 </html>

@@ -18,7 +18,7 @@ function enterMood() {
       container.innerHTML = "";
 
       const wrapper = document.createElement("div");
-      wrapper.className = "pooly-ai-sandbox";
+      wrapper.className = "pooly-ai-container";
       wrapper.innerHTML = html;
 
       container.appendChild(wrapper);

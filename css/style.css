@@ -47,22 +47,20 @@ body.fade-out {
   overflow: hidden;
 }
 
-
-
 .hero {
-  position: relative;
-  max-width: 1100px;
-  width: 100%;
-  min-height: 70vh;
+  width: 100vw;
+  min-height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   background: #3b0505;
-  border: 4px solid rgba(0,0,0,0.15);
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.08),
-    inset 0 0 0 6px rgba(0,0,0,0.03);
 
-  display: float;
-  grid-template-columns: 3fr 2fr;
+  box-shadow: none; /* <<< QUESTA È LA CHIAVE */
   overflow: hidden;
 }
 /* BASE */
@@ -296,4 +294,18 @@ body.locked {
   .taste {
     padding: 14vh 6vw;
   }
+}
+#pooly-ai-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+#poolyChat {
+  display: none;
+}
+
+#poolyChat.open {
+  display: block;
 }
