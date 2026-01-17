@@ -44,7 +44,8 @@ font-weight: bold;
   left: 0;
   right: 0;
   width: 100%;
-  background: #e2b35ac4;
+  height: 100px;
+  background: #682c3e85;
   display: flex;
   flex-direction: column;
   z-index: 1000;
@@ -135,6 +136,42 @@ font-weight: bold;
   border-radius: 25px;
   cursor: pointer;
   font-size: 15px;
+}
+/* ========================= */
+/* STRUTTURA CHAT AI */
+/* ========================= */
+
+#pooly-ai-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  width: 360px;
+  height: 520px;
+
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+/* wrapper interno dell'AI */
+#pooly-ai-container .chat-wrapper,
+#pooly-ai-container .chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* messaggi */
+#pooly-ai-container .chat-messages {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* input */
+#pooly-ai-container .chat-input {
+  flex-shrink: 0;
 }
 
 
