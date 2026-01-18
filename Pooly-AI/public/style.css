@@ -27,7 +27,7 @@
   left: 0;
   right: 0;
   width: 100%;
-  height: 100px;
+  height: auto;
   background: #682c3e85;
   display: flex;
   flex-direction: column;
