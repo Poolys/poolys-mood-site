@@ -65,7 +65,8 @@ body.fade-out {
 }
 /* BASE */
 body {
-  background: #3b0505;
+  --bg-main: #3b0505;
+  --bg-catalogo: #000000;
   color: #fbdf9d;
   font-family: var(--font-main);
   line-height: 1.6;
