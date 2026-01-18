@@ -1,6 +1,4 @@
-/* ========================= */
-/* PALETTE LUXURY */
-/* ========================= */
+/* Palette luxury */
 :root {
   --nero: #000000;
   --bianco: #FFFFFF;
@@ -8,51 +6,102 @@
   --oro: #D4AF37;
   --oro-tenue: #C9A96E;
   --grigio-scuro: #1A1A1A;
-  --aspect-catalogo: 4 / 5;
+
+  --aspect-catalogo: 4 / 5; /* Ideale per gioielli: leggermente verticale */
 }
 
-/* ========================= */
-/* STRUTTURA CATALOGO */
-/* ========================= */
-html, body {
-  width: 100%;
-  height: 100%;
-  background: var(--nero);
-  overflow-x: hidden;
-  scroll-snap-type: y mandatory;
-}
-
-/* Blocchi */
-.block {
-  min-height: 40vh;
-  scroll-snap-align: start;
+/* CATALOGO – Box adattato alle immagini */
+.catalogo-item {
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 10vh 10vw;
-  text-align: center;
+  gap: 8vw;
+  padding: 10vh 8vw;
   background: var(--nero);
   color: var(--bianco);
 }
 
-/* Immagini */
+.catalogo-text {
+  flex: 1;
+}
+
+.catalogo-text h2 {
+  font-size: 60px;
+  letter-spacing: 0.12em;
+  color: var(--bianco);
+}
+
+.catalogo-text .manifesto {
+  font-style: italic;
+  margin: 24px 0;
+  font-size: 40px;
+  color: var(--oro);
+}
+
+.catalogo-text .descrizione {
+  max-width: 100%;
+  font-size: 30px;
+  line-height: 1.7;
+  color: #e0e0e0;
+}
+
+.catalogo-img {
+  flex: 1;
+  position: relative;
+  aspect-ratio: var(--aspect-catalogo); /* Box segue proporzioni luxury per gioielli */
+  overflow: hidden;
+  border: 1px solid rgba(212,175,55,0.15); /* Sottile bordo oro luxury */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.catalogo-img img {
+  position: absolute;
+  inset: 0;
+  width: 60%;
+  height: 60%;
+  object-fit: cover; /* Riempie con ritaglio elegante */
+  /* object-fit: contain; */ /* Se preferisci no ritaglio */
+  filter: brightness(1.05) contrast(1.1);
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  background: var(--nero);
+}
+
+/* BLOCKS – Adattivi */
+.block {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10vh 10vw;
+  text-align: center;
+  background: var(--nero);
+}
+
 .block.image {
-  width: 80%;
-  max-width: 1100px;
+  height: auto; /* Si adatta se non full-viewport */
+  width: 100%;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .block.image img {
-  width: 80%;
-  height: auto;
+  width: 60%;
+  height: 60%;
   object-fit: cover;
 }
 
-/* Manifesto */
 .block.manifesto h2 {
-  font-size: clamp(32px, 5vw, 48px);
+  font-size: 48px;
   letter-spacing: 0.12em;
+  color: var(--bianco);
 }
 
 .block.manifesto .claim {
@@ -61,13 +110,13 @@ html, body {
   color: var(--oro);
 }
 
-/* CTA */
 .cta {
   padding: 14px 32px;
   border: 1px solid var(--oro);
   background: transparent;
   color: var(--oro);
   cursor: pointer;
+  font-family: var(--font-clean);
   letter-spacing: 0.08em;
   transition: all 0.4s ease;
 }
@@ -76,27 +125,115 @@ html, body {
   background: var(--oro);
   color: var(--nero);
 }
+/* ============================= */
+/* ISOLAMENTO COMPLETO POOLY AI */
+/* ============================= */
+
+.pooly-ai-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
 
 /* ========================= */
-/* MOBILE FIX */
+/* RESPONSIVE FIX */
 /* ========================= */
-@media (max-width: 768px) {
+
+/* TABLET (768px - 1023px) */
+@media (max-width: 1023px) {
+  .catalogo-item {
+    flex-direction: column;
+    gap: 6vh;
+    padding: 8vh 10vw;
+  }
+
+  .catalogo-text h2 {
+    font-size: clamp(40px, 6vw, 50px);
+  }
+
+  .catalogo-text .manifesto {
+    font-size: clamp(28px, 4.5vw, 35px);
+  }
+
+  .catalogo-text .descrizione {
+    font-size: clamp(20px, 3vw, 26px);
+  }
+
+  .catalogo-img {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
   .block {
-    padding: 8vh 6vw;
+    padding: 8vh 8vw;
+  }
+
+  .block.manifesto h2 {
+    font-size: clamp(36px, 5vw, 42px);
+  }
+
+  .cta {
+    padding: 12px 28px;
+  }
+
+  .pooly-ai-container {
+    bottom: 16px;
+    right: 16px;
+  }
+}
+
+/* SMARTPHONE (≤767px) */
+@media (max-width: 767px) {
+  .catalogo-item {
+    flex-direction: column;
+    gap: 5vh;
+    padding: 6vh 6vw;
+  }
+
+  .catalogo-text h2 {
+    font-size: clamp(32px, 8vw, 40px);
+  }
+
+  .catalogo-text .manifesto {
+    font-size: clamp(22px, 5.5vw, 30px);
+  }
+
+  .catalogo-text .descrizione {
+    font-size: clamp(16px, 4vw, 22px);
+  }
+
+  .catalogo-img {
+    max-width: 100%;
+    aspect-ratio: 3 / 4; /* Più compatto su mobile */
+  }
+
+  .catalogo-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .block {
+    padding: 6vh 6vw;
   }
 
   .block.image img {
-    width: 60%;
+    width: 100%;
+    height: auto;
   }
-}
-.model-divider {
-  width: 100%;
-  height: 1px;
-  margin: 8vh 0;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255,255,255,0.2),
-    transparent
-  );
+
+  .block.manifesto h2 {
+    font-size: clamp(28px, 6vw, 36px);
+  }
+
+  .cta {
+    padding: 10px 24px;
+    width: 100%;
+  }
+
+  .pooly-ai-container {
+    bottom: 12px;
+    right: 12px;
+  }
 }
