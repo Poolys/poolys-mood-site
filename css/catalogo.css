@@ -75,7 +75,7 @@ html, body {
 
 /* BLOCKS – Adattivi */
 .block {
-  height: 100vh;
+  height: auto;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
