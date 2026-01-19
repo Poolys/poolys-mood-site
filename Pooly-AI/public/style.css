@@ -2,8 +2,7 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
-  background: #3b0505;
-
+  background: transparent;
 }
 
 /* Pallino */
@@ -15,7 +14,7 @@ body {
   height: 60px;
   border-radius: 50%;
   background: #9c0404d2;
-  color: #1b0202;
+  color: #1a1816;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,8 +43,7 @@ body {
   left: 0;
   right: 0;
   width: 100%;
-  height: 100px;
-  background: #682c3e85;
+  background: #e2b35ac4;
   display: flex;
   flex-direction: column;
   z-index: 1000;
@@ -59,12 +57,13 @@ body {
 #poolyChat.open {
   opacity: 1;
   transform: translateY(0);
-  pointer-events: auto;
+  pointer-events: all;
 }
 
 /* Header con bandiera – sempre basso e compatto */
 #chatHeader {
   background: linear-gradient(90deg, #138808, #ffffff, #d30000);
+  padding: 8px 12px;
   text-align: center;
   font-size: 12px;
   font-weight: 500;
@@ -85,7 +84,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font: #0f0b03;
+
 }
 
 #chatBody p {
@@ -100,13 +99,13 @@ body {
 
 #chatBody p.userMessage {
   align-self: flex-end;
-  background: #350606;
+  background: #e0e0e0;
   border-bottom-right-radius: 4px;
 }
 
 #chatBody p.aiMessage {
   align-self: flex-start;
-  background: #3d091b;
+  background: #fdf5e6;
   border-bottom-left-radius: 4px;
 }
 /* Input */
@@ -137,150 +136,24 @@ body {
   cursor: pointer;
   font-size: 15px;
 }
-/* ========================= */
-/* STRUTTURA CHAT AI */
-/* ========================= */
 
-#pooly-ai-container {
-  position: fixed;
-  bottom: 5px;
-  right: 20px;
-
-  width: 360px;
-  height: 520px;
-
-  display: flex;
-  z-index: 9999;
-
-  /* Aggiunte utili */
-  box-sizing: border-box; /* ← molto importante */
-  padding: 0; /* se hai padding indesiderato */
-}
-
-/* Wrapper interni */
-#pooly-ai-container .chat-wrapper,
-#pooly-ai-container .chat-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%; /* ← quasi sempre risolve */
-  min-width: 0; /* ← importante con flex + overflow */
-  box-sizing: border-box;
-}
-
-/* Area messaggi – la parte critica */
-#pooly-ai-container .chat-messages {
-  flex: 1 1 auto; /* meglio di solo flex: 1 */
-  overflow-y: auto;
-  width: 100%; /* esplicito */
-  min-width: 0;
-  box-sizing: border-box;
-}
-
-/* Input in basso */
-#pooly-ai-container .chat-input {
-  flex-shrink: 0;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* ===== INTRO POOLY DESKTOP ===== */
-#poolyIntro {
-  position: fixed;
-  bottom: 95px;
-  right: 20px;
-  background: rgba(253,245,230,0.95);
-  color: #1a1816;
-  padding: 10px 14px;
-  border-radius: 18px;
-  font-size: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.2s ease;
-  z-index: 1002;
-  pointer-events: none;
-}
-
-#poolyIntro.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ========================= */
-/* RESPONSIVE FIX */
-/* ========================= */
-
-/* SMARTPHONE (≤767px) */
+/* === SMARTPHONE (default mobile-first) === */
 @media (max-width: 767px) {
-  #poolyPallino {
-    width: 52px;
-    height: 52px;
-    font-size: 12px;
-    bottom: 12px;
-    right: 12px;
-  }
 
   #poolyChat.open {
-    height: calc(100vh - 60px);
+    height: calc(100vh - 80px);
     max-height: none;
     border-radius: 20px 20px 0 0;
   }
 
   #chatHeader {
     font-size: 10px;
-    min-height: 6px;
-  }
-
-  #chatBody {
-    padding: 10px;
-    gap: 8px;
-  }
-
-  #chatBody p {
-    padding: 8px 12px;
-    font-size: 14px;
-    max-width: 90%;
-  }
-
-  #chatInputWrapper {
-    padding: 8px;
-    gap: 8px;
-  }
-
-  #msg {
-    padding: 12px 14px;
-    font-size: 15px;
-  }
-
-  #sendBtn {
-    padding: 0 20px;
-    font-size: 14px;
-  }
-
-  #pooly-ai-container {
-    bottom: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
-  }
-
-  #poolyIntro {
-    bottom: 80px;
-    right: 12px;
-    font-size: 11px;
-    padding: 8px 12px;
+    padding: 12px;
   }
 }
 
-/* TABLET (768px - 1023px) */
+/* === TABLET === */
 @media (min-width: 768px) and (max-width: 1023px) {
-  #poolyPallino {
-    width: 56px;
-    height: 56px;
-    font-size: 12px;
-  }
 
   #poolyChat.open {
     width: 100%;
@@ -296,24 +169,31 @@ body {
   #chatHeader {
     font-size: 10px;
   }
-
-  #chatBody p {
-    font-size: 15px;
-  }
-
-  #pooly-ai-container {
-    bottom: 5px;
-    right: 16px;
-    width: 340px;
-    height: 480px;
-  }
-
-  #poolyIntro {
-    font-size: 11px;
-  }
+}
+/* ===== INTRO POOLY DESKTOP ===== */
+#poolyIntro {
+  position: fixed;
+  bottom: 95px;
+  right: 20px;
+  background: rgba(253,245,230,0.95);
+  color: #1a1816;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+  z-index: 1002;
+  pointer-events: none;
 }
 
-/* DESKTOP (≥1024px) – già base, ma aggiunte per coerenza */
+#poolyIntro.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === DESKTOP === */
 @media (min-width: 1024px) {
   #poolyChat.open {
     width: 100%;
