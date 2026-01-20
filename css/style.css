@@ -158,7 +158,24 @@ a, button {
 
   transition: opacity 1.2s ease, transform 1.2s ease;
 }
+.taste {
+  position: relative; /* fondamentale */
+}
 
+/* FRASE INCISA NEL FRAME */
+.taste-frame-quote {
+  position: absolute;
+  bottom: 24px;
+  right: 32px;
+
+  font-family: var(--font-clean);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: rgba(248, 235, 55, 0.75); /* avorio caldo */
+  pointer-events: none; /* non disturba */
+}
 /* DEGUSTAZIONE – APERTA */
 .taste.visible {
   opacity: 1;
@@ -351,6 +368,14 @@ body.locked {
     padding: 12vh 6vw;
     gap: 20px;
   }
+  @media (max-width: 768px) {
+  .taste-frame-quote {
+    right: 16px;
+    bottom: 16px;
+    font-size: 11px;
+  }
+}
+
 
   .taste-invite {
     font-size: 20px;
