@@ -101,7 +101,7 @@ function showPoolyIntro() {
 
   const intro = document.createElement("div");
   intro.id = "poolyIntro";
-  intro.innerText = "Posso aiutarti ?.";
+  intro.innerText = "Posso aiutarti ?";
   
   document.body.appendChild(intro);
 
