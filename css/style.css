@@ -169,11 +169,11 @@ a, button {
   right: 32px;
 
   font-family: var(--font-clean);
-  font-size: 12px;
+  font-size: 20px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 
-  color: rgba(248, 235, 55, 0.75); /* avorio caldo */
+  color: rgba(235, 162, 79, 0.699); /* avorio caldo */
   pointer-events: none; /* non disturba */
 }
 /* DEGUSTAZIONE – APERTA */
