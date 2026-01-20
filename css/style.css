@@ -385,7 +385,7 @@ body.locked {
 .hero-claim {
   position: absolute;
   bottom: 20vh;
-  right: 20vw;
+  right: 6vw;
 
   font-family: var(--font-clean);
   font-size: clamp(14px, 1.1vw, 18px);
