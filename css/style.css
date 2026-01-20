@@ -382,3 +382,18 @@ body.locked {
     transparent
   );
 }
+.hero-claim {
+  position: absolute;
+  bottom: 6vh;
+  right: 6vw;
+
+  font-family: var(--font-clean);
+  font-size: clamp(14px, 1.1vw, 18px);
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+
+  color: rgba(253, 223, 157, 0.85);
+
+  opacity: 0.9;
+  max-width: 320px;
+}
