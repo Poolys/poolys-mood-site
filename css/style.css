@@ -165,7 +165,7 @@ a, button {
 /* FRASE INCISA NEL FRAME */
 .taste-frame-quote {
   position: absolute;
-  bottom: 24px;
+  top: 24px;
   right: 32px;
 
   font-family: var(--font-clean);
