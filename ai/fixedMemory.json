@@ -49,10 +49,11 @@
   
     "dettagli_modelli": {
       "Art Wall": {
-        "misure": "180 cm (altezza) x 120 cm (larghezza) x 30 cm (profondità)",
-        "capacita": "fino a 24 bottiglie"
+        "misure": "90 cm (altezza) x 60 cm (larghezza) x 10 cm (profondità)",
+        "capacita": "fino a 6 bottiglie",
+        "descrizione": "Espositore da parete elegante e compatto per ambienti ristretti, con misure e capacita adaptabile al bisogno."
       },
-      "Scaffal / Saffal": {
+      "Scaffal": {
         "misure": "150 cm (altezza) x 80 cm (larghezza) x 35 cm (profondità)",
         "capacita": "fino a 30 bottiglie"
       },
