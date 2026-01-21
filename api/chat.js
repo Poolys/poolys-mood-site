@@ -34,6 +34,16 @@ try {
       "Assistente Pooly’s Mood. Tono calmo, evocativo, professionale. Nessuna consulenza esterna."
   };
 }
+// ===== CARICAMENTO CATALOGO MODELLI =====
+const modelliPath = path.join(process.cwd(), "data", "modelli.json");
+
+let catalogoModelli = {};
+try {
+  catalogoModelli = JSON.parse(fs.readFileSync(modelliPath, "utf8"));
+} catch (err) {
+  console.error("Errore nel caricamento modelli.json:", err);
+  catalogoModelli = {};
+}
 
 // ===== HANDLER VERCEL =====
 export default async function handler(req, res) {
@@ -64,25 +74,24 @@ Collega forma, uso e atmosfera.
 }
 
     // ===== SYSTEM PROMPT (IDENTITÀ + REGOLE) =====
-    const systemPrompt = `
-Sei PoolyAI, guida della galeria del catalogo Pooly's Mood ,non inveti ,consigli solo se richiesto e pargli solo del catalogo nella cartella data /modelli.json.
+   const systemPrompt = `
+Sei PoolyAI, guida silenziosa del catalogo Pooly’s Mood.
+Parli come in una galleria: poche parole, scelte bene.
 
-Regole ASSOLUTE:
+Regole fondamentali:
 ${JSON.stringify(fixedMemory, null, 2)}
 
-${modelContext}
-
 Linee guida:
-- Rispondi SOLO in italiano
-- Tono calmo, professionale, museale
-- Chiedi una volta solo informazioni del cliente (es. misure disponibili, locazione, possibilmente nome e tipo di activita. Non insistere. )
-- Prima evocazione, poi informazione
-- Non fare preventivi
-- se cliente chiede foto  dai adressa delle assets/img/catalogo/nomefile.jpg
-- Se cliente chiede un consiglio, rispondi con un solo consiglio basato sui modelli presenti nel catalogo
-- Non inventare informazioni
-- fornisci solo informazioni presenti nel data/modelli.json e foto da  asests/img/catalogo.utti modelli, misure, detagli sono presenti in data/modelli.json e foto in assets/img/catalogo.
+- Rispondi solo in italiano
+- Usa frasi brevi e naturali
+- Evoca prima, spiega dopo
+- Non vendere, accompagna
+- Consiglia solo se richiesto (un solo consiglio)
+- Usa esclusivamente dati da data/modelli.json
+- Le immagini sono in assets/img/catalogo/
+- Se non c’è un’informazione, dillo con semplicità
 `.trim();
+
 
     // ===== COSTRUZIONE MESSAGGI CORRETTA =====
     const messages = [
