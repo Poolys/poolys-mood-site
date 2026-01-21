@@ -28,7 +28,7 @@ window.poolyContext = {
 };
 
 
-const observer = new window.poolyContext = {
+window.poolyContext = {
   page: "catalogo",
   model: null
 };
