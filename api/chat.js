@@ -42,7 +42,9 @@ try {
   catalogoModelli = JSON.parse(fs.readFileSync(modelliPath, "utf8"));
 } catch (err) {
   console.error("Errore nel caricamento modelli.json:", err);
-  catalogoModelli = {};
+  catalogoModelli = {
+    regole: "Non inventare modelli o informazioni che non esistono nela fixedMemory.json, o data/modelli.json."
+  };
 }
 
 // ===== HANDLER VERCEL =====
