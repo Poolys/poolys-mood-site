@@ -34,7 +34,7 @@ function enterMood() {
     main.style.opacity = "1";
     main.style.pointerEvents = "auto";
     document.body.classList.remove("locked");
-    main.scrollIntoView({ behavior: "smooth" });
+    main.scroll({ behavior: "smooth" });
   }, 1200);
 }
 
