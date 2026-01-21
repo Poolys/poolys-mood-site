@@ -6,6 +6,12 @@
 }
 body {
   transition: opacity 0.8s ease;
+  --bg-main: #3b0505;
+  --bg-catalogo: #000000;
+  color: #fbdf9d;
+  font-family: var(--font-main);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 body.scroll-lock {
   overflow: hidden;
@@ -63,15 +69,7 @@ body.fade-out {
   box-shadow: none; /* <<< QUESTA È LA CHIAVE */
   overflow: hidden;
 }
-/* BASE */
-body {
-  --bg-main: #3b0505;
-  --bg-catalogo: #000000;
-  color: #fbdf9d;
-  font-family: var(--font-main);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
+
 
 /* TESTI */
 h1 {
