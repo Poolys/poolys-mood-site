@@ -141,12 +141,13 @@ a, button {
   background: var(--avorio);
   color: #160f0c;
   border-radius: 8px;
+  font-family: "Cormorant Garamond", serif;
 }
 
 /* DEGUSTAZIONE – CHIUSA DI DEFAULT */
 .taste {
   min-height: 100vh;
-  padding: 20vh 10vw;
+  padding: 15vh 7vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -172,7 +173,7 @@ a, button {
   letter-spacing: 0.12em;
   text-transform: uppercase;
 
-  color: rgba(235, 162, 79, 0.699); /* avorio caldo */
+  color: rgba(192, 148, 98, 0.548); /* avorio caldo */
   pointer-events: none; /* non disturba */
 }
 /* DEGUSTAZIONE – APERTA */
