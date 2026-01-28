@@ -92,14 +92,6 @@ window.addEventListener('pageshow', () => {
 
   window.scrollTo(0, 0);
 });
-// Forza il reset dello stato ad ogni caricamento della pagina
-window.onbeforeunload = function() {
-    // Cancella i dati che i browser usano per "ricordare" la posizione
-    localStorage.clear(); 
-    sessionStorage.clear();
-    
-};
-
 // All'avvio della pagina, forza la visualizzazione della landing
 document.addEventListener("DOMContentLoaded", function() {
     // Nascondi il Main
