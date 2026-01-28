@@ -81,7 +81,7 @@ html, body {
 
 .block.image {
   height: auto; /* Si adatta se non full-viewport */
-  width: 100%;
+  width: 120%;
   max-width: 900px;
   margin: 0 auto;
 }
