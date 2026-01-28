@@ -92,3 +92,27 @@ window.addEventListener('pageshow', () => {
 
   window.scrollTo(0, 0);
 });
+// Forza il reset dello stato ad ogni caricamento della pagina
+window.onbeforeunload = function() {
+    // Cancella i dati che i browser usano per "ricordare" la posizione
+    localStorage.clear(); 
+    sessionStorage.clear();
+    
+    // Cancella i cookie tecnici (se hanno nomi specifici, vanno indicati)
+    document.cookie.split(";").forEach(function(c) { 
+        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+    });
+};
+
+// All'avvio della pagina, forza la visualizzazione della landing
+document.addEventListener("DOMContentLoaded", function() {
+    // Nascondi il Main
+    document.getElementById('main-content').style.display = 'none';
+    // Mostra la Landing
+    document.getElementById('landing-section').style.display = 'block';
+    
+    // Se usi le "Ancore" (es. miosito.it/#main), questo resetta l'URL
+    if (window.location.hash) {
+        window.location.hash = '';
+    }
+});
