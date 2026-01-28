@@ -95,11 +95,7 @@ window.addEventListener('pageshow', () => {
 // Forza il reset dello stato ad ogni caricamento della pagina
 window.onbeforeunload = function() {
     
-    // Cancella i cookie tecnici (se hanno nomi specifici, vanno indicati)
-    document.cookie.split(";").forEach(function(c) { 
-        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
-    });
-};
+  
 
 // All'avvio della pagina, forza la visualizzazione della landing
 document.addEventListener("DOMContentLoaded", function() {
