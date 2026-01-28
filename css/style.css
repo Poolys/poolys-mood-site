@@ -173,7 +173,7 @@ a, button {
   letter-spacing: 0.12em;
   text-transform: uppercase;
 
-  color: rgba(192, 148, 98, 0.548); /* avorio caldo */
+  color: rgba(207, 151, 86, 0.548); /* avorio caldo */
   pointer-events: none; /* non disturba */
 }
 /* DEGUSTAZIONE – APERTA */
@@ -324,7 +324,7 @@ body.locked {
     min-height: 100vh;
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: 12vh;
+    padding-top: 6vh;
   }
 
   .hero-frame {
@@ -355,7 +355,7 @@ body.locked {
 
   .hero-content {
     padding: 5vh 4vw;
-    gap: 12px;
+    gap: 6px;
     text-align: center;
   }
 
@@ -366,7 +366,7 @@ body.locked {
 
   .taste {
     padding: 12vh 6vw;
-    gap: 20px;
+    gap: 6px;
   }
   @media (max-width: 768px) {
   .taste-frame-quote {
@@ -426,7 +426,7 @@ body.locked {
   bottom: 25vh;
   right: 6vw;
 
-  font-family: var(--font-clean);
+  font-family: "Cormorant Garamond", serif;
   font-size: clamp(14px, 1.1vw, 18px);
   letter-spacing: 0.14em;
   line-height: 1.4;
