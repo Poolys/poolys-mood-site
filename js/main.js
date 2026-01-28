@@ -87,7 +87,7 @@ window.addEventListener('pageshow', () => {
   }
 
   document.body.classList.remove('locked');
-  document.body.style.overflow = 'auto';
+  document.body.style.overflow = 'fixed';
   document.documentElement.style.overflow = 'auto';
 
   window.scrollTo(0, 0);
