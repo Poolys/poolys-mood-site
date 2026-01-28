@@ -70,16 +70,46 @@ function enterMood() {
   }, 1200);
 }
 
-// FIX DEFINITIVO BACK DAL CATALOGO
+/* ===============================
+   POOLY'S MOOD — HERO / MAIN FLOW
+   =============================== */
+
+/* Disabilita il ripristino automatico dello scroll */
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+/* Al caricamento pagina: sempre Landing */
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+});
+
+/* Gestione ritorno pagina / refresh */
 window.addEventListener('pageshow', () => {
-  const entered = localStorage.getItem('poolyEntered') === 'true';
-  if (!entered) return;
+  const entered = sessionStorage.getItem('poolyEntered') === 'true';
 
   const hero = document.getElementById('hero');
   const main = document.getElementById('main-content');
 
-  if (hero) hero.style.display = 'none';
+  if (!entered) {
+    /* STATO LANDING */
+    if (hero) hero.style.display = 'block';
+    if (main) {
+      main.style.display = 'none';
+      main.style.opacity = '0';
+      main.style.pointerEvents = 'none';
+    }
 
+    document.body.classList.add('locked');
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    window.scrollTo(0, 0);
+    return;
+  }
+
+  /* STATO MAIN (solo dopo click consapevole) */
+  if (hero) hero.style.display = 'none';
   if (main) {
     main.style.display = 'block';
     main.style.opacity = '1';
@@ -87,15 +117,29 @@ window.addEventListener('pageshow', () => {
   }
 
   document.body.classList.remove('locked');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = 'auto';
   document.documentElement.style.overflow = 'auto';
 
   window.scrollTo(0, 0);
 });
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
 
-window.addEventListener('load', () => {
-  window.scrollTo(0, 0);
-});
+/* ===============================
+   CLICK SU "LA INVIT..."
+   =============================== */
+
+const enterBtn = document.getElementById('enterSite');
+const hero = document.getElementById('hero');
+
+if (enterBtn) {
+  enterBtn.addEventListener('click', () => {
+    sessionStorage.setItem('poolyEntered', 'true');
+
+    document.body.classList.remove('locked');
+    document.body.style.overflow = 'auto';
+    document.documentElement.style.overflow = 'auto';
+
+    if (hero) hero.style.height = 'auto';
+
+    hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
