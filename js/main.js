@@ -98,5 +98,8 @@ window.onbeforeunload = function() {
     localStorage.clear(); 
     sessionStorage.clear();
     
-   
+    // Cancella i cookie tecnici (se hanno nomi specifici, vanno indicati)
+    document.cookie.split(";").forEach(function(c) { 
+        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+    });
 };
