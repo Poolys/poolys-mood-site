@@ -215,9 +215,9 @@ body {
 /* SMARTPHONE (≤767px) */
 @media (max-width: 767px) {
   #poolyPallino {
-    width: 52px;
-    height: 52px;
-    font-size: 12px;
+    width: 100px;
+    height: 100px;
+    font-size: 20px;
     bottom: 12px;
     right: 12px;
   }
@@ -277,9 +277,9 @@ body {
 /* TABLET (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   #poolyPallino {
-    width: 56px;
-    height: 56px;
-    font-size: 12px;
+    width: 100px;
+    height: 100px;
+    font-size: 20px;
   }
 
   #poolyChat.open {

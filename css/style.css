@@ -106,7 +106,7 @@ a, button {
   display: flex;
   align-items: center;
  justify-content: flex-end;
-  padding: 0 20vw;
+  padding: 0 10vw;
   position: relative;
   z-index: 10;
   opacity: 1 !important;
@@ -147,7 +147,7 @@ a, button {
 /* DEGUSTAZIONE – CHIUSA DI DEFAULT */
 .taste {
   min-height: 100vh;
-  padding: 15vh 7vw;
+  padding: 6vh 7vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -365,8 +365,8 @@ body.locked {
   }
 
   .taste {
-    padding: 12vh 6vw;
-    gap: 6px;
+    padding: 6vh 6vw;
+    gap: 3px;
   }
   @media (max-width: 768px) {
   .taste-frame-quote {
