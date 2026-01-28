@@ -182,7 +182,7 @@ html, body {
   .catalogo-item {
     flex-direction: column;
     gap: 5vh;
-    padding: 6vh 6vw;
+    padding: 3vh 3vw;
   }
 
   .catalogo-text h2 {
