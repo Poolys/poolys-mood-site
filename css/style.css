@@ -165,10 +165,10 @@ a, button {
 /* FRASE INCISA NEL FRAME */
 .taste-frame-quote {
   position: absolute;
-  top: 24px;
+  top: 4px;
   right: 32px;
 
-  font-family: var(--font-clean);
+  font-family: "Cormorant Garamond", serif;
   font-size: 20px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
