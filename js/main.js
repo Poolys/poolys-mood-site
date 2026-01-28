@@ -100,12 +100,3 @@ window.onbeforeunload = function() {
     
    
 };
-
-// All'avvio della pagina, forza la visualizzazione della landing
-document.addEventListener("DOMContentLoaded", function() {
-    // Nascondi il Main
-    document.getElementById('main-content').style.display = 'none';
-    // Mostra la Landing
-    document.getElementById('landing-section').style.display = 'block';
-  
-});
