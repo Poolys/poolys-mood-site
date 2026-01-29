@@ -129,31 +129,9 @@ window.addEventListener('pageshow', (event) => {
     window.scrollTo(0, 0);
   }
 });
-window.addEventListener("pageshow", (event) => {
-  // questo copre Safari / Chrome mobile
-  const hero = document.getElementById("hero");
-  const main = document.getElementById("main-content");
-
-  // reset stato SEMPRE
-  sessionStorage.removeItem("poolyEntered");
-
-  if (hero) {
-    hero.style.display = "flex";
-    hero.style.opacity = "1";
-    hero.style.pointerEvents = "auto";
-    hero.classList.remove("fade-out");
+window.addEventListener("pageshow", function (event) {
+  if (event.persisted) {
+    // siamo tornati indietro dal browser (BFCache)
+    window.location.reload();
   }
-
-  if (main) {
-    main.style.display = "none";
-    main.style.opacity = "0";
-    main.style.pointerEvents = "none";
-  }
-
-  // blocco scroll come all'inizio
-  document.body.classList.add("locked");
-  document.body.style.overflow = "hidden";
-  document.documentElement.style.overflow = "hidden";
-
-  window.scrollTo(0, 0);
 });
