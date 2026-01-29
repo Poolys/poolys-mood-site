@@ -2,6 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pooly’s Mood</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,8 +34,15 @@
   <!-- MAIN -->
   <main id="main-content" style="opacity:0; pointer-events:none;">
 
-    <!-- 🔴 SOLO HOST SHADOW -->
-    <div id="pooly-ai-container"></div>
+    <!-- ================================================= -->
+    <!-- HOST per Shadow DOM – NON mettere niente dentro -->
+    <!-- ================================================= -->
+    <div id="pooly-ai-host"></div>
+
+    <!-- ================================================= -->
+    <!-- Pallino → DEVE stare FUORI dallo shadow -->
+    <!-- ================================================= -->
+    <div id="poolyPallino">PoolyAI</div>
 
     <!-- CONTENUTO -->
     <section class="taste taste-intro">
@@ -69,5 +77,6 @@
 
   <script src="js/main.js"></script>
   <script src="Pooly-AI/public/chat.js"></script>
+
 </body>
 </html>
