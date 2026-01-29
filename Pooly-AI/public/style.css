@@ -271,69 +271,8 @@ body {
     right: 12px;
     font-size: 14px;
     padding: 8px 12px;
-  }
-}@media (max-width: 767px) {
-
-  #pooly-ai-container {
-    width: 100vw !important;
-    height: 100vh !important;
-    max-width: none !important;
-    max-height: none !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: auto !important;
-    bottom: auto !important;
-    border-radius: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  #poolyChat {
-    width: 100% !important;
-    height: 100% !important;
-    max-width: none !important;
-    border-radius: 0 !important;
-    transform: none !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-
-  #chatHeader {
-    font-size: 16px !important; /* un po' più leggibile */
-    padding: 12px !important;
-  }
-
-  #chatBody {
-    padding: 12px 10px !important;
-  }
-
-  #chatBody p {
-    font-size: 16px !important; /* ← il cambiamento più visibile */
-    padding: 12px 16px !important;
-    max-width: 90% !important; /* più spazio per il testo */
-    line-height: 1.4 !important;
-  }
-
-  #chatInputWrapper {
-    padding: 12px 10px !important;
-  }
-
-  #msg {
-    font-size: 16px !important;
-    padding: 14px 16px !important;
-  }
-
-  #sendBtn {
-    font-size: 15px !important;
-    padding: 0 24px !important;
-  }
-
-  /* Nascondi il pallino quando chat aperta su mobile */
-  #poolyPallino {
-    display: none !important;
-  }
+  } 
 }
-
 /* TABLET (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   #poolyPallino {
@@ -392,4 +331,4 @@ body {
   #chatBody p {
     font-size: 12px;
   }
-}
+};
