@@ -141,7 +141,7 @@ a, button {
   background: var(--avorio);
   color: #160f0c;
   border-radius: 8px;
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Cormorant Garamond", serif, bold ;
 }
 
 /* DEGUSTAZIONE – CHIUSA DI DEFAULT */
