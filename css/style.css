@@ -1,46 +1,460 @@
-/* RESET */
-* { margin:0; padding:0; box-sizing:border-box; }
-
+/* RESET MINIMO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-  background:#3b0505;
-  color:#fbdf9d;
-  font-family:"Cormorant Garamond", serif;
-  overflow-x:hidden;
+  transition: opacity 0.8s ease;
+  --bg-main: #3b0505;
+  --bg-catalogo: #000000;
+  color: #fbdf9d;
+  font-family: var(--font-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+body.scroll-lock {
+  overflow: hidden;
 }
 
-body.locked {
-  overflow:hidden;
-  height:100vh;
+body.fade-out {
+  opacity: 0;
+}
+/* VARIABILI MOOD */
+:root {
+  --avorio: #fab19be8;
+  --nero: #000000;
+
+ --font-main: "Cormorant Garamond", serif;
+--font-clean: "Inter", system-ui, -apple-system, sans-serif}
+.hero-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10vh 12vw;
+  background: #3b0505;
+}
+.hero-canvas {
+  position: center;
+  width: 100%;
+  max-width: 1300px;
+  height: 100vh;
+  aspect-ratio: var(--aspect-hero);
+  margin: 0 auto;
+  background: #3b0505;
+  border: 1px solid #3b0505;
+
+  box-shadow:
+    0 12px 40px #3b0505,
+    inset 0 0 0 6px rgba(0,0,0,0.03);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+.hero {
+  width: 100vw;
+  min-height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #3b0505;
+
+  box-shadow: none; /* <<< QUESTA È LA CHIAVE */
+  overflow: hidden;
+}
+
+
+/* TESTI */
+h1 {
+  font-size: 90px;
+  letter-spacing: 0.06em;
+  font-family: "Cormorant Garamond", serif;
+}
+
+h2 {
+  font-size: 60px;
+  letter-spacing: 0.08em;
+}
+
+p {
+  max-width: 640px;
+  font-family: var(--font-clean);
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+
+/* LINK / BOTTONI */
+a, button {
+  font-family: var(--font-clean);
+  background: none;
+  border: none;
+  color: var(--nero);
+  cursor: pointer;
 }
 
 /* HERO */
 .hero {
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  min-height: 150vh;
+  display: flex;
+  align-items: center;
+ justify-content: flex-end;
+  padding: 0 10vw;
+  position: relative;
+  z-index: 10;
+  opacity: 1 !important;
+  transition: transform 1s ease, opacity 1s ease;
+}
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateX(-6%);
+}
+
+.hero-content {
+  padding: 8vh 6vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.hero-content h1 {
+  font-size: clamp(32px, 4vw, 48px);
+}
+
+.manifesto {
+  font-style: italic;
+  opacity: 0.8;
 }
 
 .hero-content button {
-  padding:18px 24px;
-  background:#fab19b;
-  border-radius:8px;
-  cursor:pointer;
+  padding: 18px 24px;
+  background: var(--avorio);
+  color: #160f0c;
+  border-radius: 8px;
+  font-family: "Cormorant Garamond", serif, bold ;
+  font-size: 18px;
+}
+
+/* DEGUSTAZIONE – CHIUSA DI DEFAULT */
+.taste {
+  min-height: 50vh;
+  padding: 6vh 7vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+
+  opacity: 1;
+  transform: translateY(40px);
+
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+.taste {
+  position: relative; /* fondamentale */
+}
+
+/* FRASE INCISA NEL FRAME */
+.taste-frame-quote {
+  position: absolute;
+  top: 4px;
+  right: 32px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: rgba(207, 151, 86, 0.548); /* avorio caldo */
+  pointer-events: none; /* non disturba */
+}
+/* DEGUSTAZIONE – APERTA */
+.taste.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 /* SEZIONI */
-.taste {
-  min-height:50vh;
-  padding:6vh 7vw;
+.taste-intro {
+  background: #3b0505;
 }
 
-.model-divider {
-  height:1px;
-  background:linear-gradient(to right,transparent,rgba(255,255,255,.2),transparent);
-  margin:4rem 0;
+.taste-matter {
+  background: #3b0505;
 }
 
-/* RESPONSIVE */
-@media (max-width:767px) {
-  h1 { font-size:32px }
+.taste-models {
+  background: #3b0505;
+}
+
+.taste-invite {
+  background: #3b0505;
+  font-family: var(--font-clean);
+  font-size: 26px;
+  text-align: center;
+}
+.enter-link {
+  cursor: pointer;
+  letter-spacing: 0.12em;
+  transition: opacity, transform 0.8s ease;
+}
+
+.enter-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 1px;
+  background: var(--nero);
+  transition: width 0.4s ease;
+}
+
+.enter-link:hover {
+  opacity: 0.6;
+  transform: translateY(2px);
+}
+/* HERO TRANSIZIONE */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  transition: opacity 1.5s ease, transform 1.5s ease;
+
+}
+/* Per il fade del hero */
+.hero.fade-out {
+  opacity: 0;
+  transform: scale(0.2);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+  pointer-events: none;
+  }
+body.exit-hero {
+  opacity: 0;
+  transform: scale(0.2);
+  transition: all 0.5s ease;
+}
+
+/* Per il main che appare */
+.main-content {
+  transition: opacity 1.5s ease;
+}
+
+/* Opzionale: fade-out pagina intera prima di cambiare */
+body.exit-page {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+/* Per bloccare scroll iniziale (se vuoi) */
+body.locked {
+  overflow: hidden;
+  height: 100vh;
+}
+/* ========================= */
+/* RESPONSIVE FIX */
+/* ========================= */
+
+/* TABLET (768px - 1023px) */
+@media (max-width: 1023px) {
+  #hero {
+    padding: 0 10vw;
+    min-height: 120vh;
+    justify-content: center;
+  }
+
+  #hero-frame {
+    padding: 8vh 10vw;
+  }
+
+  #hero-canvas {
+    grid-template-columns: 1fr;
+    height: auto;
+    aspect-ratio: auto;
+  }
+
+  #hero-image img {
+    transform: none;
+  }
+
+  h1 {
+    font-size: clamp(38px, 5.5vw, 48px);
+  }
+
+  h2 {
+    font-size: clamp(32px, 4.5vw, 42px);
+  }
+
+  p {
+    font-size: clamp(16px, 2.2vw, 18px);
+  }
+
+  #hero-content {
+    padding: 6vh 5vw;
+    gap: 16px;
+  }
+
+  #hero-content button {
+    padding: 12px 20px;
+  }
+
+  #taste {
+    padding: 16vh 8vw;
+    gap: 24px;
+  }
+
+  #taste-invite {
+    font-size: 22px;
+  }
+}
+
+/* SMARTPHONE (≤767px) */
+@media (max-width: 767px) {
+  #hero {
+    padding: 0 6vw;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 6vh;
+  }
+
+  #hero-frame {
+    padding: 6vh 6vw;
+  }
+
+  #hero-canvas {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  #hero-image img {
+    transform: none;
+  }
+
+  h1 {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  h2 {
+    font-size: clamp(22px, 6vw, 30px);
+  }
+
+  p {
+    font-size: clamp(14px, 4vw, 16px);
+    max-width: 100%;
+  }
+
+  #hero-content {
+    padding: 5vh 4vw;
+    gap: 6px;
+    text-align: center;
+  }
+
+  #hero-content button {
+    padding: 10px 18px;
+    width: 100%;
+  }
+
+  #taste {
+    padding: 6vh 6vw;
+    gap: 3px;
+  }
+  @media (max-width: 768px) {
+  #taste-frame-quote {
+    right: 16px;
+    top: 24px;
+    font-size: 20px;
+  }
+}
+
+
+  #taste-invite {
+    font-size: 20px;
+  }
+
+  #enter-link::after {
+    bottom: -4px;
+  }
+}
+
+#pooly-ai-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+/* ========================= */
+/* AI CHAT – SMARTPHONE FIX */
+/* ========================= */
+@media (max-width: 767px) {
+
+  #pooly-ai-container {
+    max-width: 92vw;
+  }
+
+  #pooly-ai-container p,
+  #pooly-ai-container span,
+  #pooly-ai-container div {
+    font-size: 18px; /* prima era troppo piccolo */
+    line-height: 1.55; /* leggibilità */
+  }
+
+}
+@media (max-width: 767px) {
+  #pooly-ai-container {
+    font-family: "Inter", system-ui, sans-serif;
+  }
+}
+#poolyChat {
+  display: none;
+}
+#model-divider {
+  width: 100%;
+  height: 1px;
+  margin: 8vh 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,0.2),
+    transparent );
+  margin: 4rem 0;
+}
+
+/* braccio sinistro */
+#model-divider::before {
+  left: 0;
+  transform: rotate(2deg);
+  transform-origin: right center;
+}
+
+/* braccio destro */
+#model-divider::after {
+  right: 0;
+  transform: rotate(-2deg);
+  transform-origin: left center;
+}
+#hero-claim {
+  position: absolute;
+  bottom: 25vh;
+  right: 6vw;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(14px, 1.1vw, 18px);
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+
+  color: rgba(253, 223, 157, 0.85);
+
+  opacity: 0.9;
+  max-width: 320px;
 }
