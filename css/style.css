@@ -147,7 +147,7 @@ a, button {
 
 /* DEGUSTAZIONE – CHIUSA DI DEFAULT */
 .taste {
-  min-height: 100vh;
+  min-height: 50vh;
   padding: 6vh 7vw;
   display: flex;
   flex-direction: column;
