@@ -1,3 +1,15 @@
+// FORZA IL RESET SULLA LANDING AL REFRESH
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+  document.body.classList.add("locked");
+  // Rimuove eventuali memorie di sessione che forzano il main
+  sessionStorage.removeItem('poolyEntered');
+});
+
 function enterMood() {
   const hero = document.querySelector("#hero");
   const main = document.querySelector("#main-content");
