@@ -234,7 +234,7 @@ body {
   }
 
   #chatBody {
-    padding: 10px;
+    padding: 8px;
     gap: 8px;
   }
 
@@ -269,7 +269,7 @@ body {
   #poolyIntro {
     bottom: 80px;
     right: 12px;
-    font-size: 11px;
+    font-size: 14px;
     padding: 8px 12px;
   }
 }
