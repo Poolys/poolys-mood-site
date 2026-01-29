@@ -33,7 +33,7 @@ function enterMood() {
 
   /* --- MAIN APPEAR --- */
   if (main) {
-    main.style.display = "block";
+    main.style.display = "locked";
     requestAnimationFrame(() => {
       main.style.opacity = "1";
       main.style.pointerEvents = "auto";
