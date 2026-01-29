@@ -1,122 +1,163 @@
-const pallino = document.getElementById("poolyPallino");
-const chat = document.getElementById("poolyChat");
-const chatBody = document.getElementById("chatBody");
-const input = document.getElementById("msg");
-const sendBtn = document.getElementById("sendBtn");
+const host = document.getElementById("pooly-ai-container");
+const shadow = host.attachShadow({ mode: "open" });
 
-let chatHistory = JSON.parse(localStorage.getItem("poolyChatHistory")) || [];
+shadow.innerHTML = `
+  <style>
+    :host {
+      position: fixed;
+      inset: auto 20px 20px auto;
+      width: 460px;
+      height: 720px;
+      z-index: 9999;
+      pointer-events: none;
+    }
 
-function renderHistory() {
-  chatBody.innerHTML = "";
-  chatHistory.forEach(msg => {
+    :host(.open) {
+      pointer-events: auto;
+    }
+
+    #pallino {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #9c0404d2;
+      color: #1b0202;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    #chat {
+      position: fixed;
+      inset: auto 0 0 0;
+      height: 280px;
+      background: rgba(253,245,230,0.95);
+      display: flex;
+      flex-direction: column;
+      transform: translateY(100%);
+      transition: transform .3s ease;
+    }
+
+    #chat.open {
+      transform: translateY(0);
+    }
+
+    #header {
+      background: linear-gradient(90deg,#138808,#fff,#d30000);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    #body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #body p {
+      padding: 10px 14px;
+      border-radius: 18px;
+      max-width: 90%;
+      line-height: 1.4;
+    }
+
+    .user { align-self: flex-end; background:#350606; color:#fdf5e6 }
+    .ai { align-self: flex-start; background:#3d091b; color:#fdf5e6 }
+
+    #input {
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      border-top: 1px solid #ddd;
+    }
+
+    input {
+      flex:1;
+      padding:14px;
+      border-radius:25px;
+    }
+
+    button {
+      padding:0 20px;
+      border-radius:25px;
+      background:#555;
+      color:#fff;
+      border:none;
+    }
+
+    @media (max-width:767px) {
+      :host {
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+      #chat { height:100vh }
+      #body p { font-size:18px }
+      #pallino { display:none }
+    }
+  </style>
+
+  <div id="pallino">PoolyAI</div>
+
+  <div id="chat">
+    <div id="header">PoolyAI</div>
+    <div id="body"></div>
+    <div id="input">
+      <input id="msg" placeholder="Scrivi qui…">
+      <button id="send">Invia</button>
+    </div>
+  </div>
+`;
+
+const pallino = shadow.getElementById("pallino");
+const chat = shadow.getElementById("chat");
+const body = shadow.getElementById("body");
+const input = shadow.getElementById("msg");
+const send = shadow.getElementById("send");
+
+let history = JSON.parse(localStorage.getItem("poolyChatHistory")) || [];
+
+function render() {
+  body.innerHTML = "";
+  history.forEach(m => {
     const p = document.createElement("p");
-    p.className = msg.role === "user" ? "userMessage" : "aiMessage";
-    p.innerHTML = `<strong>${msg.role === "user" ? "Tu" : "PoolyAI"}:</strong> ${msg.content}`;
-    chatBody.appendChild(p);
+    p.className = m.role === "user" ? "user" : "ai";
+    p.textContent = m.content;
+    body.appendChild(p);
   });
-  chatBody.scrollTop = chatBody.scrollHeight;
+  body.scrollTop = body.scrollHeight;
 }
 
-// Apri chat
-pallino.addEventListener("click", (e) => {
-  e.stopPropagation();
-  pallino.classList.add("closed");
-  
-  setTimeout(() => {
-    chat.classList.add("open");
-    renderHistory();
+pallino.onclick = () => {
+  host.classList.add("open");
+  chat.classList.add("open");
+  render();
+};
 
-    // Mostra messaggio di benvenuto SOLO alla prima apertura
-    if (chatHistory.length === 0) {
-      const p = document.createElement('p');
-      p.className = 'aiMessage';
-      p.innerHTML = "Benvenuto! Sono PoolyAI, il assistente per consigli e dettagli sui nostri espositori. Come posso aiutarti? ";
-      chatBody.appendChild(p);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-  }, 400);
-});
-
-// Chiudi cliccando fuori
-document.addEventListener("click", e => {
-  if (!chat.classList.contains("open")) return;
- if (!chat.contains(e.target) && !pallino.contains(e.target)) {
-    chat.classList.remove("open");
-    pallino.classList.remove("closed");
-  }
-});
-
-// Invio messaggi
-sendBtn.addEventListener("click", sendMessage);
-
-input.addEventListener("keydown", e => {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    sendMessage();
-  }
-});
-
-async function sendMessage() {
-  const message = input.value.trim();
-  if (!message) return;
-
-  chatHistory.push({ role: "user", content: message });
-  
-  if (chatHistory.length > 20) {
-    chatHistory = chatHistory.slice(-20);
-  }
-
-  renderHistory();
+send.onclick = async () => {
+  if (!input.value.trim()) return;
+  history.push({ role:"user", content:input.value });
+  render();
   input.value = "";
 
-  const res = await fetch('/api/chat', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    history: chatHistory,
-    context: window.poolyContext || null
-  })
-});
+  const res = await fetch("/api/chat", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({ history })
+  });
+
   const data = await res.json();
-  chatHistory.push({ role: "ai", content: data.reply });
-  renderHistory();
-
-  localStorage.setItem("poolyChatHistory", JSON.stringify(chatHistory));
-}
-
-// Salvataggio finale
-window.addEventListener("beforeunload", () => {
-  if (chatHistory.length > 0) {
-    navigator.sendBeacon("/api/saveAndClear", JSON.stringify({ history: chatHistory }));
-    localStorage.removeItem("poolyChatHistory");
-  }
-});
-// ===== INTRO DESKTOP ELEGANTE (una sola volta) =====
-function showPoolyIntro() {
-  // solo desktop
-  if (window.innerWidth < 1024) return;
-
-  // già visto
-  if (localStorage.getItem("poolyIntroSeen")) return;
-
-  const intro = document.createElement("div");
-  intro.id = "poolyIntro";
-  intro.innerText = "Posso aiutarti ?";
-  
-  document.body.appendChild(intro);
-
-  // fade-in
-  setTimeout(() => intro.classList.add("show"), 14000);
-
-  // dopo 5 secondi sparisce
-  setTimeout(() => {
-    intro.classList.remove("show");
-    setTimeout(() => {
-      intro.remove();
-      localStorage.setItem("poolyIntroSeen", "true");
-    }, 400);
-  }, 20000);
-}
-
-// avvio dopo caricamento pagina
-window.addEventListener("load", showPoolyIntro);
+  history.push({ role:"ai", content:data.reply });
+  render();
+  localStorage.setItem("poolyChatHistory", JSON.stringify(history));
+};
