@@ -448,7 +448,7 @@ body.locked {
   #pooly-ai-container p,
   #pooly-ai-container span,
   #pooly-ai-container div {
-    font-size: 16px; /* prima era troppo piccolo */
+    font-size: 18px; /* prima era troppo piccolo */
     line-height: 1.55; /* leggibilità */
   }
 
