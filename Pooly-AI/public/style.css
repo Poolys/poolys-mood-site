@@ -104,7 +104,7 @@
   margin: 0;
   padding: 10px 14px;
   border-radius: 18px;
-  max-width: 95%;
+  max-width: 85%;
   line-height: 1.1;
   align-self: flex-start;
   background: #fdf5e6;
@@ -256,7 +256,7 @@
   #chatBody p {
     padding: 8px 12px;
     font-size: 18px;
-    max-width: 95%;
+    max-width: 90%;
   }
 
   #chatInputWrapper {
