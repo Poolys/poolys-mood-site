@@ -62,4 +62,4 @@ window.addEventListener('pageshow', (event) => {
     window.location.reload();
   }
 });
-document.addElementById("pooly-ai-root");
+document.addEle
