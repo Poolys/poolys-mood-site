@@ -229,7 +229,7 @@ body {
   }
 
   #chatHeader {
-    font-size: 10px;
+    font-size: 14px;
     min-height: 6px;
   }
 
@@ -240,7 +240,7 @@ body {
 
   #chatBody p {
     padding: 8px 12px;
-    font-size: 14px;
+    font-size: 18px;
     max-width: 90%;
   }
 
@@ -251,7 +251,7 @@ body {
 
   #msg {
     padding: 12px 14px;
-    font-size: 15px;
+    font-size: 17px;
   }
 
   #sendBtn {
