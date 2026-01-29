@@ -32,7 +32,7 @@ function enterMood() {
 
     // sblocca scroll
     document.body.classList.remove('locked');
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'auto';
 
     window.scrollTo(0, 0);
@@ -62,3 +62,4 @@ window.addEventListener('pageshow', (event) => {
     window.location.reload();
   }
 });
+document.addElementById("pooly-ai-root");
