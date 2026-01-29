@@ -1,190 +1,211 @@
-/* =====================================================
-   RESET & BASE
-   ===================================================== */
+/* RESET MINIMO */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-html {
-  scroll-behavior: smooth;
-}
-
 body {
+  transition: opacity 0.8s ease;
   --bg-main: #3b0505;
   --bg-catalogo: #000000;
+  color: #fbdf9d;
+  font-family: var(--font-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+body.scroll-lock {
+  overflow: hidden;
+}
+
+body.fade-out {
+  opacity: 0;
+}
+/* VARIABILI MOOD */
+:root {
   --avorio: #fab19be8;
   --nero: #000000;
 
-  font-family: "Cormorant Garamond", serif;
-  color: #fbdf9d;
-  background: var(--bg-main);
-  line-height: 1.6;
-
-  overflow-x: hidden;
-  transition: opacity 0.8s ease;
+ --font-main: "Cormorant Garamond", serif;
+--font-clean: "Inter", system-ui, -apple-system, sans-serif}
+.hero-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10vh 12vw;
+  background: #3b0505;
 }
-
-/* =====================================================
-   SCROLL CONTROL
-   ===================================================== */
-body.locked {
-  overflow: hidden;
+.hero-canvas {
+  position: center;
+  width: 100%;
+  max-width: 1300px;
   height: 100vh;
+  aspect-ratio: var(--aspect-hero);
+  margin: 0 auto;
+  background: #3b0505;
+  border: 1px solid #3b0505;
+
+  box-shadow:
+    0 12px 40px #3b0505,
+    inset 0 0 0 6px rgba(0,0,0,0.03);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
 }
 
-/* =====================================================
-   TYPOGRAPHY
-   ===================================================== */
+.hero {
+  width: 100vw;
+  min-height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #3b0505;
+
+  box-shadow: none; /* <<< QUESTA È LA CHIAVE */
+  overflow: hidden;
+}
+
+
+/* TESTI */
 h1 {
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: 90px;
   letter-spacing: 0.06em;
+  font-family: "Cormorant Garamond", serif;
 }
 
 h2 {
-  font-size: clamp(26px, 3vw, 40px);
+  font-size: 60px;
   letter-spacing: 0.08em;
 }
 
 p {
   max-width: 640px;
-  font-family: "Inter", system-ui, sans-serif;
-  font-size: clamp(16px, 1.2vw, 20px);
+  font-family: var(--font-clean);
+  font-size: 20px;
   line-height: 1.7;
 }
 
-/* =====================================================
-   LINKS & BUTTONS
-   ===================================================== */
-a,
-button {
-  font-family: "Inter", system-ui, sans-serif;
+
+/* LINK / BOTTONI */
+a, button {
+  font-family: var(--font-clean);
   background: none;
   border: none;
+  color: var(--nero);
   cursor: pointer;
 }
 
-button {
-  padding: 14px 24px;
-  background: var(--avorio);
-  color: #160f0c;
-  border-radius: 8px;
-}
-
-/* =====================================================
-   HERO (LANDING)
-   ===================================================== */
-#hero {
-  width: 100vw;
-  min-height: 100vh;
-
+/* HERO */
+.hero {
+  min-height: 150vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-
-  background: var(--bg-main);
+ justify-content: flex-end;
+  padding: 0 10vw;
   position: relative;
   z-index: 10;
-
-  transition: opacity 1.2s ease, transform 1.2s ease;
+  opacity: 1 !important;
+  transition: transform 1s ease, opacity 1s ease;
 }
-
-#hero.fade-out {
-  opacity: 0;
-  transform: scale(0.96);
-  pointer-events: none;
-}
-
-.hero-frame {
-  width: 100%;
-  max-width: 1300px;
-  padding: 10vh 12vw;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-canvas {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  overflow: hidden;
-}
-
 .hero-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: translateX(-6%);
 }
 
 .hero-content {
   padding: 8vh 6vw;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 20px;
 }
 
-.hero-claim {
-  position: absolute;
-  bottom: 25vh;
-  right: 6vw;
-
-  font-size: clamp(14px, 1.1vw, 18px);
-  letter-spacing: 0.14em;
-  line-height: 1.4;
-  opacity: 0.9;
-  max-width: 320px;
+.hero-content h1 {
+  font-size: clamp(32px, 4vw, 48px);
 }
 
-/* =====================================================
-   MAIN CONTENT (POST-LANDING)
-   ===================================================== */
-#main-content {
-  display: none;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1.2s ease;
+.manifesto {
+  font-style: italic;
+  opacity: 0.8;
 }
 
-/* =====================================================
-   TASTE / DEGUSTAZIONE
-   ===================================================== */
+.hero-content button {
+  padding: 14px 24px;
+  background: var(--avorio);
+  color: #160f0c;
+  border-radius: 8px;
+  font-family: "Cormorant Garamond", serif, bold ;
+}
+
+/* DEGUSTAZIONE – CHIUSA DI DEFAULT */
 .taste {
   min-height: 100vh;
   padding: 6vh 7vw;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 32px;
 
-  position: relative;
+  opacity: 1;
+  transform: translateY(40px);
+
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+.taste {
+  position: relative; /* fondamentale */
 }
 
+/* FRASE INCISA NEL FRAME */
 .taste-frame-quote {
   position: absolute;
-  top: 8px;
+  top: 4px;
   right: 32px;
 
-  font-size: 18px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  opacity: 0.6;
-  pointer-events: none;
+
+  color: rgba(207, 151, 86, 0.548); /* avorio caldo */
+  pointer-events: none; /* non disturba */
+}
+/* DEGUSTAZIONE – APERTA */
+.taste.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* SEZIONI */
+.taste-intro {
+  background: #3b0505;
+}
+
+.taste-matter {
+  background: #3b0505;
+}
+
+.taste-models {
+  background: #3b0505;
 }
 
 .taste-invite {
-  font-family: "Inter", system-ui, sans-serif;
+  background: #3b0505;
+  font-family: var(--font-clean);
   font-size: 26px;
   text-align: center;
 }
-
 .enter-link {
-  position: relative;
+  cursor: pointer;
   letter-spacing: 0.12em;
+  transition: opacity, transform 0.8s ease;
 }
 
 .enter-link::after {
@@ -198,37 +219,173 @@ button {
   transition: width 0.4s ease;
 }
 
-.enter-link:hover::after {
-  width: 100%;
+.enter-link:hover {
+  opacity: 0.6;
+  transform: translateY(2px);
+}
+/* HERO TRANSIZIONE */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  transition: opacity 1.5s ease, transform 1.5s ease;
+
+}
+/* Per il fade del hero */
+.hero.fade-out {
+  opacity: 0;
+  transform: scale(0.2);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+  pointer-events: none;
+  }
+body.exit-hero {
+  opacity: 0;
+  transform: scale(0.2);
+  transition: all 0.5s ease;
 }
 
-/* =====================================================
-   DIVIDERS
-   ===================================================== */
-.model-divider {
-  width: 100%;
-  height: 1px;
-  margin: 4rem 0;
-
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255,255,255,0.25),
-    transparent
-  );
+/* Per il main che appare */
+.main-content {
+  transition: opacity 1.5s ease;
 }
 
-/* =====================================================
-   PAGE EXIT (CATALOGO)
-   ===================================================== */
+/* Opzionale: fade-out pagina intera prima di cambiare */
 body.exit-page {
   opacity: 0;
   transition: opacity 0.8s ease;
 }
 
-/* =====================================================
-   POOLY AI
-   ===================================================== */
+/* Per bloccare scroll iniziale (se vuoi) */
+body.locked {
+  overflow: hidden;
+  height: 100vh;
+}
+/* ========================= */
+/* RESPONSIVE FIX */
+/* ========================= */
+
+/* TABLET (768px - 1023px) */
+@media (max-width: 1023px) {
+  #hero {
+    padding: 0 10vw;
+    min-height: 120vh;
+    justify-content: center;
+  }
+
+  #hero-frame {
+    padding: 8vh 10vw;
+  }
+
+  #hero-canvas {
+    grid-template-columns: 1fr;
+    height: auto;
+    aspect-ratio: auto;
+  }
+
+  #hero-image img {
+    transform: none;
+  }
+
+  h1 {
+    font-size: clamp(38px, 5.5vw, 48px);
+  }
+
+  h2 {
+    font-size: clamp(32px, 4.5vw, 42px);
+  }
+
+  p {
+    font-size: clamp(16px, 2.2vw, 18px);
+  }
+
+  #hero-content {
+    padding: 6vh 5vw;
+    gap: 16px;
+  }
+
+  #hero-content button {
+    padding: 12px 20px;
+  }
+
+  #taste {
+    padding: 16vh 8vw;
+    gap: 24px;
+  }
+
+  #taste-invite {
+    font-size: 22px;
+  }
+}
+
+/* SMARTPHONE (≤767px) */
+@media (max-width: 767px) {
+  #hero {
+    padding: 0 6vw;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 6vh;
+  }
+
+  #hero-frame {
+    padding: 6vh 6vw;
+  }
+
+  #hero-canvas {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  #hero-image img {
+    transform: none;
+  }
+
+  h1 {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  h2 {
+    font-size: clamp(22px, 6vw, 30px);
+  }
+
+  p {
+    font-size: clamp(14px, 4vw, 16px);
+    max-width: 100%;
+  }
+
+  #hero-content {
+    padding: 5vh 4vw;
+    gap: 6px;
+    text-align: center;
+  }
+
+  #hero-content button {
+    padding: 10px 18px;
+    width: 100%;
+  }
+
+  #taste {
+    padding: 6vh 6vw;
+    gap: 3px;
+  }
+  @media (max-width: 768px) {
+  #taste-frame-quote {
+    right: 16px;
+    top: 24px;
+    font-size: 20px;
+  }
+}
+
+
+  #taste-invite {
+    font-size: 20px;
+  }
+
+  #enter-link::after {
+    bottom: -4px;
+  }
+}
+
 #pooly-ai-container {
   position: fixed;
   bottom: 20px;
@@ -239,61 +396,43 @@ body.exit-page {
 #poolyChat {
   display: none;
 }
-
-/* =====================================================
-   RESPONSIVE – TABLET
-   ===================================================== */
-@media (max-width: 1023px) {
-  .hero-canvas {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-frame {
-    padding: 8vh 10vw;
-  }
-
-  .hero-content {
-    padding: 6vh 5vw;
-  }
-
-  .taste {
-    padding: 10vh 8vw;
-  }
+#model-divider {
+  width: 100%;
+  height: 1px;
+  margin: 8vh 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,0.2),
+    transparent );
+  margin: 4rem 0;
 }
 
-/* =====================================================
-   RESPONSIVE – SMARTPHONE
-   ===================================================== */
-@media (max-width: 767px) {
-  #hero {
-    align-items: flex-start;
-  }
+/* braccio sinistro */
+#model-divider::before {
+  left: 0;
+  transform: rotate(2deg);
+  transform-origin: right center;
+}
 
-  .hero-frame {
-    padding: 6vh 6vw;
-  }
+/* braccio destro */
+#model-divider::after {
+  right: 0;
+  transform: rotate(-2deg);
+  transform-origin: left center;
+}
+#hero-claim {
+  position: absolute;
+  bottom: 25vh;
+  right: 6vw;
 
-  .hero-content {
-    padding: 5vh 4vw;
-    text-align: center;
-  }
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(14px, 1.1vw, 18px);
+  letter-spacing: 0.14em;
+  line-height: 1.4;
 
-  .hero-content button {
-    width: 100%;
-  }
+  color: rgba(253, 223, 157, 0.85);
 
-  .taste {
-    padding: 6vh 6vw;
-    gap: 16px;
-  }
-
-  .taste-frame-quote {
-    right: 16px;
-    top: 20px;
-    font-size: 16px;
-  }
-
-  .taste-invite {
-    font-size: 20px;
-  }
+  opacity: 0.9;
+  max-width: 320px;
 }
