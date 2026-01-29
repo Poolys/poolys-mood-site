@@ -1,55 +1,43 @@
-/* =====================================================
-   PoolyAI – Public style.css
-   Pulito, sicuro, non invasivo
-   (Shadow DOM gestisce lo stile reale)
-   ===================================================== */
+/* Base */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #3b0505;
 
-/* RESET MINIMO SOLO SE SERVE */
-* {
-  box-sizing: border-box;
 }
 
-/* -----------------------------------------------------
-   Pallino (fallback se JS non monta lo Shadow)
------------------------------------------------------ */
+/* Pallino */
 #poolyPallino {
   position: fixed;
   bottom: 20px;
   right: 20px;
-
   width: 60px;
   height: 60px;
   border-radius: 50%;
-
   background: #9c0404d2;
   color: #1b0202;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 13px;
   font-weight: bold;
   cursor: pointer;
-
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  z-index: 1000;
-
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 1001;
+  transition: all 0.4s ease;
 }
 
 #poolyPallino:hover {
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
 #poolyPallino.closed {
   opacity: 0;
+  transform: scale(0.8);
   pointer-events: none;
 }
 
-/* -----------------------------------------------------
-   Chat container – fallback (non usato con Shadow)
------------------------------------------------------ */
+/* Chat – chiusa di default */
 #poolyChat {
   position: fixed;
   bottom: 0;
@@ -104,7 +92,7 @@
   margin: 0;
   padding: 10px 14px;
   border-radius: 18px;
-  max-width: 85%;
+  max-width: 95%;
   line-height: 1.1;
   align-self: flex-start;
   background: #fdf5e6;
@@ -202,21 +190,16 @@
   position: fixed;
   bottom: 95px;
   right: 20px;
-
   background: rgba(253,245,230,0.95);
   color: #1a1816;
-
   padding: 10px 14px;
   border-radius: 18px;
-
   font-size: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-
-  z-index: 1001;
+  transition: all 0.4s ease;
+  z-index: 1002;
   pointer-events: none;
 }
 
@@ -225,9 +208,11 @@
   transform: translateY(0);
 }
 
-/* -----------------------------------------------------
-   Responsive minimo (solo fallback)
------------------------------------------------------ */
+/* ========================= */
+/* RESPONSIVE FIX */
+/* ========================= */
+
+/* SMARTPHONE (≤767px) */
 @media (max-width: 767px) {
   #poolyPallino {
     width: 100px;
@@ -256,7 +241,7 @@
   #chatBody p {
     padding: 8px 12px;
     font-size: 18px;
-    max-width: 90%;
+    max-width: 95%;
   }
 
   #chatInputWrapper {
@@ -282,8 +267,129 @@
   }
 
   #poolyIntro {
-    bottom: 90px;
-    right: 14px;
+    bottom: 80px;
+    right: 12px;
     font-size: 14px;
+    padding: 8px 12px;
+  }
+}@media (max-width: 767px) {
+
+  #pooly-ai-container {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    max-height: none !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #poolyChat {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    border-radius: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  #chatHeader {
+    font-size: 16px !important; /* un po' più leggibile */
+    padding: 12px !important;
+  }
+
+  #chatBody {
+    padding: 12px 10px !important;
+  }
+
+  #chatBody p {
+    font-size: 16px !important; /* ← il cambiamento più visibile */
+    padding: 12px 16px !important;
+    max-width: 90% !important; /* più spazio per il testo */
+    line-height: 1.4 !important;
+  }
+
+  #chatInputWrapper {
+    padding: 12px 10px !important;
+  }
+
+  #msg {
+    font-size: 16px !important;
+    padding: 14px 16px !important;
+  }
+
+  #sendBtn {
+    font-size: 15px !important;
+    padding: 0 24px !important;
+  }
+
+  /* Nascondi il pallino quando chat aperta su mobile */
+  #poolyPallino {
+    display: none !important;
+  }
+}
+
+/* TABLET (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #poolyPallino {
+    width: 100px;
+    height: 100px;
+    font-size: 20px;
+  }
+
+  #poolyChat.open {
+    width: 100%;
+    max-width: none;
+    height: 520px; /* circa 7-8 righe di messaggi + header + input */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+    transform: translateY(0);
+  }
+
+  #chatHeader {
+    font-size: 10px;
+  }
+
+  #chatBody p {
+    font-size: 15px;
+  }
+
+  #pooly-ai-container {
+    bottom: 5px;
+    right: 16px;
+    width: 530px;
+    height: 780px;
+  }
+
+  #poolyIntro {
+    font-size: 11px;
+  }
+}
+
+/* DESKTOP (≥1024px) – già base, ma aggiunte per coerenza */
+@media (min-width: 1024px) {
+  #poolyChat.open {
+    width: 100%;
+    height: 280px; /* fisso: header + ~7 righe messaggi + input */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+    transform: translateY(0);
+  }
+
+  #chatHeader {
+    font-size: 10px;
+  }
+
+  #chatBody p {
+    font-size: 12px;
   }
 }

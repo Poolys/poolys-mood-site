@@ -2,17 +2,15 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pooly’s Mood</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="Pooly-AI/public/style.css">
 </head>
 
-<body class="locked">
+<body class="locked" style="overflow: hidden;"> <!-- tieni locked se usi per no-scroll iniziale -->
 
   <!-- HERO -->
   <section class="hero" id="hero">
@@ -22,36 +20,38 @@
       </div>
       <div class="hero-content">
         <h1>Pooly’s Mood</h1>
-        <p class="manifesto">"Gaudium Vino"</p>
+        <p class="manifesto"> "Gaudium Vino"</p>
         <button onclick="enterMood()">Scopri</button>
-        <p class="hero-claim">
-          Non esponiamo oggetti,<br>accogliamo presenze.
-        </p>
+         <p class="hero-claim">
+  Non esponiamo oggetti,<br>
+  accogliamo presenze.
+</p>
       </div>
     </div>
+     
   </section>
-
-  <!-- MAIN -->
+ 
+    
+ <!-- MAIN – inizia nascosto -->
   <main id="main-content" style="opacity:0; pointer-events:none;">
+ <div id="pooly-ai-container">
+  <div id="poolyPallino">PoolyAI</div>
 
-    <!-- ================================================= -->
-    <!-- HOST per Shadow DOM – NON mettere niente dentro -->
-    <!-- ================================================= -->
-    <div id="pooly-ai-host"></div>
-
-    <!-- ================================================= -->
-    <!-- Pallino → DEVE stare FUORI dallo shadow -->
-    <!-- ================================================= -->
-    <div id="poolyPallino">PoolyAI</div>
-
-    <!-- CONTENUTO -->
+  <div id="poolyChat">
+    <div id="chatHeader">PoolyAI</div>
+    <div id="chatBody"></div>
+    <div id="chatInputWrapper">
+      <input id="msg" type="text" placeholder="Scrivi qui..." autocomplete="off">
+      <button id="sendBtn">Invia</button>
+    </div>
+  </div>
+</div>
     <section class="taste taste-intro">
-      <div class="taste-frame-quote">
-        "La natura non indica la strada... la percorre insieme a noi."
-      </div>
+       <div class="taste-frame-quote">"La natura non indica la strada... la percorre insieme a noi.
+        'J. W. von Goethe'"</div>
       <img src="assets/img/mood/langhe.jpg" alt="langhe">
       <div class="model-divider"></div>
-    </section>
+     </section>
 
     <section class="taste taste-matter">
       <img src="assets/img/mood/uva.jpg" alt="uva">
@@ -59,24 +59,27 @@
     </section>
 
     <section class="taste taste-models">
-      <div class="taste-frame-quote">
-        "La solidità nasce dall'equilibrio."
-      </div>
-      <img src="assets/img/mood/areddi.jpg" alt="arredi">
+       <div class="taste-frame-quote">"La solidità delle cose nasce dall'equilibrio. 
+        ' Italo Calvino'"</div>
+      <img src="assets/img/mood/areddi.jpg" alt="gaudium">
       <div class="model-divider"></div>
     </section>
 
-    <section class="taste taste-invite">
-      <div class="taste-section-image">
+    <section class="taste taste-invite" id="invite-section">
+      <div class="taste-section-image"> <!-- wrapper per rendere cliccabile l'immagine -->
         <img src="assets/img/mood/logo.jpg" alt="logo">
       </div>
       <h2 class="enter-link" onclick="goToCatalogo()">Entrate nel nostro catalogo.</h2>
+    <div class="model-divider"></div>
     </section>
+
+    <!-- Le sezioni block le puoi lasciare qui o spostarle in catalogo se preferisci -->
 
   </main>
 
+  
   <script src="js/main.js"></script>
   <script src="Pooly-AI/public/chat.js"></script>
-
+  
 </body>
 </html>

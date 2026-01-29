@@ -1,67 +1,137 @@
-/* =====================================================
-   POOLY'S MOOD — MAIN JS
-   Gestione hero → main transition, navigazione, fix mobile
-   ===================================================== */
+// FORZA IL RESET SULLA LANDING AL REFRESH
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
 
-(function () {
-  // ── Forza scroll in alto all'avvio ───────────────────────────────────
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+  document.body.classList.add("locked");
+  // Rimuove eventuali memorie di sessione che forzano il main
+  sessionStorage.removeItem('poolyEntered');
+});
+
+function enterMood() {
+  const hero = document.querySelector("#hero");
+  const main = document.querySelector("#main-content");
+
+  hero.classList.add("fade-out");
+
+
+  // CARICAMENTO POOLY AI (CORRETTO)
+  fetch("Pooly-AI/public/index.html")
+    .then(res => { 
+      if (!res.ok)throw new Error("Errore " + res.status);
+      return res.text();
+    })
+     .then(html => {
+      const container = document.getElementById("pooly-ai-container");
+      if (!container) return;
+
+      container.innerHTML = "";
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "pooly-ai-container";
+      wrapper.innerHTML = html;
+
+      container.appendChild(wrapper);
+
+      // ORA carichiamo chat.js DOPO l'HTML
+      const script = document.createElement("script");
+      script.src = "Pooly-AI/public/chat.js";
+      document.body.appendChild(script);
+    })
+    .catch(err => console.error("Errore PoolyAI:", err));
+
+  setTimeout(() => {
+    main.style.opacity = "1";
+    main.style.pointerEvents = "auto";
+    document.body.classList.remove("locked");
+    main.scroll({ behavior: "smooth" });
+  }, 1200);
+}
+
+function goToCatalogo() {
+  document.body.classList.add("exit-page");
+  setTimeout(() => {
+    window.location.href = "catalogo.html";
+  }, 800);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const tasteImage = document.querySelector(".taste-section-image");
+  if (tasteImage) {
+    tasteImage.style.cursor = "pointer";
+    tasteImage.addEventListener("click", goToCatalogo);
   }
+});
+function enterMood() {
+  localStorage.setItem('poolyEntered', 'true');
 
-  window.addEventListener('load', () => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    document.body.classList.add('locked');
-  });
+  const hero = document.getElementById('hero');
+  const main = document.getElementById('main-content');
 
-  // ── Transizione: entra nel mood (da hero a contenuto) ────────────────
-  window.enterMood = function () {
-    const hero = document.getElementById('hero');
-    const main = document.getElementById('main-content');
+  hero.classList.add('fade-out');
 
-    if (!hero || !main) return;
+  setTimeout(() => {
+    hero.style.display = 'none';
+    main.style.opacity = '1';
+    main.style.pointerEvents = 'auto';
+    document.body.classList.remove('locked');
+    document.body.style.overflow = 'auto';
+    window.scrollTo(0, 0);
+  }, 1200);
+}
 
-    hero.classList.add('fade-out');
+// forza sempre il landing a ogni refresh
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
 
+window.addEventListener('load', () => {
+  sessionStorage.removeItem('poolyEntered');
+  window.scrollTo(0, 0);
+});
+
+// funzione chiamata dal bottone onclick="enterMood()"
+function enterMood() {
+  const hero = document.getElementById('hero');
+  const main = document.getElementById('main-content');
+
+  sessionStorage.setItem('poolyEntered', 'true');
+
+  if (hero) {
+    hero.style.opacity = '0';
+    hero.style.pointerEvents = 'none';
     setTimeout(() => {
       hero.style.display = 'none';
+    }, 400);
+  }
 
-      main.style.display = 'block';
+  if (main) {
+    main.style.display = 'block';
+    requestAnimationFrame(() => {
       main.style.opacity = '1';
       main.style.pointerEvents = 'auto';
+    });
+  }
 
-      // Sblocco scroll
-      document.body.classList.remove('locked');
-      document.body.style.overflow = ''; // resetta override
-      document.documentElement.style.overflow = '';
+  document.body.classList.remove('locked');
+  document.body.style.overflow = 'hideen';
+  document.documentElement.style.overflow = 'auto';
 
-      window.scrollTo({ top: 0, behavior: 'instant' });
-    }, 1200); // deve corrispondere alla durata della transizione CSS
-  };
+  window.scrollTo(0, 0);
+}
 
-  // ── Vai al catalogo con animazione di uscita ─────────────────────────
-  window.goToCatalogo = function () {
-    document.body.classList.add('exit-page');
-
-    setTimeout(() => {
-      window.location.href = 'catalogo.html';
-    }, 800); // tempo per far vedere l'animazione di uscita
-  };
-
-  // ── Rendi cliccabile l'immagine nella sezione invite ─────────────────
-  document.addEventListener('DOMContentLoaded', () => {
-    const inviteImage = document.querySelector('.taste-section-image');
-    if (inviteImage) {
-      inviteImage.style.cursor = 'pointer';
-      inviteImage.addEventListener('click', goToCatalogo);
-    }
-  });
-
-  // ── Fix BFCache / back button su mobile ──────────────────────────────
-  window.addEventListener('pageshow', (event) => {
-    if (event.persisted) {
-      // Quando si torna indietro con browser history → ricarica pulita
-      window.location.reload();
-    }
-  });
-})();
+// sicurezza extra: se torni indietro dal browser
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted) {
+    sessionStorage.removeItem('poolyEntered');
+    window.scrollTo(0, 0);
+  }
+});
+window.addEventListener("pageshow", function (event) {
+  if (event.persisted) {
+    // siamo tornati indietro dal browser (BFCache)
+    window.location.reload();
+  }
+});
