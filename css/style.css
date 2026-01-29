@@ -59,14 +59,14 @@ body.fade-out {
 
 .hero.fade-out {
   opacity: 0;
-  transform: scale(0.2);
+  transform: scale(0.3);
   pointer-events: none;
 }
 
 .hero-canvas {
   width: 100%;
   max-width: 1300px;
-  height: 100vh;
+  height: 80vh;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
