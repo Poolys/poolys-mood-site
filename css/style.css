@@ -392,7 +392,28 @@ body.locked {
   right: 20px;
   z-index: 9999;
 }
+/* ========================= */
+/* AI CHAT – SMARTPHONE FIX */
+/* ========================= */
+@media (max-width: 767px) {
 
+  #pooly-ai-container {
+    max-width: 92vw;
+  }
+
+  #pooly-ai-container p,
+  #pooly-ai-container span,
+  #pooly-ai-container div {
+    font-size: 18px; /* prima era troppo piccolo */
+    line-height: 1.55; /* leggibilità */
+  }
+
+}
+@media (max-width: 767px) {
+  #pooly-ai-container {
+    font-family: "Inter", system-ui, sans-serif;
+  }
+}
 #poolyChat {
   display: none;
 }
@@ -435,26 +456,4 @@ body.locked {
 
   opacity: 0.9;
   max-width: 320px;
-}
-/* ========================= */
-/* AI CHAT – SMARTPHONE FIX */
-/* ========================= */
-@media (max-width: 767px) {
-
-  #pooly-ai-container {
-    max-width: 92vw;
-  }
-
-  #pooly-ai-container p,
-  #pooly-ai-container span,
-  #pooly-ai-container div {
-    font-size: 18px; /* prima era troppo piccolo */
-    line-height: 1.55; /* leggibilità */
-  }
-
-}
-@media (max-width: 767px) {
-  #pooly-ai-container {
-    font-family: "Inter", system-ui, sans-serif;
-  }
 }
