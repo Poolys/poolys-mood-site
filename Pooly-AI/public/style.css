@@ -345,7 +345,7 @@ body {
   #poolyChat.open {
     width: 100%;
     max-width: none;
-    height: 420px; /* circa 7-8 righe di messaggi + header + input */
+    height: 520px; /* circa 7-8 righe di messaggi + header + input */
     left: 0;
     right: 0;
     bottom: 0;
