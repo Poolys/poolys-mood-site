@@ -24,7 +24,21 @@ window.addEventListener("DOMContentLoaded", () => {
   // ===============================
   const POOLY_CSS = `
     /* PoolyAI Chat Style */
-  `;
+  `;// Dentro chat.js, dove crei o inietti il pallino
+const mainElement = document.querySelector('main');
+
+// Funzione per aggiornare la visibilità del pallino
+const updateVisibility = () => {
+    // Se il main è nascosto (es. ha display: none o classe 'hidden')
+    if (getComputedStyle(mainElement).display === 'none' || mainElement.classList.contains('hidden')) {
+        pallino.style.display = 'none';
+    } else {
+        pallino.style.display = 'flex'; // o 'block'
+    }
+};
+
+// Eseguila all'avvio
+updateVisibility();
   const style = document.createElement("style");
   style.textContent = `
     * { box-sizing: border-box; }
@@ -53,21 +67,6 @@ window.addEventListener("DOMContentLoaded", () => {
       transform: scale(0.8);
       pointer-events: none;
     }
-      // Dentro chat.js, dove crei o inietti il pallino
-const mainElement = document.querySelector('main');
-
-// Funzione per aggiornare la visibilità del pallino
-const updateVisibility = () => {
-    // Se il main è nascosto (es. ha display: none o classe 'hidden')
-    if (getComputedStyle(mainElement).display === 'none' || mainElement.classList.contains('hidden')) {
-        pallino.style.display = 'none';
-    } else {
-        pallino.style.display = 'flex'; // o 'block'
-    }
-};
-
-// Eseguila all'avvio
-updateVisibility();
 
     #poolyChat {
       position: fixed;
