@@ -81,7 +81,7 @@ window.addEventListener("DOMContentLoaded", () => {
       padding: 3px;
       text-align: center;
       font-size: 12px;
-      font-color: #1a1816;
+      color: #1a1816;
       font-weight: bold;
     }
 
@@ -100,6 +100,7 @@ window.addEventListener("DOMContentLoaded", () => {
       border-radius: 18px;
       max-width: 85%;
       font-size: 14px;
+      color: #000000;
     }
 
     .userMessage { align-self: flex-end; background: #e0e0e0; }
