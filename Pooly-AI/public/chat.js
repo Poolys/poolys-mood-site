@@ -175,21 +175,26 @@ window.addEventListener("DOMContentLoaded", () => {
     chatBody.scrollTop = chatBody.scrollHeight;
   }
 
-  pallino.addEventListener("click", () => {
+ // 1. Gestione dell'apertura (Click sul pallino)
+pallino.addEventListener("click", () => {
     pallino.classList.add("closed");
     chat.classList.add("open");
-    renderHistory();
+    
     if (!chatHistory.length) {
-      chatHistory.push({ role: "ai", content: "Benvenuto! Come posso aiutarti?" });
-      renderHistory();
-
-  if (!chat.contains(e.target) && !pallino.contains(e.target)) {
-    chat.classList.remove("open");
-    pallino.classList.remove("closed");
-  };
+        chatHistory.push({ role: "ai", content: "Benvenuto! Come posso aiutarti?" });
     }
-  });
+    renderHistory();
+});
 
+// 2. Gestione della chiusura (Click fuori)
+// Usiamo 'window' per intercettare i click ovunque nella pagina
+window.addEventListener("click", (e) => {
+    // Se la chat è aperta E il click NON è avvenuto dentro la chat E NON è avvenuto sul pallino
+    if (chat.classList.contains("open") && !chat.contains(e.target) && !pallino.contains(e.target)) {
+        chat.classList.remove("open");
+        pallino.classList.remove("closed");
+    }
+});
   sendBtn.addEventListener("click", sendMessage);
   input.addEventListener("keydown", e => e.key === "Enter" && sendMessage());
 
