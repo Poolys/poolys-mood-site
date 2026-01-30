@@ -128,15 +128,6 @@ window.addEventListener("DOMContentLoaded", () => {
       border: none;
       cursor: pointer;
     }
-// Chiudi cliccando fuori
-document.addEventListener("click", e => {
-  if (!chat.classList.contains("open")) return;
-
-  if (!chat.contains(e.target) && !pallino.contains(e.target)) {
-    chat.classList.remove("open");
-    pallino.classList.remove("closed");
-  }
-});
     @media (max-width: 767px) {
       #chatBody p { font-size: 14px; color: #000000; line-height: 1.4; }
     }
@@ -215,5 +206,14 @@ document.addEventListener("click", e => {
     renderHistory();
     localStorage.setItem("poolyChatHistory", JSON.stringify(chatHistory));
   }
+  // Chiudi cliccando fuori
+document.addEventListener("click", e => {
+  if (!chat.classList.contains("open")) return;
+
+  if (!chat.contains(e.target) && !pallino.contains(e.target)) {
+    chat.classList.remove("open");
+    pallino.classList.remove("closed");
+  }
+});
 })();
 })
