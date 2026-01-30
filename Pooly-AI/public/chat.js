@@ -75,6 +75,15 @@ window.addEventListener("DOMContentLoaded", () => {
       transform: translateY(0);
       pointer-events: all;
     }
+      // Chiudi cliccando fuori
+document.addEventListener("click", e => {
+  if (!chat.classList.contains("open")) return;
+
+  if (!chat.contains(e.target) && !pallino.contains(e.target)) {
+    chat.classList.remove("open");
+    pallino.classList.remove("closed");
+  }
+});
 
     #chatHeader {
       background: linear-gradient(90deg,#138808,#fff,#d30000);
@@ -128,7 +137,28 @@ window.addEventListener("DOMContentLoaded", () => {
       border: none;
       cursor: pointer;
     }
+/* ===== INTRO POOLY DESKTOP ===== */
+#poolyIntro {
+  position: fixed;
+  bottom: 95px;
+  right: 20px;
+  background: rgba(253,245,230,0.95);
+  color: #1a1816;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+  z-index: 1002;
+  pointer-events: none;
+}
 
+#poolyIntro.show {
+  opacity: 1;
+  transform: translateY(0);
+}
     @media (max-width: 767px) {
       #chatBody p { font-size: 14px; color: #000000; line-height: 1.4; }
     }
