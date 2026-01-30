@@ -75,6 +75,15 @@ window.addEventListener("DOMContentLoaded", () => {
       transform: translateY(0);
       pointer-events: all;
     }
+      // Chiudi cliccando fuori
+document.addEventListener("click", e => {
+  if (!chat.classList.contains("open")) return;
+
+  if (!chat.contains(e.target) && !pallino.contains(e.target)) {
+    chat.classList.remove("open");
+    pallino.classList.remove("closed");
+  }
+});
 
     #chatHeader {
       background: linear-gradient(90deg, #138808, #fff, #d30000);
@@ -185,15 +194,6 @@ window.addEventListener("DOMContentLoaded", () => {
       renderHistory();
     }
   });
-  // Chiudi cliccando fuori
-document.addEventListener("click", e => {
-  if (!chat.classList.contains("open")) return;
-
-  if (!chat.contains(e.target) && !pallino.contains(e.target)) {
-    chat.classList.remove("open");
-    pallino.classList.remove("closed");
-  }
-});
 
   sendBtn.addEventListener("click", sendMessage);
   input.addEventListener("keydown", e => e.key === "Enter" && sendMessage());
