@@ -13,13 +13,15 @@ window.addEventListener('load', () => {
 function enterMood() {
   const hero = document.getElementById('hero');
   const main = document.getElementById('main-content');
-
+  const event=new CustomEvent('enterMoodDone');
+  
+window.dispatchEvent(event);
   sessionStorage.setItem('poolyEntered', 'true');
   // INVIA UN SEGNALE alla chat
   window.dispatchEvent(new CustomEvent('mood-entered'));
   if (hero) {
     hero.style.opacity = '0';
-    hero.style.pointerEvents = 'none';
+    hero.style.pointerEvents = 'none';      
     setTimeout(() => {
       hero.style.display = 'none';
     }, 400);

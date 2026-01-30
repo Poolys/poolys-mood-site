@@ -151,7 +151,20 @@ window.addEventListener("DOMContentLoaded", () => {
         <button id="sendBtn">Invia</button>
       </div>
     </div>
-  `;
+  `;// --- controllo Landing ---
+const hero = document.getElementById('hero');
+if (hero && window.getComputedStyle(hero).display !== 'none') {
+  // Landing visibile → nascondi chat
+  root.style.display = 'none';
+} else {
+  // Landing nascosto → mostra chat
+  root.style.display = 'block';
+}
+
+// Listener per enterMood() (quando Landing scompare)
+window.addEventListener('enterMoodDone', () => {
+  root.style.display = 'block';
+});
   shadow.appendChild(wrapper);
 
   // ===============================
@@ -219,28 +232,4 @@ window.addEventListener("click", (e) => {
     localStorage.setItem("poolyChatHistory", JSON.stringify(chatHistory));
   }
 })();
-})
-// Funzione da inserire in chat.js
-const syncChatVisibility = () => {
-  "pooly-ai-container"
-  const isEntered = sessionStorage.getItem('poolyEntered') === 'true';
-  
-  if (isEntered) {
-    pallino.style.display = 'flex'; // o il tuo stile di default
-  } else {
-    pallino.style.display = 'none';
-  }
-};
-
-// Eseguila subito al caricamento del file
-syncChatVisibility();
-
-// Ascolta i cambiamenti di sessionStorage tra tab (opzionale ma utile)
-window.addEventListener('storage', syncChatVisibility);
-// In chat.js
-window.addEventListener('mood-entered', () => {
-  pallino.style.display = 'flex';
-  // Se vuoi un effetto fade-in:
-  pallino.style.opacity = '0';
-  setTimeout(() => pallino.style.opacity = '1', 10);
 });
