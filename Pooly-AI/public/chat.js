@@ -19,13 +19,6 @@ window.addEventListener("DOMContentLoaded", () => {
   // 2️⃣ SHADOW ROOT
   const shadow = host.attachShadow({ mode: "open" });
 
-// Aggiungi questo in chat.js
-const observer = new MutationObserver(() => {
-    updateVisibility(); 
-});
-
-// Osserva se cambiano gli attributi (come la classe o lo stile) del main
-observer.observe(mainElement, { attributes: true, attributeFilter: ['class'] });
   // ===============================
   // 3️⃣ CSS (ex style.css AI)
   // ===============================
@@ -35,6 +28,21 @@ observer.observe(mainElement, { attributes: true, attributeFilter: ['class'] });
   const style = document.createElement("style");
   style.textContent = `
     * { box-sizing: border-box; }
+  // Dentro chat.js, dove crei o inietti il pallino
+const mainElement = document.querySelector('main');
+
+// Funzione per aggiornare la visibilità del pallino
+const updateVisibility = () => {
+    // Se il main è nascosto (es. ha display: none o classe 'hidden')
+    if (getComputedStyle(mainElement).display === 'none' || mainElement.classList.contains('hidden')) {
+        pallino.style.display = 'none';
+    } else {
+        pallino.style.display = 'flex'; // o 'block'
+    }
+};
+
+// Eseguila all'avvio
+updateVisibility();
     #poolyPallino {
       position: fixed;
       bottom: 20px;
