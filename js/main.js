@@ -15,7 +15,11 @@ function enterMood() {
   const main = document.getElementById('main-content');
 
   sessionStorage.setItem('poolyEntered', 'true');
-
+ // ... il tuo codice esistente ...
+  sessionStorage.setItem('poolyEntered', 'true');
+  
+  // INVIA UN SEGNALE alla chat
+  window.dispatchEvent(new CustomEvent('mood-entered'));
   if (hero) {
     hero.style.opacity = '0';
     hero.style.pointerEvents = 'none';
@@ -31,6 +35,7 @@ function enterMood() {
       main.style.pointerEvents = 'auto';
     });
   }
+
 
   document.body.classList.remove('locked');
   document.body.style.overflow = 'hidden';

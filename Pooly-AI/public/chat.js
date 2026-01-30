@@ -220,3 +220,28 @@ window.addEventListener("click", (e) => {
   }
 })();
 })
+// Funzione da inserire in chat.js
+const syncChatVisibility = () => {
+  // Seleziona il 'host' (il div che contiene il tuo shadowRoot)
+  // Se non hai una variabile, usa document.querySelector('nome-tuo-tag-shadow')
+  const isEntered = sessionStorage.getItem('poolyEntered') === 'true';
+  
+  if (isEntered) {
+    pallino.style.display = 'flex'; // o il tuo stile di default
+  } else {
+    pallino.style.display = 'none';
+  }
+};
+
+// Eseguila subito al caricamento del file
+syncChatVisibility();
+
+// Ascolta i cambiamenti di sessionStorage tra tab (opzionale ma utile)
+window.addEventListener('storage', syncChatVisibility);
+// In chat.js
+window.addEventListener('mood-entered', () => {
+  pallino.style.display = 'flex';
+  // Se vuoi un effetto fade-in:
+  pallino.style.opacity = '0';
+  setTimeout(() => pallino.style.opacity = '1', 10);
+});
