@@ -220,22 +220,3 @@ window.addEventListener("click", (e) => {
   }
 })();
 })
-// Inserisci questo alla fine di chat.js
-setInterval(() => {
-    const mainContent = document.querySelector('main-content');
-    // Sostituisci 'pallino' con la variabile che identifica il tuo elemento shadow o il suo contenitore
-    if (mainContent) {
-        const style = window.getComputedStyle(mainContent);
-        
-        // Se il main è nascosto in QUALSIASI di questi modi comuni:
-        if (style.display === 'none' || 
-            style.visibility === 'hidden' || 
-            style.opacity === '0' ||
-            mainContent.offsetParent === null) { 
-            
-            pallino.style.setProperty('display', 'none', 'important');
-        } else {
-            pallino.style.setProperty('display', 'flex', 'important');
-        }
-    }
-}, 200); // Controlla ogni 200ms
