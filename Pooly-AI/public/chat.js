@@ -29,6 +29,14 @@ window.addEventListener("DOMContentLoaded", () => {
   const style = document.createElement("style");
   style.textContent = `
     * { box-sizing: border-box; }
+              
+  /* Nascondi il pallino se il main ha la classe .landing-mode */
+main.landing-mode #poolyPallino {display: none;
+}
+
+/* Mostralo solo quando il main è in modalità normale */
+main.active #poolyPallino {display: block; }
+};
 
     #poolyPallino {
       position: fixed;
@@ -132,14 +140,6 @@ window.addEventListener("DOMContentLoaded", () => {
     @media (max-width: 767px) {
       #chatBody p { font-size: 14px; color: #000000; line-height: 1.4; }
     } 
-            
-  /* Nascondi il pallino se il main ha la classe .landing-mode */
-main.landing-mode #poolyPallino {display: none;
-}
-
-/* Mostralo solo quando il main è in modalità normale */
-main.active #poolyPallino {display: block; }
-};
 
   `;
   shadow.appendChild(style);
