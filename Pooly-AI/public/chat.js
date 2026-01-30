@@ -26,11 +26,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const POOLY_CSS = `
     /* PoolyAI Chat Style */
   `;
-  if (document.querySelector('main').classList.contains('hidden')) {
-    pallino.style.display = 'none';
-} else {
-    pallino.style.display = 'block';
-}
   const style = document.createElement("style");
   style.textContent = `
     * { box-sizing: border-box; }
@@ -81,6 +76,14 @@ window.addEventListener("DOMContentLoaded", () => {
       transform: translateY(0);
       pointer-events: all;
     }
+      
+  /* Nascondi il pallino se il main ha la classe .landing-mode */
+main.landing-mode #poolyPallino {display: none;
+}
+
+/* Mostralo solo quando il main è in modalità normale */
+main.active #poolyPallino {display: block; }
+};
 
     #chatHeader {
       background: linear-gradient(90deg, #138808, #fff, #d30000);
