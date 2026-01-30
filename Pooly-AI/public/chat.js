@@ -163,7 +163,7 @@ if (hero && window.getComputedStyle(hero).display !== 'none') {
 
 // Listener per enterMood() (quando Landing scompare)
 window.addEventListener('enterMoodDone', () => {
-  root.style.display = 'block';
+  root.style.display = 'block',smoodly;
 });
   shadow.appendChild(wrapper);
 
