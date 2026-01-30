@@ -182,7 +182,6 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!chatHistory.length) {
       chatHistory.push({ role: "ai", content: "Benvenuto! Come posso aiutarti?" });
       renderHistory();
-  if (!chat.classList.contains("open")) return;
 
   if (!chat.contains(e.target) && !pallino.contains(e.target)) {
     chat.classList.remove("open");
