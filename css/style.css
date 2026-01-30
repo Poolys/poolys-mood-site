@@ -223,46 +223,70 @@ button {
     transparent
   );
 }
-
 /* ========================= */
-/* RESPONSIVE */
+/* RESPONSIVE – TABLET */
 /* ========================= */
 @media (max-width: 1023px) {
-  .hero {
+
+  #hero {
     justify-content: center;
+    padding: 0 8vw;
+    min-height: 100svh;
   }
 
-  .hero-canvas {
+  #hero .hero-canvas {
     grid-template-columns: 1fr;
     height: auto;
   }
 
-  .hero-image img {
-    transform: none;
+  #hero .hero-content {
+    padding: 6vh 6vw;
+    text-align: center;
+    align-items: center;
   }
 }
 
+/* ========================= */
+/* RESPONSIVE – SMARTPHONE */
+/* ========================= */
 @media (max-width: 767px) {
-  .hero {
-    padding: 0 6vw;
+
+  #hero {
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: 6vh;
+    padding: 6vh 6vw 0;
+    min-height: 100svh;
   }
 
-  p {
+  #hero .hero-image img {
+    transform: none;
+    width: 100%;
+    height: auto;
+  }
+
+  #hero .hero-content {
+    padding: 4vh 0;
+    gap: 12px;
+  }
+
+  #hero h1 {
+    font-size: clamp(26px, 8vw, 34px);
+    text-align: center;
+  }
+
+  #hero p {
     font-size: 16px;
     max-width: 100%;
+    text-align: center;
   }
 
-  .taste {
+  #taste {
     padding: 6vh 6vw;
-    gap: 16px;
   }
 
-  .taste-frame-quote {
-    right: 16px;
-    top: 24px;
-    font-size: 18px;
+  #taste-frame-quote {
+    right: 12px;
+    top: 16px;
+    font-size: 16px;
   }
 }
