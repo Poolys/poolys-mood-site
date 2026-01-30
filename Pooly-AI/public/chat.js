@@ -1,4 +1,4 @@
-// ===============================
+window.addEventListener("DOMContentLoaded", () => {
 // POOLY AI — SHADOW CHAT
 // ===============================
 
@@ -37,7 +37,7 @@
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: all 0.4s ease;
-      z-index: 1001;
+      z-index: 9999;
     }
 
     #poolyPallino.closed {
@@ -194,3 +194,4 @@
     localStorage.setItem("poolyChatHistory", JSON.stringify(chatHistory));
   }
 })();
+})
