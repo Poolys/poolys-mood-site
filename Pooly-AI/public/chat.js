@@ -22,21 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // ===============================
   // 3️⃣ CSS (ex style.css AI)
   // ===============================
-  // Dentro chat.js, dove crei o inietti il pallino
-const mainElement = document.querySelector('main');
-
-// Funzione per aggiornare la visibilità del pallino
-const updateVisibility = () => {
-    // Se il main è nascosto (es. ha display: none o classe 'hidden')
-    if (getComputedStyle(mainElement).display === 'none' || mainElement.classList.contains('hidden')) {
-        pallino.style.display = 'none';
-    } else {
-        pallino.style.display = 'flex'; // o 'block'
-    }
-};
-
-// Eseguila all'avvio
-updateVisibility();
+  
   const POOLY_CSS = `
     /* PoolyAI Chat Style */
   `;
@@ -234,3 +220,22 @@ window.addEventListener("click", (e) => {
   }
 })();
 })
+// Inserisci questo alla fine di chat.js
+setInterval(() => {
+    const main = document.querySelector('main');
+    // Sostituisci 'pallino' con la variabile che identifica il tuo elemento shadow o il suo contenitore
+    if (main) {
+        const style = window.getComputedStyle(main);
+        
+        // Se il main è nascosto in QUALSIASI di questi modi comuni:
+        if (style.display === 'none' || 
+            style.visibility === 'hidden' || 
+            style.opacity === '0' ||
+            main.offsetParent === null) { 
+            
+            pallino.style.setProperty('display', 'none', 'important');
+        } else {
+            pallino.style.setProperty('display', 'flex', 'important');
+        }
+    }
+}, 200); // Controlla ogni 200ms
