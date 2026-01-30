@@ -222,8 +222,7 @@ window.addEventListener("click", (e) => {
 })
 // Funzione da inserire in chat.js
 const syncChatVisibility = () => {
-  // Seleziona il 'host' (il div che contiene il tuo shadowRoot)
-  // Se non hai una variabile, usa document.querySelector('nome-tuo-tag-shadow')
+  "pooly-ai-container"
   const isEntered = sessionStorage.getItem('poolyEntered') === 'true';
   
   if (isEntered) {

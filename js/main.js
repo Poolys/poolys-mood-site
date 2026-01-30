@@ -15,9 +15,6 @@ function enterMood() {
   const main = document.getElementById('main-content');
 
   sessionStorage.setItem('poolyEntered', 'true');
- // ... il tuo codice esistente ...
-  sessionStorage.setItem('poolyEntered', 'true');
-  
   // INVIA UN SEGNALE alla chat
   window.dispatchEvent(new CustomEvent('mood-entered'));
   if (hero) {
