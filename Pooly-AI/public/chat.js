@@ -182,6 +182,12 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!chatHistory.length) {
       chatHistory.push({ role: "ai", content: "Benvenuto! Come posso aiutarti?" });
       renderHistory();
+  if (!chat.classList.contains("open")) return;
+
+  if (!chat.contains(e.target) && !pallino.contains(e.target)) {
+    chat.classList.remove("open");
+    pallino.classList.remove("closed");
+  };
     }
   });
 
@@ -206,14 +212,5 @@ window.addEventListener("DOMContentLoaded", () => {
     renderHistory();
     localStorage.setItem("poolyChatHistory", JSON.stringify(chatHistory));
   }
-  // Chiudi cliccando fuori
-document.addEventListener("click", e => {
-  if (!chat.classList.contains("open")) return;
-
-  if (!chat.contains(e.target) && !pallino.contains(e.target)) {
-    chat.classList.remove("open");
-    pallino.classList.remove("closed");
-  }
-});
 })();
 })
