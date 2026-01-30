@@ -18,6 +18,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // 2️⃣ SHADOW ROOT
   const shadow = host.attachShadow({ mode: "open" });
+  if (document.querySelector('main').classList.contains('hidden')) {
+    pallino.style.display = 'none';
+} else {
+    pallino.style.display = 'block';
+}
 
   // ===============================
   // 3️⃣ CSS (ex style.css AI)
