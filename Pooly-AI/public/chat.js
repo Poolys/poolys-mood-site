@@ -75,15 +75,6 @@ window.addEventListener("DOMContentLoaded", () => {
       transform: translateY(0);
       pointer-events: all;
     }
-      // Chiudi cliccando fuori
-document.addEventListener("click", e => {
-  if (!chat.classList.contains("open")) return;
-
-  if (!chat.contains(e.target) && !pallino.contains(e.target)) {
-    chat.classList.remove("open");
-    pallino.classList.remove("closed");
-  }
-});
 
     #chatHeader {
       background: linear-gradient(90deg, #138808, #fff, #d30000);
@@ -137,7 +128,15 @@ document.addEventListener("click", e => {
       border: none;
       cursor: pointer;
     }
+// Chiudi cliccando fuori
+document.addEventListener("click", e => {
+  if (!chat.classList.contains("open")) return;
 
+  if (!chat.contains(e.target) && !pallino.contains(e.target)) {
+    chat.classList.remove("open");
+    pallino.classList.remove("closed");
+  }
+});
     @media (max-width: 767px) {
       #chatBody p { font-size: 14px; color: #000000; line-height: 1.4; }
     }
