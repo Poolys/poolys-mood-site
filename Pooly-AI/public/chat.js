@@ -78,7 +78,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     #chatHeader {
       background: linear-gradient(90deg,#138808,#fff,#d30000);
-      padding: 8px;
+      padding: 3px;
       text-align: center;
       font-size: 12px;
     }
@@ -127,7 +127,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     @media (max-width: 767px) {
-      #chatBody p { font-size: 18px; line-height: 1.4; }
+      #chatBody p { font-size: 14px; color: #000000; line-height: 1.4; }
     }
   `;
   shadow.appendChild(style);
