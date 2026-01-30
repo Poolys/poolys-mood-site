@@ -81,12 +81,14 @@ window.addEventListener("DOMContentLoaded", () => {
       padding: 3px;
       text-align: center;
       font-size: 12px;
+      font-color: #1a1816;
+      font-weight: bold;
     }
 
     #chatBody {
       flex: 1;
       padding: 12px;
-      overflow-y: auto;
+      overflow-y: hidden;
       background: rgba(253,245,230,.95);
       display: flex;
       flex-direction: column;
