@@ -19,20 +19,19 @@ window.addEventListener("DOMContentLoaded", () => {
   // 2️⃣ SHADOW ROOT
   const shadow = host.attachShadow({ mode: "open" });
 
+// Aggiungi questo in chat.js
+const observer = new MutationObserver(() => {
+    updateVisibility(); 
+});
 
+// Osserva se cambiano gli attributi (come la classe o lo stile) del main
+observer.observe(mainElement, { attributes: true, attributeFilter: ['class'] });
   // ===============================
   // 3️⃣ CSS (ex style.css AI)
   // ===============================
   const POOLY_CSS = `
     /* PoolyAI Chat Style */
   `;
-  // Aggiungi questo in chat.js
-const observer = new MutationObserver(() => {
-    updateVisibility(); 
-});
-
-// Osserva se cambiano gli attributi (come la classe o lo stile) del main
-observer.observe(mainElement, { attributes: true, attributeFilter: ['class', 'style'] });
   const style = document.createElement("style");
   style.textContent = `
     * { box-sizing: border-box; }
