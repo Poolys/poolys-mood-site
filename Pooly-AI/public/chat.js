@@ -26,18 +26,16 @@ window.addEventListener("DOMContentLoaded", () => {
   const POOLY_CSS = `
     /* PoolyAI Chat Style */
   `;
+  // Aggiungi questo in chat.js
+const observer = new MutationObserver(() => {
+    updateVisibility(); 
+});
+
+// Osserva se cambiano gli attributi (come la classe o lo stile) del main
+observer.observe(mainElement, { attributes: true, attributeFilter: ['class', 'style'] });
   const style = document.createElement("style");
   style.textContent = `
     * { box-sizing: border-box; }
-              
-  /* Nascondi il pallino se il main ha la classe .landing-mode */
-main.landing-mode #poolyPallino {display: none;
-}
-
-/* Mostralo solo quando il main è in modalità normale */
-main.active #poolyPallino {display: block; }
-};
-
     #poolyPallino {
       position: fixed;
       bottom: 20px;
