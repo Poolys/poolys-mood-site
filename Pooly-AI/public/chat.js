@@ -4,6 +4,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
 (function () {
   // 1️⃣ ROOT NEL DOM NORMALE
+  let root = document.getElementById("pooly-ai-root");
+  if (!root) {
+    root = document.createElement("div");
+    root.id = "pooly-ai-root";
+    document.body.appendChild(root);
+  }
   const host = document.getElementById("pooly-ai-root");
   if (!host) {
     console.warn("PoolyAI: #pooly-ai-root non trovato");
