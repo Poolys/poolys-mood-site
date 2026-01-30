@@ -22,6 +22,9 @@ window.addEventListener("DOMContentLoaded", () => {
   // ===============================
   // 3️⃣ CSS (ex style.css AI)
   // ===============================
+  const POOLY_CSS = `
+    /* PoolyAI Chat Style */
+  `;
   const style = document.createElement("style");
   style.textContent = `
     * { box-sizing: border-box; }
@@ -134,6 +137,8 @@ window.addEventListener("DOMContentLoaded", () => {
   // ===============================
   const wrapper = document.createElement("div");
   wrapper.innerHTML = `
+  <style>${POOLY_CSS}</style>
+
     <div id="poolyPallino">PoolyAI</div>
     <div id="poolyChat">
       <div id="chatHeader">PoolyAI</div>
