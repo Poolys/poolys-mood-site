@@ -176,7 +176,10 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
  // 1. Gestione dell'apertura (Click sul pallino)
-pallino.addEventListener("click", () => {
+pallino.addEventListener("click", (e) => {
+    // BLOCCA la propagazione del click alla window
+    e.stopPropagation(); 
+    
     pallino.classList.add("closed");
     chat.classList.add("open");
     
@@ -186,11 +189,9 @@ pallino.addEventListener("click", () => {
     renderHistory();
 });
 
-// 2. Gestione della chiusura (Click fuori)
-// Usiamo 'window' per intercettare i click ovunque nella pagina
+// Questo ora funzionerà solo quando clicchi realmente fuori
 window.addEventListener("click", (e) => {
-    // Se la chat è aperta E il click NON è avvenuto dentro la chat E NON è avvenuto sul pallino
-    if (chat.classList.contains("open") && !chat.contains(e.target) && !pallino.contains(e.target)) {
+    if (chat.classList.contains("open") && !chat.contains(e.target)) {
         chat.classList.remove("open");
         pallino.classList.remove("closed");
     }
