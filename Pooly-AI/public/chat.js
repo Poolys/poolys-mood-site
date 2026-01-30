@@ -76,14 +76,6 @@ window.addEventListener("DOMContentLoaded", () => {
       transform: translateY(0);
       pointer-events: all;
     }
-      
-  /* Nascondi il pallino se il main ha la classe .landing-mode */
-main.landing-mode #poolyPallino {display: none;
-}
-
-/* Mostralo solo quando il main è in modalità normale */
-main.active #poolyPallino {display: block; }
-};
 
     #chatHeader {
       background: linear-gradient(90deg, #138808, #fff, #d30000);
@@ -139,7 +131,16 @@ main.active #poolyPallino {display: block; }
     }
     @media (max-width: 767px) {
       #chatBody p { font-size: 14px; color: #000000; line-height: 1.4; }
-    }
+    } 
+            
+  /* Nascondi il pallino se il main ha la classe .landing-mode */
+main.landing-mode #poolyPallino {display: none;
+}
+
+/* Mostralo solo quando il main è in modalità normale */
+main.active #poolyPallino {display: block; }
+};
+
   `;
   shadow.appendChild(style);
 
