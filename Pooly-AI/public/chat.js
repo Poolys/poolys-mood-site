@@ -205,8 +205,8 @@ pallino.addEventListener("click", (e) => {
 
 // Questo ora funzionerà solo quando clicchi realmente fuori
 window.addEventListener("click", (e) => {
-    if (chatBody.classList.contains("open") && !chatBody.contains(e.target)) {
-        chat.classList.remove("open");
+    if (poolyChat.classList.contains("open") && !poolyChat.contains(e.target)) {
+      poolyChat.classList.remove("open");
         pallino.classList.remove("closed");
     }
 });
