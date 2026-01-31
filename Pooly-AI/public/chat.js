@@ -165,12 +165,13 @@ window.addEventListener("DOMContentLoaded", () => {
   #poolyChat.open {
     height: calc(100vh - 80px);
     max-height: none;
-    border-radius: 20px 20px 0 0;
+    border-radius: 50px 50px 0 0;
   }
 
   #chatHeader {
     font-size: 10px;
     padding: 12px;
+    color: #1a1816;
   }
 }
 
@@ -232,6 +233,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   #chatBody p {
     font-size: 12px;
+    color: #1a1816;
   }
 }
   `;
