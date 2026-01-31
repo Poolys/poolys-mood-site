@@ -30,217 +30,108 @@ window.addEventListener("DOMContentLoaded", () => {
   style.textContent = `
     * { box-sizing: border-box; }
     #poolyPallino {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #9c0404d2;
-  color: #1a1816;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  z-index: 1001;
-  transition: all 0.4s ease;
-}
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #9c0404d2;
+      color: #1a1816;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.4s ease;
+      z-index: 9999;
+    }
 
-#poolyPallino:hover {
-  transform: scale(1.1);
-}
+    #poolyPallino.closed {
+      opacity: 0;
+      transform: scale(0.8);
+      pointer-events: none;
+    }
 
-#poolyPallino.closed {
-  opacity: 0;
-  transform: scale(0.8);
-  pointer-events: none;
-}
+    #poolyChat {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #e2b35ac4;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(100%);
+      pointer-events: none;
+      transition: 0.3s ease;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+    }
 
-/* Chat – chiusa di default */
-#poolyChat {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  background: #e2b35ac4;
-  display: flex;
-  flex-direction: column;
-  z-index: 9999;
-  opacity: 0;
-  transform: translateY(100%);
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
-}
+    #poolyChat.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
 
-#poolyChat.open {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: all;
-}
+    #chatHeader {
+      background: linear-gradient(90deg, #138808, #fff, #d30000);
+      padding: 3px;
+      text-align: center;
+      font-size: 12px;
+      color: #1a1816;
+      font-weight: bold;
+    }
 
-/* Header con bandiera – sempre basso e compatto */
-#chatHeader {
-  background: linear-gradient(90deg, #138808, #ffffff, #d30000);
-  padding: 8px 12px;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 500;
-  color: #222;
-  flex-shrink: 0;
-  min-height: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    #chatBody {
+      flex: 1;
+      padding: 12px;
+      overflow-y: hidden;
+      background: rgba(253,245,230,.95);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-/* Corpo messaggi */
-#chatBody {
-  flex: 1;
-  overflow-y: auto;
-  padding: 12px;
-  background: rgba(253,245,230,0.95);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+    #chatBody p {
+      padding: 10px 14px;
+      border-radius: 18px;
+      max-width: 85%;
+      font-size: 14px;
+      color: #000000;
+    }
 
-#chatBody p {
-  margin: 0;
-  padding: 10px 14px;
-  border-radius: 18px;
-  max-width: 85%;
-  line-height: 1.1;
-  align-self: flex-start;
-  background: #fdf5e6;
-}
+    .userMessage { align-self: flex-end; background: #e0e0e0; }
+    .aiMessage { align-self: flex-start; background: #fdf5e6; }
 
-#chatBody p.userMessage {
-  align-self: flex-end;
-  background: #e0e0e0;
-  border-bottom-right-radius: 4px;
-}
+    #chatInputWrapper {
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      background: #f9f9f9;
+    }
 
-#chatBody p.aiMessage {
-  align-self: flex-start;
-  background: #fdf5e6;
-  border-bottom-left-radius: 4px;
-}
+    #msg {
+      flex: 1;
+      padding: 12px;
+      border-radius: 25px;
+      border: 1px solid #ccc;
+    }
 
-/* Input */
-#chatInputWrapper {
-  display: flex;
-  padding: 10px;
-  gap: 10px;
-  background: #f9f9f9;
-  border-top: 1px solid #ddd;
-  flex-shrink: 0;
-}
+    #sendBtn {
+      padding: 0 20px;
+      border-radius: 25px;
+      background: #555;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    @media (max-width: 767px) {
+      #chatBody p { font-size: 14px; color: #000000; line-height: 1.4; }
+    } 
 
-#msg {
-  flex: 1;
-  padding: 14px 16px;
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  font-size: 16px;
-  outline: none;
-}
-
-#sendBtn {
-  padding: 0 24px;
-  background: #555;
-  color: #fdf5e6;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-/* === SMARTPHONE (default mobile-first) === */
-@media (max-width: 767px) {
-  #poolyChat.open {
-    height: calc(100vh - 80px);
-    max-height: none;
-    border-radius: 50px 50px 0 0;
-  }
-
-  #chatHeader {
-    font-size: 10px;
-    padding: 2px;
-    color: #1a1816;
-  }
-}
-
-/* === TABLET === */
-@media (min-width: 768px) and (max-width: 1023px) {
-  #poolyChat.open {
-    width: 100%;
-    max-width: none;
-    height: 420px; /* circa 7-8 righe di messaggi + header + input */
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 0;
-    transform: translateY(0);
-  }
-
-  #chatHeader {
-    font-size: 10px;
-    color: #1a1816;
-  }
-     #chatBody p {
-    font-size: 12px;
-    color: #1a1816;
-  }
-}
-/* ===== INTRO POOLY DESKTOP ===== */
-#poolyIntro {
-  position: fixed;
-  bottom: 95px;
-  right: 20px;
-  background: rgba(253,245,230,0.95);
-  color: #1a1816;
-  padding: 10px 14px;
-  border-radius: 18px;
-  font-size: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  opacity: 1;
-  transform: translateY(10px);
-  transition: all 0.4s ease;
-  z-index: 9999;
-  pointer-events: none;
-}
-
-#poolyIntro.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* === DESKTOP === */
-@media (min-width: 1024px) {
-  #poolyChat.open {
-    width: 100%;
-    height: 280px; /* fisso: header + ~7 righe messaggi + input */
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 0;
-    transform: translateY(0);
-  }
-
-  #chatHeader {
-    font-size: 10px;
-  }
-
-  #chatBody p {
-    font-size: 12px;
-    color: #1a1816;
-  }
-}
   `;
   shadow.appendChild(style);
 
@@ -272,7 +163,7 @@ if (hero && window.getComputedStyle(hero).display !== 'none') {
 
 // Listener per enterMood() (quando Landing scompare)
 window.addEventListener('enterMoodDone', () => {
-  root.style.display = 'block',smoodly;
+  root.style.display = 'block',smoodly; ;
 });
   shadow.appendChild(wrapper);
 
