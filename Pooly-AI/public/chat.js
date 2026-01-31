@@ -170,7 +170,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   #chatHeader {
     font-size: 10px;
-    padding: 12px;
+    padding: 2px;
     color: #1a1816;
   }
 }
@@ -190,6 +190,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
   #chatHeader {
     font-size: 10px;
+    color: #1a1816;
+  }
+     #chatBody p {
+    font-size: 12px;
+    color: #1a1816;
   }
 }
 /* ===== INTRO POOLY DESKTOP ===== */
@@ -203,10 +208,10 @@ window.addEventListener("DOMContentLoaded", () => {
   border-radius: 18px;
   font-size: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  opacity: 0;
+  opacity: 1;
   transform: translateY(10px);
   transition: all 0.4s ease;
-  z-index: 1002;
+  z-index: 9999;
   pointer-events: none;
 }
 
@@ -309,7 +314,7 @@ pallino.addEventListener("click", (e) => {
 
 // Questo ora funzionerà solo quando clicchi realmente fuori
 window.addEventListener("click", (e) => {
-    if (chat.classList.contains("open") && !chatBody.contains(e.target)) {
+    if (chat.classList.contains("open") && !chat.contains(e.target)) {
         chat.classList.remove("open");
         pallino.classList.remove("closed");
     }
