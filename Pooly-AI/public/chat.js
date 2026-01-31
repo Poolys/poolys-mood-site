@@ -69,7 +69,7 @@ window.addEventListener("DOMContentLoaded", () => {
   background: #e2b35ac4;
   display: flex;
   flex-direction: column;
-  z-index: 1000;
+  z-index: 9999;
   opacity: 0;
   transform: translateY(100%);
   pointer-events: none;
@@ -309,7 +309,7 @@ pallino.addEventListener("click", (e) => {
 
 // Questo ora funzionerà solo quando clicchi realmente fuori
 window.addEventListener("click", (e) => {
-    if (chat.classList.contains("open") && !chat.contains(e.target)) {
+    if (chat.classList.contains("open") && !chatBody.contains(e.target)) {
         chat.classList.remove("open");
         pallino.classList.remove("closed");
     }
