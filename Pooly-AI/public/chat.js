@@ -69,9 +69,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
       #chatHeader {
         background: linear-gradient(90deg,#138808,#fff,#d30000);
-        padding: 6px;
+        padding: 4px;
         text-align: center;
-        font-size: 12px;
+        line-height: 1.2;
+        font-size: 11px;
         font-weight: 600;
         color: #000;
       }
