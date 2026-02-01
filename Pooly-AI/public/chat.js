@@ -165,11 +165,23 @@ window.addEventListener("DOMContentLoaded", () => {
     /* ===============================
        5. LANDING → NASCOSTA CHAT
     =============================== */
-    root.style.display = "none";
+    const isLanding = document.getElementById("hero");
 
-    window.addEventListener("enterMoodDone", () => {
-      setTimeout(() => root.style.display = "block", 500);
-    });
+// LANDING → nascondi finché non entri
+if (isLanding) {
+  root.style.display = "none";
+
+  window.addEventListener("enterMoodDone", () => {
+    setTimeout(() => {
+      root.style.display = "block";
+    }, 500);
+  });
+}
+
+// CATALOGO (o altre pagine) → visibile subito
+else {
+  root.style.display = "block";
+}
 
     /* ===============================
        6. OPEN / CLOSE
