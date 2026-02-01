@@ -1,235 +1,233 @@
 window.addEventListener("DOMContentLoaded", () => {
-// POOLY AI — SHADOW CHAT
-// ===============================
+  (function () {
 
-(function () {
-  // 1️⃣ ROOT NEL DOM NORMALE
-  let root = document.getElementById("pooly-ai-root");
-  if (!root) {
-    root = document.createElement("div");
-    root.id = "pooly-ai-root";
-    document.body.appendChild(root);
-  }
-  const host = document.getElementById("pooly-ai-root");
-  if (!host) {
-    console.warn("PoolyAI: #pooly-ai-root non trovato");
-    return;
-  }
-
-  // 2️⃣ SHADOW ROOT
-  const shadow = host.attachShadow({ mode: "open" });
-
-  // ===============================
-  // 3️⃣ CSS (ex style.css AI)
-  // ===============================
-  
-  const POOLY_CSS = `
-    /* PoolyAI Chat Style */
-  `;
-  const style = document.createElement("style");
-  style.textContent = `
-    * { box-sizing: border-box; }
-    #poolyPallino {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #9c0404d2;
-      color: #1a1816;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transition: all 0.4s ease;
-      z-index: 9999;
+    /* ===============================
+       1. ROOT
+    =============================== */
+    let root = document.getElementById("pooly-ai-root");
+    if (!root) {
+      root = document.createElement("div");
+      root.id = "pooly-ai-root";
+      document.body.appendChild(root);
     }
 
-    #poolyPallino.closed {
-      opacity: 0;
-      transform: scale(0.8);
-      pointer-events: none;
-    }
+    const shadow = root.shadowRoot || root.attachShadow({ mode: "open" });
 
-    #poolyChat {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #e2b35ac4;
-      display: flex;
-      flex-direction: column;
-      opacity: 0;
-      transform: translateY(100%);
-      pointer-events: none;
-      transition: 0.3s ease;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
-    }
+    /* ===============================
+       2. CSS — TUTTO ESPLICITO
+    =============================== */
+    const style = document.createElement("style");
+    style.textContent = `
+      * { box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
 
-    #poolyChat.open {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: all;
-    }
+      #poolyPallino {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #9c0404;
+        color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 10000;
+        transition: .3s;
+      }
 
-    #chatHeader {
-      background: linear-gradient(90deg, #138808, #fff, #d30000);
-      padding: 3px;
-      text-align: center;
-      font-size: 12px;
-      color: #1a1816;
-      font-weight: bold;
-    }
+      #poolyPallino.closed {
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(.8);
+      }
 
-    #chatBody {
-      flex: 1;
-      padding: 12px;
-      overflow-y: hidden;
-      background: rgba(253,245,230,.95);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+      #poolyChat {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 280px;
+        background: #fdf5e6;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: .3s ease;
+        z-index: 9999;
+      }
 
-    #chatBody p {
-      padding: 10px 14px;
-      border-radius: 18px;
-      max-width: 85%;
-      font-size: 14px;
-      color: #000000;
-    }
+      #poolyChat.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
 
-    .userMessage { align-self: flex-end; background: #e0e0e0; }
-    .aiMessage { align-self: flex-start; background: #fdf5e6; }
+      #chatHeader {
+        background: linear-gradient(90deg,#138808,#fff,#d30000);
+        padding: 6px;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 600;
+        color: #000;
+      }
 
-    #chatInputWrapper {
-      display: flex;
-      gap: 10px;
-      padding: 10px;
-      background: #f9f9f9;
-    }
+      #chatBody {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
 
-    #msg {
-      flex: 1;
-      padding: 12px;
-      border-radius: 25px;
-      border: 1px solid #ccc;
-    }
+      .userMessage {
+        align-self: flex-end;
+        background: #ddd;
+        padding: 8px 12px;
+        border-radius: 16px;
+        font-size: 14px;
+        color: #000;
+      }
 
-    #sendBtn {
-      padding: 0 20px;
-      border-radius: 25px;
-      background: #555;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-    @media (max-width: 767px) {
-      #chatBody p { font-size: 14px; color: #000000; line-height: 1.4; }
-    } 
+      .aiMessage {
+        align-self: flex-start;
+        background: #fff;
+        padding: 8px 12px;
+        border-radius: 16px;
+        font-size: 14px;
+        color: #000;
+      }
 
-  `;
-  shadow.appendChild(style);
+      #chatInputWrapper {
+        display: flex;
+        gap: 8px;
+        padding: 8px;
+        border-top: 1px solid #ccc;
+      }
 
-  // ===============================
-  // 4️⃣ HTML (ex index.html AI)
-  // ===============================
-  const wrapper = document.createElement("div");
-  wrapper.innerHTML = `
-  <style>${POOLY_CSS}</style>
+      #msg {
+        flex: 1;
+        padding: 10px;
+        border-radius: 20px;
+        border: 1px solid #aaa;
+        font-size: 16px;
+      }
 
-    <div id="poolyPallino">PoolyAI</div>
-    <div id="poolyChat">
-      <div id="chatHeader">PoolyAI</div>
-      <div id="chatBody"></div>
-      <div id="chatInputWrapper">
-        <input id="msg" placeholder="Scrivi qui..." />
-        <button id="sendBtn">Invia</button>
+      #sendBtn {
+        padding: 0 18px;
+        border-radius: 20px;
+        border: none;
+        background: #333;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      @media (max-width: 767px) {
+        #poolyChat { height: calc(100vh - 80px); }
+        .userMessage, .aiMessage { font-size: 16px; }
+      }
+    `;
+    shadow.appendChild(style);
+
+    /* ===============================
+       3. HTML
+    =============================== */
+    const html = document.createElement("div");
+    html.innerHTML = `
+      <div id="poolyPallino">PoolyAI</div>
+      <div id="poolyChat">
+        <div id="chatHeader">PoolyAI</div>
+        <div id="chatBody"></div>
+        <div id="chatInputWrapper">
+          <input id="msg" placeholder="Scrivi qui…" />
+          <button id="sendBtn">Invia</button>
+        </div>
       </div>
-    </div>
-  `;// --- controllo Landing ---
-const hero = document.getElementById('hero');
-if (hero && window.getComputedStyle(hero).display !== 'none') {
-  // Landing visibile → nascondi chat
-  root.style.display = 'none';
-} else {
-  // Landing nascosto → mostra chat
-  root.style.display = 'block';
-}
+    `;
+    shadow.appendChild(html);
 
-// Listener per enterMood() (quando Landing scompare)
-window.addEventListener('enterMoodDone', () => {
-  root.style.display = 'block',smoodly; ;
-});
-  shadow.appendChild(wrapper);
+    /* ===============================
+       4. STATE
+    =============================== */
+    const pallino = shadow.getElementById("poolyPallino");
+    const chat = shadow.getElementById("poolyChat");
+    const chatBody = shadow.getElementById("chatBody");
+    const input = shadow.getElementById("msg");
+    const sendBtn = shadow.getElementById("sendBtn");
 
-  // ===============================
-  // 5️⃣ JS LOGIC (ex chat.js)
-  // ===============================
-  const pallino = shadow.getElementById("poolyPallino");
-  const chat = shadow.getElementById("poolyChat");
-  const chatBody = shadow.getElementById("chatBody");
-  const input = shadow.getElementById("msg");
-  const sendBtn = shadow.getElementById("sendBtn");
+    let chatHistory = [];
 
-  let chatHistory = JSON.parse(localStorage.getItem("poolyChatHistory")) || [];
+    /* ===============================
+       5. LANDING → NASCOSTA CHAT
+    =============================== */
+    root.style.display = "none";
 
-  function renderHistory() {
-    chatBody.innerHTML = "";
-    chatHistory.forEach(m => {
-      const p = document.createElement("p");
-      p.className = m.role === "user" ? "userMessage" : "aiMessage";
-      p.textContent = m.content;
-      chatBody.appendChild(p);
+    window.addEventListener("enterMoodDone", () => {
+      setTimeout(() => root.style.display = "block", 500);
     });
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }
 
- // 1. Gestione dell'apertura (Click sul pallino)
-pallino.addEventListener("click", (e) => {
-    // BLOCCA la propagazione del click alla window
-    e.stopPropagation(); 
-    
-    pallino.classList.add("closed");
-    chat.classList.add("open");
-    
-    if (!chatHistory.length) {
+    /* ===============================
+       6. OPEN / CLOSE
+    =============================== */
+    pallino.addEventListener("click", e => {
+      e.stopPropagation();
+      pallino.classList.add("closed");
+      chat.classList.add("open");
+
+      if (!chatHistory.length) {
         chatHistory.push({ role: "ai", content: "Benvenuto! Come posso aiutarti?" });
-    }
-    renderHistory();
-});
-
-// Questo ora funzionerà solo quando clicchi realmente fuori
-window.addEventListener("click", (e) => {
-    if (chat.classList.contains("open") && !chat.contains(e.target)) {
-      chat.classList.remove("open");
-        pallino.classList.remove("closed");
-    }
-});
-  sendBtn.addEventListener("click", sendMessage);
-  input.addEventListener("keydown", e => e.key === "Enter" && sendMessage());
-
-  async function sendMessage() {
-    const text = input.value.trim();
-    if (!text) return;
-    chatHistory.push({ role: "user", content: text });
-    input.value = "";
-    renderHistory();
-
-    const res = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ history: chatHistory, context: window.poolyContext || null })
+        render();
+      }
     });
 
-    const data = await res.json();
-    chatHistory.push({ role: "ai", content: data.reply });
-    renderHistory();
-    localStorage.setItem("poolyChatHistory", JSON.stringify(chatHistory));
-  }
-})();
+    window.addEventListener("click", e => {
+      const path = e.composedPath();
+      if (chat.classList.contains("open") && !path.includes(chat)) {
+        chat.classList.remove("open");
+        pallino.classList.remove("closed");
+      }
+    });
+
+    /* ===============================
+       7. CHAT
+    =============================== */
+    sendBtn.addEventListener("click", send);
+    input.addEventListener("keydown", e => e.key === "Enter" && send());
+
+    function render() {
+      chatBody.innerHTML = "";
+      chatHistory.forEach(m => {
+        const p = document.createElement("div");
+        p.className = m.role === "user" ? "userMessage" : "aiMessage";
+        p.textContent = m.content;
+        chatBody.appendChild(p);
+      });
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    async function send() {
+      const text = input.value.trim();
+      if (!text) return;
+
+      chatHistory.push({ role: "user", content: text });
+      input.value = "";
+      render();
+
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ history: chatHistory, context: window.poolyContext || null })
+      });
+
+      const data = await res.json();
+      chatHistory.push({ role: "ai", content: data.reply });
+      render();
+    }
+
+  })();
 });
