@@ -239,6 +239,15 @@ window.addEventListener("DOMContentLoaded", () => {
     input.addEventListener("focus", () => chat.classList.add("writing"));
     input.addEventListener("blur", () => chat.classList.remove("writing"));
 
+    input.style.fontSize = "16px";
+    input.setAttribute("inputmode", "text");
+    input.addEventListener("focus", () => {
+  chat.classList.add("writing");
+  setTimeout(() => {
+    input.scrollIntoView({ block: "center" });
+  }, 300);
+});
+
     sendBtn.addEventListener("click", sendMessage);
     input.addEventListener("keydown", e => e.key === "Enter" && sendMessage());
 
