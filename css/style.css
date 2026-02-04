@@ -96,7 +96,7 @@ body.fade-out {
 h1 {
   font-size: clamp(32px, 4vw, 48px);
   letter-spacing: 0.06em;
-  font-family: var(--font-main);
+  font-family: 'Great Vibes', cursive;
 }
 
 h2 {
