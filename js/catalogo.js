@@ -14,15 +14,13 @@ fetch("data/modelli.json")
 
         <div class="catalogo-text">
           <h2>${modello.titolo}</h2>
-          <p class="manifesto" data-model="${modello.titolo}">${modello.manifesto}</p>
+          <p class="manifesto">${modello.manifesto}</p>
           <p class="descrizione">${modello.descrizione}</p>
         </div>
       `;
 
       catalogo.appendChild(section);
     });
-
-    initObserver(); // avvia observer dopo aver caricato i modelli
   });
 
 window.poolyContext = {
@@ -30,35 +28,32 @@ window.poolyContext = {
   model: null
 };
 
-function initObserver() {
-  const manifesti = [...document.querySelectorAll('.manifesto[data-model]')];
+const manifesti = [...document.querySelectorAll('.block.manifesto[data-model]')];
 
-  const observer = new IntersectionObserver((entries) => {
-    let closest = null;
-    let minDistance = Infinity;
-    const viewportCenter = window.innerHeight / 2;
+function updateActiveModel() {
+  let closest = null;
+  let minDistance = Infinity;
+  const viewportCenter = window.innerHeight / 2;
 
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const rect = entry.target.getBoundingClientRect();
-        const elCenter = rect.top + rect.height / 2;
-        const distance = Math.abs(viewportCenter - elCenter);
+  manifesti.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const elCenter = rect.top + rect.height / 2;
+    const distance = Math.abs(viewportCenter - elCenter);
 
-        if (distance < minDistance) {
-          minDistance = distance;
-          closest = entry.target;
-        }
-      }
-    });
-
-    if (closest) {
-      const model = closest.dataset.model;
-      if (window.poolyContext.model !== model) {
-        window.poolyContext.model = model;
-        console.log("🎯 Modello attivo:", model);
-      }
+    if (distance < minDistance) {
+      minDistance = distance;
+      closest = el;
     }
-  }, { threshold: [0.5] }); // almeno 50% visibile
+  });
 
-  manifesti.forEach(m => observer.observe(m));
+  if (closest) {
+    const model = closest.dataset.model;
+    if (window.poolyContext.model !== model) {
+      window.poolyContext.model = model;
+      console.log("🎯 Modello attivo:", model);
+    }
+  }
 }
+
+window.addEventListener('scroll', updateActiveModel);
+window.addEventListener('load', updateActiveModel);
