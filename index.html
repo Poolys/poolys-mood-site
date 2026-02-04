@@ -16,19 +16,6 @@
 
 <body class="locked" style="overflow: hidden;">
 
-  <!-- HEADER FISSO (uguale a catalogo) -->
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="logo">Pooly's Mood</a>
-      <nav>
-        <a href="index.html" class="active">Home</a>
-        <a href="catalogo.html">Catalogo</a>
-        <a href="#progetti">Progetti realizzati</a>
-        <a href="#licensing">Licensing</a>
-        <a href="#contatti">Contatti</a>
-      </nav>
-    </div>
-  </header>
 
   <!-- HERO -->
   <section class="hero" id="hero">
@@ -50,6 +37,20 @@
 
   <!-- MAIN – inizia nascosto -->
   <main id="main-content" style="opacity:0; pointer-events:none;">
+    <!-- HEADER FISSO (uguale a catalogo) -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">Pooly's Mood</a>
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="catalogo.html">Catalogo</a>
+        <a href="#progetti">Progetti realizzati</a>
+        <a href="#licensing">Licensing</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+    </div>
+  </header>
+  #main-content >*:first-child { margin-top:100px; } <!-- per compensare l'header fisso -->
     <!-- SEZIONI TASTE -->
     <section class="taste taste-intro">
       <div class="taste-frame-quote">"La natura non indica la strada... la percorre insieme a noi. 'J. W. von Goethe'"</div>

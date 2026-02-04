@@ -66,3 +66,9 @@ window.addEventListener('pageshow', (event) => {
     window.location.reload(); // BFCache
   }
 });
+const header = document.querySelector('.site-header');
+if (header) {
+  header.style.opacity = '0';
+  header.style.transition = 'opacity 0.6s ease';
+  setTimeout(() => { header.style.opacity = '1'; }, 300);
+}
