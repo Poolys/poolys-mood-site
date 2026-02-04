@@ -34,7 +34,7 @@ body.fade-out {
   --avorio: #fab19be8;
   --nero: #000000;
 
-  --font-main:'Great Vibes', cursive;;
+  --font-main: "Cormorant Garamond", serif;
   --font-clean: "Inter", system-ui, -apple-system, sans-serif;
 }
 
@@ -274,7 +274,7 @@ button {
     background: var(--avorio);
     color: #160f0c;
     border-radius: 8px;
-    font-family: var(--font-main);
+    font-family: 'Great Vibes', cursive;
     font-size: 18px;
 }
 
