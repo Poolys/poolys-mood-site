@@ -267,6 +267,7 @@ button {
   #hero .hero-content {
     padding: 4vh 0;
     gap: 12px;
+    font-family: 'Great Vibes', cursive;
   }
   #hero-content button {
     padding: 18px 84px;
