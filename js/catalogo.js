@@ -1,3 +1,4 @@
+
 fetch("data/modelli.json")
   .then(res => res.json())
   .then(modelli => {
@@ -19,9 +20,10 @@ fetch("data/modelli.json")
         </div>
       `;
 
-      catalogo.appendChild(section);
+      "catalogo.appendChild(section)";
     });
   });
+  
 
 window.poolyContext = {
   page: "catalogo",
