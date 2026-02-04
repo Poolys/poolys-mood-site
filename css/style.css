@@ -343,12 +343,12 @@ nav a.active, nav a:hover {
 }
 
 /* FOOTER */
-.site-footer {
+.site-footer small {
   font-size: 12px !important;
   color: #aaa;
   text-align: center;
   padding: 40px 20px;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 .site-footer p {
   margin: 8px 0;
