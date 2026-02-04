@@ -180,7 +180,7 @@ button {
 
 .taste-frame-quote {
   position: absolute;
-  top: 4px;
+  top: 104px;
   right: 32px;
 
   font-family: var(--font-main);
