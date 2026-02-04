@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Trova il link con selector più sicuro (usa href esatto)
     const progettiLink = document.querySelector('a[href="#progetti"]');
     if (progettiLink) {
+      console.log("Link Progetti trovato – listener aggiunto");
       progettiLink.addEventListener("click", (e) => {
         e.preventDefault(); // BLOCCA lo scroll di default
         e.stopPropagation(); // blocca bubbling se altri listener
@@ -48,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <!-- stesso style e HTML del modal licensing -->
     `;
 
+    // Apri modal licensing
     const licensingLink = document.querySelector('a[href="#licensing"]');
     if (licensingLink) {
       console.log("Link Licensing trovato – listener aggiunto");
