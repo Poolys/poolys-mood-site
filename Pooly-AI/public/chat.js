@@ -58,7 +58,7 @@ window.addEventListener("DOMContentLoaded", () => {
         left: 10px;
         right: 10px;
         bottom: 10px;
-        max-height: 65vh;
+        max-height: 85vh;
         background: #fdf5e6;
         border-radius: 16px;
         display: flex;

@@ -109,3 +109,78 @@ body {
     width: 100%;
   }
 }
+/* MENU FISSO */
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #000;
+  color: var(--oro);
+  z-index: 1000;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(212,175,55,0.2);
+}
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--oro);
+  text-decoration: none;
+}
+nav a {
+  color: var(--bianco);
+  margin-left: 30px;
+  text-decoration: none;
+  font-size: 16px;
+}
+nav a.active, nav a:hover {
+  color: var(--oro);
+}
+
+/* FOOTER */
+.site-footer {
+  background: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 60px;
+}
+.site-footer p {
+  margin: 8px 0;
+}
+
+/* PROGETTI REALIZZATI */
+.progetti {
+  padding: 80px 20px;
+  background: #111;
+  text-align: center;
+}
+.progetti h2 {
+  font-size: 48px;
+  color: var(--oro);
+  margin-bottom: 40px;
+}
+.progetti-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.progetto img {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(212,175,55,0.2);
+}
+.progetto p {
+  margin-top: 12px;
+  color: #ccc;
+  font-size: 16px;
+}

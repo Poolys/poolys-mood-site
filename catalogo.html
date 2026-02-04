@@ -2,27 +2,38 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="description" content="Catalogo espositori lusso vino Pooly's Mood – legno Piemonte, inox italiano, design artigianale. Gaudium Vino.">
   <title>Catalogo — Pooly’s Mood</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/catalogo.css">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    html, body {
-      background-color: #000000;
-    }
+    html, body { background-color: #000000; }
   </style>
 </head>
 
-<body class="catalogo"> 
-<main class="catalogo-wrapper">
+<body class="catalogo">
 
+  <!-- HEADER FISSO (uguale a index) -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">Pooly's Mood</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="catalogo.html" class="active">Catalogo</a>
+        <a href="#progetti">Progetti realizzati</a>
+        <a href="#licensing">Licensing</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+    </div>
+  </header>
 
-  <!-- ===================== -->
+  <main class="catalogo-wrapper">
+
+     <!-- ===================== -->
 <!-- MODELLO 1 : P GAUDIUM -->
 <!-- ===================== -->
 
@@ -403,10 +414,40 @@
 </section><!-- DIVISORE MODELLO -->
 <div class="model-divider"></div>
 
-<div id="pooly-ai-container"></div>
-</main>
-<script src="js/catalogo.js"></script>
-<script src="Pooly-AI/public/chat.js"defer></script>
+    <!-- SEZIONE PROGETTI REALIZZATI (nuova) -->
+    <section class="progetti" id="progetti">
+      <h2>Alcuni lavori realizzati</h2>
+      <div class="progetti-grid">
+        <div class="progetto">
+          <img src="assets/img/progetti/scala-chiocciola.jpg" alt="Scala a chiocciola 7.8 t">
+          <p>Scala a chiocciola inox – 7.8 tonnellate, 1 mese di lavorazione</p>
+        </div>
+        <div class="progetto">
+          <img src="assets/img/progetti/baule-bruciato.jpg" alt="Espositore baule bruciato">
+          <p>Espositore baule bruciato – venduto</p>
+        </div>
+        <div class="progetto">
+          <img src="assets/img/progetti/tronco-bottiglie.jpg" alt="Portabottiglie tronco naturale">
+          <p>Portabottiglie tronco naturale – venduto</p>
+        </div>
+      </div>
+    </section>
 
+  </main>
+
+  <!-- FOOTER (uguale a index) -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Progettato e realizzato da Paul Șerbănescu – Piemonte, Italia</p>
+      <p>Materiali: legno Piemonte • inox specchio/satinato</p>
+      <p>Email: info@poolysmood.com | WhatsApp: +39 [INSERISCI IL TUO NUMERO]</p>
+      <p>Per licensing, prototipi o produzione: scrivici!</p>
+    </div>
+  </footer>
+
+  <div id="pooly-ai-container"></div>
+
+  <script src="js/catalogo.js"></script>
+  <script src="Pooly-AI/public/chat.js" defer></script>
 </body>
 </html>

@@ -2,22 +2,33 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="description" content="Pooly's Mood – Espositori lusso per vino e showroom. Legno Piemonte e inox italiano. Gaudium Vino.">
   <title>Pooly’s Mood</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
   <style>
-    html, body {
-      background-color: #000000;
-    }
+    html, body { background-color: #000000; }
   </style>
 </head>
 
-<body class="locked" style="overflow: hidden;"> <!-- tieni locked se usi per no-scroll iniziale -->
+<body class="locked" style="overflow: hidden;">
+
+  <!-- HEADER FISSO (uguale a catalogo) -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">Pooly's Mood</a>
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="catalogo.html">Catalogo</a>
+        <a href="#progetti">Progetti realizzati</a>
+        <a href="#licensing">Licensing</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+    </div>
+  </header>
 
   <!-- HERO -->
   <section class="hero" id="hero">
@@ -27,27 +38,24 @@
       </div>
       <div class="hero-content">
         <h1>Pooly’s Mood</h1>
-        <p class="manifesto"> "Gaudium Vino"</p>
+        <p class="manifesto">"Gaudium Vino"</p>
         <button onclick="enterMood()">Scopri</button>
-         <p class="hero-claim">
-  Non esponiamo oggetti,<br>
-  accogliamo presenze.
-</p>
+        <p class="hero-claim">
+          Non esponiamo oggetti,<br>
+          accogliamo presenze.
+        </p>
       </div>
     </div>
-     
   </section>
- 
-    
- <!-- MAIN – inizia nascosto -->
+
+  <!-- MAIN – inizia nascosto -->
   <main id="main-content" style="opacity:0; pointer-events:none;">
     <!-- SEZIONI TASTE -->
     <section class="taste taste-intro">
-       <div class="taste-frame-quote">"La natura non indica la strada... la percorre insieme a noi.
-        'J. W. von Goethe'"</div>
+      <div class="taste-frame-quote">"La natura non indica la strada... la percorre insieme a noi. 'J. W. von Goethe'"</div>
       <img src="assets/img/mood/langhe.jpg" alt="langhe">
       <div class="model-divider"></div>
-     </section>
+    </section>
 
     <section class="taste taste-matter">
       <img src="assets/img/mood/uva.jpg" alt="uva">
@@ -55,27 +63,33 @@
     </section>
 
     <section class="taste taste-models">
-       <div class="taste-frame-quote">"La solidità delle cose nasce dall'equilibrio. 
-        ' Italo Calvino'"</div>
+      <div class="taste-frame-quote">"La solidità delle cose nasce dall'equilibrio. ' Italo Calvino'"</div>
       <img src="assets/img/mood/areddi.jpg" alt="gaudium">
       <div class="model-divider"></div>
     </section>
 
     <section class="taste taste-invite" id="invite-section">
-      <div class="taste-section-image"> <!-- wrapper per rendere cliccabile l'immagine -->
+      <div class="taste-section-image">
         <img src="assets/img/mood/logo.jpg" alt="logo">
       </div>
       <h2 class="enter-link" onclick="goToCatalogo()">Entrate nel nostro catalogo.</h2>
-    <div class="model-divider"></div>
+      <div class="model-divider"></div>
     </section>
 
-    <!-- Le sezioni block le puoi lasciare qui o spostarle in catalogo se preferisci -->
-
-<div id="pooly-ai-container"></div>
-  
+    <div id="pooly-ai-container"></div>
   </main>
+
+  <!-- FOOTER (uguale a catalogo) -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Progettato e realizzato da Paul Șerbănescu – Piemonte, Italia</p>
+      <p>Materiali: legno Piemonte • inox specchio/satinato</p>
+      <p>Email: info@poolysmood.com | WhatsApp: +39 [INSERISCI IL TUO NUMERO]</p>
+      <p>Per licensing, prototipi o produzione: scrivici!</p>
+    </div>
+  </footer>
+
   <script src="js/main.js"></script>
-  <script src="Pooly-AI/public/chat.js"defer></script>
-  
+  <script src="Pooly-AI/public/chat.js" defer></script>
 </body>
 </html>
