@@ -323,10 +323,13 @@ button {
   align-items: center;
 }
 .logo {
-  font-size: 24px;
-  font-weight: bold;
+  font-family: 'Great Vibes', cursive; /* o 'Sacramento', cursive; o 'Parisienne', cursive; */
+  font-size: clamp(28px, 6vw, 42px); /* responsive: piccolo su mobile, grande su desktop */
+  font-weight: 400;
   color: var(--oro);
+  letter-spacing: 0.03em;
   text-decoration: none;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* leggero per profondità */
 }
 nav a {
   color: var(--bianco);
@@ -378,19 +381,11 @@ nav a.active, nav a:hover {
   color: #ccc;
   font-size: 16px;
 }
-.logo {
-  font-family: 'Great Vibes', cursive; /* o 'Sacramento', cursive; o 'Parisienne', cursive; */
-  font-size: clamp(28px, 6vw, 42px); /* responsive: piccolo su mobile, grande su desktop */
-  font-weight: 400;
-  color: var(--oro);
-  letter-spacing: 0.03em;
-  text-decoration: none;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* leggero per profondità */
-}
+
 
 /* Su mobile, riduci un po' */
 @media (max-width: 767px) {
-  .logo {
+  #logo {
     font-size: clamp(24px, 5vw, 32px);
   }
 }
