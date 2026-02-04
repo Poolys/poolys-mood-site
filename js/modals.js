@@ -1,33 +1,95 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("modals.js caricato – pronto per intercettare click");
-
   // ====================
-  // MODAL PROGETTI REALIZZATI
+  // MODAL PROGETTI
   // ====================
   const progettiRoot = document.getElementById("progetti-modal-root");
   if (progettiRoot) {
     const shadowProgetti = progettiRoot.attachShadow({ mode: "open" });
 
     shadowProgetti.innerHTML = `
-      <!-- stesso style e HTML del modal progetti che avevi prima – non cambio nulla qui per brevità -->
-      <!-- copia-incolla il tuo <style> + <div id="modal-overlay"> ... </div> -->
+      <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Prata', serif; }
+        #modal-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.85);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.4s ease;
+        }
+        #modal-overlay.open {
+          opacity: 1;
+          pointer-events: all;
+        }
+        #modal-content {
+          background: #111;
+          border: 1px solid var(--oro, #D4AF37);
+          max-width: 90%;
+          width: 1200px;
+          max-height: 90vh;
+          overflow-y: auto;
+          padding: 40px;
+          border-radius: 8px;
+          color: #eee;
+          position: relative;
+        }
+        .close-btn {
+          position: absolute;
+          top: 20px;
+          right: 30px;
+          background: none;
+          border: none;
+          font-size: 32px;
+          color: var(--oro);
+          cursor: pointer;
+        }
+        h2 { color: var(--oro); margin-bottom: 30px; font-size: 36px; text-align: center; }
+        .progetti-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 30px;
+        }
+        .progetto img {
+          width: 100%;
+          border: 1px solid rgba(212,175,55,0.3);
+        }
+        .progetto p { margin-top: 10px; text-align: center; font-style: italic; color: #ccc; }
+      </style>
+
+      <div id="modal-overlay">
+        <div id="modal-content">
+          <button class="close-btn">×</button>
+          <h2>Alcuni lavori realizzati</h2>
+          <div class="progetti-grid">
+            <div class="progetto">
+              <img src="assets/img/progetti/scala-chiocciola.jpg" alt="Scala a chiocciola">
+              <p>Scala a chiocciola inox – 7.8 tonnellate, 1 mese di lavorazione</p>
+            </div>
+            <div class="progetto">
+              <img src="assets/img/progetti/baule-bruciato.jpg" alt="Baule bruciato">
+              <p>Espositore baule bruciato – venduto</p>
+            </div>
+            <div class="progetto">
+              <img src="assets/img/progetti/tronco-bottiglie.jpg" alt="Tronco bottiglie">
+              <p>Portabottiglie tronco naturale – venduto</p>
+            </div>
+            <!-- Aggiungi altre foto se ne hai -->
+          </div>
+        </div>
+      </div>
     `;
 
-    // Trova il link con selector più sicuro (usa href esatto)
-    const progettiLink = document.querySelector('a[href="#progetti"]');
-    if (progettiLink) {
-      console.log("Link Progetti trovato – listener aggiunto");
-      progettiLink.addEventListener("click", (e) => {
-        e.preventDefault(); // BLOCCA lo scroll di default
-        e.stopPropagation(); // blocca bubbling se altri listener
-        console.log("Click su Progetti – apro modal");
-        shadowProgetti.querySelector("#modal-overlay").classList.add("open");
-      });
-    } else {
-      console.error("Link #progetti NON trovato!");
-    }
+    // Apri modal
+    document.querySelector('a[href="#progetti"]').addEventListener("click", (e) => {
+      e.preventDefault();
+      shadowProgetti.querySelector("#modal-overlay").classList.add("open");
+    });
 
-    // Chiudi modal (stesso di prima)
+    // Chiudi modal
     shadowProgetti.querySelector(".close-btn").addEventListener("click", () => {
       shadowProgetti.querySelector("#modal-overlay").classList.remove("open");
     });
@@ -39,31 +101,58 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ====================
-  // MODAL LICENSING – stesso schema
+  // MODAL LICENSING (simile)
   // ====================
   const licensingRoot = document.getElementById("licensing-modal-root");
   if (licensingRoot) {
     const shadowLicensing = licensingRoot.attachShadow({ mode: "open" });
 
     shadowLicensing.innerHTML = `
-      <!-- stesso style e HTML del modal licensing -->
+      <style>
+        /* Stessi stili del modal progetti – copia-incolla per uniformità */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Prata', serif; }
+        #modal-overlay { /* stesso overlay */ }
+        #modal-overlay.open { /* stesso open */ }
+        #modal-content { /* stesso content */ padding: 50px; }
+        .close-btn { /* stessa close */ }
+        h2 { color: var(--oro); margin-bottom: 30px; font-size: 36px; text-align: center; }
+        p { line-height: 1.7; margin-bottom: 20px; font-size: 18px; }
+        ul { list-style: none; padding-left: 0; margin-left: 20px; }
+        li { margin: 10px 0; position: relative; padding-left: 20px; }
+        li::before { content: "•"; color: var(--oro); position: absolute; left: 0; }
+        a { color: var(--oro); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+      </style>
+
+      <div id="modal-overlay">
+        <div id="modal-content">
+          <button class="close-btn">×</button>
+          <h2>Licensing & Produzione</h2>
+          <p>Pooly’s Mood è una linea completa di espositori lusso per vino e showroom, pronta per produzione o licensing.</p>
+          <p><strong>Pacchetto chiavi in mano include:</strong></p>
+          <ul>
+            <li>10 modelli base (con varianti e personalizzazioni)</li>
+            <li>Disegni CAD 3D/2D (in arrivo dal mio team)</li>
+            <li>PDF tecnico completo (misure, materiali, tecniche)</li>
+            <li>Sito web professionale con AI chat integrata</li>
+            <li>Materiali premium: legno Piemonte + inox specchio/satinato</li>
+            <li>Foto e proof of concept (lavori venduti)</li>
+          </ul>
+          <p>Interessato a licensing esclusivo, produzione su larga scala o prototipi? Contattami direttamente:</p>
+          <p><strong>Email:</strong> <a href="mailto:info@poolysmood.com">info@poolysmood.com</a></p>
+          <p><strong>WhatsApp:</strong> +39 [INSERISCI NUMERO]</p>
+          <p>Gaudium Vino – accogliamo presenze.</p>
+        </div>
+      </div>
     `;
 
     // Apri modal licensing
-    const licensingLink = document.querySelector('a[href="#licensing"]');
-    if (licensingLink) {
-      console.log("Link Licensing trovato – listener aggiunto");
-      licensingLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log("Click su Licensing – apro modal");
-        shadowLicensing.querySelector("#modal-overlay").classList.add("open");
-      });
-    } else {
-      console.error("Link #licensing NON trovato!");
-    }
+    document.querySelector('a[href="#licensing"]').addEventListener("click", (e) => {
+      e.preventDefault();
+      shadowLicensing.querySelector("#modal-overlay").classList.add("open");
+    });
 
-    // Chiudi (stesso di prima)
+    // Chiudi modal
     shadowLicensing.querySelector(".close-btn").addEventListener("click", () => {
       shadowLicensing.querySelector("#modal-overlay").classList.remove("open");
     });
