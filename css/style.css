@@ -430,31 +430,11 @@ nav a.active, nav a:hover {
   border: 15px solid transparent;
   border-image: linear-gradient(
     to bottom right,
-    #ffd700, #ffeb3b, #ffc107, #ffda44, #ffd700
+    #3f3600c2, #2c290a9c, #35280181, #1a1606dc, #0a0900
   ) 1;
   pointer-events: none;
   border-radius: 18px;
   opacity: 0.7;
-}
-
-/* Testo stile elegante */
-.frame h1 {
-  font-size: 3.2rem;
-  margin: 0.4em 0;
-  font-weight: bold;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-}
-
-.frame .subtitle {
-  font-size: 1.6rem;
-  font-style: italic;
-  margin: 0.8em 0;
-}
-
-.frame .date {
-  font-size: 1.3rem;
-  margin-top: 1.5em;
-  opacity: 0.9;
 }
 
 /* Responsive – cornice si adatta al dispositivo */
@@ -496,5 +476,5 @@ nav a.active, nav a:hover {
   height: auto;
   overflow: hidden;
   position: relative;
-  background: #000;
+  background: #d4c708d7;
 }
