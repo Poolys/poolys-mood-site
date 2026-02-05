@@ -393,8 +393,8 @@ nav a.active, nav a:hover {
 /* Cornice adattiva */
 .frame {
   position: relative;
-  width: 400px; /* adatta alla tua immagine/testo */
-  max-width: 90%;
+  width: 100vw; /* adatta alla tua immagine/testo */
+  height: 100vh;
   margin: 40px auto;
   padding: 60px 50px; /* spazio interno grande come una cornice vera */
   box-sizing: border-box;
