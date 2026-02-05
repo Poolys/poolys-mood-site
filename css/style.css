@@ -393,7 +393,7 @@ nav a.active, nav a:hover {
 /* Cornice adattiva – senza background fisso, effetto acciaio specchio */
 .hero-frame {
   margin: 40px auto;
-  width: 90%;
+  width: 100%;
   max-width: 1800px;
   border: 10px solid transparent;
   background: linear-gradient(145deg, #d0d0d0, #b0b0b0, #e0e0e0, #c8c8c8); /* base satinato grigio chiaro */
