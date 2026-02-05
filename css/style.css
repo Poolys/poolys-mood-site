@@ -390,103 +390,73 @@ nav a.active, nav a:hover {
     font-size: clamp(24px, 5vw, 32px);
   }
 }
-/* Cornice adattiva – senza background fisso, effetto acciaio specchio */
-.hero-frame {
-  margin: 2px auto;
-  width: 100vw;
-  height: 100vh;
-  max-width: 1600px;
+/* Frame barocco invisibile – solo ombre e scanalature */
+.hero-canvas-frame {
   position: relative;
-  padding: 35px;
-  border: 10px solid transparent;
-  border-image: linear-gradient(to bottom right, #f0c14b, #d4af37, #b8860b, #aa771c) 1;
-  box-shadow: 
-    inset 0 0 50px rgba(255,215,0,0.4), /* luce oro interna */
-    inset 0 0 90px rgba(0,0,0,0.6), /* profondità */
-    0 25px 70px rgba(0,0,0,0.85); /* ombra esterna */
-  border-radius: 24px;
-  background: #0a0a0a; /* sfondo molto scuro per contrasto con cornice */
+  width: 100vw; /* occupa tutto lo schermo in larghezza */
+  min-height: 100vh; /* minimo altezza schermo */
+  margin: 0; /* zero margini esterni */
+  padding: 0;
+  overflow: hidden;
+  background: #000; /* sfondo nero per contrasto */
+}
+
+/* Scanalature e ombre barocche interne (come intagli di un quadro antico) */
+.hero-canvas-frame::before,
+.hero-canvas-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(0,0,0,0.4) 60%,
+    rgba(0,0,0,0.8) 75%,
+    rgba(0,0,0,0.95) 85%,
+    #000 100%
+  );
+  mix-blend-mode: multiply; /* ombre profonde che si fondono col contenuto */
+  opacity: 0.7;
+}
+
+/* Scanalature più marcate sugli angoli (effetto intaglio barocco) */
+.hero-canvas-frame::after {
+  background: 
+    radial-gradient(circle at 0% 0%, transparent 30%, rgba(0,0,0,0.6) 50%, #000 70%),
+    radial-gradient(circle at 100% 0%, transparent 30%, rgba(0,0,0,0.6) 50%, #000 70%),
+    radial-gradient(circle at 0% 100%, transparent 30%, rgba(0,0,0,0.6) 50%, #000 70%),
+    radial-gradient(circle at 100% 100%, transparent 30%, rgba(0,0,0,0.6) 50%, #000 70%);
+  opacity: 0.85;
+  mix-blend-mode: darken;
+}
+
+/* Contenuto hero – centrato e proporzionato */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
-/* Angoli decorativi con il TUO SVG */
-.hero-frame::before,
-.hero-frame::after {
-  content: "";
-  position: absolute;
-  width: 120px; /* dimensione angolo – regola tu */
-  height: 120px;
-  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="oroBarocco" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#bf953f;stop-opacity:1" /><stop offset="25%" style="stop-color:#fcf6ba;stop-opacity:1" /><stop offset="50%" style="stop-color:#b38728;stop-opacity:1" /><stop offset="75%" style="stop-color:#fbf5b7;stop-opacity:1" /><stop offset="100%" style="stop-color:#aa771c;stop-opacity:1" /></linearGradient></defs><path d="M0 0 Q 50 100 100 0 Q 50 -50 0 0" fill="url(#oroBarocco)"/></svg>') no-repeat center;
-  background-size: contain;
-  opacity: 0.95;
-}
-
-/* Angolo in alto a sinistra */
-.hero-frame::before {
-  top: -40px;
-  left: -40px;
-  transform: rotate(-45deg);
-}
-
-/* Angolo in basso a destra */
-.hero-frame::after {
-  bottom: -40px;
-  right: -40px;
-  transform: rotate(135deg);
-}
-
-/* Angolo in alto a destra (opzionale – simmetria) */
-.hero-frame .top-right {
-  position: absolute;
-  top: -40px;
-  right: -40px;
-  width: 120px;
-  height: 120px;
-  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="oroBarocco" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#bf953f;stop-opacity:1" /><stop offset="25%" style="stop-color:#fcf6ba;stop-opacity:1" /><stop offset="50%" style="stop-color:#b38728;stop-opacity:1" /><stop offset="75%" style="stop-color:#fbf5b7;stop-opacity:1" /><stop offset="100%" style="stop-color:#aa771c;stop-opacity:1" /></linearGradient></defs><path d="M0 0 Q 50 100 100 0 Q 50 -50 0 0" fill="url(#oroBarocco)"/></svg>') no-repeat center;
-  background-size: contain;
-  opacity: 0.95;
-  transform: rotate(45deg);
-}
-
-/* Responsive – cornice si adatta al dispositivo */
+/* Adattamento automatico al dispositivo */
 @media (max-width: 1024px) {
-  #hero-frame {
-    margin: 30px auto;
-    width: 95%;
-    padding: 25px;
-    border-width: 8px;
-    border-radius: 18px;
-  }
-  #hero-frame::before, #hero-frame::after, #hero-frame .top-right {
-    width: 90px;
-    height: 90px;
-    top: -30px;
-    left: -30px;
+  #hero-canvas-frame::before,
+  #hero-canvas-frame::after {
+    opacity: 0.65; /* meno ombre su tablet per non oscurare */
   }
 }
 
 @media (max-width: 767px) {
-  #hero-frame {
-    margin: 15px auto;
-    width: 98%;
-    padding: 15px;
-    border-width: 5px;
-    border-radius: 14px;
+  #hero-canvas-frame::before,
+  #hero-canvas-frame::after {
+    opacity: 0.55; /* ancora più leggero su smartphone */
   }
-  #hero-frame::before, #hero-frame::after, #hero-frame .top-right {
-    width: 60px;
-    height: 60px;
-    top: -20px;
-    left: -20px;
+  .hero {
+    height: 90vh; /* evita scroll inutile su mobile */
   }
-}
-
-/* Hero interna – proporzioni quadro */
-.hero {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 4; /* proporzione verticale da quadro classico – cambia se vuoi */
-  overflow: hidden;
-  position: relative;
-  background: #000;
 }
