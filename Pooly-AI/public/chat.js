@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         width: 66px;
         height: 66px;
         border-radius: 50%;
-        background: #D4AF37;
+        background: #bd0b0b;
         color: #000;
         display: flex;
         align-items: center;
@@ -61,13 +61,13 @@ document.addEventListener("DOMContentLoaded", () => {
       /* === CHAT === */
       #poolyChat {
         position: fixed;
-        bottom: 100px;
-        right: 20px;
-        width: 380px;
+        bottom: 1px;
+        right: 2px;
+        width: 100%;
         height: 520px; /* ALTEZZA FISSA – non si allunga mai */
-        max-height: 85vh;
+        max-height: 60vh;
         background: #111;
-        border: 1px solid #D4AF37;
+        border: 1.2px solid #D4AF37;
         border-radius: 16px;
         display: none;
         flex-direction: column;
@@ -88,16 +88,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       /* === HEADER === */
       #chatHeader {
-        background: #000;
-        color: #D4AF37;
+         background: linear-gradient(90deg, #138808, #fff, #d30000);
+        color: #11100eff;
         padding: 14px;
         text-align: center;
-        font-size: 18px;
+        font-size: 15px;
         font-weight: bold;
         border-bottom: 1px solid #D4AF37;
         position: relative;
-      }
-
+      }  
+        
       #close-btn {
         position: absolute;
         top: 10px;
