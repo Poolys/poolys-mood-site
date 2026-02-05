@@ -391,51 +391,54 @@ nav a.active, nav a:hover {
   }
 }
 /* Cornice adattiva */
-.frame {
+.hero-frame {
+ width: 100vw; /* si adatta al dispositivo */
+ max-height: 100vh; /* altezza massima viewport */
+  max-width: 1600px; /* limite max desktop */
+  border-style: solid; /* obbligatorio per border-image */
+  border-width: 60px; /* spessore della cornice – regola tu (es. 40-80px) */
+  border-image-source: url('assets/img/hero/cornice.png'); /* il tuo PNG */
+  border-image-slice: 60; /* taglia 60px da ogni lato (griglia 3×3) */
+  border-image-repeat: stretch; /* stretch = allunga i lati se necessario */
+  border-image-width: 60px; /* deve combaciare con border-width */
+  border-image-outset: 0; /* non sporge fuori */
+  box-shadow: 
+    inset 0 0 40px rgba(0,0,0,0.6), /* ombra interna per profondità */
+    0 20px 60px rgba(0,0,0,0.8); /* ombra esterna */
+  background: #000; /* sfondo nero per contrasto */
+  border-radius: 20px; /* angoli arrotondati leggeri – opzionale */
+  overflow: hidden;
   position: relative;
-  width: 100vw; /* adatta alla tua immagine/testo */
-  height: 100vh;
-  margin: 40px auto;
-  padding: 60px 50px; /* spazio interno grande come una cornice vera */
-  box-sizing: border-box;
-
-  /* Effetto cornice dorata principale */
-  border: 25px solid transparent;
-  background-clip: padding-box;
-
-  /* Gradienti dorati + ombre multiple per dare spessore e riflessi */
-  box-shadow:
-    /* esterno più scuro */
-    0 0 0 25px #b8860b,
-    0 0 0 35px #d4a017,
-    /* strato oro medio */
-    0 0 0 45px #daa520,
-    /* highlight / riflesso superiore */
-    inset 0 25px 40px -15px rgba(255, 245, 200, 0.9),
-    inset 0 -20px 50px -20px rgba(180, 140, 60, 0.7),
-    /* ombra interna per profondità */
-    inset 0 0 30px 10px rgba(0,0,0,0.25),
-    /* alone luminoso esterno */
-    0 0 40px 15px rgba(255, 215, 0, 0.35);
-
-  /* Piccolo bordo interno per separare il contenuto */
-  border-radius: 12px;
 }
 
-.frame::before,
-.frame::after {
-  content: '';
-  position: absolute;
-  inset: -15px;
-  border: 15px solid transparent;
-  border-image: linear-gradient(
-    to bottom right,
-    #3f3600c2, #2c290a9c, #35280181, #1a1606dc, #0a0900
-  ) 1;
-  pointer-events: none;
-  border-radius: 18px;
-  opacity: 0.7;
+/* Responsive – cornice si adatta */
+@media (max-width: 1024px) {
+  .hero-frame {
+    width: 95%;
+    border-width: 50px;
+    border-image-slice: 50;
+    border-image-width: 50px;
+  }
 }
+
+@media (max-width: 767px) {
+  .hero-frame {
+    width: 98%;
+    border-width: 30px;
+    border-image-slice: 30;
+    border-image-width: 30px;
+    border-radius: 12px;
+  }
+}
+
+/* Hero interna – si adatta */
+.hero {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5; /* proporzione verticale da quadro – cambia se vuoi */
+  overflow: hidden;
+}
+
 
 /* Responsive – cornice si adatta al dispositivo */
 @media (max-width: 1024px) {
