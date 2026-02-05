@@ -66,10 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
           <h2>Alcuni lavori realizzati</h2>
           <div class="progetti-grid">
             <div class="progetto">
-              <img src="assets/img/progetti/scala-chiocciola.jpg" alt="Scala a chiocciola">
-              <p>Scala a chiocciola inox – 7.8 tonnellate, 1 mese di lavorazione</p>
-            </div>
-            <div class="progetto">
               <img src="assets/img/progetti/baule-bruciato.jpg" alt="Baule bruciato">
               <p>Espositore baule bruciato – venduto</p>
             </div>
@@ -169,12 +165,12 @@ if (licensingRoot) {
           <li>Disegni CAD 3D/2D (in arrivo)</li>
           <li>PDF tecnico completo (misure, materiali, tecniche)</li>
           <li>Sito web professionale con AI chat integrata</li>
-          <li>Materiali premium: legno Piemonte + inox specchio/satinato</li>
+          <li>Materiali premium: legni preggiati + inox specchio/satinato</li>
           <li>Foto e proof of concept (lavori venduti)</li>
         </ul>
         <p>Interessato a partnership, prototipi o produzione? Contattami:</p>
         <p><strong>Email:</strong> <a href="mailto:info@poolysmood.com">info@poolysmood.com</a></p>
-        <p><strong>WhatsApp:</strong> +39 [INSERISCI IL TUO NUMERO]</p>
+        <p><strong>WhatsApp:</strong> +39 [TUO NUMERO]</p>
         <p>Gaudium Vino – accogliamo presenze.</p>
       </div>
     </div>
