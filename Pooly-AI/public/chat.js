@@ -180,31 +180,56 @@ document.addEventListener("DOMContentLoaded", () => {
         background: #f0c14b;
       }
 
-      /* ===============================
-         MOBILE — FULL SCREEN SCRITTURA
-      =============================== */
+      /* MOBILE FIX - FULL SCREEN + NO ZOOM */
       @media (max-width: 767px) {
-        #poolyChat.writing {
-          top: 0;
+        #poolyPallino {
+          bottom: 16px;
+          right: 16px;
+          width: 60px;
+          height: 60px;
+          font-size: 13px;
+        }
+
+        #poolyChat {
           bottom: 0;
-          left: 0;
           right: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
           max-height: none;
-          height: 100dvh;
           border-radius: 0;
+          transition: none; /* più fluido su mobile */
+        }
+
+        #poolyChat.open {
+          bottom: 0;
+          height: 100dvh;
         }
 
         #chatHeader {
           position: sticky;
           top: 0;
-          z-index: 2;
-          border-radius: 0;
+          z-index: 10;
+          padding: 16px;
+          font-size: 18px;
+        }
+
+        #chatBody {
+          padding: 16px;
+          font-size: 16px; /* testi più leggibili su mobile */
+          line-height: 1.5;
         }
 
         #chatInputWrapper {
           position: sticky;
           bottom: 0;
-          z-index: 2;
+          z-index: 10;
+          padding: 12px;
+          background: #000;
+        }
+
+        #msg {
+          font-size: 16px !important; /* FORZA no zoom */
         }
       }
     `;
@@ -223,7 +248,6 @@ document.addEventListener("DOMContentLoaded", () => {
           <button id="close-btn">×</button>
         </div>
         <div id="chatBody">
-          <!-- Messaggio iniziale verrà aggiunto qui -->
         </div>
         <div id="chatInputWrapper">
           <input id="msg" placeholder="Scrivi qui..." autocomplete="off" />
@@ -301,12 +325,27 @@ document.addEventListener("DOMContentLoaded", () => {
       input.focus();
     });
 
-    // Chiudi chat
-    closeBtn.addEventListener("click", () => {
-      chat.classList.remove("open");
-      pallino.classList.remove("closed");
+     /* === CLOSE ON OUTSIDE CLICK (SHADOW SAFE) === */
+    document.addEventListener("click", e => {
+      if (chat.classList.contains("open") && !root.contains(e.target)) {
+        chat.classList.remove("open");
+        pallino.classList.remove("closed");
+        chat.classList.remove("writing");
+      }
     });
 
+    /* === WRITING MODE MOBILE === */
+    input.addEventListener("focus", () => chat.classList.add("writing"));
+    input.addEventListener("blur", () => chat.classList.remove("writing"));
+
+    input.style.fontSize = "16px";
+    input.setAttribute("inputmode", "text");
+    input.addEventListener("focus", () => {
+  chat.classList.add("writing");
+  setTimeout(() => {
+    input.scrollIntoView({ block: "center" });
+  }, 300);
+});
     // Invia messaggio
     async function sendMessage() {
       const text = input.value.trim();
