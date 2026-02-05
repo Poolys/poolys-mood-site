@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatBody = shadow.getElementById("chatBody");
     const input = shadow.getElementById("msg");
     const sendBtn = shadow.getElementById("sendBtn");
-    const closeBtn = shadow.getElementById("close-btn");
+    const closeBtn = shadow.getElementById("close-btn","x");
 
     /* ===============================
        6. STATO E LOGICA
@@ -333,8 +333,8 @@ document.addEventListener("DOMContentLoaded", () => {
         chat.classList.remove("writing");
       }
     });
-    document.addEventListener("click", closeBtn => {
-      if (chat.classList.contains("open") && !root.contains(closeBtn.target)) {
+    document.addEventListener("click", x => {
+      if (chat.classList.contains("open") && !root.contains(x.target)) {
         chat.classList.remove("open");
         pallino.classList.remove("closed");
         chat.classList.remove("writing");
