@@ -67,11 +67,14 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="progetti-grid">
             <div class="progetto">
               <img src="assets/img/progetti/baule-bruciato.jpg" alt="Baule bruciato">
+             <img src="assets/img/progetti/baule-bruciato1.jpg" alt="Baule bruciato">
               <p>Espositore baule bruciato – venduto</p>
             </div>
             <div class="progetto">
               <img src="assets/img/progetti/tronco-bottiglie.jpg" alt="Tronco bottiglie">
-              <p>Portabottiglie tronco naturale – venduto</p>
+              <img src="assets/img/progetti/tronco-bottiglie1.jpg" alt="Tronco bottiglie">
+             <img src="assets/img/progetti/tronco-bottiglie2.jpg" alt="Tronco bottiglie">
+             <p>Portabottiglie tronco naturale – venduto</p>
             </div>
             <!-- Aggiungi altre foto se ne hai -->
           </div>
