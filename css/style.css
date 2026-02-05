@@ -397,7 +397,7 @@ nav a.active, nav a:hover {
   max-width: 1600px; /* limite max desktop */
   border-style: solid; /* obbligatorio per border-image */
   border-width: 60px; /* spessore della cornice – regola tu (es. 40-80px) */
-  border-image-source: url('assets/img/hero/cornice.png'); /* il tuo PNG */
+  border-image-source: url('.assets/img/hero/cornice.png'); /* il tuo PNG */
   border-image-slice: 60; /* taglia 60px da ogni lato (griglia 3×3) */
   border-image-repeat: stretch; /* stretch = allunga i lati se necessario */
   border-image-width: 60px; /* deve combaciare con border-width */
