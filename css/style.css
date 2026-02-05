@@ -390,3 +390,59 @@ nav a.active, nav a:hover {
     font-size: clamp(24px, 5vw, 32px);
   }
 }
+/* Cornice intorno alla hero – effetto quadro */
+.hero-frame {
+  margin: 40px auto; /* spazio sopra/sotto e centrato */
+  max-width: 1600px; /* max larghezza su desktop */
+  width: 90%; /* si stringe su schermi piccoli */
+  border: 8px solid var(--oro); /* bordo oro spesso */
+  border-image: linear-gradient(to right, var(--oro), var(--oro-tenue), var(--oro)) 1; /* gradiente oro per profondità */
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 0 30px rgba(212,175,55,0.15); /* ombra esterna + interna */
+  background: #000; /* sfondo nero per contrasto */
+  padding: 20px; /* spazio interno tra cornice e contenuto */
+  border-radius: 12px; /* angoli leggermente arrotondati – opzionale */
+  overflow: hidden; /* nasconde overflow se serve */
+}
+
+/* Adattamento responsive – cornice si stringe naturalmente */
+@media (max-width: 1024px) {
+  .hero-frame {
+    margin: 20px auto;
+    width: 95%;
+    border-width: 6px; /* bordo più sottile su tablet */
+    padding: 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-frame {
+    margin: 10px auto;
+    width: 98%;
+    border-width: 4px; /* ancora più sottile su smartphone */
+    padding: 10px;
+    border-radius: 8px;
+  }
+}
+
+/* La hero dentro la cornice si adatta automaticamente */
+.hero {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9; /* proporzione fissa – cambia se vuoi (es. 4/5 per verticale) */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Immagine e contenuto dentro si adattano */
+.hero-canvas {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85) contrast(1.1); /* effetto luxury */
+}
