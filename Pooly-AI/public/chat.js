@@ -1,11 +1,12 @@
-// ===============================
-// POOLY AI — SHADOW CHAT (FINAL)
-// ===============================
-window.addEventListener("DOMContentLoaded", () => {
+// ==============================================
+// POOLY AI — SHADOW CHAT (VERSIONE FINALE 2025)
+// ==============================================
+
+document.addEventListener("DOMContentLoaded", () => {
   (function () {
 
     /* ===============================
-       1️⃣ ROOT NEL DOM NORMALE
+       1. ROOT NEL DOM NORMALE
     =============================== */
     let root = document.getElementById("pooly-ai-root");
     if (!root) {
@@ -15,62 +16,71 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ===============================
-       2️⃣ SHADOW ROOT
+       2. SHADOW ROOT
     =============================== */
     const shadow = root.attachShadow({ mode: "open" });
 
     /* ===============================
-       3️⃣ CSS — COMPLETAMENTE ISOLATO
+       3. CSS — ISOLATO E MIGLIORATO
     =============================== */
     const style = document.createElement("style");
     style.textContent = `
-      * { box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
+      * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Prata', serif; }
 
       /* === PALLINO === */
       #poolyPallino {
         position: fixed;
         bottom: 20px;
         right: 20px;
-        width: 60px;
-        height: 60px;
+        width: 66px;
+        height: 66px;
         border-radius: 50%;
-        background: #9c0404d2;
-        color: #fff;
+        background: #D4AF37;
+        color: #000;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 13px;
-        font-weight: 600;
+        font-size: 14px;
+        font-weight: bold;
         cursor: pointer;
-        box-shadow: 0 6px 16px rgba(0,0,0,.35);
-        transition: all .35s ease;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+        transition: all 0.35s ease;
         z-index: 9999;
+        user-select: none;
+      }
+      #poolyPallino:hover {
+        transform: scale(1.08);
+        box-shadow: 0 10px 30px rgba(212,175,55,0.4);
       }
       #poolyPallino.closed {
         opacity: 0;
-        transform: scale(.8);
+        transform: scale(0.7);
         pointer-events: none;
       }
 
       /* === CHAT === */
       #poolyChat {
         position: fixed;
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
+        bottom: 100px;
+        right: 20px;
+        width: 380px;
+        height: 520px; /* ALTEZZA FISSA – non si allunga mai */
         max-height: 85vh;
-        background: #fdf5e6;
+        background: #111;
+        border: 1px solid #D4AF37;
         border-radius: 16px;
-        display: flex;
+        display: none;
         flex-direction: column;
+        overflow: hidden;
         opacity: 0;
-        transform: translateY(50%);
+        transform: translateY(30px);
         pointer-events: none;
-        transition: all .35s ease;
-        box-shadow: 0 -8px 24px rgba(0,0,0,.25);
+        transition: all 0.35s ease;
+        box-shadow: 0 -10px 40px rgba(0,0,0,0.7);
         z-index: 9998;
       }
       #poolyChat.open {
+        display: flex;
         opacity: 1;
         transform: translateY(0);
         pointer-events: all;
@@ -78,65 +88,103 @@ window.addEventListener("DOMContentLoaded", () => {
 
       /* === HEADER === */
       #chatHeader {
-        font-size: 12px;
-        font-weight: 600;
+        background: #000;
+        color: #D4AF37;
+        padding: 14px;
         text-align: center;
-        background: linear-gradient(90deg, #138808, #fff, #d30000);
-        color: #111;
-        border-radius: 16px 16px 0 0;
+        font-size: 18px;
+        font-weight: bold;
+        border-bottom: 1px solid #D4AF37;
+        position: relative;
+      }
+
+      #close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        background: none;
+        border: none;
+        color: #D4AF37;
+        font-size: 28px;
+        cursor: pointer;
       }
 
       /* === BODY === */
       #chatBody {
         flex: 1;
-        padding: 12px;
+        padding: 16px;
         overflow-y: auto;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
+        background: #0a0a0a;
+        scroll-behavior: smooth;
       }
-      #chatBody p {
-        max-width: 85%;
-        padding: 10px 14px;
+
+      .message {
+        max-width: 82%;
+        padding: 12px 16px;
         border-radius: 18px;
-        font-size: 14px;
-        line-height: 1.4;
+        font-size: 15px;
+        line-height: 1.45;
+      }
+
+      .userMessage {
+        align-self: flex-end;
+        background: #D4AF37;
         color: #000;
       }
-      .userMessage { align-self: flex-end; background: #e0e0e0; }
-      .aiMessage { align-self: flex-start; background: #fff; }
+
+      .aiMessage {
+        align-self: flex-start;
+        background: #222;
+        color: #eee;
+      }
 
       /* === INPUT === */
       #chatInputWrapper {
         display: flex;
-        gap: 8px;
-        padding: 10px;
-        background: #fafafa;
-        border-radius: 0 0 16px 16px;
+        gap: 10px;
+        padding: 12px;
+        background: #000;
+        border-top: 1px solid #D4AF37;
       }
+
       #msg {
         flex: 1;
-        padding: 12px 14px;
-        border-radius: 22px;
-        border: 1px solid #ccc;
-        font-size: 16px; /* BLOCCA ZOOM MOBILE */
+        padding: 12px 16px;
+        border-radius: 24px;
+        border: 1px solid #D4AF37;
+        background: #111;
+        color: #eee;
+        font-size: 16px;
         outline: none;
       }
+
+      #msg:focus {
+        border-color: #f0c14b;
+        box-shadow: 0 0 0 2px rgba(212,175,55,0.3);
+      }
+
       #sendBtn {
-        padding: 0 18px;
-        border-radius: 22px;
+        padding: 0 20px;
+        border-radius: 24px;
         border: none;
-        background: #555;
-        color: #fff;
-        font-weight: 600;
+        background: #D4AF37;
+        color: #000;
+        font-weight: bold;
         cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      #sendBtn:hover {
+        background: #f0c14b;
       }
 
       /* ===============================
-         📱 MOBILE — MODALITÀ SCRITTURA
+         MOBILE — FULL SCREEN SCRITTURA
       =============================== */
       @media (max-width: 767px) {
-
         #poolyChat.writing {
           top: 0;
           bottom: 0;
@@ -157,23 +205,29 @@ window.addEventListener("DOMContentLoaded", () => {
         #chatInputWrapper {
           position: sticky;
           bottom: 0;
-          background: #fafafa;
+          z-index: 2;
         }
       }
     `;
     shadow.appendChild(style);
 
     /* ===============================
-       4️⃣ HTML
+       4. HTML STRUTTURA
     =============================== */
     const wrapper = document.createElement("div");
     wrapper.innerHTML = `
       <div id="poolyPallino">PoolyAI</div>
+
       <div id="poolyChat">
-        <div id="chatHeader">PoolyAI</div>
-        <div id="chatBody"></div>
+        <div id="chatHeader">
+          PoolyAI – assistente di Pooly’s Mood
+          <button id="close-btn">×</button>
+        </div>
+        <div id="chatBody">
+          <!-- Messaggio iniziale verrà aggiunto qui -->
+        </div>
         <div id="chatInputWrapper">
-          <input id="msg" placeholder="Scrivi qui..." />
+          <input id="msg" placeholder="Scrivi qui..." autocomplete="off" />
           <button id="sendBtn">Invia</button>
         </div>
       </div>
@@ -181,75 +235,69 @@ window.addEventListener("DOMContentLoaded", () => {
     shadow.appendChild(wrapper);
 
     /* ===============================
-       5️⃣ VISIBILITÀ (NO LANDING)
-    =============================== */
-    const hero = document.getElementById("hero");
-    if (hero && getComputedStyle(hero).display !== "none") {
-      root.style.display = "none";
-    }
-    window.addEventListener("enterMoodDone", () => {
-      setTimeout(() => root.style.display = "block", 500);
-    });
-
-    /* ===============================
-       6️⃣ JS LOGIC
+       5. ELEMENTI DOM
     =============================== */
     const pallino = shadow.getElementById("poolyPallino");
     const chat = shadow.getElementById("poolyChat");
     const chatBody = shadow.getElementById("chatBody");
     const input = shadow.getElementById("msg");
     const sendBtn = shadow.getElementById("sendBtn");
+    const closeBtn = shadow.getElementById("close-btn");
 
+    /* ===============================
+       6. STATO E LOGICA
+    =============================== */
     let chatHistory = JSON.parse(localStorage.getItem("poolyChatHistory")) || [];
+
+    // Aggiungi messaggio iniziale solo la prima volta
+    if (!chatHistory.length) {
+      chatHistory.push({
+        role: "ai",
+        content: "Ciao! Sono PoolyAI, assistente di Pooly’s Mood.\nCome posso aiutarti oggi? 🍷"
+      });
+    }
 
     function renderHistory() {
       chatBody.innerHTML = "";
-      chatHistory.forEach(m => {
-        const p = document.createElement("p");
-        p.className = m.role === "user" ? "userMessage" : "aiMessage";
-        p.textContent = m.content;
-        chatBody.appendChild(p);
+      chatHistory.forEach(msg => {
+        const div = document.createElement("div");
+        div.className = msg.role === "user" ? "message userMessage" : "message aiMessage";
+        div.textContent = msg.content;
+        chatBody.appendChild(div);
       });
-      chatBody.scrollTop = chatBody.scrollHeight;
+
+      // Scroll automatico in basso (con piccolo delay per DOM)
+      setTimeout(() => {
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 30);
     }
 
-    /* === OPEN CHAT === */
-    pallino.addEventListener("click", e => {
-      e.stopPropagation();
-      pallino.classList.add("closed");
+    // Nascondi messaggio iniziale dopo primo messaggio utente
+    function hideInitialMessage() {
+      const initialMsg = chatBody.querySelector(".aiMessage:first-child");
+      if (initialMsg) {
+        initialMsg.style.display = "none";
+      }
+    }
+
+    /* ===============================
+       7. EVENTI
+    =============================== */
+    // Apri chat
+    pallino.addEventListener("click", () => {
       chat.classList.add("open");
-
-      if (!chatHistory.length) {
-        chatHistory.push({ role: "ai", content: "Ciao! Come posso aiutarti?" });
-      }
+      pallino.classList.add("closed");
       renderHistory();
+      input.focus();
     });
 
-    /* === CLOSE ON OUTSIDE CLICK (SHADOW SAFE) === */
-    document.addEventListener("click", e => {
-      if (chat.classList.contains("open") && !root.contains(e.target)) {
-        chat.classList.remove("open");
-        pallino.classList.remove("closed");
-        chat.classList.remove("writing");
-      }
+    // Chiudi chat
+    closeBtn.addEventListener("click", () => {
+      chat.classList.remove("open");
+      pallino.classList.remove("closed");
     });
 
-    /* === WRITING MODE MOBILE === */
-    input.addEventListener("focus", () => chat.classList.add("writing"));
-    input.addEventListener("blur", () => chat.classList.remove("writing"));
-
-    input.style.fontSize = "16px";
-    input.setAttribute("inputmode", "text");
-    input.addEventListener("focus", () => {
-  chat.classList.add("writing");
-  setTimeout(() => {
-    input.scrollIntoView({ block: "center" });
-  }, 300);
-});
-
-    sendBtn.addEventListener("click", sendMessage);
-    input.addEventListener("keydown", e => e.key === "Enter" && sendMessage());
-
+    // Invia messaggio
     async function sendMessage() {
       const text = input.value.trim();
       if (!text) return;
@@ -258,20 +306,48 @@ window.addEventListener("DOMContentLoaded", () => {
       input.value = "";
       renderHistory();
 
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          history: chatHistory,
-          context: window.poolyContext || null
-        })
-      });
+      // Nascondi messaggio iniziale dopo primo messaggio utente
+      hideInitialMessage();
 
-      const data = await res.json();
-      chatHistory.push({ role: "ai", content: data.reply });
-      renderHistory();
-      localStorage.setItem("poolyChatHistory", JSON.stringify(chatHistory));
+      // Chiamata API (la tua logica esistente)
+      try {
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            history: chatHistory,
+            context: window.poolyContext || null
+          })
+        });
+
+        const data = await res.json();
+        chatHistory.push({ role: "ai", content: data.reply });
+        renderHistory();
+        localStorage.setItem("poolyChatHistory", JSON.stringify(chatHistory));
+      } catch (err) {
+        console.error("Errore API:", err);
+        chatHistory.push({ role: "ai", content: "Scusa, c'è stato un errore. Riprova?" });
+        renderHistory();
+      }
     }
 
+    sendBtn.addEventListener("click", sendMessage);
+    input.addEventListener("keypress", e => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    // Focus input quando chat si apre
+    chat.addEventListener("transitionend", () => {
+      if (chat.classList.contains("open")) {
+        input.focus();
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+    });
+
+    // Inizializza
+    renderHistory();
   })();
 });
