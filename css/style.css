@@ -64,7 +64,7 @@ body.fade-out {
 }
 
 .hero-canvas {
-  width: 60%;
+  width: flex;
   max-width: 1300px;
   height: 80vh;
 
