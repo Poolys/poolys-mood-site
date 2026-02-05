@@ -390,27 +390,56 @@ nav a.active, nav a:hover {
     font-size: clamp(24px, 5vw, 32px);
   }
 }
-/* Cornice intorno alla hero – effetto quadro */
+/* Cornice adattiva – senza background fisso, effetto acciaio specchio */
 .hero-frame {
-  margin: 40px auto; /* spazio sopra/sotto e centrato */
-  max-width: 1600px; /* max larghezza su desktop */
-  width: 90%; /* si stringe su schermi piccoli */
-  border: 8px solid var(--oro); /* bordo oro spesso */
-  border-image: linear-gradient(to right, var(--oro), var(--oro-tenue), var(--oro)) 1; /* gradiente oro per profondità */
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 0 30px rgba(212,175,55,0.15); /* ombra esterna + interna */
-  background: #000; /* sfondo nero per contrasto */
-  padding: 20px; /* spazio interno tra cornice e contenuto */
-  border-radius: 12px; /* angoli leggermente arrotondati – opzionale */
-  overflow: hidden; /* nasconde overflow se serve */
+  margin: 40px auto; /* spazio sopra/sotto, centrato */
+  width: 90%; /* si stringe naturalmente sul dispositivo */
+  max-width: 1800px; /* limite massimo desktop largo */
+  border: 12px solid transparent; /* base trasparente per effetto specchio */
+  background: linear-gradient(135deg, #c0c0c0, #a0a0a0, #e0e0e0, #c0c0c0); /* base acciaio grigio lucido */
+  background-size: 200% 200%;
+  border-image: linear-gradient(to right, #e0e0e0, #ffffff, #e0e0e0, #a0a0a0) 1; /* riflessi specchio */
+  box-shadow: 
+    inset 0 0 30px rgba(255,255,255,0.4), /* luce interna specchio */
+    inset 0 0 60px rgba(0,0,0,0.6), /* profondità interna */
+    0 10px 40px rgba(0,0,0,0.7), /* ombra esterna */
+    inset 0 0 20px rgba(192,192,192,0.5); /* riflesso acciaio freddo */
+  border-radius: 16px; /* angoli arrotondati come cornice metallica */
+  padding: 20px; /* spazio interno */
+  position: relative;
+  overflow: hidden;
 }
 
-/* Adattamento responsive – cornice si stringe naturalmente */
+/* Animazione riflesso acciaio (opzionale, ma dà vita) */
+.hero-frame::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    rgba(255,255,255,0.3) 50%,
+    transparent 60%
+  );
+  opacity: 0.4;
+  transform: rotate(45deg);
+  pointer-events: none;
+  animation: shine 8s linear infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+/* Adattamento responsive – cornice segue il dispositivo */
 @media (max-width: 1024px) {
   .hero-frame {
     margin: 20px auto;
-    width: 95%;
-    border-width: 6px; /* bordo più sottile su tablet */
+    width: 94%;
+    border-width: 8px;
     padding: 15px;
+    border-radius: 12px;
   }
 }
 
@@ -418,10 +447,22 @@ nav a.active, nav a:hover {
   .hero-frame {
     margin: 10px auto;
     width: 98%;
-    border-width: 4px; /* ancora più sottile su smartphone */
+    border-width: 5px;
     padding: 10px;
     border-radius: 8px;
   }
+  .hero-frame::before {
+    animation-duration: 12s; /* più lento su mobile per non distrarre */
+  }
+}
+
+/* La hero dentro resta fluida */
+.hero {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9; /* o 4/5 se preferisci più verticale – dimmi tu */
+  overflow: hidden;
+  position: relative;
 }
 
 /* La hero dentro la cornice si adatta automaticamente */
