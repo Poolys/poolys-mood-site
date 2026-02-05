@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
           bottom: 0;
           right: 0;
           left: 0;
-          width: 100%;
+          width: 100vw;
           height: 100vh;
           max-height: none;
           border-radius: 0;
