@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatBody = shadow.getElementById("chatBody");
     const input = shadow.getElementById("msg");
     const sendBtn = shadow.getElementById("sendBtn");
-    const closeBtn = shadow.getElementById("close-btn","x");
+    const closeBtn = shadow.getElementById("close-btn");
 
     /* ===============================
        6. STATO E LOGICA
@@ -325,21 +325,25 @@ document.addEventListener("DOMContentLoaded", () => {
       input.focus();
     });
 
-     /* === CLOSE ON OUTSIDE CLICK (SHADOW SAFE) === */
-    document.addEventListener("click", e => {
-      if (chat.classList.contains("open") && !root.contains(e.target)) {
-        chat.classList.remove("open");
-        pallino.classList.remove("closed");
-        chat.classList.remove("writing");
-      }
-    });
-    document.addEventListener("click", x => {
-      if (chat.classList.contains("open") && !root.contains(x.target)) {
-        chat.classList.remove("open");
-        pallino.classList.remove("closed");
-        chat.classList.remove("writing");
-      }
-    });
+    // Chiudi chat con "X" (dentro shadow)
+closeBtn.addEventListener("click", (e) => {
+  e.stopPropagation(); // blocca bubbling inutile
+  chat.classList.remove("open");
+  pallino.classList.remove("closed");
+  chat.classList.remove("writing");
+  console.log("Chat chiusa con X");
+});
+
+// Chiudi chat cliccando fuori (sul document, ma solo se chat aperta)
+document.addEventListener("click", (e) => {
+  // Se chat aperta e click NON dentro root (cioè fuori chat)
+  if (chat.classList.contains("open") && !root.contains(e.target)) {
+    chat.classList.remove("open");
+    pallino.classList.remove("closed");
+    chat.classList.remove("writing");
+    console.log("Chat chiusa cliccando fuori");
+  }
+});
 
     /* === WRITING MODE MOBILE === */
     input.addEventListener("focus", () => chat.classList.add("writing"));
