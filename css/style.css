@@ -475,8 +475,8 @@ nav a.active, nav a:hover {
 
 /* Hero interna – proporzioni quadro */
 #hero {
-  width: 100%;
-  height: auto;
+  width: 80%;
+  height: 10px;
   overflow: hidden;
   position: relative;
   background: #d4c708d7;
