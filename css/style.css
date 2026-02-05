@@ -42,9 +42,9 @@ body.fade-out {
 /* HERO */
 /* ========================= */
 .hero {
-  width: frame-available;
-  min-height: frame-available;
-  padding: 0 50vw;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 0 10vw;
 
   display: flex;
   align-items: center;
@@ -64,7 +64,7 @@ body.fade-out {
 }
 
 .hero-canvas {
-  width: flex;
+  width: 100%;
   max-width: 1300px;
   height: 80vh;
 
@@ -389,95 +389,4 @@ nav a.active, nav a:hover {
   #logo {
     font-size: clamp(24px, 5vw, 32px);
   }
-}
-/* Cornice adattiva */
-.hero-frame {
- width: 100vw; /* si adatta al dispositivo */
- max-height: 100vh; /* altezza massima viewport */
-  max-width: 1600px; /* limite max desktop */
-  border-style: solid; /* obbligatorio per border-image */
-  border-width: 60px; /* spessore della cornice – regola tu (es. 40-80px) */
-  border-image-source: url('.assets/img/hero/cornice.png'); /* il tuo PNG */
-  border-image-slice: 60; /* taglia 60px da ogni lato (griglia 3×3) */
-  border-image-repeat: stretch; /* stretch = allunga i lati se necessario */
-  border-image-width: 60px; /* deve combaciare con border-width */
-  border-image-outset: 0; /* non sporge fuori */
-  box-shadow: 
-    inset 0 0 40px rgba(0,0,0,0.6), /* ombra interna per profondità */
-    0 20px 60px rgba(0,0,0,0.8); /* ombra esterna */
-  background: #000; /* sfondo nero per contrasto */
-  border-radius: 20px; /* angoli arrotondati leggeri – opzionale */
-  overflow: hidden;
-  position: relative;
-}
-
-/* Responsive – cornice si adatta */
-@media (max-width: 1024px) {
-  .hero-frame {
-    width: 95%;
-    border-width: 50px;
-    border-image-slice: 50;
-    border-image-width: 50px;
-  }
-}
-
-@media (max-width: 767px) {
-  .hero-frame {
-    width: 98%;
-    border-width: 30px;
-    border-image-slice: 30;
-    border-image-width: 30px;
-    border-radius: 12px;
-  }
-}
-
-/* Hero interna – si adatta */
-.hero {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5; /* proporzione verticale da quadro – cambia se vuoi */
-  overflow: hidden;
-}
-
-
-/* Responsive – cornice si adatta al dispositivo */
-@media (max-width: 1024px) {
-  #hero-frame {
-    margin: 30px auto;
-    width: 95%;
-    padding: 25px;
-    border-width: 8px;
-    border-radius: 18px;
-  }
-  #hero-frame::before, #hero-frame::after, #hero-frame .top-right {
-    width: 90px;
-    height: 90px;
-    top: -30px;
-    left: -30px;
-  }
-}
-
-@media (max-width: 767px) {
-  #hero-frame {
-    margin: 15px auto;
-    width: 98%;
-    padding: 15px;
-    border-width: 5px;
-    border-radius: 14px;
-  }
-  #hero-frame::before, #hero-frame::after, #hero-frame .top-right {
-    width: 60px;
-    height: 60px;
-    top: -20px;
-    left: -20px;
-  }
-}
-
-/* Hero interna – proporzioni quadro */
-#hero {
-  width: -webkit-fill-available;
-  height: 10px;
-  overflow: hidden;
-  position: relative;
-  background: #3b0505;
 }
