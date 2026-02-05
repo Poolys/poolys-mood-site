@@ -78,7 +78,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
       /* === HEADER === */
       #chatHeader {
-        padding: 6px 10px;
         font-size: 12px;
         font-weight: 600;
         text-align: center;
