@@ -390,73 +390,112 @@ nav a.active, nav a:hover {
     font-size: clamp(24px, 5vw, 32px);
   }
 }
-/* Frame barocco invisibile – solo ombre e scanalature */
-.hero-canvas-frame {
+/* Cornice adattiva */
+.frame {
   position: relative;
-  width: 100vw; /* occupa tutto lo schermo in larghezza */
-  min-height: 100vh; /* minimo altezza schermo */
-  margin: 0; /* zero margini esterni */
-  padding: 0;
-  overflow: hidden;
-  background: #000; /* sfondo nero per contrasto */
+  width: 400px; /* adatta alla tua immagine/testo */
+  max-width: 90%;
+  margin: 40px auto;
+  padding: 60px 50px; /* spazio interno grande come una cornice vera */
+  box-sizing: border-box;
+
+  /* Effetto cornice dorata principale */
+  border: 25px solid transparent;
+  background-clip: padding-box;
+
+  /* Gradienti dorati + ombre multiple per dare spessore e riflessi */
+  box-shadow:
+    /* esterno più scuro */
+    0 0 0 25px #b8860b,
+    0 0 0 35px #d4a017,
+    /* strato oro medio */
+    0 0 0 45px #daa520,
+    /* highlight / riflesso superiore */
+    inset 0 25px 40px -15px rgba(255, 245, 200, 0.9),
+    inset 0 -20px 50px -20px rgba(180, 140, 60, 0.7),
+    /* ombra interna per profondità */
+    inset 0 0 30px 10px rgba(0,0,0,0.25),
+    /* alone luminoso esterno */
+    0 0 40px 15px rgba(255, 215, 0, 0.35);
+
+  /* Piccolo bordo interno per separare il contenuto */
+  border-radius: 12px;
 }
 
-/* Scanalature e ombre barocche interne (come intagli di un quadro antico) */
-.hero-canvas-frame::before,
-.hero-canvas-frame::after {
-  content: "";
+.frame::before,
+.frame::after {
+  content: '';
   position: absolute;
-  inset: 0;
+  inset: -15px;
+  border: 15px solid transparent;
+  border-image: linear-gradient(
+    to bottom right,
+    #ffd700, #ffeb3b, #ffc107, #ffda44, #ffd700
+  ) 1;
   pointer-events: none;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 40%,
-    rgba(0,0,0,0.4) 60%,
-    rgba(0,0,0,0.8) 75%,
-    rgba(0,0,0,0.95) 85%,
-    #000 100%
-  );
-  mix-blend-mode: multiply; /* ombre profonde che si fondono col contenuto */
+  border-radius: 18px;
   opacity: 0.7;
 }
 
-/* Scanalature più marcate sugli angoli (effetto intaglio barocco) */
-.hero-canvas-frame::after {
-  background: 
-    radial-gradient(circle at 0% 0%, transparent 30%, rgba(0,0,0,0.6) 50%, #000 70%),
-    radial-gradient(circle at 100% 0%, transparent 30%, rgba(0,0,0,0.6) 50%, #000 70%),
-    radial-gradient(circle at 0% 100%, transparent 30%, rgba(0,0,0,0.6) 50%, #000 70%),
-    radial-gradient(circle at 100% 100%, transparent 30%, rgba(0,0,0,0.6) 50%, #000 70%);
-  opacity: 0.85;
-  mix-blend-mode: darken;
+/* Testo stile elegante */
+.frame h1 {
+  font-size: 3.2rem;
+  margin: 0.4em 0;
+  font-weight: bold;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
 }
 
-/* Contenuto hero – centrato e proporzionato */
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+.frame .subtitle {
+  font-size: 1.6rem;
+  font-style: italic;
+  margin: 0.8em 0;
 }
 
-/* Adattamento automatico al dispositivo */
+.frame .date {
+  font-size: 1.3rem;
+  margin-top: 1.5em;
+  opacity: 0.9;
+}
+
+/* Responsive – cornice si adatta al dispositivo */
 @media (max-width: 1024px) {
-  #hero-canvas-frame::before,
-  #hero-canvas-frame::after {
-    opacity: 0.65; /* meno ombre su tablet per non oscurare */
+  #hero-frame {
+    margin: 30px auto;
+    width: 95%;
+    padding: 25px;
+    border-width: 8px;
+    border-radius: 18px;
+  }
+  #hero-frame::before, #hero-frame::after, #hero-frame .top-right {
+    width: 90px;
+    height: 90px;
+    top: -30px;
+    left: -30px;
   }
 }
 
 @media (max-width: 767px) {
-  #hero-canvas-frame::before,
-  #hero-canvas-frame::after {
-    opacity: 0.55; /* ancora più leggero su smartphone */
+  #hero-frame {
+    margin: 15px auto;
+    width: 98%;
+    padding: 15px;
+    border-width: 5px;
+    border-radius: 14px;
   }
-  .hero {
-    height: 90vh; /* evita scroll inutile su mobile */
+  #hero-frame::before, #hero-frame::after, #hero-frame .top-right {
+    width: 60px;
+    height: 60px;
+    top: -20px;
+    left: -20px;
   }
+}
+
+/* Hero interna – proporzioni quadro */
+#hero {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4; /* proporzione verticale da quadro classico – cambia se vuoi */
+  overflow: hidden;
+  position: relative;
+  background: #000;
 }
