@@ -94,7 +94,7 @@ body.fade-out {
 /* TESTI */
 /* ========================= */
 h1 {
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(32px, 4vw, 50px);
   letter-spacing: 0.06em;
   font-family: 'Great Vibes', cursive;
 }
