@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .message {
         max-width: 88%;
         border-radius: 18px;
-        font-size: 12px;
+        font-size: 14px;
         letter-spacing: 0.05em;
         line-height: 1.45;
       }
