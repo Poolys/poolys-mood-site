@@ -61,7 +61,7 @@ window.addEventListener("DOMContentLoaded", () => {
         max-height: 85vh;
         background: #fdf5e6;
         border-radius: 16px;
-        display: flex;
+        display: none;
         flex-direction: column;
         opacity: 0;
         transform: translateY(100%);
