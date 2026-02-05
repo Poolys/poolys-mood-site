@@ -494,7 +494,6 @@ nav a.active, nav a:hover {
 #hero {
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 4; /* proporzione verticale da quadro classico – cambia se vuoi */
   overflow: hidden;
   position: relative;
   background: #000;
