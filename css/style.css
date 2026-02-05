@@ -393,7 +393,8 @@ nav a.active, nav a:hover {
 /* Cornice adattiva – senza background fisso, effetto acciaio specchio */
 .hero-frame {
   margin: 2px auto;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   max-width: 1800px;
   border: 10px solid transparent;
   background: linear-gradient(145deg, #d0d0d0, #b0b0b0, #e0e0e0, #c8c8c8); /* base satinato grigio chiaro */
@@ -434,27 +435,27 @@ nav a.active, nav a:hover {
 
 /* Responsive – cornice segue dispositivo */
 @media (max-width: 1024px) {
-  .hero-frame {
+  #hero-frame {
     margin: 20px auto;
     width: 94%;
     border-width: 8px;
     padding: 18px;
     border-radius: 14px;
   }
-  .hero-frame::before {
+  #hero-frame::before {
     animation-duration: 15s; /* più lento su tablet */
   }
 }
 
 @media (max-width: 767px) {
-  .hero-frame {
+  #hero-frame {
     margin: 10px auto;
     width: 98%;
     border-width: 5px;
     padding: 12px;
     border-radius: 10px;
   }
-  .hero-frame::before {
+  #hero-frame::before {
     opacity: 0.5; /* meno riflesso su smartphone per non distrarre */
     animation-duration: 18s;
   }
