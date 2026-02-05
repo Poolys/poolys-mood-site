@@ -90,7 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
       #chatHeader {
          background: linear-gradient(90deg, #138808, #fff, #d30000);
         color: #11100eff;
-        padding: 14px;
         text-align: center;
         font-size: 15px;
         font-weight: bold;
@@ -122,10 +121,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       .message {
-        max-width: 82%;
-        padding: 12px 16px;
+        max-width: 88%;
         border-radius: 18px;
-        font-size: 15px;
+        font-size: 12px;
         line-height: 1.45;
       }
 
@@ -220,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       <div id="poolyChat">
         <div id="chatHeader">
-          PoolyAI – assistente di Pooly’s Mood
+          PoolyAI di Pooly’s Mood
           <button id="close-btn">×</button>
         </div>
         <div id="chatBody">
@@ -264,7 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!chatHistory.length) {
       chatHistory.push({
         role: "ai",
-        content: "Ciao! Sono PoolyAI, assistente di Pooly’s Mood.\nCome posso aiutarti oggi? 🍷"
+        content: "Ciao! Sono PoolyAI, assistente di Pooly’s Mood.\nCome posso aiutarti oggi? "
       });
     }
 
