@@ -177,6 +177,7 @@ if (licensingRoot) {
       </div>
     </div>
   `;
+  
 
   // Apri modal licensing
   const licensingLink = document.querySelector('a[href="#licensing"]');
@@ -199,6 +200,66 @@ if (licensingRoot) {
   shadowLicensing.querySelector("#modal-overlay").addEventListener("click", (e) => {
     if (e.target.id === "modal-overlay") {
       shadowLicensing.querySelector("#modal-overlay").classList.remove("open");
+    }
+  });
+};
+// ====================
+// MODAL CONTATTI
+// ====================
+const contattiRoot = document.getElementById("contatti-modal-root");
+if (contattiRoot) {
+  const shadowContatti = contattiRoot.attachShadow({ mode: "open" });
+
+  shadowContatti.innerHTML = `
+    <style>
+      /* Stessi stili degli altri modal – copia per uniformità */
+      * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Prata', serif; }
+      #modal-overlay { position: fixed !important; inset: 0; background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 99999; opacity: 0; transition: opacity 0.3s ease; }
+      #modal-overlay.open { display: flex; opacity: 1; }
+      #modal-content { background: #111; border: 2px solid #D4AF37; width: 92%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 50px; border-radius: 12px; color: #eee; box-shadow: 0 20px 80px rgba(0,0,0,0.9); text-align: center; }
+      .close-btn { position: absolute; top: 20px; right: 30px; background: none; border: none; font-size: 40px; color: #D4AF37; cursor: pointer; }
+      h2 { color: #D4AF37; margin-bottom: 30px; font-size: 42px; }
+      p { line-height: 1.7; margin: 20px 0; font-size: 18px; }
+      .contatti-info { margin: 30px 0; }
+      .contatti-info a { color: #D4AF37; text-decoration: none; font-size: 20px; }
+      .contatti-info a:hover { text-decoration: underline; }
+      .icon { font-size: 32px; margin-right: 10px; }
+    </style>
+
+    <div id="modal-overlay">
+      <div id="modal-content">
+        <button class="close-btn">×</button>
+        <h2>Contatti</h2>
+        <p>Per richieste, collaborazioni, licensing o semplicemente per un saluto 🍷</p>
+
+        <div class="contatti-info">
+          <p><span class="icon">✉️</span> <a href="mailto:info@poolysmood.com">info@poolysmood.com</a></p>
+          <p><span class="icon">📱</span> <a href="https://wa.me/393331234567" target="_blank">+39 333 123 4567 (WhatsApp)</a></p>
+          <p><span class="icon">📍</span> Piemonte, Italia (dettagli su richiesta)</p>
+        </div>
+
+        <p>Ti rispondo al più presto – Gaudium Vino!</p>
+      </div>
+    </div>
+  `;
+
+  // Apri modal contatti
+  document.querySelectorAll('[data-action="contatti"]').forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log("Apro modal Contatti");
+      shadowContatti.querySelector("#modal-overlay").classList.add("open");
+    });
+  });
+
+  // Chiudi
+  shadowContatti.querySelector(".close-btn").addEventListener("click", () => {
+    shadowContatti.querySelector("#modal-overlay").classList.remove("open");
+  });
+  shadowContatti.querySelector("#modal-overlay").addEventListener("click", e => {
+    if (e.target.id === "modal-overlay") {
+      shadowContatti.querySelector("#modal-overlay").classList.remove("open");
     }
   });
 };
