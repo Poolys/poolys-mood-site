@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         border-bottom: 1px solid #D4AF37;
         position: relative;
       }  
-        
+
       #close-btn {
         position: absolute;
         top: 10px;
@@ -233,6 +233,17 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
     shadow.appendChild(wrapper);
+
+    /* ===============================
+       5️⃣ VISIBILITÀ (NO LANDING)
+    =============================== */
+    const hero = document.getElementById("hero");
+    if (hero && getComputedStyle(hero).display !== "none") {
+      root.style.display = "none";
+    }
+    window.addEventListener("enterMoodDone", () => {
+      setTimeout(() => root.style.display = "block", 500);
+    });
 
     /* ===============================
        5. ELEMENTI DOM
