@@ -73,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="progetto">
               <img src="assets/img/progetti/tronco-bottiglie.jpg" alt="Tronco bottiglie">
               <img src="assets/img/progetti/tronco-bottiglie1.jpg" alt="Tronco bottiglie">
-             <img src="assets/img/progetti/tronco-bottiglie2.jpg" alt="Tronco bottiglie">
              <p>Portabottiglie tronco naturale – venduto</p>
             </div>
             <!-- Aggiungi altre foto se ne hai -->
