@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       #close-btn {
         position: absolute;
-        top: 10px;
+        top: 0px;
         right: 15px;
         background: none;
         border: none;
@@ -124,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
         max-width: 88%;
         border-radius: 18px;
         font-size: 12px;
+        letter-spacing: 0.05em;
         line-height: 1.45;
       }
 
