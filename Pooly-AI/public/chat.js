@@ -333,6 +333,13 @@ document.addEventListener("DOMContentLoaded", () => {
         chat.classList.remove("writing");
       }
     });
+    document.addEventListener("click", closeBtn => {
+      if (chat.classList.contains("open") && !root.contains(closeBtn.target)) {
+        chat.classList.remove("open");
+        pallino.classList.remove("closed");
+        chat.classList.remove("writing");
+      }
+    });
 
     /* === WRITING MODE MOBILE === */
     input.addEventListener("focus", () => chat.classList.add("writing"));
