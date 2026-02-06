@@ -23,10 +23,9 @@ body {
   --bg-main: #3b0505;
   --bg-catalogo: #000000;
   color: #fbdf9d;
-  font-family: var(--font-main);
+  font-family: 'Prata', serif;
   line-height: 1.6;
   overflow-x: hidden;
-  font-family: 'great vibes', cursive;
   background: var(--nero);
   color: #eee;
   height: 100%;
@@ -106,6 +105,7 @@ body.loaded .content {
 }
 
 h1 {
+  font-family: 'Prata', serif;
   font-size: clamp(48px, 8vw, 90px);
   color: var(--oro);
   margin: 20px 0;
@@ -113,6 +113,7 @@ h1 {
 }
 
 .manifesto {
+  font-family: 'Prata', serif;
   font-size: clamp(28px, 5vw, 48px);
   color: var(--oro);
   margin-bottom: 30px;
@@ -176,57 +177,6 @@ body.loaded .content {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* Contenuto centrale (rimane uguale) */
-.content {
-  text-align: center;
-  color: white;
-  position: relative;
-  z-index: 2;
-}
-
-h1 {
-  font-size: clamp(48px, 8vw, 90px);
-  color: var(--oro);
-  margin: 20px 0;
-  text-shadow: 0 4px 12px rgba(0,0,0,0.8);
-}
-
-.manifesto {
-  font-size: clamp(28px, 5vw, 48px);
-  color: var(--oro);
-  margin-bottom: 30px;
-  font-style: italic;
-}
-
-.claim {
-  font-size: clamp(20px, 4vw, 32px);
-  line-height: 1.5;
-  margin: 40px 0;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.btn-scopri {
-  padding: 18px 68px;
-  font-size: 20px;
-  background: var(--oro);
-  color: #000;
-  border: none;
-  border-radius: 40px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s;
-  box-shadow: 0 6px 20px rgba(212,175,55,0.4);
-}
-
-.btn-scopri:hover {
-  transform: translateY(-3px);
-  background: #cf603e;
-  box-shadow: 0 12px 30px rgba(219, 91, 68, 0.6);
-}
-
 
 /* Responsive */
 @media (max-width: 1024px) {
@@ -413,13 +363,13 @@ h1 {
   align-items: center;
 }
 .logo {
-  font-family: 'Great Vibes', cursive; /* o 'Sacramento', cursive; o 'Parisienne', cursive; */
-  font-size: clamp(28px, 6vw, 42px); /* responsive: piccolo su mobile, grande su desktop */
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(28px, 6vw, 42px);
   font-weight: 400;
   color: var(--oro);
   letter-spacing: 0.03em;
   text-decoration: none;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* leggero per profondità */
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 nav a {
   color: var(--bianco);
