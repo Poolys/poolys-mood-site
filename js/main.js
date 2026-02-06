@@ -7,6 +7,17 @@ window.addEventListener('load', () => {
   sessionStorage.removeItem('poolyEntered');
   window.scrollTo(0, 0);
   document.body.classList.add("locked");
+  document.body.classList.add("loaded");
+  
+  // Animazione leggera sul pulsante quando si carica (da prova)
+  const btn = document.querySelector(".btn-scopri");
+  if (btn) {
+    btn.style.opacity = "0";
+    setTimeout(() => {
+      btn.style.transition = "opacity 1.2s ease";
+      btn.style.opacity = "1";
+    }, 800);
+  }
 });
 
 // funzione chiamata dal bottone onclick="enterMood()"
