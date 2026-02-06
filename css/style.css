@@ -18,6 +18,11 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   transition: opacity 0.8s ease;
   --bg-main: #3b0505;
@@ -26,6 +31,7 @@ body {
   font-family: 'Prata', serif;
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
   background: var(--nero);
   color: #eee;
   height: 100%;
@@ -37,7 +43,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   height: 100dvh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,6 +61,14 @@ body.locked {
 
 body.fade-out {
   opacity: 0;
+}
+
+.hero {
+  width: 100%;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .landing-fullscreen {
