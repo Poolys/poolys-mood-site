@@ -290,6 +290,21 @@ body.loaded .content {
 /* ========================= */
 @media (max-width: 767px) {
 
+  .dark-background {
+    height: 100dvh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .vintage-frame {
+    width: 90%;
+    max-width: 100%;
+    padding: 40px;
+    border-radius: 16px;
+  }
+
   #hero {
     flex-direction: column;
     justify-content: flex-start;
