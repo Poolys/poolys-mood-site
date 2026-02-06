@@ -54,43 +54,6 @@ body.fade-out {
   opacity: 0;
 }
 
-/* ========================= */
-/* VARIABILI MOOD */
-/* ========================= */
-:root {
-  --nero: #0f0f0f;
-  --grigio-scuro: #1a1a1a;
-  --oro: #d4af37;
-  --oro-scuro: #b8860b;
-  --grigio-biliner: #3a3d3e;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'great vibes', cursive;
-  background: var(--nero);
-  color: #eee;
-  height: 100%;
-  overflow-x: hidden;
-}
-
-.dark-background {
-  background-image: url('assets/img/hero/donna.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-}
-
 .landing-fullscreen {
   height: 100vh; /* 100% altezza schermo visibile */
   min-height: 100dvh; /* meglio su mobile (dynamic viewport) */
@@ -100,7 +63,7 @@ body {
   justify-content: center;
   padding: 0;
   margin: 0;
-  background-image: url('.assets/img/hero/donna.jpg');
+  background-image: url('../assets/img/hero/donna.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -111,7 +74,7 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   padding: 80px; /* spazio interno – regola per far entrare la cornice */
-  background: rgba(0,0,0,0.35) url('.assets/img/hero/vintage-frame.png') center / 100% 100% no-repeat;
+  background: rgba(0,0,0,0.35) url('../assets/img/hero/vintage-frame.png') center / 100% 100% no-repeat;
   border-radius: 24px;
   box-shadow: 
     inset 0 0 60px rgba(0,0,0,0.8), /* ombra interna drammatica */
