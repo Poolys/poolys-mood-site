@@ -171,7 +171,7 @@ if (licensingRoot) {
           <li>Foto e proof of concept (lavori venduti)</li>
         </ul>
         <p>Interessato a partnership, prototipi o produzione? Contattami:</p>
-        <p><strong>Email:</strong> <a href="mailto:info@poolysmood.com">info@poolysmood.com</a></p>
+        <p><strong>Email:</strong> <a href="mailto:pooly.s_mood@outlook.com">pooly.s_mood@outlook.com</a></p>
         <p><strong>WhatsApp:</strong> +39 [TUO NUMERO]</p>
         <p>Gaudium Vino – accogliamo presenze.</p>
       </div>
