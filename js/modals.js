@@ -233,8 +233,8 @@ if (contattiRoot) {
         <p>Per richieste, collaborazioni, licensing o semplicemente per un saluto 🍷</p>
 
         <div class="contatti-info">
-          <p><span class="icon">✉️</span> <a href="mailto:info@poolysmood.com">info@poolysmood.com</a></p>
-          <p><span class="icon">📱</span> <a href="https://wa.me/393331234567" target="_blank">+39 333 123 4567 (WhatsApp)</a></p>
+          <p><span class="icon">✉️</span> <a href="mailto:pooly.s_mood@outlook.com">pooly.s_mood@outlook.com</a></p>
+          <p><span class="icon">📱</span> <a href="https://wa.me/39xxxxx" target="_blank">+39 333 123 4567 (WhatsApp)</a></p>
           <p><span class="icon">📍</span> Piemonte, Italia (dettagli su richiesta)</p>
         </div>
 
