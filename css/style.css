@@ -31,129 +31,162 @@ body.fade-out {
 /* VARIABILI MOOD */
 /* ========================= */
 :root {
-  --avorio: #fab19be8;
-  --nero: #000000;
-
-  --font-main: "Cormorant Garamond", serif;
-  --font-clean: "Inter", system-ui, -apple-system, sans-serif;
+  --nero: #0f0f0f;
+  --grigio-scuro: #1a1a1a;
+  --oro: #d4af37;
+  --oro-scuro: #b8860b;
+  --grigio-biliner: #3a3d3e;
 }
 
-/* ========================= */
-/* HERO */
-/* ========================= */
-.hero {
-  width: 100vw;
-  min-height: 100vh;
-  padding: 0 10vw;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: 'great vibes', cursive;
+  background: var(--nero);
+  color: #eee;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.dark-background {
+  background-image: url('assets/img/donna.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-
-  background: #3b0505;
-  position: relative;
-  z-index: 10;
-
-  transition: opacity 1.5s ease, transform 1.5s ease;
-}
-
-.hero.fade-out {
-  opacity: 0;
-  transform: scale(0.2);
-  pointer-events: none;
-}
-
-.hero-canvas {
-  width: 100%;
-  max-width: 1300px;
-  height: 80vh;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  overflow: hidden;
-
-  background: #3b0505;
-}
-
-.hero-image img {
-  width: 80%;
-  height: 90%;
-  object-fit: cover;
-  transform: translateX(-6%);
-}
-
-.hero-content {
-  padding: 8vh 6vw;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  gap: 20px;
+  padding: 40px 20px;
 }
 
-/* ========================= */
-/* TESTI */
-/* ========================= */
+.landing-fullscreen {
+  height: 100vh; /* 100% altezza schermo visibile */
+  min-height: 100dvh; /* meglio su mobile (dynamic viewport) */
+  width: 100vw; /* 100% larghezza */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  background-image: url('assets/img/donna-vino.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.vintage-frame {
+  width: 99%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px; /* spazio interno – regola per far entrare la cornice */
+  background: rgba(0,0,0,0.35) url('assets/img/vintage-frame.png') center / 100% 100% no-repeat;
+  border-radius: 24px;
+  box-shadow: 
+    inset 0 0 60px rgba(0,0,0,0.8), /* ombra interna drammatica */
+    0 30px 80px rgba(0,0,0,0.9); /* ombra esterna pesante */
+  position: relative;
+}
+/* Effetto wow extra – luce morbida sulla cornice */
+.vintage-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(212,175,55,0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ombra cornice più drammatica */
+.vintage-frame {
+  box-shadow: 
+    inset 0 0 80px rgba(0,0,0,0.85), /* ombra interna più profonda */
+    0 40px 100px rgba(0,0,0,0.95), /* ombra esterna pesante */
+    0 0 40px rgba(212,175,55,0.15); /* alone oro leggero intorno */
+}
+
+/* Fade-in leggero per il contenuto (wow iniziale) */
+.content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+body.loaded .content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Contenuto centrale (rimane uguale) */
+.content {
+  text-align: center;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
 h1 {
-  font-size: clamp(32px, 4vw, 50px);
-  letter-spacing: 0.06em;
-  font-family: 'Great Vibes', cursive;
-}
-
-h2 {
-  font-size: clamp(36px, 5vw, 60px);
-  letter-spacing: 0.08em;
-}
-
-p {
-  max-width: 640px;
-  font-family: var(--font-clean);
-  font-size: 20px;
-  line-height: 1.7;
+  font-size: clamp(48px, 8vw, 90px);
+  color: var(--oro);
+  margin: 20px 0;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.8);
 }
 
 .manifesto {
+  font-size: clamp(28px, 5vw, 48px);
+  color: var(--oro);
+  margin-bottom: 30px;
   font-style: italic;
-  opacity: 0.8;
 }
 
-/* ========================= */
-/* BOTTONI */
-/* ========================= */
-a,
-button {
-  font-family: var(--font-clean);
-  background: none;
+.claim {
+  font-size: clamp(20px, 4vw, 32px);
+  line-height: 1.5;
+  margin: 40px 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-scopri {
+  padding: 18px 68px;
+  font-size: 20px;
+  background: var(--oro);
+  color: #000;
   border: none;
-  color: var(--nero);
+  border-radius: 40px;
   cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+  box-shadow: 0 6px 20px rgba(212,175,55,0.4);
 }
 
-.hero-content button {
-  padding: 18px 24px;
-  background: var(--avorio);
-  color: #160f0c;
-  border-radius: 8px;
-  font-family: var(--font-main);
-  font-size: 18px;
+.btn-scopri:hover {
+  transform: translateY(-3px);
+  background: #cf603e;
+  box-shadow: 0 12px 30px rgba(219, 91, 68, 0.6);
 }
 
-/* ========================= */
-/* CLAIM */
-/* ========================= */
-#hero-claim {
-  position: absolute;
-  bottom: 25vh;
-  right: 6vw;
 
-  font-family: var(--font-main);
-  font-size: clamp(14px, 1.1vw, 18px);
-  letter-spacing: 0.14em;
-  line-height: 1.4;
-
-  color: rgba(253, 223, 157, 0.85);
-  max-width: 320px;
+/* Responsive */
+@media (max-width: 1024px) {
+  #vintage-frame {
+    width: 95%;
+    padding: 60px;
+  }
 }
 
+@media (max-width: 767px) {
+  #vintage-frame {
+    width: 98%;
+    padding: 40px;
+    border-radius: 16px;
+  }
+}
 /* ========================= */
 /* DEGUSTAZIONE */
 /* ========================= */
