@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://poolysmood.com/sitemap.xml
