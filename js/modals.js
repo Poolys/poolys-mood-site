@@ -263,3 +263,91 @@ if (contattiRoot) {
     }
   });
 };
+// =============================================
+// MODAL TERMINI E CONDIZIONI (testo completo)
+// =============================================
+
+const terminiRoot = document.getElementById("termini-modal-root");
+if (terminiRoot) {
+  const shadowTermini = terminiRoot.attachShadow({ mode: "open" });
+
+  shadowTermini.innerHTML = `
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Prata', serif; }
+      #modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.95);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+      #modal-overlay.open { display: flex; opacity: 1; }
+      #modal-content {
+        background: #111;
+        border: 2px solid #b8860b;
+        width: 90%;
+        max-width: 800px;
+        max-height: 85vh;
+        overflow-y: auto;
+        padding: 50px;
+        border-radius: 12px;
+        color: #eee;
+        box-shadow: 0 20px 80px rgba(0,0,0,0.9);
+      }
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        background: none;
+        border: none;
+        font-size: 40px;
+        color: #b8860b;
+        cursor: pointer;
+      }
+      h2 { color: #b8860b; margin-bottom: 30px; font-size: 42px; text-align: center; }
+      p, li { line-height: 1.7; margin: 15px 0; font-size: 17px; }
+    </style>
+
+    <div id="modal-overlay">
+      <div id="modal-content">
+        <button class="close-btn">×</button>
+        <h2>Termini e Condizioni</h2>
+
+        <!-- === QUI INSERISCI IL TESTO COMPLETO DEI TERMINI === -->
+        <p>Benvenuto su Pooly's Mood. Utilizzando questo sito e i suoi servizi (inclusa l'AI) accetti i seguenti termini:</p>
+        <p>1. Proprietà intellettuale: tutti i progetti, fotografie, testi, design e contenuti sono di proprietà esclusiva di Paul Șerbănescu. È vietato riprodurre, distribuire o utilizzare senza autorizzazione scritta.</p>
+        <p>2. Uso dell'AI: l'AI è uno strumento di supporto informativo. Le risposte non costituiscono consulenza legale, tecnica o professionale vincolante.</p>
+        <p>3. Responsabilità: l'utente è responsabile dell'uso delle informazioni ricevute. Pooly's Mood non è responsabile per danni derivanti da un uso improprio.</p>
+        <p>4. Privacy: i dati personali sono trattati secondo il GDPR. Vedi Privacy Policy.</p>
+        <p>5. Modifiche: i termini possono essere aggiornati. L'uso successivo del sito implica accettazione delle modifiche.</p>
+        <p>Per informazioni o richieste: info@poolysmood.com</p>
+
+        <p style="margin-top: 40px; text-align: center; font-style: italic;">Grazie per aver letto e accettato.</p>
+      </div>
+    </div>
+  `;
+
+  // Apri modal quando si clicca il pulsante
+  document.querySelectorAll('[data-action="termini"]').forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopPropagation();
+      shadowTermini.querySelector("#modal-overlay").classList.add("open");
+    });
+  });
+
+  // Chiudi modal
+  shadowTermini.querySelector(".close-btn").addEventListener("click", () => {
+    shadowTermini.querySelector("#modal-overlay").classList.remove("open");
+  });
+
+  shadowTermini.querySelector("#modal-overlay").addEventListener("click", e => {
+    if (e.target.id === "modal-overlay") {
+      shadowTermini.querySelector("#modal-overlay").classList.remove("open");
+    }
+  });
+};
