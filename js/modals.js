@@ -324,7 +324,7 @@ if (terminiRoot) {
         <p>3. Responsabilità: l'utente è responsabile dell'uso delle informazioni ricevute. Pooly's Mood non è responsabile per danni derivanti da un uso improprio.</p>
         <p>4. Privacy: i dati personali sono trattati secondo il GDPR. Vedi Privacy Policy.</p>
         <p>5. Modifiche: i termini possono essere aggiornati. L'uso successivo del sito implica accettazione delle modifiche.</p>
-        <p>Per informazioni o richieste: info@poolysmood.com</p>
+        <p>Per informazioni o richieste: pooly.s_mood@outlook.com</p>
 
         <p style="margin-top: 40px; text-align: center; font-style: italic;">Grazie per aver letto e accettato.</p>
       </div>
