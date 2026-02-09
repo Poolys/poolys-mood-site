@@ -1,54 +1,44 @@
 // Traduzione del catalogo
 function translateCatalogo(lang) {
-  // Traduci tutti i pulsanti CTA
-  document.querySelectorAll("button.cta").forEach(btn => {
-    btn.textContent = translations[lang].ctaButton;
-  });
-
-  // Traduci il menu header
-  const navLinks = document.querySelectorAll("header nav a, header li a");
-  const menuMap = {
-    "Home": "menuHome",
-    "Catalogo": "menuCatalogo",
-    "Progetti realizzati": "menuProgetti",
-    "Completed Projects": "menuProgetti",
-    "Durchgeführte Projekte": "menuProgetti",
-    "Licensing": "menuLicensing",
-    "Contatti": "menuContatti",
-    "Contact": "menuContatti",
-    "Kontakt": "menuContatti",
-    "Termini e Condizioni": "menuTermini",
-    "Terms and Conditions": "menuTermini",
-    "Geschäftsbedingungen": "menuTermini"
-  };
-
-  navLinks.forEach(link => {
-    const text = link.textContent.trim();
-    if (menuMap[text]) {
-      const newText = translations[lang][menuMap[text]];
-      if (newText) link.textContent = newText;
+  try {
+    // Traduci tutti i pulsanti CTA
+    const ctaButtons = document.querySelectorAll("button.cta");
+    if (ctaButtons.length > 0 && translations[lang] && translations[lang].ctaButton) {
+      ctaButtons.forEach(btn => {
+        btn.textContent = translations[lang].ctaButton;
+      });
     }
-  });
 
-  // Traduci il footer
-  const footerSmalls = document.querySelectorAll("footer small");
-  if (footerSmalls.length >= 4) {
-    footerSmalls[0].textContent = translations[lang].footerCredits;
-    footerSmalls[1].textContent = translations[lang].footerMaterials;
-    footerSmalls[2].textContent = translations[lang].footerEmail;
-    footerSmalls[3].textContent = translations[lang].footerLicensing;
+    // Traduci il footer
+    const footerSmalls = document.querySelectorAll("footer small");
+    if (footerSmalls.length >= 4 && translations[lang]) {
+      if (translations[lang].footerCredits) footerSmalls[0].textContent = translations[lang].footerCredits;
+      if (translations[lang].footerMaterials) footerSmalls[1].textContent = translations[lang].footerMaterials;
+      if (translations[lang].footerEmail) footerSmalls[2].textContent = translations[lang].footerEmail;
+      if (translations[lang].footerLicensing) footerSmalls[3].textContent = translations[lang].footerLicensing;
+    }
+  } catch (e) {
+    console.error("Errore nella traduzione del catalogo:", e);
   }
 }
 
-// Ascolta i cambi di lingua
-if (window.poolyOnLanguageChange) {
-  window.poolyOnLanguageChange.push(translateCatalogo);
-} else {
-  window.poolyOnLanguageChange = [translateCatalogo];
+// Registra il callback
+if (!window.poolyOnLanguageChange) {
+  window.poolyOnLanguageChange = [];
 }
+window.poolyOnLanguageChange.push(translateCatalogo);
 
 // Applica la lingua attuale al caricamento
-document.addEventListener("DOMContentLoaded", () => {
+if (document.readyState === 'loading') {
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentLang = localStorage.getItem("lang") || "it";
+    if (typeof translateCatalogo === 'function') {
+      translateCatalogo(currentLang);
+    }
+  });
+} else {
   const currentLang = localStorage.getItem("lang") || "it";
-  translateCatalogo(currentLang);
-});
+  if (typeof translateCatalogo === 'function') {
+    setTimeout(() => translateCatalogo(currentLang), 100);
+  }
+}
