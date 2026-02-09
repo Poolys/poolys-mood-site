@@ -325,6 +325,63 @@ if (terminiRoot) {
         <p>4. Privacy: i dati personali sono trattati secondo il GDPR. Vedi Privacy Policy.</p>
         <p>5. Modifiche: i termini possono essere aggiornati. L'uso successivo del sito implica accettazione delle modifiche.</p>
         <p>Per informazioni o richieste: pooly.s_mood@outlook.com</p>
+        <p> Termeni e condizioni completi:
+        Benvenuto su **Pooly's Mood** (www.poolysmood.com).  
+Utilizzando il sito, i suoi contenuti, l'AI assistente (“PoolyAI”) e/o richiedendo informazioni su prodotti, progetti, licensing o servizi, accetti integralmente i seguenti Termini e Condizioni.
+
+Se non accetti questi termini, non utilizzare il sito, l'AI o contattarci per richieste professionali.
+
+#### 1. Proprietà intellettuale e diritti d'autore
+- Tutti i contenuti presenti sul sito (testi, fotografie, immagini, video, design, progetti, descrizioni tecniche, disegni, rendering, loghi, nome “Pooly's Mood”, slogan “Gaudium Vino”, ecc.) sono di proprietà esclusiva di **Paul Șerbănescu** o dei suoi licenziatari.
+- È vietata qualsiasi riproduzione, modifica, distribuzione, pubblicazione, trasmissione, vendita o sfruttamento commerciale (anche parziale) senza autorizzazione scritta esplicita.
+- I progetti fisici (es. bauli bruciati, tronchi portabottiglie, ecc.) sono opere artigianali protette dalla legge sul diritto d’autore e dalla proprietà industriale.
+
+#### 2. Uso dell’AI (“PoolyAI”)
+- PoolyAI è uno strumento di supporto informativo e conversazionale, non un consulente legale, tecnico o professionale.
+- Le risposte dell’AI sono generate in base a informazioni generali, dati forniti dall’utente e dal contesto del sito. **Non costituiscono in nessun caso garanzia di fattibilità, correttezza tecnica, legale o commerciale**.
+- L’utente è **esclusivamente responsabile** dell’uso che fa delle risposte dell’AI, inclusi eventuali progetti, prototipi, produzioni o decisioni commerciali.
+- Pooly's Mood non è responsabile per danni, perdite economiche, errori di produzione o controversie derivanti dall’uso (o dal malinteso) delle informazioni fornite dall’AI.
+
+#### 3. Informazioni sui prodotti e progetti
+- Le fotografie, descrizioni e specifiche tecniche presenti sul sito sono indicative e rappresentano lo stato attuale dei progetti.
+- Pooly's Mood si riserva il diritto di modificare, aggiornare o rimuovere prodotti/progetti senza preavviso.
+- I progetti mostrati sono **protetti da copyright** e non possono essere riprodotti o realizzati senza autorizzazione scritta.
+
+#### 4. Licensing e produzione
+- Il licensing dei progetti Pooly's Mood è soggetto a contratto separato, NDA e accordi specifici.
+- Le informazioni fornite (anche tramite AI) non costituiscono offerta vincolante di licensing o produzione.
+- Ogni richiesta di licensing o produzione sarà valutata caso per caso.
+
+#### 5. Limitazione di responsabilità
+- Il sito e l’AI sono forniti “così come sono” e “come disponibili”.
+- Pooly's Mood non garantisce che il sito sia privo di errori, virus, interruzioni o che l’AI dia sempre risposte corrette o complete.
+- In nessun caso Pooly's Mood sarà responsabile per danni diretti, indiretti, consequenziali, perdita di profitto o dati derivanti dall’uso del sito o dell’AI.
+- La responsabilità massima è limitata al valore di eventuali servizi acquistati (se applicabile).
+
+#### 6. Privacy e trattamento dati
+- Il trattamento dei dati personali avviene secondo il Regolamento UE 2016/679 (GDPR) e la normativa italiana.
+- Per dettagli vedi la **Privacy Policy** (link da inserire quando la crei).
+- L’AI potrebbe memorizzare temporaneamente il contesto della conversazione per migliorare la qualità delle risposte (nessun dato personale sensibile viene conservato permanentemente senza consenso).
+
+#### 7. Legge applicabile e foro competente
+- I presenti termini sono regolati dalla legge italiana.
+- Per qualsiasi controversia è competente in via esclusiva il Foro di Milano.
+
+#### 8. Modifiche ai Termini
+- Pooly's Mood può aggiornare questi Termini in qualsiasi momento.
+- L’uso continuato del sito dopo la pubblicazione delle modifiche implica accettazione dei nuovi termini.
+
+#### 9. Contatti
+Per qualsiasi domanda, chiarimento o richiesta relativa ai Termini e Condizioni:
+- Email: pooly.s_mood@outlook.com
+- WhatsApp: [inserisci tuo numero se vuoi condividerlo]
+
+Accettando questi Termini confermi di averli letti, compresi e accettati integralmente.
+
+Grazie per aver scelto Pooly's Mood.  
+**Gaudium Vino – accogliamo presenze.**
+
+---<p>
 
         <p style="margin-top: 40px; text-align: center; font-style: italic;">Grazie per aver letto e accettato.</p>
       </div>
