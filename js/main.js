@@ -48,8 +48,6 @@ window.dispatchEvent(event);
 
 
   document.body.classList.remove('locked');
-  document.body.style.overflow = 'hidden';
-  document.documentElement.style.overflow = 'auto';
 
   window.scrollTo(0, 0);
 }
