@@ -12,6 +12,12 @@ const translations = {
     menuLicensing: "Licensing",
     menuContatti: "Contatti",
     menuTermini: "Termini e Condizioni",
+    // Catalogo
+    ctaButton: "Richiedi informazioni",
+    footerCredits: "Progettato e realizzato da Paul Șerbănescu – Piemonte, Italia",
+    footerMaterials: "Materiali: legni preggiati e inox specchio/satinato",
+    footerEmail: "Email: pooly.s_mood@outlook.com | WhatsApp: +39 [ TUO NUMERO]",
+    footerLicensing: "Per licensing, prototipi o produzione: scrivici!",
     // Modal Termini (titolo e testo base)
     terminiTitle: "Termini e Condizioni",
     terminiIntro: "Utilizzando il sito e i servizi accetti i seguenti termini...",
@@ -37,6 +43,12 @@ const translations = {
     menuLicensing: "Lizenzierung",
     menuContatti: "Kontakt",
     menuTermini: "Geschäftsbedingungen",
+    // Catalogo
+    ctaButton: "Informationen anfordern",
+    footerCredits: "Entworfen und realisiert von Paul Șerbănescu – Piemont, Italien",
+    footerMaterials: "Materialien: edles Holz und Edelstahl Spiegel/gebürstet",
+    footerEmail: "E-Mail: pooly.s_mood@outlook.com | WhatsApp: +39 [ IHRE NUMMER]",
+    footerLicensing: "Für Lizenzierung, Prototypen oder Produktion: Schreib uns!",
     // Modal Termini
     terminiTitle: "Geschäftsbedingungen",
     terminiIntro: "Durch die Nutzung der Website und der Dienstleistungen akzeptieren Sie die folgenden Bedingungen...",
@@ -62,6 +74,12 @@ const translations = {
     menuLicensing: "Licensing",
     menuContatti: "Contact",
     menuTermini: "Terms and Conditions",
+    // Catalogo
+    ctaButton: "Request information",
+    footerCredits: "Designed and created by Paul Șerbănescu – Piedmont, Italy",
+    footerMaterials: "Materials: precious woods and stainless steel mirror/brushed",
+    footerEmail: "Email: pooly.s_mood@outlook.com | WhatsApp: +39 [ YOUR NUMBER]",
+    footerLicensing: "For licensing, prototypes or production: write to us!",
     // Modal Termini
     terminiTitle: "Terms and Conditions",
     terminiIntro: "By using the site and services you accept the following terms...",

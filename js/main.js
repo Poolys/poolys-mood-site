@@ -86,6 +86,7 @@ if (header) {
 
 // CAMBIO LINGUA
 let currentLang = localStorage.getItem("lang") || "it";
+window.poolyOnLanguageChange = window.poolyOnLanguageChange || [];
 
 function updateLanguage(lang) {
   currentLang = lang;
@@ -108,6 +109,13 @@ function updateLanguage(lang) {
   
   const btn = document.querySelector(".btn-scopri");
   if (btn) btn.textContent = translations[lang].btnDiscover;
+
+  // Chiama tutte le funzioni registrate per la traduzione
+  window.poolyOnLanguageChange.forEach(callback => {
+    if (typeof callback === 'function') {
+      callback(lang);
+    }
+  });
 
   // Aggiorna modal termini (se aperto)
   // Puoi aggiungere logica simile per altri elementi
