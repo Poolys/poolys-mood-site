@@ -84,9 +84,8 @@ if (header) {
   setTimeout(() => { header.style.opacity = '1'; }, 300);
 };
 
-// CAMBIO LINGUA
+// CAMBIO LINGUA - SISTEMA SEMPLICE
 let currentLang = localStorage.getItem("lang") || "it";
-window.poolyOnLanguageChange = window.poolyOnLanguageChange || [];
 
 function updateLanguage(lang) {
   currentLang = lang;
@@ -97,28 +96,30 @@ function updateLanguage(lang) {
     btn.classList.toggle("active", btn.dataset.lang === lang);
   });
 
-  // Aggiorna testi
+  // Traduci tutti gli elementi con data-i18n
+  document.querySelectorAll("[data-i18n]").forEach(element => {
+    const key = element.getAttribute("data-i18n");
+    if (translations[lang] && translations[lang][key]) {
+      element.textContent = translations[lang][key];
+    }
+  });
+
+  // Traduci gli elementi con HTML (manifesto, claim, ecc)
   const h1 = document.querySelector("h1");
   if (h1) h1.textContent = translations[lang].title;
   
   const manifesto = document.querySelector(".manifesto");
-  if (manifesto) manifesto.innerHTML = translations[lang].manifesto;
+  if (manifesto && !manifesto.getAttribute("data-i18n")) {
+    manifesto.innerHTML = translations[lang].manifesto;
+  }
   
   const claim = document.querySelector(".claim");
-  if (claim) claim.innerHTML = translations[lang].claim;
+  if (claim && !claim.getAttribute("data-i18n")) {
+    claim.innerHTML = translations[lang].claim;
+  }
   
   const btn = document.querySelector(".btn-scopri");
   if (btn) btn.textContent = translations[lang].btnDiscover;
-
-  // Chiama tutte le funzioni registrate per la traduzione
-  window.poolyOnLanguageChange.forEach(callback => {
-    if (typeof callback === 'function') {
-      callback(lang);
-    }
-  });
-
-  // Aggiorna modal termini (se aperto)
-  // Puoi aggiungere logica simile per altri elementi
 }
 
 // Imposta lingua iniziale
