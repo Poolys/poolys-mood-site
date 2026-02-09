@@ -24,6 +24,31 @@ const translations = {
     // Footer / altri testi comuni
     footerCopyright: "© 2025 Pooly's Mood – Gaudium Vino"
   },
+  de: {
+    // Landing
+    title: "Pooly's Mood",
+    manifesto: "\"Gaudium Vino\"",
+    claim: "Wir stellen keine Objekte aus,<br>wir empfangen Präsenzen.",
+    btnDiscover: "Entdecken",
+    // Header / Menu
+    menuHome: "Startseite",
+    menuCatalogo: "Katalog",
+    menuProgetti: "Durchgeführte Projekte",
+    menuLicensing: "Lizenzierung",
+    menuContatti: "Kontakt",
+    menuTermini: "Geschäftsbedingungen",
+    // Modal Termini
+    terminiTitle: "Geschäftsbedingungen",
+    terminiIntro: "Durch die Nutzung der Website und der Dienstleistungen akzeptieren Sie die folgenden Bedingungen...",
+    // Popup accept
+    acceptTitle: "Bevor Sie fortfahren",
+    acceptText: "Für den Zugriff auf den Katalog und die KI müssen Sie den Geschäftsbedingungen zustimmen.",
+    acceptCheckbox: "Ich habe die",
+    acceptLink: "Geschäftsbedingungen",
+    acceptButton: "Ich akzeptiere und fahre fort",
+    // Footer
+    footerCopyright: "© 2025 Pooly's Mood – Gaudium Vino"
+  },
   en: {
     // Landing
     title: "Pooly's Mood",
