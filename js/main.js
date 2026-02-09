@@ -84,49 +84,73 @@ if (header) {
   setTimeout(() => { header.style.opacity = '1'; }, 300);
 };
 
-// CAMBIO LINGUA - SISTEMA SEMPLICE
+// CAMBIO LINGUA
 let currentLang = localStorage.getItem("lang") || "it";
 
 function updateLanguage(lang) {
+  if (!translations[lang]) return;
+  
   currentLang = lang;
   localStorage.setItem("lang", lang);
 
-  // Aggiorna pulsanti attivi
-  document.querySelectorAll(".lang-btn").forEach(btn => {
+  // Aggiorna pulsanti lingua attivi
+  document.querySelectorAll("[data-lang]").forEach(btn => {
     btn.classList.toggle("active", btn.dataset.lang === lang);
   });
 
-  // Traduci tutti gli elementi con data-i18n
-  document.querySelectorAll("[data-i18n]").forEach(element => {
-    const key = element.getAttribute("data-i18n");
-    if (translations[lang] && translations[lang][key]) {
-      element.textContent = translations[lang][key];
+  // Landing
+  const h1 = document.querySelector("h1");
+  if (h1) h1.textContent = translations[lang].landing.title;
+
+  const manifesto = document.querySelector(".manifesto");
+  if (manifesto) manifesto.innerHTML = translations[lang].landing.manifesto;
+
+  const claim = document.querySelector(".claim");
+  if (claim) claim.innerHTML = translations[lang].landing.claim;
+
+  const btnDiscover = document.querySelector(".btn-scopri");
+  if (btnDiscover) btnDiscover.textContent = translations[lang].landing.btnDiscover;
+
+  // Menu
+  document.querySelectorAll("[data-menu]").forEach(link => {
+    const key = link.dataset.menu;
+    if (translations[lang].menu[key]) {
+      link.textContent = translations[lang].menu[key];
     }
   });
 
-  // Traduci gli elementi con HTML (manifesto, claim, ecc)
-  const h1 = document.querySelector("h1");
-  if (h1) h1.textContent = translations[lang].title;
-  
-  const manifesto = document.querySelector(".manifesto");
-  if (manifesto && !manifesto.getAttribute("data-i18n")) {
-    manifesto.innerHTML = translations[lang].manifesto;
-  }
-  
-  const claim = document.querySelector(".claim");
-  if (claim && !claim.getAttribute("data-i18n")) {
-    claim.innerHTML = translations[lang].claim;
-  }
-  
-  const btn = document.querySelector(".btn-scopri");
-  if (btn) btn.textContent = translations[lang].btnDiscover;
+  // Modal titles
+  document.querySelectorAll("[data-modal]").forEach(elem => {
+    const key = elem.dataset.modal;
+    if (translations[lang].modal[key]) {
+      elem.textContent = translations[lang].modal[key];
+    }
+  });
+
+  // Footer
+  document.querySelectorAll("[data-footer]").forEach(elem => {
+    const key = elem.dataset.footer;
+    if (translations[lang].footer[key]) {
+      elem.textContent = translations[lang].footer[key];
+    }
+  });
+
+  // Catalogo
+  document.querySelectorAll("[data-catalog='request-info']").forEach(btn => {
+    btn.textContent = translations[lang].catalog.requestInfo;
+  });
+
+  const projectsSection = document.querySelector("[data-catalog='projects-section']");
+  if (projectsSection) projectsSection.textContent = translations[lang].catalog.projectsSection;
 }
 
-// Imposta lingua iniziale
-updateLanguage(currentLang);
+// Inizializza con lingua salvata
+document.addEventListener("DOMContentLoaded", () => {
+  updateLanguage(currentLang);
+});
 
-// Click sui pulsanti lingua
-document.querySelectorAll(".lang-btn").forEach(btn => {
+// Aggiungi event listeners ai pulsanti lingua
+document.querySelectorAll("[data-lang]").forEach(btn => {
   btn.addEventListener("click", () => {
     updateLanguage(btn.dataset.lang);
   });
