@@ -583,6 +583,10 @@ if (personalizzaRoot) {
   // Store reference per aggiornamenti linguistici
   personalizzaRoot._populateModal = populatePersonalizzaModal;
 
+  // Popola il modal al caricamento iniziale
+  const initialLang = localStorage.getItem("lang") || "it";
+  populatePersonalizzaModal(initialLang);
+
   document.querySelectorAll('[data-action="personalizza"]').forEach(el => {
     el.addEventListener("click", e => {
       e.preventDefault();
