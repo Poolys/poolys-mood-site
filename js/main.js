@@ -155,3 +155,74 @@ document.querySelectorAll("[data-lang]").forEach(btn => {
     updateLanguage(btn.dataset.lang);
   });
 });
+function updateLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
+
+  // Aggiorna pulsanti lingua attivi
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.lang === lang);
+  });
+
+  // Landing (hero)
+  if (document.querySelector("h1")) document.querySelector("h1").textContent = translations[lang].landingTitle;
+  if (document.querySelector(".manifesto")) document.querySelector(".manifesto").textContent = translations[lang].manifesto;
+  if (document.querySelector(".claim")) document.querySelector(".claim").innerHTML = translations[lang].claim;
+  if (document.querySelector(".btn-scopri")) document.querySelector(".btn-scopri").textContent = translations[lang].btnDiscover;
+
+  // Header menu (se hai id o classi)
+  if (document.querySelector("#menu-catalogo")) document.querySelector("#menu-catalogo").textContent = translations[lang].menuCatalogo;
+  // ... aggiungi altri menu ...
+
+  // Traduci TUTTI i modal shadow DOM
+  document.querySelectorAll("[data-lang-scope]").forEach(root => {
+    const scope = root.dataset.langScope; // es. "termini", "progetti", ecc.
+    const shadow = root.shadowRoot;
+    if (!shadow) return;
+
+    // Esempi per ogni modal
+    if (scope === "termini") {
+      const titleEl = shadow.querySelector("h2");
+      if (titleEl) titleEl.textContent = translations[lang].terminiTitle;
+      // Aggiungi altri elementi se hai paragrafi fissi
+    }
+
+    if (scope === "progetti") {
+      const titleEl = shadow.querySelector("h2");
+      if (titleEl) titleEl.textContent = translations[lang].progettiTitle;
+    }
+
+    if (scope === "licensing") {
+      const titleEl = shadow.querySelector("h2");
+      if (titleEl) titleEl.textContent = translations[lang].licensingTitle;
+    }
+
+    if (scope === "contatti") {
+      const titleEl = shadow.querySelector("h2");
+      if (titleEl) titleEl.textContent = translations[lang].contattiTitle;
+    }
+  });
+
+  // Traduci il popup accept (se è aperto o dinamico)
+  const acceptPopup = document.getElementById("accept-popup-root");
+  if (acceptPopup) {
+    const shadowAccept = acceptPopup.shadowRoot;
+    if (shadowAccept) {
+      const titleEl = shadowAccept.querySelector("h2");
+      if (titleEl) titleEl.textContent = translations[lang].acceptTitle;
+
+      const textEl = shadowAccept.querySelector("p:nth-of-type(1)");
+      if (textEl) textEl.textContent = translations[lang].acceptText;
+
+      const checkboxLabel = shadowAccept.querySelector("label");
+      if (checkboxLabel) {
+        const span = checkboxLabel.querySelector("span") || document.createElement("span");
+        span.textContent = translations[lang].acceptCheckbox;
+        checkboxLabel.insertBefore(span, checkboxLabel.querySelector("a") || checkboxLabel.lastChild);
+      }
+
+      const acceptBtn = shadowAccept.querySelector("#btn-accept");
+      if (acceptBtn) acceptBtn.textContent = translations[lang].acceptButton;
+    }
+  }
+}

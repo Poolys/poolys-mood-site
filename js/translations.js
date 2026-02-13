@@ -131,3 +131,62 @@ const translations = {
     }
   }
 };
+const translations = {
+  it: {
+    // ... testi già esistenti ...
+
+    // Modal Termini
+    terminiTitle: "Termini e Condizioni",
+    terminiIntro: "Utilizzando il sito e i servizi accetti i seguenti termini...",
+
+    // Modal Progetti
+    progettiTitle: "Alcuni lavori realizzati",
+
+    // Modal Licensing
+    licensingTitle: "Licensing & Produzione",
+
+    // Modal Contatti
+    contattiTitle: "Contatti",
+
+    // Popup accept
+    acceptTitle: "Prima di continuare",
+    acceptText: "Per accedere al catalogo e all'AI devi accettare i Termini e Condizioni.",
+    acceptCheckbox: "Ho letto e accetto i",
+    acceptLink: "Termini e Condizioni",
+    acceptButton: "Accetto e continuo"
+  },
+
+  en: {
+    // ... testi già esistenti ...
+
+    terminiTitle: "Terms and Conditions",
+    terminiIntro: "By using the site and services you accept the following terms...",
+
+    progettiTitle: "Some works realized",
+    licensingTitle: "Licensing & Production",
+    contattiTitle: "Contact",
+
+    acceptTitle: "Before continuing",
+    acceptText: "To access the catalog and AI you must accept the Terms and Conditions.",
+    acceptCheckbox: "I have read and accept the",
+    acceptLink: "Terms and Conditions",
+    acceptButton: "Accept and continue"
+  },
+
+  de: {
+    // ... testi già esistenti ...
+
+    terminiTitle: "Allgemeine Geschäftsbedingungen",
+    terminiIntro: "Durch die Nutzung der Website und der Dienste akzeptieren Sie die folgenden Bedingungen...",
+
+    progettiTitle: "Einige realisierte Arbeiten",
+    licensingTitle: "Lizenzierung & Produktion",
+    contattiTitle: "Kontakt",
+
+    acceptTitle: "Bevor Sie fortfahren",
+    acceptText: "Um auf den Katalog und die KI zuzugreifen, müssen Sie die Allgemeinen Geschäftsbedingungen akzeptieren.",
+    acceptCheckbox: "Ich habe gelesen und akzeptiere die",
+    acceptLink: "Allgemeine Geschäftsbedingungen",
+    acceptButton: "Akzeptieren und fortfahren"
+  }
+};
