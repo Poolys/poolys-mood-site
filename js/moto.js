@@ -1,117 +1,116 @@
-// ====================
-// MODAL PROGETTI
-// ====================
-const progettiRoot = document.getElementById("progetti-modal-root");
-if (progettiRoot) {
-  const shadowProgetti = progettiRoot.attachShadow({ mode: "open" });
+document.addEventListener("DOMContentLoaded", () => {
+  // ====================
+  // MODAL PROGETTI
+  // ====================
+  const progettiRoot = document.getElementById("progetti-modal-root");
+  if (progettiRoot) {
+    const shadowProgetti = progettiRoot.attachShadow({ mode: "open" });
 
-  const t = translations[currentLang].modal;
+    shadowProgetti.innerHTML = `
+      <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Prata', serif; }
+        #modal-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.85);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.4s ease;
+        }
+        #modal-overlay.open {
+          opacity: 1;
+          pointer-events: all;
+        }
+        #modal-content {
+          background: #111;
+          border: 1px solid var(--oro, #D4AF37);
+          max-width: 90%;
+          width: 1200px;
+          max-height: 90vh;
+          overflow-y: auto;
+          padding: 40px;
+          border-radius: 8px;
+          color: #eee;
+          position: relative;
+        }
+        .close-btn {
+          position: absolute;
+          top: 20px;
+          right: 30px;
+          background: none;
+          border: none;
+          font-size: 32px;
+          color: var(--oro);
+          cursor: pointer;
+        }
+        h2 { color: var(--oro); margin-bottom: 30px; font-size: 36px; text-align: center; }
+        .progetti-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 30px;
+        }
+        .progetto img {
+          width: 100%;
+          border: 1px solid rgba(212,175,55,0.3);
+        }
+        .progetto p { margin-top: 10px; text-align: center; font-style: italic; color: #ccc; }
+      </style>
 
-  shadowProgetti.innerHTML = `
-    <style>
-      * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Prata', serif; }
-      #modal-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.85);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.4s ease;
-      }
-      #modal-overlay.open {
-        opacity: 1;
-        pointer-events: all;
-      }
-      #modal-content {
-        background: #111;
-        border: 1px solid var(--oro, #D4AF37);
-        max-width: 90%;
-        width: 1200px;
-        max-height: 90vh;
-        overflow-y: auto;
-        padding: 40px;
-        border-radius: 8px;
-        color: #eee;
-        position: relative;
-      }
-      .close-btn {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        background: none;
-        border: none;
-        font-size: 32px;
-        color: var(--oro);
-        cursor: pointer;
-      }
-      h2 { color: var(--oro); margin-bottom: 30px; font-size: 36px; text-align: center; }
-      .progetti-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-      }
-      .progetto img {
-        width: 100%;
-        border: 1px solid rgba(212,175,55,0.3);
-      }
-      .progetto p { margin-top: 10px; text-align: center; font-style: italic; color: #ccc; }
-    </style>
-
-    <div id="modal-overlay">
-      <div id="modal-content">
-        <button class="close-btn">×</button>
-        <h2>${t.projectsTitle}</h2>
-        <div class="progetti-grid">
-          <div class="progetto">
-            <img src="assets/img/progetti/baule-bruciato.jpg" alt="Baule bruciato">
-            <img src="assets/img/progetti/baule-bruciato1.jpg" alt="Baule bruciato">
-            <p>Espositore baule bruciato – venduto</p>
+      <div id="modal-overlay">
+        <div id="modal-content">
+          <button class="close-btn">×</button>
+          <h2>${translations[currentLang].modal.progetti}</h2>
+          <h2>Alcuni lavori realizzati</h2>
+          <div class="progetti-grid">
+          ${translations[currentLang].modal.progetti}
+            <div class="progetto">
+              <img src="assets/img/progetti/baule-bruciato.jpg" alt="Baule bruciato">
+             <img src="assets/img/progetti/baule-bruciato1.jpg" alt="Baule bruciato">
+              <p>Espositore baule bruciato – venduto</p>
+            </div>
+            <div class="progetto">
+            ${translations[currentLang].modal.progetti}
+              <img src="assets/img/progetti/tronco-bottiglie.jpg" alt="Tronco bottiglie">
+              <img src="assets/img/progetti/tronco-bottiglie1.jpg" alt="Tronco bottiglie">
+             <p>Portabottiglie tronco naturale – venduto</p>
+            </div>
+            <!-- Aggiungi altre foto se ne hai -->
           </div>
-          <div class="progetto">
-            <img src="assets/img/progetti/tronco-bottiglie.jpg" alt="Tronco bottiglie">
-            <img src="assets/img/progetti/tronco-bottiglie1.jpg" alt="Tronco bottiglie">
-            <p>Portabottiglie tronco naturale – venduto</p>
-          </div>
-          <!-- Aggiungi altre foto se ne hai -->
         </div>
       </div>
-    </div>
-  `;
+    `;
 
-  // Apri modal
-  document.querySelectorAll('[data-action="progetti"]').forEach(link => {
-    link.addEventListener("click", e => {
+    // Apri modal
+    document.querySelector('a[href="#progetti"]').addEventListener("click", (e) => {
       e.preventDefault();
       shadowProgetti.querySelector("#modal-overlay").classList.add("open");
     });
-  });
 
-  // Chiudi
-  shadowProgetti.querySelector(".close-btn").addEventListener("click", () => {
-    shadowProgetti.querySelector("#modal-overlay").classList.remove("open");
-  });
-  shadowProgetti.querySelector("#modal-overlay").addEventListener("click", e => {
-    if (e.target.id === "modal-overlay") {
+    // Chiudi modal
+    shadowProgetti.querySelector(".close-btn").addEventListener("click", () => {
       shadowProgetti.querySelector("#modal-overlay").classList.remove("open");
-    }
+    });
+    shadowProgetti.querySelector("#modal-overlay").addEventListener("click", (e) => {
+      if (e.target.id === "modal-overlay") {
+        shadowProgetti.querySelector("#modal-overlay").classList.remove("open");
+      }
+    });}
   });
-}
 
-// ====================
+  // ====================
 // MODAL LICENSING
 // ====================
 const licensingRoot = document.getElementById("licensing-modal-root");
 if (licensingRoot) {
   const shadowLicensing = licensingRoot.attachShadow({ mode: "open" });
 
-  const t = translations[currentLang].modal;
-
   shadowLicensing.innerHTML = `
     <style>
+      /* Stessi stili del modal progetti – copia-incolla per uniformità */
       * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Prata', serif; }
       #modal-overlay {
         position: fixed;
@@ -163,8 +162,9 @@ if (licensingRoot) {
     <div id="modal-overlay">
       <div id="modal-content">
         <button class="close-btn">×</button>
-        <h2>${t.licensingTitle}</h2>
-        ${t.licensingText}
+        <h2>${translations[currentLang].modal.licensing}</h2>
+        <h2>Licensing & Produzione</h2>
+        ${translations[currentLang].modal.personalizza}
         <p>Pooly’s Mood è una linea completa pronta per produzione o licensing esclusivo.</p>
         <p><strong>Pacchetto chiavi in mano include:</strong></p>
         <ul>
@@ -178,29 +178,36 @@ if (licensingRoot) {
         <p>Interessato a partnership, prototipi o produzione? Contattami:</p>
         <p><strong>Email:</strong> <a href="mailto:pooly.s_mood@outlook.com">pooly.s_mood@outlook.com</a></p>
         <p><strong>WhatsApp:</strong> +39 [TUO NUMERO]</p>
+        <p>Gaudium Vino – accogliamo presenze.</p>
       </div>
     </div>
   `;
+  
 
-  // Apri modal
-  document.querySelectorAll('[data-action="licensing"]').forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
+  // Apri modal licensing
+  const licensingLink = document.querySelector('a[href="#licensing"]');
+  if (licensingLink) {
+    console.log("Link Licensing trovato – listener aggiunto");
+    licensingLink.addEventListener("click", (e) => {
+      e.preventDefault(); // blocca scroll
+      e.stopPropagation();
+      console.log("Click su Licensing – apro modal");
       shadowLicensing.querySelector("#modal-overlay").classList.add("open");
     });
-  });
+  } else {
+    console.error("Link #licensing NON trovato!");
+  }
 
   // Chiudi
   shadowLicensing.querySelector(".close-btn").addEventListener("click", () => {
     shadowLicensing.querySelector("#modal-overlay").classList.remove("open");
   });
-  shadowLicensing.querySelector("#modal-overlay").addEventListener("click", e => {
+  shadowLicensing.querySelector("#modal-overlay").addEventListener("click", (e) => {
     if (e.target.id === "modal-overlay") {
       shadowLicensing.querySelector("#modal-overlay").classList.remove("open");
     }
   });
-}
-
+};
 // ====================
 // MODAL CONTATTI
 // ====================
@@ -208,46 +215,14 @@ const contattiRoot = document.getElementById("contatti-modal-root");
 if (contattiRoot) {
   const shadowContatti = contattiRoot.attachShadow({ mode: "open" });
 
-  const t = translations[currentLang].modal;
-
   shadowContatti.innerHTML = `
     <style>
+      /* Stessi stili degli altri modal – copia per uniformità */
       * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Prata', serif; }
-      #modal-overlay {
-        position: fixed !important;
-        inset: 0;
-        background: rgba(0,0,0,0.95);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 99999;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
+      #modal-overlay { position: fixed !important; inset: 0; background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 99999; opacity: 0; transition: opacity 0.3s ease; }
       #modal-overlay.open { display: flex; opacity: 1; }
-      #modal-content {
-        background: #111;
-        border: 2px solid #D4AF37;
-        width: 92%;
-        max-width: 800px;
-        max-height: 90vh;
-        overflow-y: auto;
-        padding: 50px;
-        border-radius: 12px;
-        color: #eee;
-        box-shadow: 0 20px 80px rgba(0,0,0,0.9);
-        text-align: center;
-      }
-      .close-btn {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        background: none;
-        border: none;
-        font-size: 40px;
-        color: #D4AF37;
-        cursor: pointer;
-      }
+      #modal-content { background: #111; border: 2px solid #D4AF37; width: 92%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 50px; border-radius: 12px; color: #eee; box-shadow: 0 20px 80px rgba(0,0,0,0.9); text-align: center; }
+      .close-btn { position: absolute; top: 20px; right: 30px; background: none; border: none; font-size: 40px; color: #D4AF37; cursor: pointer; }
       h2 { color: #D4AF37; margin-bottom: 30px; font-size: 42px; }
       p { line-height: 1.7; margin: 20px 0; font-size: 18px; }
       .contatti-info { margin: 30px 0; }
@@ -259,12 +234,14 @@ if (contattiRoot) {
     <div id="modal-overlay">
       <div id="modal-content">
         <button class="close-btn">×</button>
-        <h2>${t.contactsTitle}</h2>
+        <h2>${translations[currentLang].modal.contatti}</h2>
+        <h2>Contatti</h2>
         <p>Per richieste, collaborazioni, licensing o semplicemente per un saluto 🍷</p>
 
         <div class="contatti-info">
+        ${translations[currentLang].modal.contatti}
           <p><span class="icon">✉️</span> <a href="mailto:pooly.s_mood@outlook.com">pooly.s_mood@outlook.com</a></p>
-          <p><span class="icon">📱</span> <a href="https://wa.me/39xxxxxxxxx" target="_blank">+39 [TUO NUMERO] (WhatsApp)</a></p>
+          <p><span class="icon">📱</span> <a href="https://wa.me/39xxxxx" target="_blank">+39 333 123 4567 (WhatsApp)</a></p>
           <p><span class="icon">📍</span> Piemonte, Italia (dettagli su richiesta)</p>
         </div>
 
@@ -273,10 +250,12 @@ if (contattiRoot) {
     </div>
   `;
 
-  // Apri modal
+  // Apri modal contatti
   document.querySelectorAll('[data-action="contatti"]').forEach(link => {
     link.addEventListener("click", e => {
       e.preventDefault();
+      e.stopPropagation();
+      console.log("Apro modal Contatti");
       shadowContatti.querySelector("#modal-overlay").classList.add("open");
     });
   });
@@ -290,16 +269,14 @@ if (contattiRoot) {
       shadowContatti.querySelector("#modal-overlay").classList.remove("open");
     }
   });
-}
-
-// ====================
+};
+// =============================================
 // MODAL TERMINI E CONDIZIONI (testo completo)
-// ====================
+// =============================================
+
 const terminiRoot = document.getElementById("termini-modal-root");
 if (terminiRoot) {
   const shadowTermini = terminiRoot.attachShadow({ mode: "open" });
-
-  const t = translations[currentLang].modal;
 
   shadowTermini.innerHTML = `
     <style>
@@ -345,10 +322,11 @@ if (terminiRoot) {
     <div id="modal-overlay">
       <div id="modal-content">
         <button class="close-btn">×</button>
-        <h2>${t.termsTitle}</h2>
-        <div class="terms-content">
-          ${t.termsText}
-          <p>Benvenuto su Pooly's Mood. Utilizzando questo sito e i suoi servizi (inclusa l'AI) accetti i seguenti termini:</p>
+        <h2>${translations[currentLang].modal.termini}</h2>
+
+        <!-- === QUI INSERISCI IL TESTO COMPLETO DEI TERMINI === -->
+        ${translations[currentLang].modal.termini}
+        <p>Benvenuto su Pooly's Mood. Utilizzando questo sito e i suoi servizi (inclusa l'AI) accetti i seguenti termini:</p>
         <p>1. Proprietà intellettuale: tutti i progetti, fotografie, testi, design e contenuti sono di proprietà esclusiva di Paul Șerbănescu. È vietato riprodurre, distribuire o utilizzare senza autorizzazione scritta.</p>
         <p>2. Uso dell'AI: l'AI è uno strumento di supporto informativo. Le risposte non costituiscono consulenza legale, tecnica o professionale vincolante.</p>
         <p>3. Responsabilità: l'utente è responsabile dell'uso delle informazioni ricevute. Pooly's Mood non è responsabile per danni derivanti da un uso improprio.</p>
@@ -412,30 +390,33 @@ Grazie per aver scelto Pooly's Mood.
 **Gaudium Vino – accogliamo presenze.**
 
 ---<p>
-        </div>
+
         <p style="margin-top: 40px; text-align: center; font-style: italic;">Grazie per aver letto e accettato.</p>
       </div>
     </div>
   `;
 
-  // Apri modal
+  // Apri modal quando si clicca il pulsante
   document.querySelectorAll('[data-action="termini"]').forEach(link => {
     link.addEventListener("click", e => {
       e.preventDefault();
+      e.stopPropagation();
       shadowTermini.querySelector("#modal-overlay").classList.add("open");
     });
   });
 
-  // Chiudi
+  // Chiudi modal
   shadowTermini.querySelector(".close-btn").addEventListener("click", () => {
     shadowTermini.querySelector("#modal-overlay").classList.remove("open");
   });
+
   shadowTermini.querySelector("#modal-overlay").addEventListener("click", e => {
     if (e.target.id === "modal-overlay") {
       shadowTermini.querySelector("#modal-overlay").classList.remove("open");
     }
   });
-}
+};
+
 // =============================================
 // MODAL PERSONALIZZAZIONE MODELLO (aggiornato con rubriche in cima)
 // =============================================
