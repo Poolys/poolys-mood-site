@@ -123,7 +123,13 @@ function updateLanguage(lang) {
   document.querySelectorAll("[data-modal]").forEach(elem => {
     const key = elem.dataset.modal;
     if (translations[lang].modal[key]) {
-      elem.textContent = translations[lang].modal[key];
+      // Se l'elemento è un div, usa innerHTML (per testo con HTML)
+      // Se è un h2 o simile, usa textContent (per testo semplice)
+      if (elem.tagName === "DIV") {
+        elem.innerHTML = translations[lang].modal[key];
+      } else {
+        elem.textContent = translations[lang].modal[key];
+      }
     }
   });
 
