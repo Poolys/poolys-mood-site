@@ -179,28 +179,3 @@ if (acceptRoot) {
     if (btn) btn.textContent = t.button;
   }
 }
-// Traduci popup accept se è visibile
-const acceptRoot = document.getElementById("accept-popup-root");
-if (acceptRoot) {
-  const shadow = acceptRoot.shadowRoot;
-  if (shadow) {
-    const t = translations[lang].popup;
-
-    const title = shadow.querySelector("h2");
-    if (title) title.textContent = t.title;
-
-    const textP = shadow.querySelector("p:first-of-type");
-    if (textP) textP.textContent = t.text;
-
-    const label = shadow.querySelector("label.checkbox-label");
-    if (label) {
-      label.innerHTML = `
-        <input type="checkbox" id="accept-check" class="accept-checkbox">
-        ${t.checkbox} <a href="javascript:void(0)" id="open-terms" style="color: #b8860b; text-decoration: underline;">${t.link}</a>
-      `;
-    }
-
-    const btn = shadow.querySelector("#btn-accept");
-    if (btn) btn.textContent = t.button;
-  }
-}
