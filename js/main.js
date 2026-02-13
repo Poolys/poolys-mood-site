@@ -153,11 +153,36 @@ function updateLanguage(lang) {
 // Inizializza con lingua salvata
 document.addEventListener("DOMContentLoaded", () => {
   updateLanguage(currentLang);
+
+  // Aggiorna contenuti modali (dentro shadow DOM)
+  updateModalContents(currentLang);
 });
+
+// Funzione per aggiornare i contenuti inside shadow DOM
+function updateModalContents(lang) {
+  // Licensing
+  const licensingRoot = document.getElementById("licensing-modal-root");
+  if (licensingRoot && licensingRoot.shadowRoot) {
+    const licensingDiv = licensingRoot.shadowRoot.querySelector("[data-modal='licensingText']");
+    if (licensingDiv && translations[lang]) {
+      licensingDiv.innerHTML = translations[lang].modal.licensingText;
+    }
+  }
+
+  // Termini
+  const terminiRoot = document.getElementById("termini-modal-root");
+  if (terminiRoot && terminiRoot.shadowRoot) {
+    const termsDiv = terminiRoot.shadowRoot.querySelector("[data-modal='termsText']");
+    if (termsDiv && translations[lang]) {
+      termsDiv.innerHTML = translations[lang].modal.termsText;
+    }
+  }
+}
 
 // Aggiungi event listeners ai pulsanti lingua
 document.querySelectorAll("[data-lang]").forEach(btn => {
   btn.addEventListener("click", () => {
     updateLanguage(btn.dataset.lang);
+    updateModalContents(btn.dataset.lang);
   });
 });

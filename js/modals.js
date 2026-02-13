@@ -182,6 +182,12 @@ if (licensingRoot) {
       shadowLicensing.querySelector("#modal-overlay").classList.remove("open");
     }
   });
+
+  // Popola il contenuto HTML del licensing
+  const licensingTextDiv = shadowLicensing.querySelector("[data-modal='licensingText']");
+  if (licensingTextDiv && translations[currentLang]) {
+    licensingTextDiv.innerHTML = translations[currentLang].modal.licensingText;
+  }
 }
 
 // ====================
@@ -318,4 +324,10 @@ if (terminiRoot) {
       shadowTermini.querySelector("#modal-overlay").classList.remove("open");
     }
   });
+
+  // Popola il contenuto HTML dei termini
+  const termsTextDiv = shadowTermini.querySelector("[data-modal='termsText']");
+  if (termsTextDiv && translations[currentLang]) {
+    termsTextDiv.innerHTML = translations[currentLang].modal.termsText;
+  }
 }
