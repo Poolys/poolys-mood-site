@@ -177,6 +177,12 @@ function updateModalContents(lang) {
       termsDiv.innerHTML = translations[lang].modal.termsText;
     }
   }
+
+  // Personalizza
+  const personalizzaRoot = document.getElementById("personalizza-modal-root");
+  if (personalizzaRoot && personalizzaRoot._populateModal) {
+    personalizzaRoot._populateModal(lang);
+  }
 }
 
 // Aggiungi event listeners ai pulsanti lingua

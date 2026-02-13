@@ -331,3 +331,324 @@ if (terminiRoot) {
     termsTextDiv.innerHTML = translations[currentLang].modal.termsText;
   }
 }
+
+// ====================
+// MODAL PERSONALIZZAZIONE
+// ====================
+const personalizzaRoot = document.getElementById("personalizza-modal-root");
+if (personalizzaRoot) {
+  const shadow = personalizzaRoot.attachShadow({ mode: "open" });
+
+  shadow.innerHTML = `
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Prata', serif; }
+      #overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.92);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+      #overlay.open { display: flex; opacity: 1; }
+      #modal {
+        background: #111;
+        border: 2px solid #b8860b;
+        width: 92%;
+        max-width: 750px;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 40px;
+        border-radius: 12px;
+        color: #eee;
+        box-shadow: 0 20px 80px rgba(0,0,0,0.9);
+      }
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        background: none;
+        border: none;
+        font-size: 40px;
+        color: #b8860b;
+        cursor: pointer;
+      }
+      h2 {
+        color: #b8860b;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 36px;
+      }
+      .section-title {
+        color: #d4a017;
+        font-size: 24px;
+        margin: 30px 0 20px;
+        border-bottom: 1px solid #b8860b;
+        padding-bottom: 10px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 18px;
+        color: #ddd;
+      }
+      input[type="text"],
+      input[type="number"],
+      select {
+        width: 100%;
+        padding: 12px;
+        background: #222;
+        border: 1px solid #b8860b;
+        color: #eee;
+        border-radius: 8px;
+        font-size: 16px;
+      }
+      textarea {
+        width: 100%;
+        min-height: 100px;
+        padding: 12px;
+        background: #222;
+        border: 1px solid #b8860b;
+        color: #eee;
+        border-radius: 8px;
+        font-size: 16px;
+        resize: vertical;
+      }
+      .btn-container {
+        display: flex;
+        gap: 20px;
+        margin-top: 40px;
+      }
+      .btn-invia, .btn-annulla {
+        flex: 1;
+        padding: 16px;
+        border: none;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .btn-invia {
+        background: #b8860b;
+        color: #000;
+      }
+      .btn-invia:hover {
+        background: #d4a017;
+        transform: translateY(-3px);
+      }
+      .btn-annulla {
+        background: #444;
+        color: #eee;
+      }
+      .btn-annulla:hover {
+        background: #666;
+        transform: translateY(-3px);
+      }
+      .range-info {
+        font-size: 14px;
+        color: #aaa;
+        margin-top: 6px;
+      }
+    </style>
+
+    <div id="overlay">
+      <div id="modal">
+        <button class="close-btn">×</button>
+        <h2 data-modal="personaliza_title">Personalizza il tuo modello</h2>
+
+        <form id="form-personalizza">
+          <div class="section-title" data-modal="personaliza_userInfo">Le tue informazioni</div>
+
+          <div class="form-group">
+            <label for="nome" data-modal="personaliza_name">Nome *</label>
+            <input type="text" id="nome" required data-placeholder="personaliza_namePlaceholder">
+          </div>
+
+          <div class="form-group">
+            <label for="cognome" data-modal="personaliza_surname">Cognome *</label>
+            <input type="text" id="cognome" required data-placeholder="personaliza_surnamePlaceholder">
+          </div>
+
+          <div class="form-group">
+            <label for="qualita" data-modal="personaliza_quality">In qualità di *</label>
+            <input type="text" id="qualita" required data-placeholder="personaliza_qualityPlaceholder">
+          </div>
+
+          <div class="form-group">
+            <label for="indirizzo" data-modal="personaliza_address">Indirizzo *</label>
+            <input type="text" id="indirizzo" required data-placeholder="personaliza_addressPlaceholder">
+          </div>
+
+          <div class="form-group">
+            <label for="rappresentante" data-modal="personaliza_representative">Rappresentante di</label>
+            <input type="text" id="rappresentante" data-placeholder="personaliza_representativePlaceholder">
+          </div>
+
+          <div class="section-title" data-modal="personaliza_modelDetails">Dettagli del modello</div>
+
+          <div class="form-group">
+            <label for="altezza" data-modal="personaliza_height">Altezza (cm) *</label>
+            <input type="number" id="altezza" min="50" max="250" step="1" value="180" required>
+            <div class="range-info" data-modal="personaliza_heightRange">Min 50 cm – Max 250 cm</div>
+          </div>
+
+          <div class="form-group">
+            <label for="larghezza" data-modal="personaliza_width">Larghezza (cm) *</label>
+            <input type="number" id="larghezza" min="40" max="200" step="1" value="100" required>
+            <div class="range-info" data-modal="personaliza_widthRange">Min 40 cm – Max 200 cm</div>
+          </div>
+
+          <div class="form-group">
+            <label for="profondita" data-modal="personaliza_depth">Profondità (cm) *</label>
+            <input type="number" id="profondita" min="30" max="80" step="1" value="50" required>
+            <div class="range-info" data-modal="personaliza_depthRange">Min 30 cm – Max 80 cm</div>
+          </div>
+
+          <div class="form-group">
+            <label for="bottiglie" data-modal="personaliza_bottles">Numero di bottiglie *</label>
+            <input type="number" id="bottiglie" min="6" max="200" step="1" value="24" required>
+            <div class="range-info" data-modal="personaliza_bottlesRange">Min 6 bottiglie – Max 200 bottiglie</div>
+          </div>
+
+          <div class="form-group">
+            <label for="legno" data-modal="personaliza_wood">Tipo di legno *</label>
+            <select id="legno" required>
+              <option value="" data-modal="personaliza_selectOption">Seleziona</option>
+              <option value="rovere" data-modal="personaliza_oakPiedmont">Rovere massello Piemonte</option>
+              <option value="noce" data-modal="personaliza_italianWalnut">Noce italiano</option>
+              <option value="castagno" data-modal="personaliza_ancientChestnut">Castagno antico</option>
+              <option value="ciliegio" data-modal="personaliza_selectedCherry">Ciliegio selezionato</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="inox" data-modal="personaliza_inox">Tipo di inox *</label>
+            <select id="inox" required>
+              <option value="" data-modal="personaliza_selectOption">Seleziona</option>
+              <option value="specchio" data-modal="personaliza_mirrorInox">Inox specchio</option>
+              <option value="satinato" data-modal="personaliza_brushedInox">Inox satinato</option>
+              <option value="nero" data-modal="personaliza_blackOpaque">Inox nero opaco</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="note" data-modal="personaliza_notes">Note aggiuntive (opzionale)</label>
+            <textarea id="note" data-placeholder="personaliza_notesPlaceholder"></textarea>
+          </div>
+
+          <div class="btn-container">
+            <button type="button" class="btn-annulla" data-modal="personaliza_cancel">Annulla</button>
+            <button type="submit" class="btn-invia" data-modal="personaliza_submit">Invia richiesta preventivo</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  `;
+
+  // Popola i testi tradotti al caricamento
+  function populatePersonalizzaModal(lang) {
+    const t = window.translations && window.translations[lang] ? window.translations[lang].personaliza : null;
+    if (!t) return;
+
+    // Update labels e elementi con data-modal
+    shadow.querySelectorAll("[data-modal]").forEach(el => {
+      const key = el.getAttribute("data-modal").replace("personaliza_", "");
+      const value = t[key];
+      if (value) {
+        if (el.tagName === "OPTION" || el.tagName === "SELECT") {
+          el.textContent = value;
+        } else {
+          el.textContent = value;
+        }
+      }
+    });
+
+    // Update placeholders
+    shadow.querySelectorAll("[data-placeholder]").forEach(el => {
+      const key = el.getAttribute("data-placeholder").replace("personaliza_", "");
+      const value = t[key];
+      if (value) {
+        el.setAttribute("placeholder", value);
+      }
+    });
+  }
+
+  // Store reference per aggiornamenti linguistici
+  personalizzaRoot._populateModal = populatePersonalizzaModal;
+
+  document.querySelectorAll('[data-action="personalizza"]').forEach(el => {
+    el.addEventListener("click", e => {
+      e.preventDefault();
+      shadow.querySelector("#overlay").classList.add("open");
+    });
+  });
+
+  shadow.querySelector(".close-btn").addEventListener("click", () => {
+    shadow.querySelector("#overlay").classList.remove("open");
+  });
+
+  shadow.querySelector("#overlay").addEventListener("click", e => {
+    if (e.target.id === "overlay") {
+      shadow.querySelector("#overlay").classList.remove("open");
+    }
+  });
+
+  shadow.querySelector(".btn-annulla").addEventListener("click", () => {
+    shadow.querySelector("#overlay").classList.remove("open");
+  });
+
+  const form = shadow.querySelector("#form-personalizza");
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const currentLang = localStorage.getItem("lang") || "it";
+    const t = window.translations && window.translations[currentLang] ? window.translations[currentLang].personaliza : null;
+    const emailPrompt = t ? t.emailPrompt : "Inserisci la tua email per la risposta";
+    const requestSent = t ? t.requestSent : "Richiesta inviata! Ti contatteremo presto.";
+
+    const data = {
+      nome: shadow.querySelector("#nome").value,
+      cognome: shadow.querySelector("#cognome").value,
+      qualita: shadow.querySelector("#qualita").value,
+      indirizzo: shadow.querySelector("#indirizzo").value,
+      rappresentante: shadow.querySelector("#rappresentante").value || "Non specificato",
+      altezza: shadow.querySelector("#altezza").value,
+      larghezza: shadow.querySelector("#larghezza").value,
+      profondita: shadow.querySelector("#profondita").value,
+      bottiglie: shadow.querySelector("#bottiglie").value,
+      legno: shadow.querySelector("#legno").value,
+      inox: shadow.querySelector("#inox").value,
+      note: shadow.querySelector("#note").value || "Nessuna nota"
+    };
+
+    const subject = encodeURIComponent("Richiesta preventivo personalizzato - Pooly's Mood");
+    const body = encodeURIComponent(
+      `Richiesta da:\n` +
+      `Nome: ${data.nome} ${data.cognome}\n` +
+      `In qualità di: ${data.qualita}\n` +
+      `Indirizzo: ${data.indirizzo}\n` +
+      `Rappresentante di: ${data.rappresentante}\n\n` +
+      `Personalizzazione:\n` +
+      `Altezza: ${data.altezza} cm\n` +
+      `Larghezza: ${data.larghezza} cm\n` +
+      `Profondità: ${data.profondita} cm\n` +
+      `Numero bottiglie: ${data.bottiglie}\n` +
+      `Legno: ${data.legno}\n` +
+      `Inox: ${data.inox}\n` +
+      `Note: ${data.note}\n\n` +
+      `Email utente: ${prompt(emailPrompt) || "non fornita"}`
+    );
+
+    window.location.href = `mailto:pooly.s_mood@outlook.com?subject=${subject}&body=${body}`;
+
+    shadow.querySelector("#overlay").classList.remove("open");
+    alert(requestSent);
+  });
+}
