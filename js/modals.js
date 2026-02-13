@@ -658,9 +658,4 @@ if (personalizzaRoot) {
 }
 
 // Funzione globale per aggiornare il personalizza modal quando la lingua cambia
-window.updatePersonalizzaTranslations = function(lang) {
-  const personalizzaRoot = document.getElementById("personalizza-modal-root");
-  if (personalizzaRoot && personalizzaRoot._populateModal) {
-    personalizzaRoot._populateModal(lang);
-  }
-};
+// (removed global updatePersonalizzaTranslations to revert recent change)

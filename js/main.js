@@ -178,9 +178,10 @@ function updateModalContents(lang) {
     }
   }
 
-  // Personalizza - usa la funzione globale di modals.js
-  if (window.updatePersonalizzaTranslations) {
-    window.updatePersonalizzaTranslations(lang);
+  // Personalizza
+  const personalizzaRoot = document.getElementById("personalizza-modal-root");
+  if (personalizzaRoot && personalizzaRoot._populateModal) {
+    personalizzaRoot._populateModal(lang);
   }
 }
 
