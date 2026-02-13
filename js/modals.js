@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .progetto p { margin-top: 10px; text-align: center; font-style: italic; color: #ccc; }
       </style>
 
-      <div id="modal-overlay"data-lang-scope="progetti">
+      <div id="modal-overlay">
         <div id="modal-content">
           <button class="close-btn">×</button>
           <h2>Alcuni lavori realizzati</h2>
@@ -156,7 +156,7 @@ if (licensingRoot) {
       a:hover { text-decoration: underline; }
     </style>
 
-    <div id="modal-overlay"data-lang-scope="licensing">
+    <div id="modal-overlay">
       <div id="modal-content">
         <button class="close-btn">×</button>
         <h2>Licensing & Produzione</h2>
@@ -226,7 +226,7 @@ if (contattiRoot) {
       .icon { font-size: 32px; margin-right: 10px; }
     </style>
 
-    <div id="modal-overlay"data-lang-scope="contatti">
+    <div id="modal-overlay">
       <div id="modal-content">
         <button class="close-btn">×</button>
         <h2>Contatti</h2>
@@ -312,7 +312,7 @@ if (terminiRoot) {
       p, li { line-height: 1.7; margin: 15px 0; font-size: 17px; }
     </style>
 
-    <div id="modal-overlay"data-lang-scope="termini">
+    <div id="modal-overlay">
       <div id="modal-content">
         <button class="close-btn">×</button>
         <h2>Termini e Condizioni</h2>
@@ -544,7 +544,7 @@ if (personalizzaRoot) {
       }
     </style>
 
-    <div id="overlay"data-lang-scope="personalizza">
+    <div id="overlay">
       <div id="modal">
         <button class="close-btn">×</button>
         <h2>Personalizza il tuo modello</h2>
