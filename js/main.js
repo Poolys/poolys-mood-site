@@ -161,27 +161,3 @@ document.querySelectorAll("[data-lang]").forEach(btn => {
     updateLanguage(btn.dataset.lang);
   });
 });
-// Traduci popup accept se è aperto
-const acceptRoot = document.getElementById("accept-popup-root");
-if (acceptRoot) {
-  const shadow = acceptRoot.shadowRoot;
-  if (shadow) {
-    const t = translations[lang].popup;
-
-    const title = shadow.querySelector("h2");
-    if (title) title.textContent = t.title;
-
-    const text = shadow.querySelector("p");
-    if (text) text.textContent = t.text;
-
-    const checkboxLabel = shadow.querySelector("label");
-    if (checkboxLabel) {
-      const link = checkboxLabel.querySelector("a");
-      checkboxLabel.innerHTML = `\( {t.checkbox} <a href="javascript:void(0)" id="open-terms" style="color: #b8860b; text-decoration: underline;"> \){t.link}</a>`;
-      // Riattacca listener a open-terms se necessario
-    }
-
-    const btn = shadow.querySelector("#btn-accept");
-    if (btn) btn.textContent = t.button;
-  }
-}
