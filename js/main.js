@@ -141,13 +141,28 @@ function updateLanguage(lang) {
     }
   });
 
-  // Catalogo
-  document.querySelectorAll("[data-catalog='request-info']").forEach(btn => {
-    btn.textContent = translations[lang].catalog.requestInfo;
-  });
+  // Catalogo - general handler for elements with data-catalog
+  document.querySelectorAll("[data-catalog]").forEach(elem => {
+    const key = elem.dataset.catalog;
+    // special-case existing keys
+    if (key === 'request-info' && translations[lang].catalog.requestInfo) {
+      elem.textContent = translations[lang].catalog.requestInfo;
+      return;
+    }
+    if (key === 'projects-section' && translations[lang].catalog.projectsSection) {
+      elem.textContent = translations[lang].catalog.projectsSection;
+      return;
+    }
 
-  const projectsSection = document.querySelector("[data-catalog='projects-section']");
-  if (projectsSection) projectsSection.textContent = translations[lang].catalog.projectsSection;
+    // if translations contain the key, populate (use innerHTML for lists)
+    if (translations[lang].catalog && translations[lang].catalog[key]) {
+      if (elem.tagName === 'UL' || elem.tagName === 'DIV') {
+        elem.innerHTML = translations[lang].catalog[key];
+      } else {
+        elem.textContent = translations[lang].catalog[key];
+      }
+    }
+  });
 }
 
 // Inizializza con lingua salvata
