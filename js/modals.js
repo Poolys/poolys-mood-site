@@ -164,8 +164,8 @@ if (licensingRoot) {
 
     <div id="modal-overlay">
       <div id="modal-content">
+      ${t.LicensingTitle}
         <button class="close-btn">×</button>
-        ${t.LicensingTitle}
         <h2>Licensing & Produzione</h2>
         ${t.LicensingText}
         <p>Pooly’s Mood è una linea completa pronta per produzione o licensing esclusivo.</p>
