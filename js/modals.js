@@ -63,14 +63,17 @@ document.addEventListener("DOMContentLoaded", () => {
       <div id="modal-overlay">
         <div id="modal-content">
           <button class="close-btn">×</button>
+          <h2>${translations[currentLang].modal.progetti}</h2>
           <h2>Alcuni lavori realizzati</h2>
           <div class="progetti-grid">
+          ${translations[currentLang].modal.progetti}
             <div class="progetto">
               <img src="assets/img/progetti/baule-bruciato.jpg" alt="Baule bruciato">
              <img src="assets/img/progetti/baule-bruciato1.jpg" alt="Baule bruciato">
               <p>Espositore baule bruciato – venduto</p>
             </div>
             <div class="progetto">
+            ${translations[currentLang].modal.progetti}
               <img src="assets/img/progetti/tronco-bottiglie.jpg" alt="Tronco bottiglie">
               <img src="assets/img/progetti/tronco-bottiglie1.jpg" alt="Tronco bottiglie">
              <p>Portabottiglie tronco naturale – venduto</p>
@@ -159,7 +162,9 @@ if (licensingRoot) {
     <div id="modal-overlay">
       <div id="modal-content">
         <button class="close-btn">×</button>
+        <h2>${translations[currentLang].modal.licensing}</h2>
         <h2>Licensing & Produzione</h2>
+        ${translations[currentLang].modal.personalizza}
         <p>Pooly’s Mood è una linea completa pronta per produzione o licensing esclusivo.</p>
         <p><strong>Pacchetto chiavi in mano include:</strong></p>
         <ul>
@@ -229,10 +234,12 @@ if (contattiRoot) {
     <div id="modal-overlay">
       <div id="modal-content">
         <button class="close-btn">×</button>
+        <h2>${translations[currentLang].modal.contatti}</h2>
         <h2>Contatti</h2>
         <p>Per richieste, collaborazioni, licensing o semplicemente per un saluto 🍷</p>
 
         <div class="contatti-info">
+        ${translations[currentLang].modal.contatti}
           <p><span class="icon">✉️</span> <a href="mailto:pooly.s_mood@outlook.com">pooly.s_mood@outlook.com</a></p>
           <p><span class="icon">📱</span> <a href="https://wa.me/39xxxxx" target="_blank">+39 333 123 4567 (WhatsApp)</a></p>
           <p><span class="icon">📍</span> Piemonte, Italia (dettagli su richiesta)</p>
@@ -315,9 +322,10 @@ if (terminiRoot) {
     <div id="modal-overlay">
       <div id="modal-content">
         <button class="close-btn">×</button>
-        <h2>Termini e Condizioni</h2>
+        <h2>${translations[currentLang].modal.termini}</h2>
 
         <!-- === QUI INSERISCI IL TESTO COMPLETO DEI TERMINI === -->
+        ${translations[currentLang].modal.termini}
         <p>Benvenuto su Pooly's Mood. Utilizzando questo sito e i suoi servizi (inclusa l'AI) accetti i seguenti termini:</p>
         <p>1. Proprietà intellettuale: tutti i progetti, fotografie, testi, design e contenuti sono di proprietà esclusiva di Paul Șerbănescu. È vietato riprodurre, distribuire o utilizzare senza autorizzazione scritta.</p>
         <p>2. Uso dell'AI: l'AI è uno strumento di supporto informativo. Le risposte non costituiscono consulenza legale, tecnica o professionale vincolante.</p>
@@ -547,6 +555,7 @@ if (personalizzaRoot) {
     <div id="overlay">
       <div id="modal">
         <button class="close-btn">×</button>
+        <h2>${translations[currentLang].modal.personalizza}</h2>
         <h2>Personalizza il tuo modello</h2>
 
         <form id="form-personalizza">
@@ -555,26 +564,32 @@ if (personalizzaRoot) {
           <div class="section-title">Le tue informazioni</div>
 
           <div class="form-group">
+          
+        ${translations[currentLang].modal.form-group}
             <label for="nome">Nome *</label>
             <input type="text" id="nome" required placeholder="Es. Mario">
           </div>
 
           <div class="form-group">
+          ${translations[currentLang].modal.form-group}
             <label for="cognome">Cognome *</label>
             <input type="text" id="cognome" required placeholder="Es. Rossi">
           </div>
 
           <div class="form-group">
+          ${translations[currentLang].modal.form-group}
             <label for="qualita">In qualità di *</label>
             <input type="text" id="qualita" required placeholder="Es. Privato, Titolare enoteca, Architetto, Azienda...">
           </div>
 
           <div class="form-group">
+          ${translations[currentLang].modal.form-group}
             <label for="indirizzo">Indirizzo *</label>
             <input type="text" id="indirizzo" required placeholder="Es. Via Roma 12, Milano">
           </div>
 
           <div class="form-group">
+          ${translations[currentLang].modal.form-group}
             <label for="rappresentante">Rappresentante di</label>
             <input type="text" id="rappresentante" placeholder="Es. Cantina Rossi SRL, Enoteca Milano">
           </div>
@@ -583,30 +598,35 @@ if (personalizzaRoot) {
           <div class="section-title">Dettagli del modello</div>
 
           <div class="form-group">
+          ${translations[currentLang].modal.form-group}
             <label for="altezza">Altezza (cm) *</label>
             <input type="number" id="altezza" min="50" max="250" step="1" value="180" required>
             <div class="range-info">Min 50 cm – Max 250 cm</div>
           </div>
 
           <div class="form-group">
+          ${translations[currentLang].modal.form-group}
             <label for="larghezza">Larghezza (cm) *</label>
             <input type="number" id="larghezza" min="40" max="200" step="1" value="100" required>
             <div class="range-info">Min 40 cm – Max 200 cm</div>
           </div>
 
           <div class="form-group">
+          ${translations[currentLang].modal.form-group}
             <label for="profondita">Profondità (cm) *</label>
             <input type="number" id="profondita" min="30" max="80" step="1" value="50" required>
             <div class="range-info">Min 30 cm – Max 80 cm</div>
           </div>
 
           <div class="form-group">
+          ${translations[currentLang].modal.form-group}
             <label for="bottiglie">Numero di bottiglie *</label>
             <input type="number" id="bottiglie" min="6" max="200" step="1" value="24" required>
             <div class="range-info">Min 6 bottiglie – Max 200 bottiglie</div>
           </div>
 
           <div class="form-group">
+          ${translations[currentLang].modal.form-group}
             <label for="legno">Tipo di legno *</label>
             <select id="legno" required>
               <option value="">Seleziona</option>
@@ -618,6 +638,7 @@ if (personalizzaRoot) {
           </div>
 
           <div class="form-group">
+          ${translations[currentLang].modal.form-group}
             <label for="inox">Tipo di inox *</label>
             <select id="inox" required>
               <option value="">Seleziona</option>
@@ -628,11 +649,13 @@ if (personalizzaRoot) {
           </div>
 
           <div class="form-group">
+          ${translations[currentLang].modal.form-group}
             <label for="note">Note aggiuntive (opzionale)</label>
             <textarea id="note" placeholder="Es. tipo bottiglie (Magnum, Standard), posizione, esigenze particolari..."></textarea>
           </div>
 
           <div class="btn-container">
+          ${translations[currentLang].modal.btn-container}
             <button type="button" class="btn-annulla">Annulla</button>
             <button type="submit" class="btn-invia">Invia richiesta preventivo</button>
           </div>
