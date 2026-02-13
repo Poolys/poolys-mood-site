@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const shadow = root.attachShadow({ mode: "open" });
 
+    const t = translations[currentLang].popup; // Ottieni i testi tradotti
+    
     shadow.innerHTML = `
       <style>
         #overlay {
