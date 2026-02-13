@@ -108,8 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
 const licensingRoot = document.getElementById("licensing-modal-root");
 if (licensingRoot) {
   const shadowLicensing = licensingRoot.attachShadow({ mode: "open" });
-
-  const t = translations[currentLang].modal;
   
   shadowLicensing.innerHTML = `
     <style>
@@ -162,6 +160,8 @@ if (licensingRoot) {
       a:hover { text-decoration: underline; }
     </style>
 
+  const t = translations[currentLang].modal;
+  
     <div id="modal-overlay">
       <div id="modal-content">
         <button class="close-btn">×</button>
