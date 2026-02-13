@@ -408,13 +408,6 @@ Grazie per aver scelto Pooly's Mood.
     }
   });
 };
-const termsText = {
-  it: "Testo termini in italiano...",
-  de: "Text der Allgemeinen Geschäftsbedingungen auf Deutsch...",
-  en: "Terms and Conditions text in English..."
-};
-
-shadowTermini.querySelector("#modal-content p").innerHTML = termsText[currentLang];
 
 // =============================================
 // MODAL PERSONALIZZAZIONE MODELLO (aggiornato con rubriche in cima)
