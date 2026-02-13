@@ -105,9 +105,7 @@
         <a href="#licensing" data-menu="licensing">Licensing</a>
         <a href="javascript:void(0)" data-action="contatti" data-menu="contacts">Contatti</a>
       </nav>
-      <li>
-  <a href="javascript:void(0)" data-action="termini" data-menu="terms">Termini e Condizioni</a>
-</li>
+      
     </div>
   </header>
   #main-content >*:first-child { margin-top:100px; } <!-- per compensare l'header fisso -->
@@ -147,7 +145,11 @@
       <small data-footer="materials">Materiali: legni preggiati e inox specchio/satinato</small>
       <small data-footer="contact">Email: pooly.s_mood@outlook.com | WhatsApp: +39 [ TUO NUMERO]</small>
       <small data-footer="licensing">Per licensing, prototipi o produzione: scrivici!</small>
-    </div>
+        <p>
+    <a href="javascript:void(0)" data-action="termini">Termini e Condizioni</a> |
+    <a href="mailto:pooly.s_mood@outlook.com">Contattaci</a>
+  </p>
+</div>
   </footer>
  <!-- MODAL PROGETTI REALIZZATI – SHADOW DOM -->
 <div id="progetti-modal-root"></div>
@@ -158,8 +160,11 @@
 <!-- MODAL CONTATTI – SHADOW DOM -->
    <div id="contatti-modal-root"></div>
    
-    <!-- MODAL TERMENI – SHADOW DOM -->
+<!-- MODAL TERMENI – SHADOW DOM -->
    <div id="termini-modal-root"></div>
+
+<!-- MODAL personaliza – SHADOW DOM -->
+   <div id="personalizza-modal-root"></div>
 
    <script src="js/translations.js"></script>
    <script src="js/accept.js"></script>

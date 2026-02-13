@@ -415,3 +415,306 @@ const termsText = {
 };
 
 shadowTermini.querySelector("#modal-content p").innerHTML = termsText[currentLang];
+
+// =============================================
+// MODAL PERSONALIZZAZIONE MODELLO (aggiornato con rubriche in cima)
+// =============================================
+
+const personalizzaRoot = document.getElementById("personalizza-modal-root");
+if (personalizzaRoot) {
+  const shadow = personalizzaRoot.attachShadow({ mode: "open" });
+
+  shadow.innerHTML = `
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Prata', serif; }
+      #overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.92);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+      #overlay.open { display: flex; opacity: 1; }
+      #modal {
+        background: #111;
+        border: 2px solid #b8860b;
+        width: 92%;
+        max-width: 750px;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 40px;
+        border-radius: 12px;
+        color: #eee;
+        box-shadow: 0 20px 80px rgba(0,0,0,0.9);
+      }
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        background: none;
+        border: none;
+        font-size: 40px;
+        color: #b8860b;
+        cursor: pointer;
+      }
+      h2 {
+        color: #b8860b;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 36px;
+      }
+      .section-title {
+        color: #d4a017;
+        font-size: 24px;
+        margin: 30px 0 20px;
+        border-bottom: 1px solid #b8860b;
+        padding-bottom: 10px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 18px;
+        color: #ddd;
+      }
+      input[type="text"],
+      input[type="number"],
+      select {
+        width: 100%;
+        padding: 12px;
+        background: #222;
+        border: 1px solid #b8860b;
+        color: #eee;
+        border-radius: 8px;
+        font-size: 16px;
+      }
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        opacity: 1;
+      }
+      .range-info {
+        font-size: 14px;
+        color: #aaa;
+        margin-top: 6px;
+      }
+      textarea {
+        width: 100%;
+        min-height: 100px;
+        padding: 12px;
+        background: #222;
+        border: 1px solid #b8860b;
+        color: #eee;
+        border-radius: 8px;
+        font-size: 16px;
+        resize: vertical;
+      }
+      .btn-container {
+        display: flex;
+        gap: 20px;
+        margin-top: 40px;
+      }
+      .btn-invia, .btn-annulla {
+        flex: 1;
+        padding: 16px;
+        border: none;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .btn-invia {
+        background: #b8860b;
+        color: #000;
+      }
+      .btn-invia:hover {
+        background: #d4a017;
+        transform: translateY(-3px);
+      }
+      .btn-invia:disabled {
+        background: #555;
+        cursor: not-allowed;
+      }
+      .btn-annulla {
+        background: #444;
+        color: #eee;
+      }
+      .btn-annulla:hover {
+        background: #666;
+        transform: translateY(-3px);
+      }
+    </style>
+
+    <div id="overlay">
+      <div id="modal">
+        <button class="close-btn">×</button>
+        <h2>Personalizza il tuo modello</h2>
+
+        <form id="form-personalizza">
+
+          <!-- RUBRICHE INFORMAZIONI UTENTE (in cima) -->
+          <div class="section-title">Le tue informazioni</div>
+
+          <div class="form-group">
+            <label for="nome">Nome *</label>
+            <input type="text" id="nome" required placeholder="Es. Mario">
+          </div>
+
+          <div class="form-group">
+            <label for="cognome">Cognome *</label>
+            <input type="text" id="cognome" required placeholder="Es. Rossi">
+          </div>
+
+          <div class="form-group">
+            <label for="qualita">In qualità di *</label>
+            <input type="text" id="qualita" required placeholder="Es. Privato, Titolare enoteca, Architetto, Azienda...">
+          </div>
+
+          <div class="form-group">
+            <label for="indirizzo">Indirizzo *</label>
+            <input type="text" id="indirizzo" required placeholder="Es. Via Roma 12, Milano">
+          </div>
+
+          <div class="form-group">
+            <label for="rappresentante">Rappresentante di</label>
+            <input type="text" id="rappresentante" placeholder="Es. Cantina Rossi SRL, Enoteca Milano">
+          </div>
+
+          <!-- PERSONALIZZAZIONE MODELLO -->
+          <div class="section-title">Dettagli del modello</div>
+
+          <div class="form-group">
+            <label for="altezza">Altezza (cm) *</label>
+            <input type="number" id="altezza" min="50" max="250" step="1" value="180" required>
+            <div class="range-info">Min 50 cm – Max 250 cm</div>
+          </div>
+
+          <div class="form-group">
+            <label for="larghezza">Larghezza (cm) *</label>
+            <input type="number" id="larghezza" min="40" max="200" step="1" value="100" required>
+            <div class="range-info">Min 40 cm – Max 200 cm</div>
+          </div>
+
+          <div class="form-group">
+            <label for="profondita">Profondità (cm) *</label>
+            <input type="number" id="profondita" min="30" max="80" step="1" value="50" required>
+            <div class="range-info">Min 30 cm – Max 80 cm</div>
+          </div>
+
+          <div class="form-group">
+            <label for="bottiglie">Numero di bottiglie *</label>
+            <input type="number" id="bottiglie" min="6" max="200" step="1" value="24" required>
+            <div class="range-info">Min 6 bottiglie – Max 200 bottiglie</div>
+          </div>
+
+          <div class="form-group">
+            <label for="legno">Tipo di legno *</label>
+            <select id="legno" required>
+              <option value="">Seleziona</option>
+              <option value="rovere">Rovere massello Piemonte</option>
+              <option value="noce">Noce italiano</option>
+              <option value="castagno">Castagno antico</option>
+              <option value="ciliegio">Ciliegio selezionato</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="inox">Tipo di inox *</label>
+            <select id="inox" required>
+              <option value="">Seleziona</option>
+              <option value="specchio">Inox specchio</option>
+              <option value="satinato">Inox satinato</option>
+              <option value="nero">Inox nero opaco</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="note">Note aggiuntive (opzionale)</label>
+            <textarea id="note" placeholder="Es. tipo bottiglie (Magnum, Standard), posizione, esigenze particolari..."></textarea>
+          </div>
+
+          <div class="btn-container">
+            <button type="button" class="btn-annulla">Annulla</button>
+            <button type="submit" class="btn-invia">Invia richiesta preventivo</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  `;
+
+  // Apri modal
+  document.querySelectorAll('[data-action="personalizza"]').forEach(el => {
+    el.addEventListener("click", e => {
+      e.preventDefault();
+      shadow.querySelector("#overlay").classList.add("open");
+    });
+  });
+
+  // Chiudi modal
+  shadow.querySelector(".close-btn").addEventListener("click", () => {
+    shadow.querySelector("#overlay").classList.remove("open");
+  });
+
+  shadow.querySelector("#overlay").addEventListener("click", e => {
+    if (e.target.id === "overlay") {
+      shadow.querySelector("#overlay").classList.remove("open");
+    }
+  });
+
+  // Pulsante Annulla
+  shadow.querySelector(".btn-annulla").addEventListener("click", () => {
+    shadow.querySelector("#overlay").classList.remove("open");
+  });
+
+  // Gestione invio form
+  const form = shadow.querySelector("#form-personalizza");
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const data = {
+      nome: shadow.querySelector("#nome").value,
+      cognome: shadow.querySelector("#cognome").value,
+      qualita: shadow.querySelector("#qualita").value,
+      indirizzo: shadow.querySelector("#indirizzo").value,
+      rappresentante: shadow.querySelector("#rappresentante").value || "Non specificato",
+      altezza: shadow.querySelector("#altezza").value,
+      larghezza: shadow.querySelector("#larghezza").value,
+      profondita: shadow.querySelector("#profondita").value,
+      bottiglie: shadow.querySelector("#bottiglie").value,
+      legno: shadow.querySelector("#legno").value,
+      inox: shadow.querySelector("#inox").value,
+      note: shadow.querySelector("#note").value || "Nessuna nota"
+    };
+
+    // === INVIO VIA EMAIL ===
+    const subject = encodeURIComponent("Richiesta preventivo personalizzato - Pooly's Mood");
+    const body = encodeURIComponent(
+      `Richiesta da:\n` +
+      `Nome: ${data.nome} ${data.cognome}\n` +
+      `In qualità di: ${data.qualita}\n` +
+      `Indirizzo: ${data.indirizzo}\n` +
+      `Rappresentante di: ${data.rappresentante}\n\n` +
+      `Personalizzazione:\n` +
+      `Altezza: ${data.altezza} cm\n` +
+      `Larghezza: ${data.larghezza} cm\n` +
+      `Profondità: ${data.profondita} cm\n` +
+      `Numero bottiglie: ${data.bottiglie}\n` +
+      `Legno: ${data.legno}\n` +
+      `Inox: ${data.inox}\n` +
+      `Note: ${data.note}\n\n` +
+      `Email utente: ${prompt("Inserisci la tua email per la risposta") || "non fornita"}`
+    );
+
+    window.location.href = `mailto:pooly.s_mood@outlook.com?subject=${subject}&body=${body}`;
+
+    // Chiudi modal
+    shadow.querySelector("#overlay").classList.remove("open");
+    alert("Richiesta inviata! Ti contatteremo presto.");
+  });
+}
