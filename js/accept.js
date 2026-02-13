@@ -20,15 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function showAcceptPopup() {
-    const root = document.createElement("div");
-    root.id = "accept-popup-root";
-    document.body.appendChild(root);
+  const root = document.createElement("div");
+  root.id = "accept-popup-root";
+  document.body.appendChild(root);
 
-    const shadow = root.attachShadow({ mode: "open" });
+  const shadow = root.attachShadow({ mode: "open" });
 
-    const t = translations[currentLang].popup; // Ottieni i testi tradotti
-    
-    shadow.innerHTML = `
+  // Prendi i testi tradotti in base alla lingua corrente
+  const t = translations[currentLang].popup;
+
+  shadow.innerHTML = `
       <style>
         #overlay {
           position: fixed;
@@ -72,21 +73,21 @@ document.addEventListener("DOMContentLoaded", () => {
         .btn-accept:disabled { background: #555; cursor: not-allowed; }
       </style>
 
-      <div id="overlay" class="show">
-        <div id="modal">
-          <h2>Prima di continuare</h2>
-          <p>Per accedere al catalogo e all'AI devi accettare i Termini e Condizioni.</p>
-          <p>L'AI risponde a domande sui progetti reali – tutto protetto da copyright.</p>
+     <div id="overlay" class="show">
+      <div id="modal">
+        <h2>${t.title}</h2>
+        <p>${t.text}</p>
+        <p>L'AI risponde a domande sui progetti reali – tutto protetto da copyright.</p> <!-- questo puoi tradurlo o lasciarlo fisso -->
 
-          <label class="checkbox-label">
-            <input type="checkbox" id="accept-check" class="accept-checkbox">
-            Ho letto e accetto i <a href="javascript:void(0)" id="open-terms" style="color: #b8860b; text-decoration: underline;">Termini e Condizioni</a>
-          </label>
+        <label class="checkbox-label">
+          <input type="checkbox" id="accept-check" class="accept-checkbox">
+          ${t.checkbox} <a href="javascript:void(0)" id="open-terms" style="color: #b8860b; text-decoration: underline;">${t.link}</a>
+        </label>
 
-          <button id="btn-accept" class="btn-accept" disabled>Accetto e continuo</button>
-        </div>
+        <button id="btn-accept" class="btn-accept" disabled>${t.button}</button>
       </div>
-    `;
+    </div>
+  `;
 
     const overlay = shadow.querySelector("#overlay");
     const checkbox = shadow.querySelector("#accept-check");
