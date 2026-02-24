@@ -163,6 +163,13 @@ function updateLanguage(lang) {
       }
     }
   });
+
+  // Pulsante personalizza (header / call-to-action)
+  if (translations[lang] && translations[lang].personaliza && translations[lang].personaliza.button) {
+    document.querySelectorAll('[data-action="personalizza"]').forEach(btn => {
+      btn.textContent = translations[lang].personaliza.button;
+    });
+  }
 }
 
 // Inizializza con lingua salvata

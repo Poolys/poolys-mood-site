@@ -127,6 +127,8 @@ const translations = {
       widthRange: "Min 40 cm – Max 200 cm",
       depthRange: "Min 30 cm – Max 80 cm",
       bottlesRange: "Min 6 bottiglie – Max 200 bottiglie"
+      ,
+      button: "Personalizza"
     }
   },
 
@@ -258,6 +260,8 @@ const translations = {
       widthRange: "Min 40 cm – Max 200 cm",
       depthRange: "Min 30 cm – Max 80 cm",
       bottlesRange: "Min 6 bottles – Max 200 bottles"
+      ,
+      button: "Customize"
     }
   },
 
@@ -389,6 +393,8 @@ const translations = {
       widthRange: "Min 40 cm – Max 200 cm",
       depthRange: "Min 30 cm – Max 80 cm",
       bottlesRange: "Min 6 Flaschen – Max 200 Flaschen"
+      ,
+      button: "Anpassen"
     }
   }
 };
