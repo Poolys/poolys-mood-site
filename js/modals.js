@@ -67,12 +67,12 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="progetto">
               <img src="assets/img/progetti/baule-bruciato.jpg" alt="Baule bruciato">
               <img src="assets/img/progetti/baule-bruciato1.jpg" alt="Baule bruciato">
-              <p>Espositore baule bruciato – venduto</p>
+              <p>Espositore baule bruciato.</p>
             </div>
             <div class="progetto">
               <img src="assets/img/progetti/tronco-bottiglie.jpg" alt="Tronco bottiglie">
               <img src="assets/img/progetti/tronco-bottiglie1.jpg" alt="Tronco bottiglie">
-              <p>Portabottiglie tronco naturale – venduto</p>
+              <p>Portabottiglie tronco naturale.</p>
             </div>
           </div>
         </div>
