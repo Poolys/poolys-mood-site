@@ -4,7 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // ====================
   const progettiRoot = document.getElementById("progetti-modal-root");
   if (progettiRoot) {
-    const shadowProgetti = progettiRoot.attachShadow({ mode: "open" });
+    let shadowProgetti = progettiRoot.shadowRoot;
+    if (!shadowProgetti) {
+      shadowProgetti = progettiRoot.attachShadow({ mode: "open" });
+    }
     shadowProgetti.innerHTML = `
       <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Prata', serif; }
@@ -67,12 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="progetto">
               <img src="assets/img/progetti/baule-bruciato.jpg" alt="Baule bruciato">
               <img src="assets/img/progetti/baule-bruciato1.jpg" alt="Baule bruciato">
-              <p>Espositore baule bruciato.</p>
+              <div data-modal="project1Desc">Espositore baule bruciato.</div>
             </div>
             <div class="progetto">
               <img src="assets/img/progetti/tronco-bottiglie.jpg" alt="Tronco bottiglie">
               <img src="assets/img/progetti/tronco-bottiglie1.jpg" alt="Tronco bottiglie">
-              <p>Portabottiglie tronco naturale.</p>
+              <div data-modal="project2Desc">Portabottiglie tronco naturale.</div>
             </div>
           </div>
         </div>
@@ -101,8 +104,9 @@ document.addEventListener("DOMContentLoaded", () => {
 // ====================
 const licensingRoot = document.getElementById("licensing-modal-root");
 if (licensingRoot) {
-  const shadowLicensing = licensingRoot.attachShadow({ mode: "open" });
-  
+  let shadowLicensing = licensingRoot.shadowRoot;
+  if (!shadowLicensing) shadowLicensing = licensingRoot.attachShadow({ mode: "open" });
+
   shadowLicensing.innerHTML = `
     <style>
       * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Prata', serif; }
@@ -183,19 +187,24 @@ if (licensingRoot) {
     }
   });
 
-  // Popola il contenuto HTML del licensing
-  const licensingTextDiv = shadowLicensing.querySelector("[data-modal='licensingText']");
-  if (licensingTextDiv && translations[currentLang]) {
-    licensingTextDiv.innerHTML = translations[currentLang].modal.licensingText;
-  }
+  // Popola il contenuto HTML del licensing (usa lingua da localStorage se presente)
+  try {
+    const initLang = (typeof localStorage !== 'undefined' && localStorage.getItem('lang')) ? localStorage.getItem('lang') : 'it';
+    const licensingTextDiv = shadowLicensing.querySelector("[data-modal='licensingText']");
+    if (licensingTextDiv && typeof translations !== 'undefined' && translations[initLang]) {
+      licensingTextDiv.innerHTML = translations[initLang].modal.licensingText;
+    }
+  } catch (e) { /* localStorage not available in some envs */ }
 }
+;
 
 // ====================
 // MODAL CONTATTI
 // ====================
 const contattiRoot = document.getElementById("contatti-modal-root");
 if (contattiRoot) {
-  const shadowContatti = contattiRoot.attachShadow({ mode: "open" });
+  let shadowContatti = contattiRoot.shadowRoot;
+  if (!shadowContatti) shadowContatti = contattiRoot.attachShadow({ mode: "open" });
 
   shadowContatti.innerHTML = `
     <style>
@@ -218,12 +227,12 @@ if (contattiRoot) {
         <h2 data-modal="contactsTitle">Contatti</h2>
 
         <div class="contatti-info">
-          <p><span class="icon">✉️</span> <a href="mailto:pooly.s_mood@outlook.com">pooly.s_mood@outlook.com</a></p>
-          <p><span class="icon">📱</span> <a href="https://wa.me/39xxxxx" target="_blank">+39 333 123 4567 (WhatsApp)</a></p>
-          <p><span class="icon">📍</span> Piemonte, Italia (dettagli su richiesta)</p>
+          <div data-modal="contactsEmail"><span class="icon">✉️</span> <a href="mailto:pooly.s_mood@outlook.com">pooly.s_mood@outlook.com</a></div>
+          <div data-modal="contactsPhone"><span class="icon">📱</span> <a href="https://wa.me/39xxxxx" target="_blank">+39 333 123 4567 (WhatsApp)</a></div>
+          <div data-modal="contactsLocation"><span class="icon">📍</span> Piemonte, Italia (dettagli su richiesta)</div>
         </div>
 
-        <p>Ti rispondo al più presto – Gaudium Vino!</p>
+        <div data-modal="contactsClosing">Ti rispondo al più presto – Gaudium Vino!</div>
       </div>
     </div>
   `;
@@ -252,7 +261,8 @@ if (contattiRoot) {
 // ====================
 const terminiRoot = document.getElementById("termini-modal-root");
 if (terminiRoot) {
-  const shadowTermini = terminiRoot.attachShadow({ mode: "open" });
+  let shadowTermini = terminiRoot.shadowRoot;
+  if (!shadowTermini) shadowTermini = terminiRoot.attachShadow({ mode: "open" });
   
   shadowTermini.innerHTML = `
     <style>
@@ -325,11 +335,14 @@ if (terminiRoot) {
     }
   });
 
-  // Popola il contenuto HTML dei termini
-  const termsTextDiv = shadowTermini.querySelector("[data-modal='termsText']");
-  if (termsTextDiv && translations[currentLang]) {
-    termsTextDiv.innerHTML = translations[currentLang].modal.termsText;
-  }
+  // Popola il contenuto HTML dei termini (usa lingua da localStorage se presente)
+  try {
+    const initLang = (typeof localStorage !== 'undefined' && localStorage.getItem('lang')) ? localStorage.getItem('lang') : 'it';
+    const termsTextDiv = shadowTermini.querySelector("[data-modal='termsText']");
+    if (termsTextDiv && typeof translations !== 'undefined' && translations[initLang]) {
+      termsTextDiv.innerHTML = translations[initLang].modal.termsText;
+    }
+  } catch (e) { }
 }
 
 // ====================
@@ -337,7 +350,8 @@ if (terminiRoot) {
 // ====================
 const personalizzaRoot = document.getElementById("personalizza-modal-root");
 if (personalizzaRoot) {
-  const shadow = personalizzaRoot.attachShadow({ mode: "open" });
+  let shadow = personalizzaRoot.shadowRoot;
+  if (!shadow) shadow = personalizzaRoot.attachShadow({ mode: "open" });
 
   shadow.innerHTML = `
     <style>
@@ -657,5 +671,6 @@ if (personalizzaRoot) {
   });
 }
 
-// Funzione globale per aggiornare il personalizza modal quando la lingua cambia
-// (removed global updatePersonalizzaTranslations to revert recent change)
+// Espongo una funzione inizializzatrice (no-op sicura) che può essere chiamata
+// da `main.js` per garantire che lo script sia caricato e i guard siano applicati.
+window.initModals = function() { /* init guards già applicati durante il parsing */ };

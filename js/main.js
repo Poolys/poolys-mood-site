@@ -169,32 +169,65 @@ function updateLanguage(lang) {
 document.addEventListener("DOMContentLoaded", () => {
   updateLanguage(currentLang);
 
+  // Ensure modals script is initialized (guard no-op)
+  if (typeof window.initModals === 'function') window.initModals();
+
   // Aggiorna contenuti modali (dentro shadow DOM)
   updateModalContents(currentLang);
 });
 
 // Funzione per aggiornare i contenuti inside shadow DOM
 function updateModalContents(lang) {
-  // Licensing
-  const licensingRoot = document.getElementById("licensing-modal-root");
-  if (licensingRoot && licensingRoot.shadowRoot) {
-    const licensingDiv = licensingRoot.shadowRoot.querySelector("[data-modal='licensingText']");
-    if (licensingDiv && translations[lang]) {
-      licensingDiv.innerHTML = translations[lang].modal.licensingText;
-    }
-  }
+  // Aggiorna genericamente i modali che usano shadow DOM: cerca elementi con
+  // `data-modal` o `data-placeholder` dentro ogni shadowRoot e applica le
+  // traduzioni disponibili per `modal` o per `personaliza`.
+  const modalRoots = [
+    'licensing-modal-root',
+    'termini-modal-root',
+    'contatti-modal-root',
+    'progetti-modal-root',
+    'personalizza-modal-root'
+  ];
 
-  // Termini
-  const terminiRoot = document.getElementById("termini-modal-root");
-  if (terminiRoot && terminiRoot.shadowRoot) {
-    const termsDiv = terminiRoot.shadowRoot.querySelector("[data-modal='termsText']");
-    if (termsDiv && translations[lang]) {
-      termsDiv.innerHTML = translations[lang].modal.termsText;
-    }
-  }
+  modalRoots.forEach(id => {
+    const root = document.getElementById(id);
+    if (!root || !root.shadowRoot) return;
 
-  // Personalizza
-  const personalizzaRoot = document.getElementById("personalizza-modal-root");
+    // Aggiorna elementi con data-modal (testi e HTML)
+    root.shadowRoot.querySelectorAll('[data-modal]').forEach(elem => {
+      const key = elem.getAttribute('data-modal');
+
+      // Prima prova a leggere dalle traduzioni generali per i modal
+      if (translations[lang] && translations[lang].modal && translations[lang].modal[key]) {
+        const val = translations[lang].modal[key];
+        if (elem.tagName === 'DIV') elem.innerHTML = val; else elem.textContent = val;
+        return;
+      }
+
+      // Se il key è del tipo personaliza_xxx, cerca nelle traduzioni personaliza
+      if (key && key.startsWith('personaliza_')) {
+        const pkey = key.replace('personaliza_', '');
+        if (translations[lang] && translations[lang].personaliza && translations[lang].personaliza[pkey]) {
+          const val = translations[lang].personaliza[pkey];
+          if (elem.tagName === 'DIV') elem.innerHTML = val; else elem.textContent = val;
+        }
+      }
+    });
+
+    // Aggiorna placeholder per personalizza (se presenti)
+    root.shadowRoot.querySelectorAll('[data-placeholder]').forEach(el => {
+      const phKey = el.getAttribute('data-placeholder');
+      if (!phKey) return;
+      const key = phKey.replace('personaliza_', '');
+      if (translations[lang] && translations[lang].personaliza && translations[lang].personaliza[key]) {
+        el.setAttribute('placeholder', translations[lang].personaliza[key]);
+      }
+    });
+  });
+
+  // Se fosse disponibile la funzione di popolamento personalizzata, chiamala
+  // (compatibilità con implementazioni precedenti)
+  const personalizzaRoot = document.getElementById('personalizza-modal-root');
   if (personalizzaRoot && personalizzaRoot._populateModal) {
     personalizzaRoot._populateModal(lang);
   }

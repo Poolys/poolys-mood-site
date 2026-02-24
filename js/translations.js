@@ -20,7 +20,13 @@ const translations = {
       projectsTitle: "Progetti Realizzati",
       licensingTitle: "Licensing & Produzione",
       licensingText: "<h3>Opportunità di Licensing</h3><p>Pooly's Mood offre partnership e opportunità di licensing per designer, aziende e distributori interessati a realizzare progetti personalizzati.</p><h3>Produzione Artigianale</h3><p>Realizziamo espositori e arredi su misura utilizzando legni pregiati del Piemonte e inox italiano. Ogni pezzo è unico e realizzato con attenzione ai dettagli.</p><h3>Contattaci</h3><p>Per informazioni su licensing, prototipi e produzione custom: pooly.s_mood@outlook.com</p>",
-      contactsTitle: "Contatti"
+      contactsTitle: "Contatti",
+      contactsEmail: "<span class=\"icon\">✉️</span> <a href=\"mailto:pooly.s_mood@outlook.com\">pooly.s_mood@outlook.com</a>",
+      contactsPhone: "<span class=\"icon\">📱</span> <a href=\"https://wa.me/39xxxxx\" target=\"_blank\">+39 333 123 4567 (WhatsApp)</a>",
+      contactsLocation: "<span class=\"icon\">📍</span> Piemonte, Italia (dettagli su richiesta)",
+      contactsClosing: "Ti rispondo al più presto – Gaudium Vino!",
+      project1Desc: "Espositore baule bruciato.",
+      project2Desc: "Portabottiglie tronco naturale."
     },
     popup: {
       title: "Prima di continuare",
@@ -145,7 +151,13 @@ const translations = {
       projectsTitle: "Completed Projects",
       licensingTitle: "Licensing & Production",
       licensingText: "<h3>Licensing Opportunities</h3><p>Pooly's Mood offers partnerships and licensing opportunities for designers, companies, and distributors interested in custom projects.</p><h3>Artisanal Production</h3><p>We create custom display stands and furnishings using precious Piedmont woods and Italian stainless steel. Every piece is unique and crafted with meticulous attention to detail.</p><h3>Contact Us</h3><p>For information about licensing, prototypes, and custom production: pooly.s_mood@outlook.com</p>",
-      contactsTitle: "Contact"
+      contactsTitle: "Contact",
+      contactsEmail: "<span class=\"icon\">✉️</span> <a href=\"mailto:pooly.s_mood@outlook.com\">pooly.s_mood@outlook.com</a>",
+      contactsPhone: "<span class=\"icon\">📱</span> <a href=\"https://wa.me/39xxxxx\" target=\"_blank\">+39 333 123 4567 (WhatsApp)</a>",
+      contactsLocation: "<span class=\"icon\">📍</span> Piedmont, Italy (details on request)",
+      contactsClosing: "I'll reply as soon as possible – Gaudium Vino!",
+      project1Desc: "Burnt trunk display.",
+      project2Desc: "Natural trunk bottle rack."
     },
     popup: {
       title: "Before continuing",
@@ -270,7 +282,13 @@ const translations = {
       projectsTitle: "Durchgeführte Projekte",
       licensingTitle: "Lizenzierung & Produktion",
       licensingText: "<h3>Lizenzierungsmöglichkeiten</h3><p>Pooly's Mood bietet Partnerschaften und Lizenzierungsmöglichkeiten für Designer, Unternehmen und Distributoren, die an maßgeschneiderten Projekten interessiert sind.</p><h3>Handwerkliche Produktion</h3><p>Wir erstellen maßgeschneiderte Ausstellungsstände und Möbel aus edlem Piemonteser Holz und italienischem Edelstahl. Jedes Stück ist einzigartig und mit größter Sorgfalt angefertigt.</p><h3>Kontaktieren Sie uns</h3><p>Für Informationen zu Lizenzierung, Prototypen und maßgeschneiderter Produktion: pooly.s_mood@outlook.com</p>",
-      contactsTitle: "Kontakt"
+      contactsTitle: "Kontakt",
+      contactsEmail: "<span class=\"icon\">✉️</span> <a href=\"mailto:pooly.s_mood@outlook.com\">pooly.s_mood@outlook.com</a>",
+      contactsPhone: "<span class=\"icon\">📱</span> <a href=\"https://wa.me/39xxxxx\" target=\"_blank\">+39 333 123 4567 (WhatsApp)</a>",
+      contactsLocation: "<span class=\"icon\">📍</span> Piemont, Italien (Details auf Anfrage)",
+      contactsClosing: "Ich antworte so schnell wie möglich – Gaudium Vino!",
+      project1Desc: "Aussteller baule bruciato.",
+      project2Desc: "Flaschenhalter tronco naturale."
     },
     popup: {
       title: "Bevor Sie fortfahren",
