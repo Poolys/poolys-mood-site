@@ -399,7 +399,7 @@ body.loaded .content {
 
   .language-switch {
     position: absolute;
-    bottom: 20px;
+    bottom: 80px;
     right: 20px;
     gap: 6px;
     display: flex;
