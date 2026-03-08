@@ -2,7 +2,15 @@
 <html lang="it">
 <head><!-- Meta base -->
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Pooly's Mood" />
+<meta name="theme-color" content="#b8860b" />
+<meta name="msapplication-navbutton-color" content="#b8860b" />
+<meta name="msapplication-TileColor" content="#0a0a0a" />
+
 <!--Meta google search console - verifica sito-->
 <meta name="google-site-verification=Eg6i0xD0k4xPzK6OoHoyeMjku90QfDb9wLc-Xi8qn-4" />
 <!-- Titolo e descrizione (SEO + social) -->
@@ -171,5 +179,32 @@
   <script src="js/main.js"></script>
   <script src="Pooly-AI/public/chat.js" defer></script>
   <script src="js/modals.js" defer></script>
+
+  <!-- Service Worker Registration per PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('✅ Service Worker registrato:', registration.scope);
+        })
+        .catch(error => {
+          console.warn('❌ Errore registrazione Service Worker:', error);
+        });
+    }
+
+    // Gestisci install prompt (quando l'app è installabile)
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      console.log('📱 App installabile disponibile');
+    });
+
+    // Traccia installazione completata
+    window.addEventListener('appinstalled', () => {
+      console.log('🎉 App installata con successo!');
+      deferredPrompt = null;
+    });
+  </script>
 </body>
 </html>

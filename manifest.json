@@ -1,20 +1,80 @@
 {
-  "name": "Pooly's Mood – Gaudium Vino",
+  "name": "Pooly's Mood – Espositori Lusso per Vino",
   "short_name": "Pooly's Mood",
+  "description": "Espositori e arredi di lusso per vino e showroom. Design artigianale Piemonte.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#0a0a0a",
   "theme_color": "#b8860b",
+  "categories": ["shopping", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "/assets/img/logo.jpg",
+      "sizes": "540x720",
+      "type": "image/jpeg",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/assets/img/logo.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    }
+  ],
   "icons": [
     {
       "src": "/assets/img/logo.jpg",
       "sizes": "192x192",
-      "type": "image/jpg"
+      "type": "image/jpeg",
+      "purpose": "any"
     },
     {
       "src": "/assets/img/logo.jpg",
       "sizes": "512x512",
-      "type": "image/jpg"
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/img/logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/img/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Catalogo",
+      "short_name": "Catalogo",
+      "description": "Scopri i nostri espositori",
+      "url": "/catalogo.html",
+      "icons": [
+        {
+          "src": "/assets/img/logo.jpg",
+          "sizes": "192x192",
+          "type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "name": "Contatti",
+      "short_name": "Contatti",
+      "description": "Contattaci per informazioni",
+      "url": "/?action=contatti",
+      "icons": [
+        {
+          "src": "/assets/img/logo.jpg",
+          "sizes": "192x192",
+          "type": "image/jpeg"
+        }
+      ]
     }
   ]
 }
