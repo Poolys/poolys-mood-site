@@ -397,9 +397,13 @@ body.loaded .content {
   }
 
   .language-switch {
-    top: 12px;
-    right: 12px;
+    position: relative;
+    top: auto;
+    right: auto;
     gap: 6px;
+    justify-content: center;
+    margin-top: 20px;
+    order: 10;
   }
 
   .lang-btn {
