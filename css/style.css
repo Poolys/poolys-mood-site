@@ -398,10 +398,11 @@ body.loaded .content {
   }
 
   .language-switch {
-    position: absolute;
-    bottom: 80px;
-    right: 20px;
-    gap: 6px;
+    position: static;
+    bottom: unset;
+    right: unset;
+    margin-top: 20px;
+    justify-content: center;
     display: flex;
   }
 
