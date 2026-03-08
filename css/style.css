@@ -397,13 +397,11 @@ body.loaded .content {
   }
 
   .language-switch {
-    position: relative;
-    top: auto;
-    right: auto;
+    position: absolute;
+    bottom: 60px;
+    right: 20px;
     gap: 6px;
-    justify-content: center;
-    margin-top: 20px;
-    order: 10;
+    display: flex;
   }
 
   .lang-btn {
@@ -470,6 +468,12 @@ body.loaded .content {
   background: #111;
   border-bottom: 1px solid #b8860b;
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .site-header {
+    text-align: left;
+  }
 }
 
 .logo {
@@ -589,7 +593,7 @@ body.loaded .content {
 }
 .language-switch {
   position: absolute;
-  top: 20px;
+  bottom: 40px;
   right: 20px;
   display: flex;
   gap: 10px;
