@@ -102,6 +102,13 @@ body {
 }
 
 @media (max-width: 767px) {
+  body {
+  background: var(--nero);
+  body.locked {
+  overflow: hidden;
+  height: 100vh;
+}
+}
   .block {
     padding: 3vh 6vw;
   }
