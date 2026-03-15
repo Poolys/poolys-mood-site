@@ -553,7 +553,7 @@ body.loaded .content {
   font-size: 12px !important;
   color: #aaa;
   text-align: center;
-  padding: 40px 20px;
+  padding: 60px 40px;
   margin-top: 30px;
 }
 .site-footer p {
@@ -564,7 +564,7 @@ body.loaded .content {
 @media (max-width: 767px) {
   .site-footer small {
     font-size: 11px !important;
-    padding: 20px 15px;
+    padding: 40px 25px;
     margin-top: 20px;
     line-height: 1.4;
   }
