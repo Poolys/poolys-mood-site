@@ -15,10 +15,9 @@
 html,
 body {
   background: var(--nero);
-  body.locked {
-  overflow: clip;
-  height: 100%;
-}
+  overflow: hidden;
+  height: 100vh;
+
 }
 
 /* ========================= */
