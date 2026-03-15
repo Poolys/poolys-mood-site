@@ -19,7 +19,7 @@
 }
 
 html {
-  overflow-x: hidden;
+  overflow: unset;
   width: 100%;
 }
 
@@ -30,7 +30,7 @@ body {
   color: #fbdf9d;
   font-family: 'Prata', serif;
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow: unset;
   width: 100%;
   background: var(--nero);
   color: #eee;
