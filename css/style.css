@@ -204,7 +204,6 @@ body.loaded .content {
   position: relative;
 
   opacity: 1;
-  transform: translateY(40px);
   transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
@@ -260,7 +259,7 @@ body.loaded .content {
 }
 
 .taste-frame-quote {
-  top: 110px;
+  top: 10px;
 
   font-family: var(--font-main);
   font-size: 20px;
