@@ -195,14 +195,14 @@ body.loaded .content {
 
 /* Responsive */
 @media (max-width: 1024px) {
-  #vintage-frame {
+  .vintage-frame {
     width: 95%;
     padding: 60px;
   }
 }
 
 @media (max-width: 767px) {
-  #vintage-frame {
+  .vintage-frame {
     width: 98%;
     padding: 40px;
     border-radius: 16px;
