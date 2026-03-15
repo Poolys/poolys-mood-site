@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       #chatBody {
         flex: 1;
         padding: 16px;
-        overflow-y: auto;
+        overflow-y: hidden;
         display: flex;
         flex-direction: column;
         gap: 12px;
