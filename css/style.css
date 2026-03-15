@@ -254,7 +254,7 @@ body.loaded .content {
     top: auto;
     right: auto;
     font-size: 16px;
-    margin: 24px 0 16px 0;
+    margin: 40px 0 16px 0;
     text-align: center;
     color: rgba(207, 151, 86, 0.75);
   }
@@ -282,7 +282,6 @@ body.loaded .content {
 .taste-frame-quote {
   position: absolute;
   top: 104px;
-  right: 32px;
 
   font-family: var(--font-main);
   font-size: 20px;
