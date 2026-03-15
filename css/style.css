@@ -117,6 +117,7 @@ body.loaded .content {
   color: white;
   position: relative;
   z-index: 2;
+  padding-top: 40px; /* spazio extra dall'alto per desktop */
 }
 
 h1 {
