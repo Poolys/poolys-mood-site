@@ -560,6 +560,25 @@ body.loaded .content {
   margin: 8px 0;
 }
 
+/* Mobile footer */
+@media (max-width: 767px) {
+  .site-footer small {
+    font-size: 11px !important;
+    padding: 20px 15px;
+    margin-top: 20px;
+    line-height: 1.4;
+  }
+  .site-footer p {
+    font-size: 12px;
+    text-align: center;
+    margin: 10px 0;
+  }
+  .site-footer p a {
+    display: inline-block;
+    margin: 0 5px;
+  }
+}
+
 /* PROGETTI REALIZZATI */
 .progetti {
   padding: 80px 20px;
