@@ -14,11 +14,11 @@
 
 html,
 body {
+  scale: 1.0;
   background: var(--nero);
-  body.open {
   overflow: hidden;
   height: 100vh;
-}
+
 }
 
 /* ========================= */
