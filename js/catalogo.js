@@ -1,4 +1,3 @@
-
 fetch("data/modelli.json")
   .then(res => res.json())
   .then(modelli => {

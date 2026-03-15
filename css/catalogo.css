@@ -16,8 +16,8 @@ html,
 body {
   background: var(--nero);
   body.locked {
-  overflow: hidden;
-  height: auto;
+  overflow: clip;
+  height: 100%;
 }
 }
 
