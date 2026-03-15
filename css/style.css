@@ -19,8 +19,7 @@
 }
 
 html {
-  height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   width: 100%;
 }
 
@@ -31,7 +30,7 @@ body {
   color: #fbdf9d;
   font-family: 'Prata', serif;
   line-height: 1.6;
-  overflow: 100vh;
+  overflow-x: hidden;
   width: 100%;
   background: var(--nero);
   color: #eee;
@@ -51,26 +50,6 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  overflow: hidden;
-  position: relative;
-}
-
-body.scroll-lock,
-body.locked {
-  overflow: hidden;
-  height: 100vh;
-}
-
-body.fade-out {
-  opacity: 0;
-}
-
-.hero {
-  width: 100%;
-  height: 100dvh;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
 }
 
 .landing-fullscreen {

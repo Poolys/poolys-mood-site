@@ -14,12 +14,13 @@
 
 html,
 body {
-  scale: 1.0;
   background: var(--nero);
+  body.locked {
   overflow: hidden;
-  height: 100vh;
-
+  height: auto;
 }
+}
+
 
 /* ========================= */
 /* BLOCK BASE */
