@@ -237,8 +237,7 @@ body.loaded .content {
   .taste {
     min-height: auto;
     padding: 4vh 5vw;
-    gap: 30px;
-  }
+    gap: 30px;    margin-bottom: 50px; /* spazio sotto per non sovrapporre il footer */  }
 
   .taste img {
     width: 100%;
