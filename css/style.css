@@ -212,7 +212,7 @@ body.loaded .content {
 /* DEGUSTAZIONE */
 /* ========================= */
 .taste {
-  min-height: 100vh;
+  min-height: 154vh;
   padding: 6vh 7vw;
   display: flex;
   flex-direction: column;
