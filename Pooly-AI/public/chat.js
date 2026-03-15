@@ -291,6 +291,30 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
+    // Funzione per salvare e cancellare la chat
+    async function saveAndClearChat() {
+      // Invia solo se ci sono messaggi oltre a quello iniziale
+      if (chatHistory.length > 1) {
+        try {
+          await fetch("/api/saveAndClear", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ history: chatHistory })
+          });
+          console.log("Chat salvata e email inviata");
+        } catch (err) {
+          console.error("Errore nel salvare la chat:", err);
+        }
+      }
+      // Cancella sempre la cronologia
+      localStorage.removeItem("poolyChatHistory");
+      chatHistory = [{
+        role: "ai",
+        content: "Ciao! Sono PoolyAI, assistente di Pooly’s Mood.\nCome posso aiutarti oggi? "
+      }];
+      renderHistory();
+    }
+
     function renderHistory() {
       chatBody.innerHTML = "";
       chatHistory.forEach(msg => {
@@ -332,6 +356,7 @@ closeBtn.addEventListener("click", (e) => {
   pallino.classList.remove("closed");
   chat.classList.remove("writing");
   console.log("Chat chiusa con X");
+  saveAndClearChat();
 });
 
 // Chiudi chat cliccando fuori (sul document, ma solo se chat aperta)
@@ -342,6 +367,7 @@ document.addEventListener("click", (e) => {
     pallino.classList.remove("closed");
     chat.classList.remove("writing");
     console.log("Chat chiusa cliccando fuori");
+    saveAndClearChat();
   }
 });
 
@@ -409,5 +435,12 @@ document.addEventListener("click", (e) => {
 
     // Inizializza
     renderHistory();
+
+    // Gestisci chiusura pagina
+    window.addEventListener("beforeunload", () => {
+      if (chatHistory.length > 1) {
+        navigator.sendBeacon("/api/saveAndClear", JSON.stringify({ history: chatHistory }));
+      }
+    });
   })();
 });
