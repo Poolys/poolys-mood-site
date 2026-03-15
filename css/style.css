@@ -360,11 +360,11 @@ body.loaded .content {
   }
 
   .vintage-frame {
-    width: 90%;
+    width: 100%;
     max-width: 100%;
-    padding: 40px 24px;
-    border-radius: 16px;
-    background: rgba(0,0,0,0.45) url('../assets/img/hero/vintage-frame.png') center / 100% 100% no-repeat;
+    padding: 40px 20px;
+    border-radius: 0;
+    background: rgba(0,0,0,0.5) url('../assets/img/hero/vintage-frame.png') center / 100% 100% no-repeat;
   }
 
   .vintage-frame .content {
