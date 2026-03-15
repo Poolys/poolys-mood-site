@@ -364,7 +364,7 @@ body.loaded .content {
     max-width: 100%;
     padding: 40px 20px;
     border-radius: 0;
-    background: rgba(0,0,0,0.5) url('../assets/img/hero/vintage-frame.png') center / 100% 100% no-repeat;
+    background: none; /* rimosso sfondo nero e frame per mostrare solo l'immagine della donna */
   }
 
   .vintage-frame .content {
@@ -373,7 +373,9 @@ body.loaded .content {
     align-items: center;
     gap: 16px;
     max-width: 92%;
-    padding: 0 10px; /* spaziatura interna per evitare che il testo tocchi il bordo della cornice */
+    padding: 20px; /* aumentato padding per sfondo */
+    background: rgba(0,0,0,0.6); /* sfondo semi-trasparente per leggibilità */
+    border-radius: 12px; /* angoli arrotondati */
   }
 
   .content h1 {
@@ -415,7 +417,7 @@ body.loaded .content {
   #hero {
     flex-direction: column;
     justify-content: flex-start;
-    padding: 6vh 6vw 0;
+    padding: 0; /* rimosso padding per full screen */
     min-height: 100svh;
   }
 
