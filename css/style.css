@@ -19,7 +19,8 @@
 }
 
 html {
-  overflow: unset;
+  height: 100%;
+  overflow: hidden;
   width: 100%;
 }
 
@@ -279,7 +280,6 @@ body.loaded .content {
 }
 
 .taste-frame-quote {
-  position: absolute;
   top: 110px;
 
   font-family: var(--font-main);
