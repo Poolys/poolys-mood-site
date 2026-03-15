@@ -254,7 +254,7 @@ body.loaded .content {
     top: auto;
     right: auto;
     font-size: 16px;
-    margin: 16px 0;
+    margin: 24px 0 16px 0;
     text-align: center;
     color: rgba(207, 151, 86, 0.75);
   }
@@ -262,7 +262,7 @@ body.loaded .content {
   .taste h2,
   .enter-link {
     font-size: 20px;
-    margin: 16px 0;
+    margin: 24px 0 16px 0;
     line-height: 1.4;
   }
 

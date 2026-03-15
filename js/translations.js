@@ -45,7 +45,6 @@ const translations = {
     catalog: {
       requestInfo: "Richiedi informazioni",
       projectsSection: "Alcuni lavori realizzati",
-      projectsSold: "– venduto",
       p_gaudium_title: "P Gaudium",
       p_gaudium_claim: "Il tuo iniziale. Il nostro orgoglio.",
       p_gaudium_intro: "Un monogramma che custodisce il vino.<br>Scultura funzionale, firma visibile.",
@@ -178,7 +177,6 @@ const translations = {
     catalog: {
       requestInfo: "Request Information",
       projectsSection: "Some Completed Works",
-      projectsSold: "– sold",
       p_gaudium_title: "P Gaudium",
       p_gaudium_claim: "Your initial. Our pride.",
       p_gaudium_intro: "A monogram that holds wine.<br>Functional sculpture, visible signature.",
@@ -311,7 +309,6 @@ const translations = {
     catalog: {
       requestInfo: "Informationen anfordern",
       projectsSection: "Einige durchgeführte Arbeiten",
-      projectsSold: "– verkauft",
       p_gaudium_title: "P Gaudium",
       p_gaudium_claim: "Dein Monogramm. Unser Stolz.",
       p_gaudium_intro: "Ein Monogramm, das den Wein bewahrt.<br>Funktionale Skulptur, sichtbare Signatur.",
