@@ -30,7 +30,7 @@ body {
   color: #fbdf9d;
   font-family: 'Prata', serif;
   line-height: 1.6;
-  overflow: unset;
+  overflow: 100vh;
   width: 100%;
   background: var(--nero);
   color: #eee;
