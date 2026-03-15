@@ -15,9 +15,10 @@
 html,
 body {
   background: var(--nero);
+  body.locked {
   overflow: hidden;
   height: 100vh;
-
+}
 }
 
 /* ========================= */
