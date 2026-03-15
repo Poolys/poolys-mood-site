@@ -196,7 +196,7 @@ if (licensingRoot) {
     }
   } catch (e) { /* localStorage not available in some envs */ }
 }
-;
+; 
 
 // ====================
 // MODAL CONTATTI
