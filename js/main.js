@@ -61,11 +61,40 @@ function goToCatalogo() {
   }, 800);
 }
 
+// ====================== LANDING-SPECIFIC CODE ONLY ======================
+
 document.addEventListener("DOMContentLoaded", () => {
-  const tasteImage = document.querySelector(".taste-section-image");
-  if (tasteImage) {
-    tasteImage.style.cursor = "pointer";
-    tasteImage.addEventListener("click", goToCatalogo);
+  // Controllo: esegui solo sulla landing page
+  if (!document.body.classList.contains("landing-page")) {
+    return; // ← IMPORTANTISSIMO: esci subito se non sei sulla landing
+  }
+
+  // Reset scroll e locked solo sulla landing
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  sessionStorage.removeItem('poolyEntered');
+  window.scrollTo(0, 0);
+  document.body.classList.add("locked");
+  document.body.classList.add("loaded");
+
+  // Animazione pulsante Scopri
+  const btn = document.querySelector(".btn-scopri");
+  if (btn) {
+    btn.style.opacity = "0";
+    setTimeout(() => {
+      btn.style.transition = "opacity 1.2s ease";
+      btn.style.opacity = "1";
+    }, 800);
+  }
+
+  // Header fade-in
+  const header = document.querySelector('.site-header');
+  if (header) {
+    header.style.opacity = '0';
+    header.style.transition = 'opacity 0.6s ease';
+    setTimeout(() => { header.style.opacity = '1'; }, 300);
   }
 });
 
