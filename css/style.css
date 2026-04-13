@@ -41,7 +41,7 @@ body {
 #palino-message {
   position: fixed;
   right: 24px;
-  bottom: 24px;
+  bottom: 106px;
   z-index: 2000;
   max-width: 280px;
   padding: 16px 20px;

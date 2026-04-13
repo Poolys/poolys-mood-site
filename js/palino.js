@@ -13,7 +13,7 @@ function initPalino() {
 
   document.body.appendChild(message);
 
-  const showDelay = 10000;
+  const showDelay = 15000;
   const hideDelay = 5000;
 
   setTimeout(() => {

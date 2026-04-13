@@ -122,10 +122,6 @@ function updateLanguage(lang) {
   currentLang = lang;
   localStorage.setItem("lang", lang);
 
-  console.log('Updating language to:', lang);
-  console.log('Translations for lang:', translations[lang]);
-  console.log('Main translations:', translations[lang].main);
-
   // Aggiorna pulsanti lingua attivi
   document.querySelectorAll("[data-lang]").forEach(btn => {
     btn.classList.toggle("active", btn.dataset.lang === lang);
@@ -200,12 +196,8 @@ function updateLanguage(lang) {
   // Main content (index.html sections)
   document.querySelectorAll("[data-main]").forEach(elem => {
     const key = elem.dataset.main;
-    console.log('Updating data-main:', key, 'with lang:', lang);
     if (translations[lang].main && translations[lang].main[key]) {
       elem.innerHTML = translations[lang].main[key];
-      console.log('Set innerHTML to:', translations[lang].main[key]);
-    } else {
-      console.log('No translation found for', key, 'in', lang);
     }
   });
 

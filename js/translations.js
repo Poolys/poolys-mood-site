@@ -73,7 +73,7 @@ const translations = {
       imagine_capricci_claim: "Design che non chiede permesso.",
       imagine_capricci_intro: "--",
       imagine_capricci_details: "<li>Arco inox con curvatura superiore</li><li>Mensole legno naturale</li><li>Altezza 2300 mm</li><li>Versatile: bottiglie, libri, oggetti</li>",
-      palino_message: "Poso auitarti ?",
+      palino_message: "Posso aiutarti?",
       chat_initial: "Ciao! Sono PoolyAI, assistente di Pooly's Mood.\nCome posso aiutarti oggi? ",
       wall_bar_title: "Wall Bar",
       wall_bar_claim: "Bar verticale, pronto a servire.",
@@ -416,3 +416,5 @@ const translations = {
     }
   }
 };
+
+window.translations = translations;
