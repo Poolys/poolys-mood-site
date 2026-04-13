@@ -4,13 +4,16 @@
   "type": "module",
   "scripts": {
     "dev": "node server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "compress": "node compress_images.js"
   },
   "dependencies": {
     "dotenv": "^16.6.1",
     "express": "^4.22.1",
     "jsdom": "^28.1.0",
     "nodemailer": "^7.0.12",
-    "openai": "^4.104.0"
+    "openai": "^4.104.0",
+    "tinify": "^1.8.2",
+    "tinypng": "^1.0.0"
   }
 }
