@@ -12,7 +12,7 @@ const urlsToCache = [
   '/js/accept.js',
   '/js/modals.js',
   '/manifest.json',
-  '/assets/img/logo.jpg',
+  '/assets/img/mood/logo.jpg',
   '/assets/img/hero/donna.jpg'
 ];
 
