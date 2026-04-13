@@ -193,6 +193,14 @@ function updateLanguage(lang) {
     }
   });
 
+  // Main content (index.html sections)
+  document.querySelectorAll("[data-main]").forEach(elem => {
+    const key = elem.dataset.main;
+    if (translations[lang].main && translations[lang].main[key]) {
+      elem.textContent = translations[lang].main[key];
+    }
+  });
+
   // Pulsante personalizza (header / call-to-action)
   if (translations[lang] && translations[lang].personaliza && translations[lang].personaliza.button) {
     document.querySelectorAll('[data-action="personalizza"]').forEach(btn => {

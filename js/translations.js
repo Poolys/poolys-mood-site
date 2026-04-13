@@ -86,7 +86,12 @@ const translations = {
       porta_gaudium_title: "Porta Gaudium de Vino",
       porta_gaudium_claim: "L’ingresso al piacere.",
       porta_gaudium_intro: "Incisa, illuminata, indimenticabile.<br>La soglia che promette emozione.",
-      porta_gaudium_details: "<li>Telaio inox con vetro fumé inciso</li>"
+      porta_gaudium_details: "<li>Telaio inox con vetro fumé inciso</li>",
+      main: {
+        quote1: "\"La natura non indica la strada... la percorre insieme a noi.\" 'J. W. von Goethe'",
+        quote2: "\"La solidità delle cose nasce dall'equilibrio.\" ' Italo Calvino'",
+        invite: "Entrate nel nostro catalogo."
+      }
     },
     personaliza: {
       title: "Personalizza il tuo modello",
@@ -220,7 +225,12 @@ const translations = {
       porta_gaudium_title: "Porta Gaudium de Vino",
       porta_gaudium_claim: "The entrance to pleasure.",
       porta_gaudium_intro: "Engraved, illuminated, unforgettable.<br>The threshold that promises emotion.",
-      porta_gaudium_details: "<li>Stainless frame with engraved smoked glass</li>"
+      porta_gaudium_details: "<li>Stainless frame with engraved smoked glass</li>",
+      main: {
+        quote1: "\"Nature does not indicate the way... it walks it together with us.\" 'J. W. von Goethe'",
+        quote2: "\"The solidity of things is born from balance.\" 'Italo Calvino'",
+        invite: "Enter our catalog."
+      }
     },
     personaliza: {
       title: "Customize Your Model",
@@ -354,7 +364,12 @@ const translations = {
       porta_gaudium_title: "Porta Gaudium de Vino",
       porta_gaudium_claim: "Der Eingang zum Vergnügen.",
       porta_gaudium_intro: "Graviert, beleuchtet, unvergesslich.<br>Die Schwelle, die Emotionen verspricht.",
-      porta_gaudium_details: "<li>Edelstahlrahmen mit graviertem Rauchglas</li>"
+      porta_gaudium_details: "<li>Edelstahlrahmen mit graviertem Rauchglas</li>",
+      main: {
+        quote1: "\"Die Natur zeigt den Weg nicht... sie geht ihn gemeinsam mit uns.\" 'J. W. von Goethe'",
+        quote2: "\"Die Festigkeit der Dinge entsteht aus dem Gleichgewicht.\" 'Italo Calvino'",
+        invite: "Betreten Sie unseren Katalog."
+      }
     },
     personaliza: {
       title: "Passen Sie Ihr Modell an",
