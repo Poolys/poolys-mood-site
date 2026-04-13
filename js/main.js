@@ -199,6 +199,9 @@ function updateLanguage(lang) {
       btn.textContent = translations[lang].personaliza.button;
     });
   }
+
+  // Dispatch event for language change
+  window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
 }
 
 // Inizializza con lingua salvata

@@ -283,13 +283,31 @@ document.addEventListener("DOMContentLoaded", () => {
     =============================== */
     let chatHistory = JSON.parse(localStorage.getItem("poolyChatHistory")) || [];
 
+    // Funzione per ottenere il messaggio iniziale basato sulla lingua
+    function getInitialMessage() {
+      const lang = localStorage.getItem('lang') || 'it';
+      const translations = window.translations && window.translations[lang];
+      return translations ? translations.chat_initial : "Ciao! Sono PoolyAI, assistente di Pooly's Mood.\nCome posso aiutarti oggi? ";
+    }
+
     // Aggiungi messaggio iniziale solo la prima volta
     if (!chatHistory.length) {
       chatHistory.push({
         role: "ai",
-        content: "Ciao! Sono PoolyAI, assistente di Pooly’s Mood.\nCome posso aiutarti oggi? "
+        content: getInitialMessage()
       });
     }
+
+    // Funzione per aggiornare il messaggio iniziale se cambia lingua
+    function updateInitialMessage() {
+      if (chatHistory.length === 1 && chatHistory[0].role === 'ai') {
+        chatHistory[0].content = getInitialMessage();
+        renderHistory();
+      }
+    }
+
+    // Ascolta cambio lingua
+    window.addEventListener('languageChanged', updateInitialMessage);
 
     // Funzione per salvare e cancellare la chat
     async function saveAndClearChat() {
@@ -310,7 +328,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.removeItem("poolyChatHistory");
       chatHistory = [{
         role: "ai",
-        content: "Ciao! Sono PoolyAI, assistente di Pooly’s Mood.\nCome posso aiutarti oggi? "
+        content: getInitialMessage()
       }];
       renderHistory();
     }
