@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         width: 66px;
         height: 66px;
         border-radius: 50%;
-        background: #bd0b0b;
+        background: #4d5cafff;
         color: #000;
         display: flex;
         align-items: center;
