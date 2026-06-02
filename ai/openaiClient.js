@@ -7,7 +7,7 @@ const openai = new OpenAI({
 
 export async function askAI(prompt) {
   const completion = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo", // o gpt-3.5-turbo se vuoi più potenza
+    model: "grok-3-mini",
     messages: [{ role: "system", content: prompt }],
     temperature: 0.7
   });

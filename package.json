@@ -8,6 +8,7 @@
     "compress": "node compress_images.js"
   },
   "dependencies": {
+    "@xai-official/grok": "^0.2.16",
     "dotenv": "^16.6.1",
     "express": "^4.22.1",
     "jsdom": "^28.1.0",
