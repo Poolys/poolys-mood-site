@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import path from 'path';
 import chatHandler from './api/chat.js';
 import saveAndClearHandler from './api/saveAndClear.js';
 
@@ -15,6 +16,11 @@ app.use(express.json({ limit: '15mb' })); // Per gestire corpi JSON grandi (util
 // Rotte API
 app.post('/api/chat', chatHandler);
 app.post('/api/saveAndClear', saveAndClearHandler);
+
+// Serve index.html per tutte le altre richieste (fallback per SPA / root)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'index.html'));
+});
 
 // Avvio server
 app.listen(PORT, () => {
