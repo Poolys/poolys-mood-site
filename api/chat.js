@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 
 function getXAIKey() {
-  return process.env.XAI_API_KEY || process.env.OPENAI_API_KEY;
+  return process.env.XAI_API_KEY;
 }
 
 function buildPrompt(messages) {
@@ -46,7 +46,7 @@ function extractResponseText(responseBody) {
 export async function askAI(messages) {
   const apiKey = getXAIKey();
   if (!apiKey) {
-    throw new Error("XAI_API_KEY or OPENAI_API_KEY is required");
+    throw new Error("XAI_API_KEY is required");
   }
 
   const prompt = buildPrompt(messages);
@@ -57,7 +57,7 @@ export async function askAI(messages) {
       Authorization: `Bearer ${apiKey}`
     },
     body: JSON.stringify({
-      model: "grok-3-mini",
+      model: "grok_3_mini",
       input: prompt,
       temperature: 0.7
     })

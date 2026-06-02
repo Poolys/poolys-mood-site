@@ -1,5 +1,5 @@
 function getXAIKey() {
-  return process.env.XAI_API_KEY || process.env.OPENAI_API_KEY;
+  return process.env.XAI_API_KEY;
 }
 
 function extractResponseText(responseBody) {
@@ -28,7 +28,7 @@ function extractResponseText(responseBody) {
 export async function askAI(prompt) {
   const apiKey = getXAIKey();
   if (!apiKey) {
-    throw new Error("XAI_API_KEY or OPENAI_API_KEY is required");
+    throw new Error("XAI_API_KEY is required");
   }
 
   const response = await fetch("https://api.x.ai/v1/responses", {
@@ -38,7 +38,7 @@ export async function askAI(prompt) {
       Authorization: `Bearer ${apiKey}`
     },
     body: JSON.stringify({
-      model: "grok-3-mini",
+      model: "grok_3_mini",
       input: `System: ${prompt}`,
       temperature: 0.7
     })
