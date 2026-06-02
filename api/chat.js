@@ -3,15 +3,18 @@ import fs from "fs";
 import path from "path";
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
+function createOpenAIClient() {
+  return new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY
+  });
+}
 
 /**
  * askAI ora riceve un ARRAY di messaggi,
  * non una stringa
  */
 export async function askAI(messages) {
+  const openai = createOpenAIClient();
   const completion = await openai.chat.completions.create({
     model: "grok-3-mini",
     messages,
