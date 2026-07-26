@@ -184,19 +184,25 @@ h1 {
 
 #mood-slides .slide {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  width: min(75vw, 1100px);
+  height: min(75vh, 820px);
   opacity: 0;
-  transform: translateY(40px);
+  transform: translate(-50%, -50%) translateY(40px);
   transition: all 1.8s cubic-bezier(0.25, 0.1, 0.25, 1);
   pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  border-radius: 28px;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.45);
 }
 
 #mood-slides .slide.active {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(-50%, -50%) translateY(0);
   pointer-events: auto;
   z-index: 2;
 }
