@@ -37,12 +37,25 @@ export default async function handler(req, res) {
   try {
     const { history, context } = req.body;
 
-
     if (!history || !Array.isArray(history) || history.length === 0) {
       return res.status(400).json({ reply: "Conversazione vuota." });
     }
 
-    const lastMessage = history[history.length - 1].content;
+    const cleanedHistory = history
+      .filter(msg =>
+        msg &&
+        (msg.role === "user" || msg.role === "ai") &&
+        typeof msg.content === "string" &&
+        msg.content.trim() !== ""
+      )
+      .map(msg => ({ role: msg.role, content: msg.content.trim() }));
+
+    if (cleanedHistory.length === 0) {
+      return res.status(400).json({ reply: "Conversazione vuota." });
+    }
+
+    const lastMessage = cleanedHistory[cleanedHistory.length - 1].content;
+    const conversationHistory = cleanedHistory.slice(0, -1);
     let modelContext = "";
 
 if (context?.page === "catalogo" && context?.model) {
@@ -81,7 +94,7 @@ Linee guida:
       { role: "system", content: systemPrompt },
 
       // memoria conversazionale (senza l’ultimo messaggio)
-      ...history.slice(0, -1).map(m => ({
+      ...conversationHistory.map(m => ({
         role: m.role === "ai" ? "assistant" : "user",
         content: m.content
       })),

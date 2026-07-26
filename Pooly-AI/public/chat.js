@@ -282,6 +282,13 @@ document.addEventListener("DOMContentLoaded", () => {
        6. STATO E LOGICA
     =============================== */
     let chatHistory = JSON.parse(localStorage.getItem("poolyChatHistory")) || [];
+    if (!Array.isArray(chatHistory)) chatHistory = [];
+    chatHistory = chatHistory.filter(msg =>
+      msg &&
+      (msg.role === "user" || msg.role === "ai") &&
+      typeof msg.content === "string" &&
+      msg.content.trim() !== ""
+    );
 
     // Funzione per ottenere il messaggio iniziale basato sulla lingua
     function getInitialMessage() {
