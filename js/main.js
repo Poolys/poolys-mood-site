@@ -294,7 +294,8 @@ function initMoodSlides() {
   if (!slides.length) return;
 
   let current = 0;
-  const duration = 4500; // 4.5 secondi
+  const duration = 5500; // 5.5 secondi
+  let slidesInterval; // Riferimento per l'intervallo
 
   function showSlide(index) {
     slides.forEach((slide, i) => {
@@ -311,10 +312,19 @@ function initMoodSlides() {
   function nextSlide() {
     const next = (current + 1) % slides.length;
     showSlide(next);
+    
+    // Ferma l'autorotazione quando raggiungiamo l'ultima slide (con il pulsante)
+    if (next === slides.length - 1) {
+      clearInterval(slidesInterval);
+    }
   }
 
   showSlide(0);
-  setInterval(nextSlide, duration);
+  
+  // Delay di 5 secondi prima di iniziare l'autorotazione
+  setTimeout(() => {
+    slidesInterval = setInterval(nextSlide, duration);
+  }, 5000);
 
   const btn = document.getElementById("btn-catalogo");
   if (btn) {
