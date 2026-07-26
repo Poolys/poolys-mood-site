@@ -366,10 +366,14 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ===============================
        7. EVENTI
     =============================== */
+    let suppressOutsideClose = false;
+
     function openPoolyChat() {
       if (!chat.classList.contains('open')) {
         chat.classList.add('open');
         pallino.classList.add('closed');
+        suppressOutsideClose = true;
+        setTimeout(() => { suppressOutsideClose = false; }, 0);
         renderHistory();
         input.focus();
       }
@@ -394,6 +398,11 @@ closeBtn.addEventListener("click", (e) => {
 
 // Chiudi chat cliccando fuori (sul document, ma solo se chat aperta)
 document.addEventListener("click", (e) => {
+  if (suppressOutsideClose) {
+    suppressOutsideClose = false;
+    return;
+  }
+
   // Se chat aperta e click NON dentro root (cioè fuori chat)
   if (chat.classList.contains("open") && !root.contains(e.target)) {
     chat.classList.remove("open");
