@@ -57,6 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
         model: modelName
       };
       window.dispatchEvent(new CustomEvent('poolyModelSelected', { detail: { model: modelName } }));
+      if (typeof window.openPoolyChat === 'function') {
+        window.openPoolyChat();
+      }
     });
   });
 });

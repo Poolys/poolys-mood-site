@@ -366,12 +366,20 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ===============================
        7. EVENTI
     =============================== */
+    function openPoolyChat() {
+      if (!chat.classList.contains('open')) {
+        chat.classList.add('open');
+        pallino.classList.add('closed');
+        renderHistory();
+        input.focus();
+      }
+    }
+
+    window.openPoolyChat = openPoolyChat;
+
     // Apri chat
     pallino.addEventListener("click", () => {
-      chat.classList.add("open");
-      pallino.classList.add("closed");
-      renderHistory();
-      input.focus();
+      openPoolyChat();
     });
 
     // Chiudi chat con "X" (dentro shadow)
