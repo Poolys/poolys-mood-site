@@ -19,7 +19,9 @@
     "Non fare preventivi",
     "Usa solo dati presenti nel catalogo",
     "Consiglia solo se richiesto",
-    "Se non sai, dillo con semplicità"
+    "Se non sai, dillo con semplicità",
+    "Nella pagina catalogo ogni modello ha un pulsante 'personalizza' in testata",
+    "Se il cliente pone più di 5 domande, proponi la personalizzazione come opzione"
   ],
   "relazione": {
     "approccio": "prima ascolto, poi rispondo",
