@@ -368,6 +368,11 @@ document.addEventListener("DOMContentLoaded", () => {
     =============================== */
     let suppressOutsideClose = false;
 
+    function isInteractiveTarget(target) {
+      if (!(target instanceof Element)) return false;
+      return target.closest('button, a, input, select, textarea, [role="button"], [data-catalog="request-info"]') !== null;
+    }
+
     function openPoolyChat() {
       if (!chat.classList.contains('open')) {
         chat.classList.add('open');
@@ -403,8 +408,10 @@ document.addEventListener("click", (e) => {
     return;
   }
 
-  // Se chat aperta e click NON dentro root (cioè fuori chat)
-  if (chat.classList.contains("open") && !root.contains(e.target)) {
+  const path = e.composedPath ? e.composedPath() : [];
+  const clickedInsideWidget = path.includes(root) || path.includes(chat) || path.includes(pallino) || path.includes(closeBtn) || path.includes(input);
+
+  if (chat.classList.contains("open") && !clickedInsideWidget && !isInteractiveTarget(e.target)) {
     chat.classList.remove("open");
     pallino.classList.remove("closed");
     chat.classList.remove("writing");
