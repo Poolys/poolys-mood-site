@@ -409,12 +409,17 @@ document.addEventListener("click", (e) => {
   }, 300);
 });
     // Invia messaggio
-    async function sendMessage() {
-      const text = input.value.trim();
+    async function sendMessage(presetText) {
+      const text = typeof presetText === 'string'
+        ? presetText.trim()
+        : input.value.trim();
       if (!text) return;
 
+      if (typeof presetText === 'string') {
+        input.value = "";
+      }
+
       chatHistory.push({ role: "user", content: text });
-      input.value = "";
       renderHistory();
 
       // Nascondi messaggio iniziale dopo primo messaggio utente
@@ -442,12 +447,30 @@ document.addEventListener("click", (e) => {
       }
     }
 
-    sendBtn.addEventListener("click", sendMessage);
+    sendBtn.addEventListener("click", () => sendMessage());
     input.addEventListener("keypress", e => {
       if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault();
         sendMessage();
       }
+    });
+
+    window.addEventListener('poolyModelSelected', (event) => {
+      const model = event?.detail?.model;
+      if (!model) return;
+
+      window.poolyContext = {
+        page: 'catalogo',
+        model
+      };
+
+      if (!chat.classList.contains('open')) {
+        chat.classList.add('open');
+        pallino.classList.add('closed');
+        renderHistory();
+      }
+
+      sendMessage(`Vorrei informazioni sul modello ${model}`);
     });
 
     // Focus input quando chat si apre

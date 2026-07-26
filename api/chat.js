@@ -24,8 +24,17 @@ try {
 } catch (err) {
   console.error("Errore nel caricamento modelli.json:", err);
   catalogoModelli = {
-    regole: "Non inventare modelli o informazioni che non esistono nela fixedMemory.json, o data/modelli.json."
+    regole: "Non inventare modelli o informazioni che non esistono nella fixedMemory.json o data/modelli.json."
   };
+}
+
+function findCatalogModel(modelName) {
+  if (!catalogoModelli || !Array.isArray(catalogoModelli.modelli)) return null;
+  const normalized = modelName.trim().toLowerCase();
+  return catalogoModelli.modelli.find(modello => {
+    const nome = String(modello.nome || "").toLowerCase();
+    return nome === normalized || nome.includes(normalized) || normalized.includes(nome);
+  }) || null;
 }
 
 // ===== HANDLER VERCEL =====
@@ -58,19 +67,34 @@ export default async function handler(req, res) {
     const conversationHistory = cleanedHistory.slice(0, -1);
     let modelContext = "";
 
-if (context?.page === "catalogo" && context?.model) {
-  modelContext = `
+    if (context?.page === "catalogo" && context?.model) {
+      const selectedModel = findCatalogModel(context.model);
+      if (selectedModel) {
+        const details = [
+          selectedModel.tipo ? `Tipo: ${selectedModel.tipo}` : null,
+          selectedModel.descrizione_breve ? `Descrizione: ${selectedModel.descrizione_breve}` : null,
+          selectedModel.utilizzo_ideale ? `Uso ideale: ${selectedModel.utilizzo_ideale}` : null,
+          Array.isArray(selectedModel.caratteristiche) ? `Caratteristiche: ${selectedModel.caratteristiche.join(', ')}` : null
+        ].filter(Boolean).join("\n");
+
+        modelContext = `
+L’utente sta osservando il modello:
+"${selectedModel.nome}"
+${details}
+Rispondi come una guida museale del catalogo.
+Descrivi questo modello usando solo le informazioni presenti nel catalogo.
+`;
+      } else {
+        modelContext = `
 L’utente sta osservando il modello:
 "${context.model}"
-
-Rispondi come una guida museale.
-Descrivi solo questo modello.
-Collega forma, uso e atmosfera.
+Rispondi come una guida museale del catalogo e concentra la risposta su questo modello.
 `;
-}
+      }
+    }
 
     // ===== SYSTEM PROMPT (IDENTITÀ + REGOLE) =====
-   const systemPrompt = `
+    const systemPrompt = `
 Sei PoolyAI, guida silenziosa del catalogo Pooly’s Mood.
 Parli come in una galleria: poche parole, scelte bene.
 
@@ -92,6 +116,7 @@ Linee guida:
     // ===== COSTRUZIONE MESSAGGI CORRETTA =====
     const messages = [
       { role: "system", content: systemPrompt },
+      ...(modelContext ? [{ role: "system", content: modelContext }] : []),
 
       // memoria conversazionale (senza l’ultimo messaggio)
       ...conversationHistory.map(m => ({

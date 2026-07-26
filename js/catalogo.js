@@ -1,7 +1,8 @@
 fetch("data/modelli.json")
   .then(res => res.json())
   .then(modelli => {
-    const catalogo = document.getElementById("catalogo");
+    const catalogo = document.getElementById("catalogo") || document.querySelector(".catalogo-wrapper");
+    if (!catalogo) return;
 
     modelli.forEach(modello => {
       const section = document.createElement("section");
@@ -19,7 +20,7 @@ fetch("data/modelli.json")
         </div>
       `;
 
-      "catalogo.appendChild(section)";
+      catalogo.appendChild(section);
     });
   });
   
@@ -28,6 +29,37 @@ window.poolyContext = {
   page: "catalogo",
   model: null
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+  const requestInfoButtons = document.querySelectorAll('button.cta[data-catalog="request-info"]');
+  const modelNameMap = {
+    "P Gaudium": "Pooly's Mood",
+    "Scaffale Arco semplice/normale.": "Scaffal",
+    "Imagine Capricci": "Capricci"
+  };
+
+  requestInfoButtons.forEach(button => {
+    const detailsSection = button.closest('section.details');
+    const manifestoSection = detailsSection ? detailsSection.previousElementSibling : null;
+    const titleElement = manifestoSection ? manifestoSection.querySelector('h2') : null;
+    let modelName = titleElement ? titleElement.textContent.trim() : button.dataset.model;
+
+    if (modelNameMap[modelName]) {
+      modelName = modelNameMap[modelName];
+    }
+
+    button.dataset.model = modelName;
+
+    button.addEventListener('click', () => {
+      if (!modelName) return;
+      window.poolyContext = {
+        page: 'catalogo',
+        model: modelName
+      };
+      window.dispatchEvent(new CustomEvent('poolyModelSelected', { detail: { model: modelName } }));
+    });
+  });
+});
 
 const manifesti = [...document.querySelectorAll('.block.manifesto[data-model]')];
 

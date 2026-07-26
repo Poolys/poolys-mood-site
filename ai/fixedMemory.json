@@ -33,7 +33,7 @@
 "info_azienda": {
     "nome_progetto": "Pooly’s Mood",
     "descrizione": "Progettiamo e realizziamo espositori su misura in legno naturale e acciaio inox. Ogni elemento nasce per valorizzare il prodotto e dare identità allo spazio.",
-    "materiali": "legno naturale e acciaio inox",
+    "materiali": "acciaio inox lucido o satinato e legno naturale (rovere, noce, castagno, ciliegio, quercia)",
     "modelli": [
       "Pooly's Mood",
       "Art Wall",
@@ -46,21 +46,117 @@
       "Arredi",
       "Porta Pooly's Mood"
     ],
-  
+
     "dettagli_modelli": {
+      "Pooly's Mood": {
+        "tipo": "espositore iconico autoportante",
+        "descrizione": "Struttura iconica con telaio a M e lettera P centrale. Manifesto del brand.",
+        "struttura": "telaio inox a M con P interna portabottiglie",
+        "caratteristiche": [
+          "design scultoreo",
+          "firma del brand",
+          "bottiglie integrate nella struttura"
+        ],
+        "utilizzo_ideale": "showroom, fiere, ingressi, spazi rappresentativi"
+      },
       "Art Wall": {
-        "misure": "90 cm (altezza) x 60 cm (larghezza) x 10 cm (profondità)",
-        "capacita": "fino a 6 bottiglie",
-        "descrizione": "Espositore da parete elegante e compatto per ambienti ristretti, con misure e capacita adaptabile al bisogno."
+        "tipo": "espositore a parete",
+        "descrizione": "Progettato per valorizzare ogni bottiglia.",
+        "struttura": "tubi inox verticali con ripiani in legno",
+        "caratteristiche": [
+          "profondità ridotta",
+          "fissaggio a muro",
+          "design minimale"
+        ],
+        "utilizzo_ideale": "case, enoteche, uffici, pareti espositive"
       },
       "Scaffal": {
-        "misure": "150 cm (altezza) x 80 cm (larghezza) x 35 cm (profondità)",
-        "capacita": "fino a 30 bottiglie"
+        "tipo": "scaffale autoportante",
+        "descrizione": "Scaffale stabile e deciso a quattro appoggi.",
+        "struttura": "telaio inox con quattro piedi",
+        "caratteristiche": [
+          "struttura indipendente",
+          "ripiani in legno",
+          "presenza solida"
+        ],
+        "utilizzo_ideale": "retail, showroom, cantine"
       },
-      "Concept Capricci": {
-        "misure": "120 cm (altezza) x 60 cm (larghezza) x 40 cm (profondità)",
-        "capacita": "fino a 20 bottiglie",
-        "descrizione": "espositore elegante e creativo per angoli di sala, bar o home bar"
+      "Scaffal Semplice": {
+        "tipo": "scaffale verticale ancorato",
+        "descrizione": "Essenziale, leggero, ancorato alla struttura.",
+        "struttura": "due piedi anteriori + ancoraggio chimico a soffitto",
+        "caratteristiche": [
+          "impatto visivo leggero",
+          "sviluppo verticale",
+          "massima pulizia formale"
+        ],
+        "utilizzo_ideale": "ambienti moderni, spazi alti"
+      },
+      "Magnium": {
+        "tipo": "espositore per bottiglie magnum",
+        "descrizione": "Struttura dedicata alle grandi bottiglie.",
+        "struttura": "base circolare aperta in tubolare inox con montanti verticali",
+        "caratteristiche": [
+          "ripiani con conca scavata",
+          "specifico per bottiglie magnum",
+          "design tecnico ed elegante"
+        ],
+        "utilizzo_ideale": "collezioni pregiate, esposizione speciale"
+      },
+      "Cut Art": {
+        "tipo": "cantinetta scultorea",
+        "descrizione": "Geometria, luce, presenza.",
+        "struttura": "struttura geometrica a tagli con inserti in legno",
+        "caratteristiche": [
+          "tagli geometrici",
+          "illuminazione LED integrata",
+          "oggetto scenografico"
+        ],
+        "utilizzo_ideale": "sale degustazione, hotel, spazi di rappresentanza"
+      },
+      "Capricci": {
+        "tipo": "scaffale decorativo multifunzione",
+        "descrizione": "Design che non chiede permessi.",
+        "struttura": "arco inox con mensole in legno",
+        "caratteristiche": [
+          "forma libera",
+          "uso misto (vino, oggetti, libri)",
+          "forte identità visiva"
+        ],
+        "utilizzo_ideale": "living, hospitality, ambienti creativi"
+      },
+      "Wall Bar": {
+        "tipo": "bar a parete",
+        "descrizione": "Esposizione e servizio in un unico gesto.",
+        "struttura": "modulo a parete con ripiani inclinati e barra",
+        "caratteristiche": [
+          "portabicchieri",
+          "ripiani illuminati",
+          "tavolo o piano di servizio"
+        ],
+        "utilizzo_ideale": "enoteche, ristoranti, hotel"
+      },
+      "Arredi": {
+        "tipo": "arredi su misura",
+        "descrizione": "Complementi coordinati per l’universo Pooly’s Mood.",
+        "struttura": "elementi modulari in inox e legno",
+        "caratteristiche": [
+          "personalizzabili",
+          "coerenza materica",
+          "funzione e atmosfera"
+        ],
+        "utilizzo_ideale": "progetti completi, interni coordinati"
+      },
+      "Porta Pooly's Mood": {
+        "tipo": "porta d’ingresso",
+        "descrizione": "La soglia del museo.",
+        "struttura": "telaio inox con pannello in legno e vetro inciso",
+        "caratteristiche": [
+          "branding inciso",
+          "LED opzionale",
+          "ingresso iconico"
+        ],
+        "utilizzo_ideale": "cantine, enoteche, spazi esclusivi"
       }
     }
   },
@@ -80,7 +176,7 @@
       },
       {
         "role": "assistant",
-        "content": "Pooly’s Mood include: Art Wall, Wall Bar, Scaffal, Cantinetta Cut Art, Carrelli, Arredi e Allestimenti. Ogni linea è modulare, su misura e coerente tra estetica e uso reale."
+        "content": "Pooly’s Mood include: Pooly's Mood, Art Wall, Scaffal, Scaffal Semplice, Magnium, Cut Art, Capricci, Wall Bar, Arredi e Porta Pooly's Mood. Ogni linea è modulare, su misura e coerente tra estetica e uso reale."
       },
      {
           "role": "user",

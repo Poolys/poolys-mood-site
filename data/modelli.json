@@ -127,9 +127,9 @@
     },
     {
       "id": 10,
-      "nome": "Porta Pooly's Mood",
+      "nome": "Porta Gaudium de Vino",
       "tipo": "porta d’ingresso",
-      "descrizione_breve": "La soglia del museo.",
+      "descrizione_breve": "La soglia del piacere.",
       "struttura": "telaio inox con pannello in legno e vetro inciso",
       "caratteristiche": [
         "branding inciso",
@@ -137,8 +137,33 @@
         "ingresso iconico"
       ],
       "utilizzo_ideale": "cantine, enoteche, spazi esclusivi"
+    },
+    {
+      "id": 11,
+      "nome": "Banchetti",
+      "tipo": "espositore mobile",
+      "descrizione_breve": "Fissi o mobili, offrono stabilità e funzionalità per eventi e scenografie.",
+      "struttura": "telaio inox con ripiani in legno naturale",
+      "caratteristiche": [
+        "stabilità",
+        "versatilità",
+        "design adattabile"
+      ],
+      "utilizzo_ideale": "eventi, degustazioni, showrooms"
+    },
+    {
+      "id": 12,
+      "nome": "Allestimenti Pooly's Mood",
+      "tipo": "allestimenti personalizzati",
+      "descrizione_breve": "Soluzioni su misura per valorizzare spazi e bottiglie con luce e struttura coordinata.",
+      "struttura": "combinazione di elementi modulari in inox e legno",
+      "caratteristiche": [
+        "illuminazione LED",
+        "modularità",
+        "atmosfera scenografica"
+      ],
+      "utilizzo_ideale": "enoteche, hotel, ambienti di rappresentanza"
     }
   ]
 }
-
 ]
