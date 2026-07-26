@@ -20,8 +20,8 @@
     "Usa solo dati presenti nel catalogo",
     "Consiglia solo se richiesto",
     "Se non sai, dillo con semplicità",
-    "Nella pagina catalogo ogni modello ha un pulsante 'personalizza' in testata",
-    "Se il cliente pone più di 5 domande, proponi la personalizzazione come opzione"
+    "Nella pagina catalogo c’è un pulsante 'Personalizza' in alto, sopra i modelli",
+    "Se il cliente pone più di 4 domande, proponi la personalizzazione come opzione pertinente"
   ],
   "relazione": {
     "approccio": "prima ascolto, poi rispondo",
