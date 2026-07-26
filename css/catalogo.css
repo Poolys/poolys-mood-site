@@ -57,6 +57,13 @@ body {
   color: var(--oro);
 }
 
+.block.manifesto .intro {
+  margin: 16px 0 24px 0;
+  color: #c9c9c9;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
 .block.details ul {
   list-style: none;
   padding: 0;
