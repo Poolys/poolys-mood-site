@@ -73,6 +73,7 @@ export default async function handler(req, res) {
         const details = [
           selectedModel.tipo ? `Tipo: ${selectedModel.tipo}` : null,
           selectedModel.descrizione_breve ? `Descrizione: ${selectedModel.descrizione_breve}` : null,
+          selectedModel.misure ? `Misure: ${selectedModel.misure}` : null,
           selectedModel.utilizzo_ideale ? `Uso ideale: ${selectedModel.utilizzo_ideale}` : null,
           Array.isArray(selectedModel.caratteristiche) ? `Caratteristiche: ${selectedModel.caratteristiche.join(', ')}` : null
         ].filter(Boolean).join("\n");
@@ -83,6 +84,7 @@ L’utente sta osservando il modello:
 ${details}
 Rispondi come una guida museale del catalogo.
 Descrivi questo modello usando solo le informazioni presenti nel catalogo.
+Se l’utente chiede misure o dimensioni, rispondi usando esclusivamente le misure fornite nel catalogo.
 `;
       } else {
         modelContext = `

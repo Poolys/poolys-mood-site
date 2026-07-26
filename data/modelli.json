@@ -1,5 +1,4 @@
-[
-  {
+{
   "brand": "Pooly's Mood",
   "tagline": "Gaudium de Vino",
   "concept": "Espositori come opere. Funzione come gesto.",
@@ -14,6 +13,7 @@
       "tipo": "espositore iconico autoportante",
       "descrizione_breve": "Struttura iconica con telaio a M e lettera P centrale. Manifesto del brand.",
       "struttura": "telaio inox a M con P interna portabottiglie",
+      "misure": "Altezza 1400 mm, larghezza 600 mm, 10 posizioni bottiglie orizzontali",
       "caratteristiche": [
         "design scultoreo",
         "firma del brand",
@@ -27,6 +27,7 @@
       "tipo": "espositore a parete",
       "descrizione_breve": "Progettato per valorizzare ogni bottiglia.",
       "struttura": "tubi inox verticali con ripiani in legno",
+      "misure": "Larghezza 400 mm, altezza 800 mm, profondità 120/130 mm, capacità 5 bottiglie",
       "caratteristiche": [
         "profondità ridotta",
         "fissaggio a muro",
@@ -40,6 +41,7 @@
       "tipo": "scaffale autoportante",
       "descrizione_breve": "Scaffale stabile e deciso a quattro appoggi.",
       "struttura": "telaio inox con quattro piedi",
+      "misure": "Larghezza 600 mm, altezza 1500 mm, profondità 300 mm",
       "caratteristiche": [
         "struttura indipendente",
         "ripiani in legno",
@@ -53,6 +55,7 @@
       "tipo": "scaffale verticale ancorato",
       "descrizione_breve": "Essenziale, leggero, ancorato alla struttura.",
       "struttura": "due piedi anteriori + ancoraggio chimico a soffitto",
+      "misure": "Larghezza 600 mm, altezza 1500 mm, profondità 300 mm",
       "caratteristiche": [
         "impatto visivo leggero",
         "sviluppo verticale",
@@ -66,6 +69,7 @@
       "tipo": "espositore per bottiglie magnum",
       "descrizione_breve": "Struttura dedicata alle grandi bottiglie.",
       "struttura": "base circolare aperta in tubolare inox con montanti verticali",
+      "misure": "Altezza 1000 mm, larghezza 800 mm",
       "caratteristiche": [
         "ripiani con conca scavata",
         "specifico per bottiglie magnum",
@@ -79,6 +83,7 @@
       "tipo": "cantinetta scultorea",
       "descrizione_breve": "Geometria, luce, presenza.",
       "struttura": "struttura geometrica a tagli con inserti in legno",
+      "misure": "Larghezza 600 mm, altezza 1500 mm, profondità 300 mm, capacità 3 bottiglie (presentazione)",
       "caratteristiche": [
         "tagli geometrici",
         "illuminazione LED integrata",
@@ -92,6 +97,7 @@
       "tipo": "scaffale decorativo multifunzione",
       "descrizione_breve": "Design che non chiede permessi.",
       "struttura": "arco inox con mensole in legno",
+      "misure": "Altezza 2300 mm",
       "caratteristiche": [
         "forma libera",
         "uso misto (vino, oggetti, libri)",
@@ -144,6 +150,7 @@
       "tipo": "espositore mobile",
       "descrizione_breve": "Fissi o mobili, offrono stabilità e funzionalità per eventi e scenografie.",
       "struttura": "telaio inox con ripiani in legno naturale",
+      "misure": "Altezza 750 mm, larghezza 900 mm, profondità 600 mm",
       "caratteristiche": [
         "stabilità",
         "versatilità",
@@ -166,4 +173,3 @@
     }
   ]
 }
-]
