@@ -287,3 +287,41 @@ document.querySelectorAll("[data-lang]").forEach(btn => {
     updateModalContents(btn.dataset.lang);
   });
 });
+
+// Mood Slides
+function initMoodSlides() {
+  const slides = document.querySelectorAll("#mood-slides .slide");
+  if (!slides.length) return;
+
+  let current = 0;
+  const duration = 4500; // 4.5 secondi
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("active", "leaving");
+      if (i === index) {
+        slide.classList.add("active");
+      } else if (i === current) {
+        slide.classList.add("leaving");
+      }
+    });
+    current = index;
+  }
+
+  function nextSlide() {
+    const next = (current + 1) % slides.length;
+    showSlide(next);
+  }
+
+  showSlide(0);
+  setInterval(nextSlide, duration);
+
+  const btn = document.getElementById("btn-catalogo");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      goToCatalogo();
+    });
+  }
+}
+
+document.addEventListener("DOMContentLoaded", initMoodSlides);
