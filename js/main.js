@@ -321,10 +321,10 @@ function initMoodSlides() {
 
   showSlide(0);
   
-  // Delay di 5 secondi prima di iniziare l'autorotazione
+  // Delay di 6 secondi prima di iniziare l'autorotazione
   setTimeout(() => {
     slidesInterval = setInterval(nextSlide, duration);
-  }, 5000);
+  }, 6000);
 
   const btn = document.getElementById("btn-catalogo");
   if (btn) {

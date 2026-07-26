@@ -187,7 +187,7 @@ h1 {
   top: 50%;
   left: 50%;
   width: min(75vw, 1100px);
-  height: min(75vh, 820px);
+  height: min(74vh, 820px);
   opacity: 0;
   transform: translate(-50%, -50%) translateY(40px);
   transition: all 1.8s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -196,7 +196,9 @@ h1 {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: 28px;
+  border-radius: 20px;
+  border: 2px solid rgba(255,255,255,0.08);
+  background: #0b0b0b;
   box-shadow: 0 35px 80px rgba(0, 0, 0, 0.45);
 }
 
@@ -235,6 +237,11 @@ h1 {
   z-index: 3;
   width: 100%;
   max-width: 90%;
+}
+
+#mood-slides .slide-text.final {
+  bottom: 5%;
+  padding-bottom: 0;
 }
 
 #mood-slides .quote {
