@@ -337,7 +337,7 @@ function initMoodSlides() {
     if (current < slides.length - 1) {
       slidesInterval = setInterval(nextSlide, duration);
     }
-  }, 11000);
+  }, 5500);
 
   // Pulsante catalogo
   const btn = document.getElementById("btn-catalogo");
