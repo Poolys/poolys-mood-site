@@ -288,50 +288,75 @@ document.querySelectorAll("[data-lang]").forEach(btn => {
   });
 });
 
-// Mood Slides
+// ====================== MOOD SLIDES (CORRETTO + RITARDO 11 SECONDI) ======================
 function initMoodSlides() {
   const slides = document.querySelectorAll("#mood-slides .slide");
   if (!slides.length) return;
 
+  // Evita di inizializzare due volte
+  if (window.moodSlidesInitialized) return;
+  window.moodSlidesInitialized = true;
+
   let current = 0;
-  const duration = 5500; // 5.5 secondi
-  let slidesInterval; // Riferimento per l'intervallo
+  const duration = 5500; // tempo tra una slide e l'altra (5.5 secondi)
+  let slidesInterval = null;
 
   function showSlide(index) {
-    slides.forEach((slide, i) => {
+    // Prima togli le classi a tutte
+    slides.forEach(slide => {
       slide.classList.remove("active", "leaving");
-      if (i === index) {
-        slide.classList.add("active");
-      } else if (i === current) {
-        slide.classList.add("leaving");
-      }
     });
+
+    // Metti "leaving" alla slide precedente (se esiste)
+    if (slides[current] && current !== index) {
+      slides[current].classList.add("leaving");
+    }
+
+    // Attiva la nuova
+    slides[index].classList.add("active");
     current = index;
   }
 
   function nextSlide() {
     const next = (current + 1) % slides.length;
     showSlide(next);
-    
-    // Ferma l'autorotazione quando raggiungiamo l'ultima slide (con il pulsante)
+
+    // Ferma l'autorotazione sull'ultima slide (quella col pulsante)
     if (next === slides.length - 1) {
       clearInterval(slidesInterval);
+      slidesInterval = null;
     }
   }
 
+  // Mostra subito la prima
   showSlide(0);
-  
-  // Delay di 6 secondi prima di iniziare l'autorotazione
-  setTimeout(() => {
-    slidesInterval = setInterval(nextSlide, duration);
-  }, 6000);
 
+  // Ritardo di 11 secondi prima di iniziare l'autorotazione
+  setTimeout(() => {
+    // Solo se non siamo già sull'ultima
+    if (current < slides.length - 1) {
+      slidesInterval = setInterval(nextSlide, duration);
+    }
+  }, 11000);
+
+  // Pulsante catalogo
   const btn = document.getElementById("btn-catalogo");
   if (btn) {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
       goToCatalogo();
     });
   }
 }
 
+// Avvia le slide quando il DOM è pronto
 document.addEventListener("DOMContentLoaded", initMoodSlides);
+
+// Importante: riavvia / forza le slide quando l'utente preme "Scopri"
+window.addEventListener("mood-entered", () => {
+  // Piccolo delay per lasciare che il main-content diventi visibile
+  setTimeout(() => {
+    window.moodSlidesInitialized = false; // permette di reinizializzare
+    initMoodSlides();
+  }, 300);
+});
