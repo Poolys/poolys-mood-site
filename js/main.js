@@ -298,7 +298,7 @@ function initMoodSlides() {
   window.moodSlidesInitialized = true;
 
   let current = 0;
-  const duration = 5500; // tempo tra una slide e l'altra (5.5 secondi)
+  const duration = 6000; // tempo tra una slide e l'altra (5.5 secondi)
   let slidesInterval = null;
 
   function showSlide(index) {
@@ -337,7 +337,7 @@ function initMoodSlides() {
     if (current < slides.length - 1) {
       slidesInterval = setInterval(nextSlide, duration);
     }
-  }, 5500);
+  }, 7000);
 
   // Pulsante catalogo
   const btn = document.getElementById("btn-catalogo");
