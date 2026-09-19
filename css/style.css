@@ -271,7 +271,7 @@ h1 {
 #mood-slides .author {
   font-size: clamp(11px, 1.3vw, 14px);
   letter-spacing: 0.1em;
-  color: #b8860b;
+  color: #000000;
   text-transform: uppercase;
 }
 
