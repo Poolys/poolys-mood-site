@@ -225,7 +225,7 @@ h1 {
 
 #mood-slides .slide img {
   width: center;
-  height: center;
+  height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
@@ -318,8 +318,8 @@ h1 {
   }
 
   #mood-slides .slide img {
-    width: center;
-    height: center;
+    width: center ;
+    height: 100%;
     object-fit: cover;
     object-position: center center;
   }
